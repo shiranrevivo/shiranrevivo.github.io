@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Hill of Memory — Memory Game UI — Shiran Revivo</title>
+  <meta name="description" content="The Hill of Memory, a responsive UI redesign of a cognitive memory game by Shiran Revivo: palette, typography, characters, desktop and mobile screens, and the playable game.">
+  <meta name="theme-color" content="#0B0408">
+  <!-- link preview. og:image must become an absolute URL (https://domain/…) once the site has a domain -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Shiran Revivo">
+  <meta property="og:title" content="The Hill of Memory — Memory Game UI — Shiran Revivo">
+  <meta property="og:description" content="The Hill of Memory, a responsive UI redesign of a cognitive memory game by Shiran Revivo: palette, typography, characters, desktop and mobile screens, and the playable game.">
+  <meta property="og:image" content="assets/img/projects/the-hill-of-memory/cover.jpg">
+  <meta property="og:image:width" content="2000">
+  <meta property="og:image:height" content="1250">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/svg+xml" href="assets/img/logo/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jersey+10&family=Pixelify+Sans:wght@400..700&family=Space+Grotesk:wght@400;500;600&family=VT323&display=swap" rel="stylesheet">
+  <!-- the game's UI type, only for the specimens on this page (the display font, md_arfilit, has no web licence: shown as images) -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;800&family=Noto+Sans+Hebrew:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css?v=92">
+</head>
+<body data-page="project" class="is-case">
+
+  <canvas id="dots" aria-hidden="true"></canvas>
+  <div class="crt" aria-hidden="true"></div>
+
+  <header class="nav" id="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo" aria-label="Shiran Revivo — home">
+        <img class="nav__logo-img" src="assets/img/logo/s-design-logo.svg" alt="s.design" width="140" height="35">
+      </a>
+      <nav class="nav__links" aria-label="Main">
+        <a href="index.html" class="nav__link"><span class="px-ico" data-px="home"></span>Home<span class="nav__num">01</span></a>
+        <a href="projects.html" class="nav__link is-active"><span class="px-ico" data-px="grid"></span>Work<span class="nav__num">02</span></a>
+        <a href="about.html" class="nav__link"><span class="px-ico" data-px="user"></span>About<span class="nav__num">03</span></a>
+        <a href="cv.html" class="nav__link"><span class="px-ico" data-px="doc"></span>CV<span class="nav__num">04</span></a>
+        <a href="contact.html" class="nav__link"><span class="px-ico" data-px="chat"></span>Contact<span class="nav__num">05</span></a>
+      </nav>
+      <div class="nav__actions">
+        <button class="icon-btn" id="soundBtn" type="button" aria-pressed="false" aria-label="Turn sound on"><span class="px-ico" data-px="mute"></span></button>
+        <button class="icon-btn nav__menu" id="menuBtn" type="button" aria-expanded="false" aria-label="Menu"><span class="px-ico" data-px="menu"></span></button>
+      </div>
+    </div>
+  </header>
+
+  <div class="hud" aria-hidden="true">
+    <span>LVL <b>02</b> — case study</span>
+    <span id="hudCoords">X <b>0000</b> · Y <b>0000</b></span>
+  </div>
+
+  <main class="cs">
+    <!-- ============ HEAD ============ -->
+    <section class="page-head project-head cs-head">
+      <div class="container">
+        <a class="project-head__back reveal" href="projects.html"><span class="px-ico" data-px="arrowL"></span>All projects</a>
+        <p class="eyebrow reveal"><span class="px-ico" data-px="diamond"></span>02 / UI Design</p>
+        <h1 class="project-head__title glow reveal" style="--d:.08s"><span data-scramble>The Hill of Memory</span></h1>
+        <p class="project-head__sub reveal" style="--d:.16s">UI Design · Responsive · Cognitive Game</p>
+
+        <div class="cs-hero cs-hero--wide">
+          <div class="cs-hero__info reveal" style="--d:.2s">
+            <dl class="cs-meta">
+              <div><dt>Project</dt><dd>A new content world for Memory Cube, a cognitive memory game.</dd></div>
+              <div><dt>Tools</dt><dd>Figma · Claude Code</dd></div>
+            </dl>
+            <nav class="cs-toc" aria-label="Case study sections">
+              <p class="cs-toc__label">Levels</p>
+              <ol>
+                <li><a href="#palette">Palette</a></li>
+                <li><a href="#typography">Typography</a></li>
+                <li><a href="#characters">Character colors</a></li>
+                <li><a href="#key-screens">Key screens</a></li>
+                <li><a href="#windows">Windows</a></li>
+                <li><a href="#mobile">Mobile</a></li>
+                <li><a href="#mobile-windows">Mobile windows</a></li>
+                <li><a href="#prototype">Play it</a></li>
+              </ol>
+            </nav>
+          </div>
+          <figure class="cs-media cs-hero__shot reveal" style="--d:.28s">
+            <img src="assets/img/projects/the-hill-of-memory/01-hero.png" alt="The Hill of Memory on a laptop and a phone: the game screen with a ghost in a ring of vines, and the main menu over a purple graveyard" width="2000" height="1211" fetchpriority="high">
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PALETTE (slide 02) ============ -->
+    <section class="cs-sec" id="palette">
+      <div class="container">
+        <header class="cs-sec__head">
+          <p class="eyebrow reveal"><span class="px-ico" data-px="diamond"></span>01 / Palette</p>
+          <h2 class="cs-h2 reveal" style="--d:.06s">Color palette</h2>
+        </header>
+        <ul class="cs-colors cs-colors--mark cs-colors--five cs-colors--ghosts cs-colors--stack">
+          <li class="reveal" style="--d:0.00s"><img class="cs-colors__mark" src="assets/img/projects/the-hill-of-memory/palette-moonlight.svg" alt="A moonlight ghost, #FAF055" width="160" height="268" loading="lazy"><b>Moonlight</b><code>#FAF055</code></li>
+          <li class="reveal" style="--d:0.06s"><img class="cs-colors__mark" src="assets/img/projects/the-hill-of-memory/palette-glint.svg" alt="A glint ghost, #77F4FF" width="160" height="268" loading="lazy"><b>Glint</b><code>#77F4FF</code></li>
+          <li class="reveal" style="--d:0.12s"><img class="cs-colors__mark" src="assets/img/projects/the-hill-of-memory/palette-ivy.svg" alt="A ivy ghost, #5D32A1" width="160" height="268" loading="lazy"><b>Ivy</b><code>#5D32A1</code></li>
+          <li class="reveal" style="--d:0.18s"><img class="cs-colors__mark cs-colors__mark--outline" src="assets/img/projects/the-hill-of-memory/palette-plum.svg" alt="A plum ghost, #361D47" width="160" height="268" loading="lazy"><b>Plum</b><code>#361D47</code></li>
+          <li class="reveal" style="--d:0.24s"><img class="cs-colors__mark cs-colors__mark--outline" src="assets/img/projects/the-hill-of-memory/palette-night.svg" alt="A night ghost, #1F0F2B" width="160" height="268" loading="lazy"><b>Night</b><code>#1F0F2B</code></li>
+        </ul>
+
+        <h3 class="cs-h3 reveal">Feedback</h3>
+        <ul class="cs-colors cs-colors--plain cs-colors--six cs-colors--stack">
+          <li class="reveal"><span class="cs-colors__chip" style="--c:#6EE67D"></span><b>Correct</b><code>#6EE67D</code></li>
+          <li class="reveal" style="--d:0.06s"><span class="cs-colors__chip" style="--c:#C51E1E"></span><b>Wrong</b><code>#C51E1E</code></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ TYPOGRAPHY (slide 03) ============ -->
+    <section class="cs-sec" id="typography">
+      <div class="container">
+        <header class="cs-sec__head">
+          <p class="eyebrow reveal"><span class="px-ico" data-px="diamond"></span>02 / Type</p>
+          <h2 class="cs-h2 reveal" style="--d:.06s">Typography</h2>
+        </header>
+        <div class="cs-type">
+          <!-- md_arfilit has no web licence: rendered as images from the installed font (name white, specimens soft pink) -->
+          <div class="cs-type__row reveal">
+            <p class="cs-type__name"><img class="cs-type__img" src="assets/img/projects/the-hill-of-memory/type-name.png" alt="ערפילית (Arfilit), the font name in md_arfilit" width="1013" height="499"></p>
+            <p class="cs-type__abc">
+              <img class="cs-type__img" src="assets/img/projects/the-hill-of-memory/type-he.png" alt="The Hebrew alphabet in md_arfilit" width="1543" height="232">
+              <img class="cs-type__img" src="assets/img/projects/the-hill-of-memory/type-num.png" alt="0123456789 in md_arfilit" width="621" height="140">
+            </p>
+            <div class="cs-type__meta">
+              <p class="cs-type__use">Display &nbsp;·&nbsp; md_arfilit</p>
+              <ul class="cs-type__weights"><li>Regular</li></ul>
+            </div>
+          </div>
+          <div class="cs-type__row reveal" style="--ff: 'Roboto', 'Noto Sans Hebrew', sans-serif">
+            <p class="cs-type__name cs-type__name--long" style="font-size:clamp(32px, 3.6vw, 50px)">Roboto<br><span lang="he">Noto Sans Hebrew</span></p>
+            <p class="cs-type__abc">ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>abcdefghijklmnopqrstuvwxyz<br><span dir="rtl">אבגדהוזחטיכלמנסעפצקרשת</span><br>1234567890</p>
+            <div class="cs-type__meta">
+              <p class="cs-type__use">UI &nbsp;·&nbsp; Roboto + Noto Sans Hebrew</p>
+              <ul class="cs-type__weights"><li>Regular</li><li style="font-weight:500">Medium</li><li style="font-weight:700">Bold</li><li style="font-weight:800">Black</li></ul>
+            </div>
+          </div>
+        </div>
+
+        <h3 class="cs-h3 reveal">Type scale</h3>
+        <div class="cs-table-wrap reveal">
+          <table class="cs-table">
+            <colgroup><col style="width:34%"><col style="width:46%"><col style="width:20%"></colgroup>
+            <thead>
+              <tr><th scope="col">Style</th><th scope="col">Font</th><th scope="col">Size</th></tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">Exit message</th><td data-label="Font">md_arfilit Regular</td><td data-label="Size">84px</td></tr>
+              <tr><th scope="row">Window titles</th><td data-label="Font">md_arfilit Regular</td><td data-label="Size">64px</td></tr>
+              <tr><th scope="row">Menu buttons</th><td data-label="Font">md_arfilit Regular</td><td data-label="Size">38px</td></tr>
+              <tr><th scope="row">Special captions</th><td data-label="Font">md_arfilit Regular</td><td data-label="Size">30px</td></tr>
+              <tr><th scope="row">Final score</th><td data-label="Font">Roboto / Noto Sans Hebrew Black</td><td data-label="Size">92px</td></tr>
+              <tr><th scope="row">Answer buttons</th><td data-label="Font">Roboto / Noto Sans Hebrew Bold</td><td data-label="Size">30px</td></tr>
+              <tr><th scope="row">Top bar numbers</th><td data-label="Font">Roboto / Noto Sans Hebrew Bold</td><td data-label="Size">22px</td></tr>
+              <tr><th scope="row">Top bar labels</th><td data-label="Font">Roboto / Noto Sans Hebrew Medium</td><td data-label="Size">18px</td></tr>
+              <tr><th scope="row">Small notes</th><td data-label="Font">Roboto / Noto Sans Hebrew Medium</td><td data-label="Size">15px</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CHARACTERS (slide 04) ============ -->
+    <section class="cs-sec" id="characters">
+      <div class="container">
+        <header class="cs-sec__head">
+          <p class="eyebrow reveal"><span class="px-ico" data-px="diamond"></span>03 / Cast</p>
+          <h2 class="cs-h2 reveal" style="--d:.06s">Character colors</h2>
+        </header>
+        <ul class="cs-colors cs-colors--mark cs-colors--five cs-colors--stack">
+          <li class="reveal" style="--d:0.00s"><img class="cs-colors__mark" src="assets/img/projects/the-hill-of-memory/char-turquoise.svg" alt="A turquoise skull" width="150" height="150" loading="lazy"><code>#25B5AB</code></li>
+          <li class="reveal" style="--d:0.06s"><img class="cs-colors__mark" src="assets/img/projects/the-hill-of-memory/char-lime.svg" alt="A sad lime skull" width="150" height="150" loading="lazy"><code>#9DC44D</code></li>
+          <li class="reveal" style="--d:0.12s"><img class="cs-colors__mark" src="assets/img/projects/the-hill-of-memory/char-amber.svg" alt="An amber skull with a loose jaw" width="150" height="150" loading="lazy"><code>#E0A447</code></li>
+          <li class="reveal" style="--d:0.18s"><img class="cs-colors__mark" src="assets/img/projects/the-hill-of-memory/char-coral.svg" alt="A coral skull in profile" width="150" height="150" loading="lazy"><code>#E07163</code></li>
+          <li class="reveal" style="--d:0.24s"><img class="cs-colors__mark" src="assets/img/projects/the-hill-of-memory/char-ice.svg" alt="A round ice-blue skull" width="150" height="150" loading="lazy"><code>#58A6DE</code></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ KEY SCREENS (slide 05) ============ -->
+    <section class="cs-sec" id="key-screens">
+      <div class="container">
+        <header class="cs-sec__head">
+          <p class="eyebrow reveal"><span class="px-ico" data-px="diamond"></span>04 / Desktop</p>
+          <h2 class="cs-h2 reveal" style="--d:.06s">Key screens</h2>
+        </header>
+        <div class="cs-shots" style="--n:2">
+          <figure class="reveal"><img src="assets/img/projects/the-hill-of-memory/d-menu.jpg" alt="Main menu: the gothic title over a purple graveyard, with New game, Options and Exit plaques" width="1600" height="900" loading="lazy"><figcaption class="cs-cap">Main menu</figcaption></figure>
+          <figure class="reveal" style="--d:.08s"><img src="assets/img/projects/the-hill-of-memory/d-game.jpg" alt="Game screen: a character inside a ring of vines, the timer bar, and the Same, Partial and Different answer plaques" width="1600" height="900" loading="lazy"><figcaption class="cs-cap">Game screen</figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ WINDOWS (slide 06) ============ -->
+    <section class="cs-sec" id="windows">
+      <div class="container">
+        <header class="cs-sec__head">
+          <p class="eyebrow reveal"><span class="px-ico" data-px="diamond"></span>05 / Desktop</p>
+          <h2 class="cs-h2 reveal" style="--d:.06s">Windows</h2>
+        </header>
+        <div class="cs-shots" style="--n:3">
+          <figure class="reveal"><img src="assets/img/projects/the-hill-of-memory/d-hints.jpg" alt="Instructions window: the three answers shown with example characters, and the keyboard shortcuts" width="1600" height="900" loading="lazy"><figcaption class="cs-cap">Instructions</figcaption></figure>
+          <figure class="reveal" style="--d:.06s"><img src="assets/img/projects/the-hill-of-memory/d-options.jpg" alt="Options window: characters, night length, ghost pace, sound and keyboard hints" width="1600" height="900" loading="lazy"><figcaption class="cs-cap">Options</figcaption></figure>
+          <figure class="reveal" style="--d:.12s"><img src="assets/img/projects/the-hill-of-memory/d-end.jpg" alt="End of game window: the final score, a personal best badge and the streak, answers and accuracy" width="1600" height="900" loading="lazy"><figcaption class="cs-cap">End of game</figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ MOBILE KEY SCREENS (slide 07) ============ -->
+    <section class="cs-sec" id="mobile">
+      <div class="container">
+        <header class="cs-sec__head">
+          <p class="eyebrow reveal"><span class="px-ico" data-px="diamond"></span>06 / Mobile</p>
+          <h2 class="cs-h2 reveal" style="--d:.06s">Mobile key screens</h2>
+        </header>
+        <div class="cs-screens cs-screens--four">
+          <div class="reveal"><figure class="cs-device"><img src="assets/img/projects/the-hill-of-memory/m-menu.png" alt="Mobile main menu" width="760" height="1692" loading="lazy"></figure><p class="cs-cap">Main menu</p></div>
+          <div class="reveal" style="--d:.06s"><figure class="cs-device"><img src="assets/img/projects/the-hill-of-memory/m-game.png" alt="Mobile game screen: the answer plaques stacked under the ring" width="760" height="1692" loading="lazy"></figure><p class="cs-cap">Game screen</p></div>
+          <div class="reveal" style="--d:.12s"><figure class="cs-device"><img src="assets/img/projects/the-hill-of-memory/m-hints.png" alt="Mobile instructions window" width="760" height="1692" loading="lazy"></figure><p class="cs-cap">Instructions</p></div>
+          <div class="reveal" style="--d:.18s"><figure class="cs-device"><img src="assets/img/projects/the-hill-of-memory/m-end.png" alt="Mobile end of game window with the final score" width="760" height="1692" loading="lazy"></figure><p class="cs-cap">End of game</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ MOBILE WINDOWS (slide 08) ============ -->
+    <section class="cs-sec" id="mobile-windows">
+      <div class="container">
+        <header class="cs-sec__head">
+          <p class="eyebrow reveal"><span class="px-ico" data-px="diamond"></span>07 / Mobile</p>
+          <h2 class="cs-h2 reveal" style="--d:.06s">Mobile windows</h2>
+        </header>
+        <div class="cs-screens">
+          <div class="reveal"><figure class="cs-device"><img src="assets/img/projects/the-hill-of-memory/m-options.png" alt="Mobile options window" width="760" height="1692" loading="lazy"></figure><p class="cs-cap">Options</p></div>
+          <div class="reveal" style="--d:.06s"><figure class="cs-device"><img src="assets/img/projects/the-hill-of-memory/m-pause.png" alt="Mobile pause window: Continue, New game and Main menu" width="760" height="1692" loading="lazy"></figure><p class="cs-cap">Pause</p></div>
+          <div class="reveal" style="--d:.12s"><figure class="cs-device"><img src="assets/img/projects/the-hill-of-memory/m-exit.png" alt="Mobile exit screen: a goodbye message over the graveyard" width="760" height="1692" loading="lazy"></figure><p class="cs-cap">Exit</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PROTOTYPE: the live game ============ -->
+    <section class="cs-sec" id="prototype">
+      <div class="container">
+        <header class="cs-sec__head">
+          <p class="eyebrow reveal"><span class="px-ico" data-px="diamond"></span>08 / Play it</p>
+          <h2 class="cs-h2 reveal" style="--d:.06s">Prototype</h2>
+        </header>
+        <figure class="window project__embed cs-proto reveal">
+          <div class="window__bar"><span>the_hill_of_memory.html</span><span class="window__btns" aria-hidden="true"><i></i><i></i><i></i></span></div>
+          <div class="cs-proto__tabs" role="tablist" aria-label="Prototype device">
+            <button class="chip" type="button" role="tab" id="proto-tab-0" aria-controls="proto-0" aria-selected="true">Desktop</button>
+            <button class="chip" type="button" role="tab" id="proto-tab-1" aria-controls="proto-1" aria-selected="false" tabindex="-1">Mobile</button>
+          </div>
+          <div class="project__frame" style="--ratio:16 / 9" role="tabpanel" id="proto-0" aria-labelledby="proto-tab-0">
+            <iframe src="https://givat-hazikaron.netlify.app/" title="The Hill of Memory — the game, desktop" loading="lazy" allow="autoplay; fullscreen" allowfullscreen
+              sandbox="allow-same-origin allow-scripts allow-pointer-lock allow-forms allow-popups allow-popups-to-escape-sandbox"></iframe>
+          </div>
+          <div class="project__frame project__frame--phone" role="tabpanel" id="proto-1" aria-labelledby="proto-tab-1" hidden>
+            <iframe data-src="https://givat-hazikaron.netlify.app/" title="The Hill of Memory — the game, mobile" loading="lazy" allow="autoplay; fullscreen" allowfullscreen
+              sandbox="allow-same-origin allow-scripts allow-pointer-lock allow-forms allow-popups allow-popups-to-escape-sandbox"></iframe>
+          </div>
+        </figure>
+        <!-- the one button at the end of a project page (Shiran, 2026-11-09): straight to the live game -->
+        <p class="cs-play reveal"><a class="btn" href="https://givat-hazikaron.netlify.app/" target="_blank" rel="noopener"><span class="btn__face">Play the game<span class="px-ico" data-px="arrow"></span></span></a></p>
+      </div>
+    </section>
+
+    <!-- ============ END ============ -->
+    <section class="cs-sec cs-end">
+      <div class="container">
+        <p class="cs-end__title glow reveal"><span class="px-ico" data-px="spark"></span><span data-scramble>Thank you for watching</span></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <span>© <span id="year">2026</span> Shiran Revivo</span>
+      <span class="footer__made">Designed with passion <span class="px-ico" data-px="heart"></span></span>
+      <a href="#top" onclick="scrollTo({top:0});return false">Back to top <span class="px-ico" data-px="up"></span></a>
+    </div>
+  </footer>
+
+  <script src="assets/js/data.js?v=62"></script>
+  <script src="assets/js/main.js?v=59"></script>
+</body>
+</html>

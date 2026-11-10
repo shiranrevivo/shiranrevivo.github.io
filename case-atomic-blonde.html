@@ -1,0 +1,427 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Atomic Blonde — Movie One Pager — Shiran Revivo</title>
+  <meta name="description" content="Atomic Blonde, a responsive UX/UI case study by Shiran Revivo: research, persona, wireframes, style guide, Instagram content and a neon-noir one-pager website for the film.">
+  <meta name="theme-color" content="#0B0408">
+  <!-- link preview. og:image must become an absolute URL (https://domain/…) once the site has a domain -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Shiran Revivo">
+  <meta property="og:title" content="Atomic Blonde — Movie One Pager — Shiran Revivo">
+  <meta property="og:description" content="Atomic Blonde, a responsive UX/UI case study by Shiran Revivo: research, persona, wireframes, style guide, Instagram content and a neon-noir one-pager website for the film.">
+  <meta property="og:image" content="assets/img/projects/atomic-blonde/cover.jpg">
+  <meta property="og:image:width" content="2000">
+  <meta property="og:image:height" content="1250">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/svg+xml" href="assets/img/logo/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jersey+10&family=Pixelify+Sans:wght@400..700&family=Space+Grotesk:wght@400;500;600&family=VT323&display=swap" rel="stylesheet">
+  <!-- Atomic Blonde's own type, only for the typography specimens on this page (Gobold, Opti Ignite and Againts have no web licence: shown as images) -->
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css?v=92">
+</head>
+<body data-page="project" class="is-case">
+
+  <canvas id="dots" aria-hidden="true"></canvas>
+  <div class="crt" aria-hidden="true"></div>
+
+  <header class="nav" id="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo" aria-label="Shiran Revivo — home">
+        <img class="nav__logo-img" src="assets/img/logo/s-design-logo.svg" alt="s.design" width="140" height="35">
+      </a>
+      <nav class="nav__links" aria-label="Main">
+        <a href="index.html" class="nav__link"><span class="px-ico" data-px="home"></span>Home<span class="nav__num">01</span></a>
+        <a href="projects.html" class="nav__link is-active"><span class="px-ico" data-px="grid"></span>Work<span class="nav__num">02</span></a>
+        <a href="about.html" class="nav__link"><span class="px-ico" data-px="user"></span>About<span class="nav__num">03</span></a>
+        <a href="cv.html" class="nav__link"><span class="px-ico" data-px="doc"></span>CV<span class="nav__num">04</span></a>
+        <a href="contact.html" class="nav__link"><span class="px-ico" data-px="chat"></span>Contact<span class="nav__num">05</span></a>
+      </nav>
+      <div class="nav__actions">
+        <button class="icon-btn" id="soundBtn" type="button" aria-pressed="false" aria-label="Turn sound on"><span class="px-ico" data-px="mute"></span></button>
+        <button class="icon-btn nav__menu" id="menuBtn" type="button" aria-expanded="false" aria-label="Menu"><span class="px-ico" data-px="menu"></span></button>
+      </div>
+    </div>
+  </header>
+
+  <div class="hud" aria-hidden="true">
+    <span>LVL <b>02</b> — case study</span>
+    <span id="hudCoords">X <b>0000</b> · Y <b>0000</b></span>
+  </div>
+
+  <main class="cs">
+    <!-- ============ HEAD (slide 1) ============ -->
+    <section class="page-head project-head cs-head">
+      <div class="container">
+        <a class="project-head__back reveal" href="projects.html"><span class="px-ico" data-px="arrowL"></span>All projects</a>
+        <p class="eyebrow reveal"><span class="px-ico" data-px="diamond"></span>02 / UX/UI Case study</p>
+        <h1 class="project-head__title glow reveal" style="--d:.08s"><span data-scramble>Atomic Blonde</span></h1>
+        <p class="project-head__sub reveal" style="--d:.16s">UX/UI Case Study · Responsive · Movie One Pager</p>
+
+        <div class="cs-hero cs-hero--wide">
+          <div class="cs-hero__info reveal" style="--d:.2s">
+            <dl class="cs-meta">
+              <div><dt>The mission</dt><dd>A student project requested a one-pager website for a movie of our choice.</dd></div>
+              <div><dt>By</dt><dd>Elisheva Ben-Ari | Shiran Revivo</dd></div>
+              <div><dt>Time frame</dt><dd>One week</dd></div>
+              <div><dt>Tools</dt><dd>Figma · Photoshop</dd></div>
+            </dl>
+            <nav class="cs-toc" aria-label="Case study sections">
+              <p class="cs-toc__label">Levels</p>
+              <ol>
+                <li><a href="#overview">Overview</a></li>
+                <li><a href="#usability">Usability</a></li>
+                <li><a href="#pain-points">Pain points</a></li>
+                <li><a href="#research">UX research</a></li>
+                <li><a href="#persona">Persona</a></li>
+                <li><a href="#wireframes">Wireframes</a></li>
+                <li><a href="#style-guide">Style guide</a></li>
+                <li><a href="#buttons">Buttons</a></li>
+                <li><a href="#instagram">Social media</a></li>
+                <li><a href="#web-design">Web design</a></li>
+                <li><a href="#mobile-design">Mobile design</a></li>
+                <li><a href="#prototype">Prototype</a></li>
+              </ol>
+            </nav>
+          </div>
+          <figure class="cs-media cs-hero__shot reveal" style="--d:.28s">
+            <img src="assets/img/projects/atomic-blonde/01-hero.png" alt="The Atomic Blonde one-pager on a laptop and a phone: the hero with Charlize Theron, the neon logo and the Event and Streaming buttons" width="2400" height="1451" fetchpriority="high">
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PROJECT OVERVIEW (slide 2) ============ -->
+    <section class="cs-sec" id="overview">
+      <div class="container">
+        <div class="cs-text">
+          <p class="eyebrow reveal"><span class="px-ico" data-px="diamond"></span>01 / Overview</p>
+          <h2 class="cs-h2 reveal" style="--d:.06s">Project overview</h2>
+          <p class="reveal" style="--d:.1s">As part of our UX/UI studies, we were assigned the task of creating a one-pager website for a movie released between 2010 and 2020. We chose Atomic Blonde, a visually powerful and stylistic action film that surprisingly has no official website. The goal was to bring the film into the digital space in a way that feels immersive, cinematic, and true to its mood.</p>
+          <p class="reveal" style="--d:.12s">The process began with research into the film’s storyline, characters, creative team, and visual world. This helped us understand the tone and target audience, and informed every design decision I made. We then developed high-fidelity wireframes, focusing on clear user flow, usability, and storytelling without revealing spoilers.</p>
+          <p class="reveal" style="--d:.14s">The final visual design was inspired by the film’s neon-noir aesthetic. We used high-contrast color palettes, sharp typography, and bold layouts to evoke the intensity and energy of Atomic Blonde, while making sure the page was intuitive and engaging. The result is a one-pager that not only promotes the film but delivers a full digital experience.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ USABILITY FEATURES (slide 2) ============ -->
+    <section class="cs-sec" id="usability">
+      <div class="container">
+        <header class="cs-sec__head">
+          <p class="eyebrow reveal"><span class="px-ico" data-px="diamond"></span>02 / Usability</p>
+          <h2 class="cs-h2 reveal" style="--d:.06s">Usability features</h2>
+        </header>
+        <div class="cs-cards">
+          <article class="cs-card reveal">
+            <span class="cs-card__ico px-ico" data-px="play"></span>
+            <h3 class="cs-card__title">Effectiveness</h3>
+            <p>Every section flows seamlessly, guiding users through the experience without confusion. Whether booking a screening, browsing merch, or exploring cast details. Each action feels natural and direct, reducing cognitive load and keeping the focus on the film.</p>
+          </article>
+          <article class="cs-card reveal" style="--d:.06s">
+            <span class="cs-card__ico px-ico" data-px="book"></span>
+            <h3 class="cs-card__title">Ease of Learning</h3>
+            <p>New users can grasp the interface within moments. Core actions like ticket purchase or streaming access are clearly marked, ensuring users don’t waste time figuring out what to do. The quicker the user understands, the faster they engage.</p>
+          </article>
+          <article class="cs-card reveal" style="--d:.12s">
+            <span class="cs-card__ico px-ico" data-px="grid"></span>
+            <h3 class="cs-card__title">Flexibility</h3>
+            <p>Whether you’re a die-hard fan or a first-time viewer, the interface adapts to your needs. From casual scroll-throughs to in-depth exploration, the experience works for beginners and power users alike.</p>
+          </article>
+          <article class="cs-card reveal">
+            <span class="cs-card__ico px-ico" data-px="eye"></span>
+            <h3 class="cs-card__title">Memorability</h3>
+            <p>The bold neon aesthetic, high-contrast visuals, and sharp typography make the site unforgettable. Users will not only remember how the page looked, but how it made them feel.</p>
+          </article>
+          <article class="cs-card reveal" style="--d:.06s">
+            <span class="cs-card__ico px-ico" data-px="heart"></span>
+            <h3 class="cs-card__title">Satisfaction</h3>
+            <p>The immersive design, interactive elements (trailer, gallery), and exclusive event experience provide high user satisfaction and emotional engagement.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PAIN POINTS (slide 3) ============ -->
+    <section class="cs-sec" id="pain-points">
+      <div class="container">
+        <header class="cs-sec__head">
+          <p class="eyebrow reveal"><span class="px-ico" data-px="diamond"></span>03 / Pain points</p>
+          <h2 class="cs-h2 reveal" style="--d:.06s">Pain points</h2>
+        </header>
+        <div class="cs-cards">
+          <article class="cs-card reveal">
+            <span class="cs-card__ico px-ico" data-px="close"></span>
+            <h3 class="cs-card__title">Lack of Accessibility</h3>
+            <p>The film is no longer available in theaters or online platforms, making it completely inaccessible to new audiences who want to watch it.</p>
+          </article>
+          <article class="cs-card reveal" style="--d:.06s">
+            <span class="cs-card__ico px-ico" data-px="download"></span>
+            <h3 class="cs-card__title">Declining Revenue</h3>
+            <p>The film has stopped generating revenue, creating a need to find new ways to monetize its value and reach.</p>
+          </article>
+          <article class="cs-card reveal" style="--d:.12s">
+            <span class="cs-card__ico px-ico" data-px="eye"></span>
+            <h3 class="cs-card__title">Loss of Visibility</h3>
+            <p>As time passed, the film faded from public attention. Now requiring renewed marketing efforts to spark interest and drive engagement.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ UX RESEARCH (slide 3) ============ -->
+    <section class="cs-sec" id="research">
+      <div class="container">
+        <header class="cs-sec__head">
+          <p class="eyebrow reveal"><span class="px-ico" data-px="diamond"></span>04 / Research</p>
+          <h2 class="cs-h2 reveal" style="--d:.06s">UX research</h2>
+        </header>
+        <div class="cs-split cs-split--even">
+          <article class="window cs-window reveal">
+            <div class="window__bar"><span>the_research.txt</span><span class="window__btns" aria-hidden="true"><i></i><i></i><i></i></span></div>
+            <div class="cs-window__body">
+              <h3>The research</h3>
+              <p>In this research, we chose to focus on people who have already watched Atomic Blonde to gain insights into our target audience’s opinions about the plot, characters, and overall viewing experience. We collected data from audience reviews on IMDb, social media comments, and fan forums to better understand expectations, reactions, and what makes the film resonate.</p>
+            </div>
+          </article>
+          <article class="window cs-window reveal" style="--d:.08s">
+            <div class="window__bar"><span>results.txt</span><span class="window__btns" aria-hidden="true"><i></i><i></i><i></i></span></div>
+            <div class="cs-window__body">
+              <h3>Results</h3>
+              <p>Our research showed that Atomic Blonde captivated audiences with its high-octane action, bold visual style, and Charlize Theron’s commanding lead performance. Fans were especially drawn to the film’s 1980s Berlin setting, pulse-pounding soundtrack, and gritty, cinematic fight sequences.</p>
+              <p>Audiences consistently praised Lorraine Broughton as a refreshingly fierce and complex female protagonist, cementing the film’s place as a standout in the spy thriller genre. Atomic Blonde continues to attract a dedicated fanbase, particularly among viewers who love stylish storytelling, graphic novel adaptations, and female-led espionage narratives.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PERSONA (slide 3) ============ -->
+    <section class="cs-sec" id="persona">
+      <div class="container">
+        <header class="cs-sec__head">
+          <p class="eyebrow reveal"><span class="px-ico" data-px="diamond"></span>05 / Persona</p>
+          <h2 class="cs-h2 reveal" style="--d:.06s">Persona</h2>
+        </header>
+        <article class="window cs-persona reveal">
+          <div class="window__bar"><span>persona_01.usr</span><span class="window__btns" aria-hidden="true"><i></i><i></i><i></i></span></div>
+          <div class="cs-persona__body">
+            <div class="cs-persona__who">
+              <img class="cs-persona__photo cs-persona__photo--portrait" src="assets/img/projects/atomic-blonde/05-persona.jpg" alt="Jordan Reyes, smiling with his arms crossed in a music studio" width="900" height="1100" loading="lazy">
+              <h3 class="cs-persona__name">Jordan Reyes</h3>
+              <dl class="cs-meta cs-meta--tight">
+                <div><dt>Age</dt><dd>34</dd></div>
+                <div><dt>Profession</dt><dd>Music Event Producer</dd></div>
+                <div><dt>Location</dt><dd>Austin, Texas</dd></div>
+              </dl>
+            </div>
+            <div class="cs-persona__info">
+              <div>
+                <h4>Pain points</h4>
+                <ul class="cs-list">
+                  <li>Missed the film when it was in theaters and now can’t find a reliable place to watch it</li>
+                  <li>Most movie sites feel outdated or uninviting, lacking energy or emotion</li>
+                  <li>Feels disconnected from movies that don’t offer an immersive, full-sensory experience</li>
+                </ul>
+              </div>
+              <div>
+                <h4>Solutions</h4>
+                <ul class="cs-list">
+                  <li>The one-pager brings the film back to life with streaming and event viewing options</li>
+                  <li>Visual design and layout match the film’s bold, immersive energy, keeping users engaged</li>
+                  <li>Exclusive packages, merch, and soundtrack create a rich, interactive experience beyond just “watching a movie”</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ WIREFRAMES (slide 4) ============ -->
+    <section class="cs-sec" id="wireframes">
+      <div class="container">
+        <header class="cs-sec__head">
+          <p class="eyebrow reveal"><span class="px-ico" data-px="diamond"></span>06 / Low-fi</p>
+          <h2 class="cs-h2 reveal" style="--d:.06s">Wireframes</h2>
+        </header>
+        <figure class="cs-media cs-media--lg reveal">
+          <img src="assets/img/projects/atomic-blonde/06-wireframes.png?v=2" alt="Grey wireframes of the one-pager (hero, summary, the Berlin event, packages, cast, reviews, soundtrack, shop and gallery) and the checkout pop-ups linked to Buy now: personal details, payment and order confirmed" width="1748" height="3124" loading="lazy">
+        </figure>
+      </div>
+    </section>
+
+    <!-- ============ STYLE GUIDE (slide 5) ============ -->
+    <section class="cs-sec" id="style-guide">
+      <div class="container">
+        <header class="cs-sec__head">
+          <p class="eyebrow reveal"><span class="px-ico" data-px="diamond"></span>07 / Style guide</p>
+          <h2 class="cs-h2 reveal" style="--d:.06s">Style guide</h2>
+        </header>
+
+        <h3 class="cs-h3 reveal">Typography</h3>
+        <div class="cs-type">
+          <div class="cs-type__row reveal">
+            <p class="cs-type__name cs-type__name--long"><img class="cs-type__img" src="assets/img/projects/atomic-blonde/07-type-gobold-name.png" alt="Gobold Hollow Bold" width="1685" height="189"></p>
+            <p class="cs-type__abc"><img class="cs-type__img" src="assets/img/projects/atomic-blonde/07-type-gobold-abc.png" alt="ABCDEFGHIJKLMNOPQRSTUVWXYZ 1234567890 in Gobold Hollow Bold" width="1156" height="70"></p>
+            <div class="cs-type__meta">
+              <p class="cs-type__use">H2 &nbsp;·&nbsp; 52px</p>
+              <ul class="cs-type__weights"><li>Regular</li></ul>
+            </div>
+          </div>
+          <div class="cs-type__row reveal">
+            <p class="cs-type__name"><img class="cs-type__img" src="assets/img/projects/atomic-blonde/07-type-opti-name.png" alt="Opti Ignite" width="876" height="190"></p>
+            <p class="cs-type__abc"><img class="cs-type__img" src="assets/img/projects/atomic-blonde/07-type-opti-abc.png" alt="ABCDEFGHIJKLMNOPQRSTUVWXYZ 1234567890 in Opti Ignite" width="1270" height="61"></p>
+            <div class="cs-type__meta">
+              <p class="cs-type__use">H3 &nbsp;·&nbsp; 35px</p>
+              <ul class="cs-type__weights"><li>Regular</li></ul>
+            </div>
+          </div>
+          <div class="cs-type__row reveal" style="--ff: 'Rubik', sans-serif">
+            <p class="cs-type__name">Rubik</p>
+            <p class="cs-type__abc">ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>abcdefghijklmnopqrstuvwxyz<br>1234567890</p>
+            <div class="cs-type__meta">
+              <p class="cs-type__use">P1 &nbsp;·&nbsp; 25px &nbsp;/&nbsp; P &nbsp;·&nbsp; 19px</p>
+              <ul class="cs-type__weights"><li>Regular</li><li style="font-weight:700">Bold</li></ul>
+            </div>
+          </div>
+          <div class="cs-type__row reveal">
+            <p class="cs-type__name"><img class="cs-type__img" src="assets/img/projects/atomic-blonde/07-type-againts-name.png" alt="Againts" width="459" height="185"></p>
+            <p class="cs-type__abc"><img class="cs-type__img" src="assets/img/projects/atomic-blonde/07-type-againts-abc.png" alt="ABCDEFGHIJKLMNOPQRSTUVWXYZ 1234567890 in Againts" width="799" height="72"></p>
+            <div class="cs-type__meta">
+              <p class="cs-type__use">H1 &nbsp;·&nbsp; 130–230px</p>
+              <ul class="cs-type__weights"><li>Regular</li></ul>
+            </div>
+          </div>
+        </div>
+
+        <h3 class="cs-h3 reveal">Colors</h3>
+        <ul class="cs-colors cs-colors--mark cs-colors--base">
+          <li class="reveal" style="--d:0.00s"><img class="cs-colors__mark" src="assets/img/projects/atomic-blonde/07-spray-magenta.png" alt="A Magenta spray-paint cross" width="600" height="442" loading="lazy"><b>Magenta</b><code>#FF008C</code><code>RGB: 255, 0, 140</code></li>
+          <li class="reveal" style="--d:0.06s"><img class="cs-colors__mark" src="assets/img/projects/atomic-blonde/07-spray-aqua.png" alt="An Aqua spray-paint drip" width="600" height="792" loading="lazy"><b>Aqua</b><code>#0AFDF1</code><code>RGB: 10, 253, 241</code></li>
+          <li class="reveal" style="--d:0.12s"><img class="cs-colors__mark cs-colors__mark--outline" src="assets/img/projects/atomic-blonde/07-spray-black.png" alt="A Black spray-paint scribble" width="600" height="430" loading="lazy"><b>Black</b><code>#000000</code><code>RGB: 0, 0, 0</code></li>
+          <li class="reveal" style="--d:0.18s"><img class="cs-colors__mark" src="assets/img/projects/atomic-blonde/07-spray-blue.png" alt="An Electric Blue spray-paint drip" width="600" height="632" loading="lazy"><b>Electric Blue</b><code>#00F0FF</code><code>RGB: 0, 240, 255</code></li>
+        </ul>
+        <p class="cs-note reveal">Inspired by the film’s gritty, neon-soaked aesthetic, the design uses bold colors, cinematic imagery, and sharp typography to create an immersive atmosphere. It’s not just a landing page, it’s a visual extension of Atomic Blonde itself, blending form and function into a cohesive, memorable experience.</p>
+      </div>
+    </section>
+
+    <!-- ============ BUTTONS (slide 6) ============ -->
+    <section class="cs-sec" id="buttons">
+      <div class="container">
+        <header class="cs-sec__head">
+          <p class="eyebrow reveal"><span class="px-ico" data-px="diamond"></span>08 / Components</p>
+          <h2 class="cs-h2 reveal" style="--d:.06s">Buttons</h2>
+        </header>
+        <ul class="cs-btns">
+          <li class="reveal">
+            <h3 class="cs-card__title">Primary button</h3>
+            <p>The primary button is bold with a glowing gradient, used for main actions.</p>
+            <p>The upper button represents the default state. The lower button represents the hover state.</p>
+            <img class="cs-btns__board" src="assets/img/projects/atomic-blonde/08-btn-primary.png" alt="The Event button: a glowing aqua gradient, in its default and hover states" width="1184" height="988" loading="lazy">
+          </li>
+          <li class="reveal" style="--d:.06s">
+            <h3 class="cs-card__title">Secondary button</h3>
+            <p>The secondary button features a lighter neon outline, designed for actions like streaming.</p>
+            <p>The upper button represents the default state. The lower button represents the hover state.</p>
+            <img class="cs-btns__board" src="assets/img/projects/atomic-blonde/08-btn-secondary.png" alt="The Streaming button: an aqua neon outline, in its default and hover states" width="1144" height="988" loading="lazy">
+          </li>
+          <li class="reveal" style="--d:.12s">
+            <h3 class="cs-card__title">Icon buttons</h3>
+            <p>Add to favorites</p>
+            <img class="cs-btns__small" src="assets/img/projects/atomic-blonde/08-btn-icon.png" alt="The favorite heart: an outline heart and a filled aqua heart" width="388" height="224" loading="lazy">
+            <h3 class="cs-card__title">Icons</h3>
+            <img class="cs-btns__small" src="assets/img/projects/atomic-blonde/08-icons.png" alt="Two aqua neon icons: a globe and a shopping bag" width="554" height="212" loading="lazy">
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ INSTAGRAM CONTENT (slide 6) ============ -->
+    <section class="cs-sec" id="instagram">
+      <div class="container">
+        <header class="cs-sec__head">
+          <p class="eyebrow reveal"><span class="px-ico" data-px="diamond"></span>09 / Social</p>
+          <h2 class="cs-h2 reveal" style="--d:.06s">Social media</h2>
+        </header>
+        <figure class="cs-media cs-media--lg reveal">
+          <img src="assets/img/projects/atomic-blonde/09-instagram.png" alt="Three phones with the Atomic.Blonde Instagram: a story selling the Atomic Flask, the profile grid, and a post for the movie screening in Berlin" width="2136" height="1305" loading="lazy">
+        </figure>
+      </div>
+    </section>
+
+    <!-- ============ WEB DESIGN (slide 7) ============ -->
+    <section class="cs-sec" id="web-design">
+      <div class="container">
+        <header class="cs-sec__head">
+          <p class="eyebrow reveal"><span class="px-ico" data-px="diamond"></span>10 / Hi-fi</p>
+          <h2 class="cs-h2 reveal" style="--d:.06s">Web design</h2>
+        </header>
+        <figure class="cs-media reveal">
+          <img src="assets/img/projects/atomic-blonde/10-web.png" alt="The one-pager on a laptop and two floating screens: reviews, soundtrack, shop and gallery; the hero, summary, Berlin event, packages and cast; and the seat picker, payment and order confirmed" width="1876" height="1537" loading="lazy">
+        </figure>
+      </div>
+    </section>
+
+    <!-- ============ MOBILE DESIGN (slide 7) ============ -->
+    <section class="cs-sec" id="mobile-design">
+      <div class="container">
+        <header class="cs-sec__head">
+          <p class="eyebrow reveal"><span class="px-ico" data-px="diamond"></span>11 / Hi-fi</p>
+          <h2 class="cs-h2 reveal" style="--d:.06s">Mobile design</h2>
+        </header>
+        <figure class="cs-media cs-media--tall reveal" style="--tall-h: min(64vh, 520px)">
+          <img src="assets/img/projects/atomic-blonde/11-mobile.png" alt="The mobile one-pager on a tilted phone: the neon logo, the Streaming and Event buttons and the summary" width="1001" height="1304" loading="lazy">
+        </figure>
+      </div>
+    </section>
+
+    <!-- ============ PROTOTYPE ============ -->
+    <section class="cs-sec" id="prototype">
+      <div class="container">
+        <header class="cs-sec__head">
+          <p class="eyebrow reveal"><span class="px-ico" data-px="diamond"></span>12 / Play it</p>
+          <h2 class="cs-h2 reveal" style="--d:.06s">Prototype</h2>
+        </header>
+        <figure class="window project__embed cs-proto reveal">
+          <div class="window__bar"><span>atomic_blonde_prototype.fig</span><span class="window__btns" aria-hidden="true"><i></i><i></i><i></i></span></div>
+          <div class="cs-proto__tabs" role="tablist" aria-label="Prototype device">
+            <button class="chip" type="button" role="tab" id="proto-tab-0" aria-controls="proto-0" aria-selected="true">Desktop</button>
+            <button class="chip" type="button" role="tab" id="proto-tab-1" aria-controls="proto-1" aria-selected="false" tabindex="-1">Mobile</button>
+          </div>
+          <div class="project__frame" style="--ratio:16 / 10" role="tabpanel" id="proto-0" aria-labelledby="proto-tab-0">
+            <iframe src="https://embed.figma.com/proto/bOiSsPqZdMAdyyAxUzGoDF/Atomic-Blonde-One-pager?page-id=226%3A32&amp;node-id=475-3620&amp;viewport=-6%2C299%2C0.07&amp;scaling=scale-down-width&amp;content-scaling=fixed&amp;embed-host=share"
+              title="Atomic Blonde — Desktop prototype" loading="lazy" allowfullscreen
+              sandbox="allow-same-origin allow-scripts allow-pointer-lock allow-forms allow-popups allow-popups-to-escape-sandbox"></iframe>
+          </div>
+          <div class="project__frame" style="--ratio:16 / 10" role="tabpanel" id="proto-1" aria-labelledby="proto-tab-1" hidden>
+            <iframe data-src="https://embed.figma.com/proto/bOiSsPqZdMAdyyAxUzGoDF/Atomic-Blonde-One-pager?page-id=470%3A721&amp;node-id=1521-3630&amp;viewport=408%2C155%2C0.28&amp;scaling=scale-down&amp;content-scaling=fixed&amp;starting-point-node-id=1521%3A3630&amp;embed-host=share"
+              title="Atomic Blonde — Mobile prototype" loading="lazy" allowfullscreen
+              sandbox="allow-same-origin allow-scripts allow-pointer-lock allow-forms allow-popups allow-popups-to-escape-sandbox"></iframe>
+          </div>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ============ END ============ -->
+    <section class="cs-sec cs-end">
+      <div class="container">
+        <p class="cs-end__title glow reveal"><span class="px-ico" data-px="spark"></span><span data-scramble>Thank you for watching</span></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <span>© <span id="year">2026</span> Shiran Revivo</span>
+      <span class="footer__made">Designed with passion <span class="px-ico" data-px="heart"></span></span>
+      <a href="#top" onclick="scrollTo({top:0});return false">Back to top <span class="px-ico" data-px="up"></span></a>
+    </div>
+  </footer>
+
+  <script src="assets/js/data.js?v=62"></script>
+  <script src="assets/js/main.js?v=59"></script>
+</body>
+</html>

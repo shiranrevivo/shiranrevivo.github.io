@@ -1,0 +1,805 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>s.design — Design System</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/img/logo/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jersey+10&family=Pixelify+Sans:wght@400..700&family=Space+Grotesk:wght@400;500;600&family=VT323&family=Heebo:wght@400;500;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <!--
+    DESIGN SYSTEM — המפרט הטכני של האתר: טוקנים, רכיבים, מצבים, אנימציה ונגישות.
+    הקובץ קורא (read-only) את assets/css/style.css ואת assets/js/main.js של האתר, כך שכל רכיב שמוצג כאן הוא הרכיב האמיתי.
+    הוא לא משנה שום דבר באתר. הסגנונות של המסמך עצמו מוגבלים ל-.ds-*.
+  -->
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <style>
+    body { font-family: "Heebo", var(--f-body); font-size: 17px; }
+    .ltr { direction: ltr; unicode-bidi: isolate; }
+    .ds-code, code { direction: ltr; unicode-bidi: isolate; font-family: var(--f-mono); font-size: 1.15em; color: var(--pink-soft); }
+
+    .ds-top {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(11, 4, 8, .88);
+      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--line);
+    }
+    .ds-top__inner { display: flex; align-items: center; gap: 18px; height: 64px; overflow-x: auto; scrollbar-width: none; }
+    .ds-top__inner::-webkit-scrollbar { display: none; }
+    .ds-top img { height: 24px; width: auto; flex: none; }
+    .ds-top nav { display: flex; gap: 2px; direction: ltr; }
+    .ds-top a { flex: none; padding: 7px 10px; font: 11px/1 var(--f-pixel); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); white-space: nowrap; }
+    .ds-top a:hover { color: var(--pink); }
+    .ds-top a span { color: var(--pink-dim); margin-right: 4px; }
+
+    .ds-cover { padding: clamp(80px, 12vw, 150px) 0 0; }
+    .ds-cover h1 { margin: 0 0 20px; font: 400 clamp(64px, 11vw, 156px)/.85 var(--f-display); text-transform: uppercase; color: var(--pink); text-shadow: var(--glow); direction: ltr; text-align: right; }
+    .ds-sec { padding-top: clamp(80px, 11vw, 140px); }
+    .ds-sec .section__head { margin-bottom: 36px; }
+    .ds-sec .h2 { direction: ltr; text-align: right; }
+    .ds-sec .eyebrow { direction: ltr; }
+    .ds-h3 { margin: 56px 0 14px; font: 400 34px/1 var(--f-display); text-transform: uppercase; color: var(--pink); direction: ltr; text-align: right; }
+    .ds-h3 span { font: 500 16px "Heebo", sans-serif; text-transform: none; color: var(--muted); margin-right: 10px; }
+    .ds-p { max-width: 48em; margin: 0 0 16px; }
+    .ds-muted { color: var(--muted); }
+
+    /* tables */
+    .ds-table { width: 100%; border-collapse: collapse; font-size: 15px; }
+    .ds-table th, .ds-table td { padding: 12px 10px; border-bottom: 1px solid var(--line); text-align: right; vertical-align: middle; }
+    .ds-table th { font: 11px var(--f-pixel); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); font-weight: 400; }
+    .ds-table td.ltr, .ds-table td code { text-align: left; }
+    .ds-scroll { overflow-x: auto; }
+    .ds-sw { display: inline-block; width: 40px; height: 40px; border: 2px solid var(--line-strong); vertical-align: middle; }
+
+    /* component specimen */
+    .ds-comp { overflow: hidden; margin-top: 28px; border: 2px solid var(--line-strong); background: var(--bg-2); }
+    .ds-comp__bar { display: flex; justify-content: space-between; gap: 12px; padding: 9px 14px; border-bottom: 2px solid var(--line-strong); font: 11px var(--f-pixel); letter-spacing: .08em; color: var(--muted); direction: ltr; }
+    .ds-comp__bar b { color: var(--pink); font-weight: 400; }
+    .ds-stage {
+      direction: ltr;
+      display: flex; flex-wrap: wrap; align-items: center; gap: 28px;
+      padding: 40px 32px;
+      background-image: radial-gradient(rgba(255, 123, 248, .12) 1px, transparent 1.5px);
+      background-size: 8px 8px;
+      border-bottom: 2px solid var(--line-strong);
+    }
+    .ds-stage--col { flex-direction: column; align-items: stretch; }
+    .ds-spec { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 0; }
+    .ds-spec > div { padding: 18px 20px; }
+    .ds-spec > div + div { border-right: 2px solid var(--line); }
+    @media (max-width: 760px) { .ds-spec { grid-template-columns: minmax(0, 1fr); } .ds-spec > div + div { border-right: 0; border-top: 2px solid var(--line); } }
+    .ds-spec h4 { margin: 0 0 10px; font: 11px var(--f-pixel); letter-spacing: .08em; text-transform: uppercase; color: var(--pink); }
+    .ds-spec ul { margin: 0; padding: 0 18px 0 0; font-size: 15px; }
+    .ds-spec li { margin-bottom: 6px; }
+    .ds-state { display: grid; justify-items: center; gap: 12px; }
+    .ds-state small { font: 10px var(--f-pixel); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+    /* frozen states for the specimen (same rules as :hover / :active in style.css) */
+    .ds-hover .btn__face { background: var(--pink-hover, #FFA3FA); border-color: var(--pink-hover, #FFA3FA); transform: translate(-1px, -1px); box-shadow: 5px 5px 0 var(--pink-dim); }
+    .ds-hover.btn--ghost .btn__face { background: rgba(255, 123, 248, .1); border-color: var(--pink); }
+    .ds-active .btn__face { transform: translate(4px, 4px); box-shadow: 0 0 0 var(--pink-dim); }
+    .ds-focus { outline: 2px dashed var(--pink); outline-offset: 4px; }
+
+    .ds-ico-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; direction: ltr; }
+    .ds-ico { display: grid; grid-template-columns: 40px 1fr; align-items: center; gap: 12px; padding: 12px 14px; border: 2px solid var(--line); background: var(--bg-2); }
+    .ds-ico .px-ico { font-size: 22px; color: var(--pink); justify-content: center; }
+    .ds-ico b { display: block; font: 11px var(--f-pixel); letter-spacing: .06em; color: var(--pink-soft); font-weight: 400; }
+    .ds-ico small { font-size: 12px; color: var(--muted); line-height: 1.3; display: block; }
+
+    .ds-type { direction: ltr; text-align: left; }
+    .ds-pre { margin: 12px 0 0; padding: 16px; border: 2px solid var(--line); background: var(--bg); direction: ltr; text-align: left; overflow-x: auto; font: 18px/1.35 var(--f-mono); color: var(--pink-soft); white-space: pre; }
+    .ds-check { list-style: none; padding: 0; margin: 0; max-width: 52em; }
+    .ds-check li { padding: 12px 0; border-bottom: 1px dashed var(--line); }
+    .ds-check li::before { content: "□"; margin-left: 12px; color: var(--pink); font-family: var(--f-pixel); }
+  </style>
+</head>
+<body data-page="design-system">
+  <canvas id="dots" aria-hidden="true"></canvas>
+  <div class="crt" aria-hidden="true"></div>
+
+  <header class="ds-top">
+    <div class="container ds-top__inner">
+      <img src="../brand/final/s-design-logo.svg" alt="s.design">
+      <nav aria-label="Design system">
+        <a href="#tokens"><span>01</span>Tokens</a>
+        <a href="#type"><span>02</span>Type</a>
+        <a href="#layout"><span>03</span>Layout</a>
+        <a href="#components"><span>04</span>Components</a>
+        <a href="#icons"><span>05</span>Icons</a>
+        <a href="#cursor"><span>06</span>Cursor</a>
+        <a href="#motion"><span>07</span>Motion</a>
+        <a href="#a11y"><span>08</span>A11y</a>
+        <a href="#case-study"><span>09</span>Case study</a>
+        <a href="#rules"><span>10</span>Rules</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="container ds-cover">
+      <p class="eyebrow ltr"><span class="px-ico" data-px="play"></span>s.design · v1.20 · 2026-11-10</p>
+      <h1>Design system<span class="cursor-block" aria-hidden="true"></span></h1>
+      <p class="ds-p" style="font-size:20px; color:var(--pink-soft)">המפרט של האתר: טוקנים, רכיבים, מצבים ותנועה. כל רכיב בעמוד הזה הוא הרכיב האמיתי מ-<code>style.css</code> ו-<code>main.js</code> (נטען לקריאה בלבד), כך שאין פער בין המסמך לאתר.</p>
+      <p class="ds-p ds-muted">מקור האמת לערכים: <code>assets/css/style.css</code> (בלוק <code>:root</code>). העתק עם שמות לכל הצבעים: <code>design-system/tokens.css</code> + <code>tokens.json</code>. הזהות, הקול והסושיאל: <a href="brand-book.html" style="color:var(--pink)">brand-book.html</a>.</p>
+    </section>
+
+    <!-- ============ 01 TOKENS ============ -->
+    <section class="container ds-sec" id="tokens">
+      <header class="section__head"><div><p class="eyebrow"><span class="px-ico" data-px="diamond"></span>01 / Tokens</p><h2 class="h2 glow">Colour tokens</h2></div><div class="rule"></div></header>
+      <div class="ds-scroll"><table class="ds-table">
+        <thead><tr><th></th><th>Token</th><th>Value</th><th>שימוש</th></tr></thead>
+        <tbody>
+          <tr><td><span class="ds-sw" style="background:var(--bg)"></span></td><td><code>--bg</code></td><td class="ltr"><code>#0B0408</code></td><td>רקע הדף</td></tr>
+          <tr><td><span class="ds-sw" style="background:var(--bg-2)"></span></td><td><code>--bg-2</code></td><td class="ltr"><code>#12060F</code></td><td>רקע של חלונות וכרטיסים</td></tr>
+          <tr><td><span class="ds-sw" style="background:var(--surface)"></span></td><td><code>--surface</code></td><td class="ltr"><code>#180914</code></td><td>משטח מורם</td></tr>
+          <tr><td><span class="ds-sw" style="background:var(--pink)"></span></td><td><code>--pink</code></td><td class="ltr"><code>#FF7BF8</code></td><td>ראשי: כותרות, כפתור, מסגרת פעילה, glow</td></tr>
+          <tr><td><span class="ds-sw" style="background:#FFA3FA"></span></td><td><code>--pink-hover</code>*</td><td class="ltr"><code>#FFA3FA</code></td><td>hover של כפתור ראשי</td></tr>
+          <tr><td><span class="ds-sw" style="background:var(--pink-soft)"></span></td><td><code>--pink-soft</code></td><td class="ltr"><code>#FFC4FC</code></td><td>lead, chips, טקסט בפאגר</td></tr>
+          <tr><td><span class="ds-sw" style="background:var(--pink-dim)"></span></td><td><code>--pink-dim</code></td><td class="ltr"><code>#93408F</code></td><td>צל offset של כפתורים, chips, חצים</td></tr>
+          <tr><td><span class="ds-sw" style="background:var(--pink-deep)"></span></td><td><code>--pink-deep</code></td><td class="ltr"><code>#3B1440</code></td><td>צל של חלונות; דיו על נייר</td></tr>
+          <tr><td><span class="ds-sw" style="background:var(--text)"></span></td><td><code>--text</code></td><td class="ltr"><code>#F7C4EE</code></td><td>טקסט רץ</td></tr>
+          <tr><td><span class="ds-sw" style="background:var(--muted)"></span></td><td><code>--muted</code></td><td class="ltr"><code>#B07AA5</code></td><td>מטא, תוויות, מספרים, ניווט לא פעיל</td></tr>
+          <tr><td><span class="ds-sw" style="background:var(--line)"></span></td><td><code>--line</code></td><td class="ltr"><code>rgba(255,123,248,.18)</code></td><td>קווי הפרדה, גבול ניווט</td></tr>
+          <tr><td><span class="ds-sw" style="background:var(--line-strong)"></span></td><td><code>--line-strong</code></td><td class="ltr"><code>rgba(255,123,248,.45)</code></td><td>מסגרת של כרטיס/chip במנוחה</td></tr>
+          <tr><td><span class="ds-sw" style="background:#FFE15C"></span></td><td><code>--yellow</code>*</td><td class="ltr"><code>#FFE15C</code></td><td>רק "+1" במשחק</td></tr>
+          <tr><td><span class="ds-sw" style="background:#F6EFF2"></span></td><td><code>--paper</code>*</td><td class="ltr"><code>#F6EFF2</code></td><td>קולאז' ו-View-Master</td></tr>
+          <tr><td><span class="ds-sw" style="background:#F2D7A0"></span></td><td><code>--kraft</code>*</td><td class="ltr"><code>#F2D7A0</code></td><td>מדבקת תווית</td></tr>
+          <tr><td><span class="ds-sw" style="background:#E8A33A"></span></td><td><code>--amber</code>*</td><td class="ltr"><code>#E8A33A</code></td><td>קוד על הפילמסטריפ</td></tr>
+        </tbody>
+      </table></div>
+      <p class="ds-muted" style="font-size:14px; margin-top:10px">* באתר הערכים האלה כתובים כ-hex ישירות ב-<code>style.css</code>. השמות קיימים ב-<code>design-system/tokens.css</code> כדי שיהיה לנו שם אחד לכל צבע בסושיאל וב-Figma.</p>
+
+      <h3 class="ds-h3">Effects<span>צללים ו-glow</span></h3>
+      <div class="ds-scroll"><table class="ds-table">
+        <thead><tr><th>Token</th><th>Value</th><th>איפה</th></tr></thead>
+        <tbody>
+          <tr><td><code>--glow</code></td><td class="ltr"><code>0 0 4px pink/.65, 0 0 18px pink/.3</code></td><td>כותרות <code>.glow</code>, loader, סמן הבלוק</td></tr>
+          <tr><td><code>--shadow-btn</code></td><td class="ltr"><code>4px 4px 0 --pink-dim</code></td><td><code>.btn</code> (hover: 5px)</td></tr>
+          <tr><td><code>--shadow-sm</code></td><td class="ltr"><code>3px 3px 0 --pink-dim</code></td><td>chip פעיל, <code>.card__go</code>, חצי הפאגר</td></tr>
+          <tr><td><code>--shadow-window</code></td><td class="ltr"><code>8px 8px 0 --pink-deep</code></td><td><code>.window</code>, embeds</td></tr>
+          <tr><td><code>--shadow-sticker</code></td><td class="ltr"><code>4px 4px 0 --pink-deep</code></td><td>מדבקות קולאז'</td></tr>
+        </tbody>
+      </table></div>
+      <p class="ds-muted" style="font-size:14px; margin-top:10px">כלל: צללים תמיד <b>אטומים, בלי blur</b>, למטה-ימינה. היחיד שמטושטש הוא ה-glow.</p>
+    </section>
+
+    <!-- ============ 02 TYPE ============ -->
+    <section class="container ds-sec" id="type">
+      <header class="section__head"><div><p class="eyebrow"><span class="px-ico" data-px="diamond"></span>02 / Type</p><h2 class="h2 glow">Type scale</h2></div><div class="rule"></div></header>
+      <div class="ds-scroll"><table class="ds-table">
+        <thead><tr><th>Role</th><th>Class</th><th>Font</th><th>Size</th><th>LH / tracking</th><th>Case</th></tr></thead>
+        <tbody>
+          <tr><td>Hero</td><td><code>.hero__title</code></td><td>Jersey 10</td><td class="ltr"><code>clamp(46px, 7.8vw, 122px)</code></td><td class="ltr">.78 / .01em</td><td>UPPER</td></tr>
+          <tr><td>Page title</td><td><code>.page-head__title</code></td><td>Jersey 10</td><td class="ltr"><code>clamp(64px, 11vw, 156px)</code></td><td class="ltr">.85</td><td>UPPER</td></tr>
+          <tr><td>Section</td><td><code>.h2</code></td><td>Jersey 10</td><td class="ltr"><code>clamp(48px, 7.2vw, 96px)</code></td><td class="ltr">.9 / .01em</td><td>UPPER</td></tr>
+          <tr><td>Card title</td><td><code>.card__title</code></td><td>Jersey 10</td><td class="ltr">28px (26 in grid)</td><td class="ltr">— / .02em</td><td>UPPER</td></tr>
+          <tr><td>Lead</td><td><code>.about__text .lead</code></td><td>Space Grotesk 500</td><td class="ltr"><code>clamp(22px, 2.3vw, 30px)</code></td><td class="ltr">1.35</td><td>Sentence</td></tr>
+          <tr><td>Body</td><td><code>body</code></td><td>Space Grotesk</td><td class="ltr">18px</td><td class="ltr">1.6</td><td>Sentence</td></tr>
+          <tr><td>Note</td><td><code>.section__note</code></td><td>Space Grotesk</td><td class="ltr">16px</td><td class="ltr">1.6</td><td>Sentence</td></tr>
+          <tr><td>Button</td><td><code>.btn__face</code></td><td>Pixelify Sans</td><td class="ltr">14px</td><td class="ltr">— / .08em</td><td>UPPER</td></tr>
+          <tr><td>Eyebrow</td><td><code>.eyebrow</code></td><td>Pixelify Sans</td><td class="ltr">13px</td><td class="ltr">— / .1em</td><td>UPPER</td></tr>
+          <tr><td>Nav</td><td><code>.nav__link</code></td><td>Pixelify Sans</td><td class="ltr">12px (mobile 26–40px)</td><td class="ltr">— / .08em</td><td>UPPER</td></tr>
+          <tr><td>Label / meta</td><td><code>.card__bar</code>, <code>.window__foot</code></td><td>Pixelify Sans</td><td class="ltr">11px</td><td class="ltr">— / .08em</td><td>UPPER</td></tr>
+          <tr><td>Terminal</td><td><code>.term__body</code></td><td>VT323</td><td class="ltr">22px</td><td class="ltr">1.2</td><td>lower</td></tr>
+          <tr><td>Loader</td><td><code>.loader__label</code></td><td>VT323</td><td class="ltr"><code>clamp(44px, 8vw, 68px)</code></td><td class="ltr">1 / .04em</td><td>lower</td></tr>
+        </tbody>
+      </table></div>
+      <div class="ds-comp"><div class="ds-comp__bar"><span>TYPE_SPECIMEN</span><b>live</b></div>
+        <div class="ds-stage ds-stage--col ds-type">
+          <p class="eyebrow" style="margin:0"><span class="px-ico" data-px="diamond"></span>02 / Work</p>
+          <h2 class="h2 glow">Selected work</h2>
+          <p class="lead" style="margin:0; font-size:26px; color:var(--pink-soft); font-weight:500; font-family:var(--f-body)">Lead — I design products that feel like play.</p>
+          <p style="margin:0; font-family:var(--f-body)">Body — I design apps and websites for <mark>the person on the other side of the screen</mark>.</p>
+          <p class="result-count" style="margin:0">&gt; <b>12</b> projects found</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 03 LAYOUT ============ -->
+    <section class="container ds-sec" id="layout">
+      <header class="section__head"><div><p class="eyebrow"><span class="px-ico" data-px="diamond"></span>03 / Layout</p><h2 class="h2 glow">Grid &amp; space</h2></div><div class="rule"></div></header>
+      <div class="ds-scroll"><table class="ds-table">
+        <thead><tr><th>Token / rule</th><th>Value</th><th>הערה</th></tr></thead>
+        <tbody>
+          <tr><td><code>--maxw</code></td><td class="ltr">1240px</td><td>רוחב תוכן מקסימלי (<code>.container</code>)</td></tr>
+          <tr><td><code>--gutter</code></td><td class="ltr"><code>clamp(16px, 4vw, 48px)</code></td><td>שוליים בצדדים</td></tr>
+          <tr><td><code>--nav-h</code></td><td class="ltr">76px</td><td>גובה הניווט הקבוע</td></tr>
+          <tr><td>Section padding</td><td class="ltr"><code>clamp(96px, 13vw, 160px)</code></td><td>מעל ומתחת לכל <code>.section</code></td></tr>
+          <tr><td>Before footer</td><td class="ltr"><code>clamp(96px, 12vw, 140px)</code></td><td><code>main</code>, בכל עמוד (החלטה קבועה)</td></tr>
+          <tr><td>Pixel grid</td><td class="ltr">8px</td><td>dot matrix, מסכי כרטיסים, גריד הפורטרט</td></tr>
+          <tr><td>Border</td><td class="ltr">2px, square</td><td>כל מסגרת. בלי border-radius (חוץ מבר הטעינה)</td></tr>
+          <tr><td>Home work grid</td><td class="ltr">2 cols → 1 &lt;720</td><td>gap <code>clamp(20px, 3vw, 36px)</code></td></tr>
+          <tr><td>Projects grid</td><td class="ltr">3 → 2 &lt;1000 → 1 &lt;640</td><td>9 בעמוד, gap <code>clamp(20px, 2.6vw, 32px)</code></td></tr>
+          <tr><td>Card media</td><td class="ltr">16 / 10</td><td>כל cover נחתך ל-16:10</td></tr>
+        </tbody>
+      </table></div>
+      <h3 class="ds-h3">Breakpoints<span>נקודות שבירה</span></h3>
+      <div class="ds-scroll"><table class="ds-table">
+        <thead><tr><th>Width</th><th>מה משתנה</th></tr></thead>
+        <tbody>
+          <tr><td class="ltr">≤1000</td><td>גריד פרויקטים 2 עמודות</td></tr>
+          <tr><td class="ltr">≤900</td><td>hero נערם (הלוח למעלה), About ו-Contact בעמודה אחת, View-Master: הכרטיס יורד</td></tr>
+          <tr><td class="ltr">≤860</td><td>תפריט מובייל, HUD נעלם, ניווט וסינון נעלמים בגלילה למטה</td></tr>
+          <tr><td class="ltr">≤720</td><td>גריד הבית עמודה אחת, סינון בשורה נגללת, קולאז' על לוח 400×1050</td></tr>
+          <tr><td class="ltr">≤640 / 560 / 480</td><td>פרויקטים עמודה אחת / לוגו 26px / HUD המשחק בלי טקסט</td></tr>
+        </tbody>
+      </table></div>
+      <h3 class="ds-h3">Z-index<span>שכבות</span></h3>
+      <div class="ds-scroll"><table class="ds-table">
+        <thead><tr><th>Layer</th><th>z</th></tr></thead>
+        <tbody>
+          <tr><td><code>#dots</code> (dot matrix)</td><td class="ltr">0</td></tr>
+          <tr><td><code>main</code>, <code>.footer</code></td><td class="ltr">1</td></tr>
+          <tr><td><code>.filters-bar</code> (sticky)</td><td class="ltr">10</td></tr>
+          <tr><td>עבודה בעמוד פרויקט (מעל ה-CRT שיורד ל-40)</td><td class="ltr">45</td></tr>
+          <tr><td><code>.hud</code></td><td class="ltr">50</td></tr>
+          <tr><td><code>.nav</code></td><td class="ltr">100</td></tr>
+          <tr><td><code>.crt</code> (scanlines)</td><td class="ltr">9000</td></tr>
+          <tr><td><code>.loader</code></td><td class="ltr">10000</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <!-- ============ 04 COMPONENTS ============ -->
+    <section class="container ds-sec" id="components">
+      <header class="section__head"><div><p class="eyebrow"><span class="px-ico" data-px="diamond"></span>04 / Components</p><h2 class="h2 glow">Components</h2></div><div class="rule"></div></header>
+      <p class="ds-p">כל רכיב: דוגמה חיה (אפשר לרחף וללחוץ), מצבים מוקפאים להשוואה, אנטומיה וכללים.</p>
+
+      <!-- BUTTON -->
+      <h3 class="ds-h3">Button<span>.btn / .btn--ghost</span></h3>
+      <div class="ds-comp">
+        <div class="ds-comp__bar"><span>BUTTON</span><b>locked: all .btn look identical everywhere</b></div>
+        <div class="ds-stage">
+          <a class="btn" href="#components"><span class="btn__face">My work<span class="px-ico" data-px="arrow"></span></span></a>
+          <a class="btn btn--ghost" href="#components"><span class="btn__face">My CV<span class="px-ico" data-px="doc"></span></span></a>
+          <a class="btn" href="#components"><span class="btn__face"><span class="px-ico" data-px="download"></span>Download PDF</span></a>
+        </div>
+        <div class="ds-stage">
+          <div class="ds-state"><span class="btn"><span class="btn__face">Rest</span></span><small>rest</small></div>
+          <div class="ds-state"><span class="btn ds-hover"><span class="btn__face">Hover</span></span><small>hover · lift 1px</small></div>
+          <div class="ds-state"><span class="btn ds-active"><span class="btn__face">Press</span></span><small>active · sinks 4px</small></div>
+          <div class="ds-state"><span class="btn ds-focus"><span class="btn__face">Focus</span></span><small>focus-visible</small></div>
+          <div class="ds-state"><span class="btn btn--ghost"><span class="btn__face">Ghost</span></span><small>ghost rest</small></div>
+          <div class="ds-state"><span class="btn btn--ghost ds-hover"><span class="btn__face">Ghost</span></span><small>ghost hover</small></div>
+        </div>
+        <div class="ds-spec">
+          <div><h4>Anatomy</h4><pre class="ds-pre">&lt;a class="btn"&gt;
+  &lt;span class="btn__face"&gt;Label
+    &lt;span class="px-ico" data-px="arrow"&gt;&lt;/span&gt;
+  &lt;/span&gt;
+&lt;/a&gt;</pre></div>
+          <div><h4>Rules</h4><ul>
+            <li>Pixelify Sans 14px UPPER, padding 14/24, מסגרת 2px, צל <code>4px 4px 0 --pink-dim</code>, פינות ישרות.</li>
+            <li>ראשי ומשני באותה צורה בדיוק; רק המילוי שונה.</li>
+            <li>ה-transform יושב על <code>.btn__face</code> (כדי ש-<code>.reveal</code> לא ידרוס).</li>
+            <li>אין עיצוב מקומי לכפתור. אין פינות חתוכות.</li>
+            <li>תווית: 1–3 מילים. אייקון אחרי הטקסט (חץ), או לפני (download).</li>
+          </ul></div>
+        </div>
+      </div>
+
+      <!-- ICON BUTTON + COPY -->
+      <h3 class="ds-h3">Icon button &amp; copy<span>.icon-btn / .copy-btn</span></h3>
+      <div class="ds-comp">
+        <div class="ds-comp__bar"><span>ICON_BUTTON</span><b>40×40</b></div>
+        <div class="ds-stage">
+          <button class="icon-btn" type="button" aria-label="Sound"><span class="px-ico" data-px="sound"></span></button>
+          <button class="icon-btn" type="button" aria-pressed="true" aria-label="Sound on"><span class="px-ico" data-px="mute"></span></button>
+          <button class="icon-btn" type="button" aria-label="Menu"><span class="px-ico" data-px="menu"></span></button>
+          <button class="copy-btn" type="button"><span class="px-ico" data-px="copy"></span>Copy</button>
+          <button class="copy-btn is-done" type="button"><span class="px-ico" data-px="copy"></span>Copied!</button>
+        </div>
+        <div class="ds-spec">
+          <div><h4>Icon button</h4><ul><li>40×40, מסגרת 2px <code>--line-strong</code>, אייקון 14px.</li><li>hover / <code>aria-pressed="true"</code>: מילוי ורוד, אייקון כהה.</li><li>תמיד עם <code>aria-label</code>.</li></ul></div>
+          <div><h4>Copy button</h4><ul><li>מסגרת 1px, Pixelify Sans 11px.</li><li>אחרי העתקה: <code>.is-done</code> ותווית "Copied!".</li></ul></div>
+        </div>
+      </div>
+
+      <!-- CHIP + PAGER -->
+      <h3 class="ds-h3">Chip &amp; pager<span>.chip / .pager</span></h3>
+      <div class="ds-comp">
+        <div class="ds-comp__bar"><span>FILTERS · PAGER</span><b>aria-pressed / aria-current</b></div>
+        <div class="ds-stage">
+          <div class="filters-bar" style="position:static; width:100%; margin:0; padding:0; border:0; background:none; backdrop-filter:none">
+          <div class="filters">
+            <button class="chip" type="button" aria-pressed="true">All</button>
+            <button class="chip" type="button" aria-pressed="false">UX</button>
+            <button class="chip" type="button" aria-pressed="false">UI</button>
+            <button class="chip" type="button" aria-pressed="false">Graphic Design</button>
+            <button class="chip" type="button" aria-pressed="false">Set Design</button>
+          </div>
+          <p class="result-count">&gt; <b>04</b> files found in /web</p>
+          </div>
+        </div>
+        <div class="ds-stage" style="justify-content:center">
+          <nav class="pager" style="margin:0" aria-label="Demo pages">
+            <button class="pager__btn pager__arrow" type="button" disabled aria-label="Previous"><span class="px-ico" data-px="arrowL"></span></button>
+            <button class="pager__btn is-current" type="button" aria-current="page">01</button>
+            <button class="pager__btn" type="button">02</button>
+            <button class="pager__btn" type="button">03</button>
+            <button class="pager__btn pager__arrow" type="button" aria-label="Next"><span class="px-ico" data-px="arrow"></span></button>
+          </nav>
+          <div class="facts__pips"><span class="facts__pip" aria-current="true"></span><span class="facts__pip"></span><span class="facts__pip"></span><span class="facts__pip"></span></div>
+        </div>
+        <div class="ds-spec">
+          <div><h4>Chip</h4><ul><li>מסגרת 2px, Pixelify Sans 12px. <b>בלי מונה בתוך ה-chip</b>: הספירה רק ב-<code>#resultCount</code>, כדי שהשורה לא תידחס.</li><li><b>File count גמיש</b>: <code>.filters-bar</code> הוא flex-wrap, והספירה (VT323, <code>nowrap</code>) יושבת מיד אחרי ה-chips, עם רווח 24px, כשיש לה מקום; כשהטקסט ארוך מדי (למשל <code>· page 01/02</code>) היא יורדת לשורה משלה, מיושרת לשמאל. מתחת ל-720px תמיד מתחת (ה-chips נגללים לצדדים).</li><li><b>מסתתר בגלילה</b> (v1.9, כל המסכים): בגלילה למטה הניווט והסרגל מחליקים למעלה ונעלמים (<code>body.nav-hidden</code>), ובגלילה קטנה למעלה (8px) חוזרים. הסרגל זז דרך ה-<code>top</code> של ה-sticky, כך שהוא נעלם רק כשהוא צמוד למעלה. לא נעלמים מתחת ל-80px מראש העמוד וכשהתפריט פתוח.</li><li>פעיל: מילוי ורוד + צל 3px. hover: מסגרת ורודה.</li><li>סדר קבוע: UX Research · UI Design · Dashboards · Mobile App · Web · Graphic Design · Set Design. טאב בלי פרויקטים לא מוצג. Graphic Design לפני האחרון, Set Design תמיד אחרון. אין Design System.</li></ul></div>
+          <div><h4>Pager</h4><ul><li>44×44, מספרים בשתי ספרות (<code>01</code>).</li><li>חצים עם מסגרת ורודה וצל; מושבתים: שקיפות .3 בלי צל.</li><li>מופיע רק כשיש יותר מ-9 פרויקטים בטאב.</li></ul></div>
+        </div>
+      </div>
+
+      <!-- CARD -->
+      <h3 class="ds-h3">Project card<span>.card</span></h3>
+      <div class="ds-comp">
+        <div class="ds-comp__bar"><span>CARD</span><b>hover me</b></div>
+        <div class="ds-stage" style="align-items:stretch">
+          <div class="work__grid" style="width:100%">
+            <a class="card" href="#components">
+              <div class="card__bar"><span>PROJECT_01.FIG</span></div>
+              <div class="card__screen"><img class="card__cover" src="../assets/img/projects/out-of-character/cover.jpg" alt=""><div class="card__noise"></div></div>
+              <div class="card__foot"><div><h3 class="card__title">Out Of Character</h3><p class="card__tags">Graphic Design</p></div><span class="card__go" aria-hidden="true"><span class="px-ico" data-px="arrow"></span></span></div>
+            </a>
+            <article class="card">
+              <div class="card__bar"><span>PROJECT_09.FIG</span></div>
+              <div class="card__screen"><div class="card__empty"><span class="px-ico" data-px="cartridge"></span><span>Insert project 09</span></div><div class="card__noise"></div></div>
+              <div class="card__foot"><div><h3 class="card__title">Empty slot</h3><p class="card__tags">UX · UI</p></div><span class="card__go" aria-hidden="true"><span class="px-ico" data-px="arrow"></span></span></div>
+            </article>
+          </div>
+        </div>
+        <div class="ds-spec">
+          <div><h4>Anatomy</h4><ul>
+            <li><code>.card__bar</code>: שם קובץ <code>PROJECT_NN.FIG</code>. <b>בלי שנה</b>.</li>
+            <li><code>.card__screen</code>: 16:10, cover או <code>.card__empty</code> (קרטריג' + "Insert project").</li>
+            <li><code>.card__foot</code>: כותרת Jersey 28px, קטגוריות מופרדות ב-·, כפתור חץ 44×44.</li>
+            <li><b>החץ תמיד למעלה</b> (<code>align-items: flex-start</code>), בקו עם השורה הראשונה של הכותרת, כך שהוא באותו גובה בכל הכרטיסים גם כשכותרת נשברת ל-2–3 שורות. <b>כותרת כרטיס קצרה</b>: אם היא נשברת ליותר מ-2 שורות, מקצרים (מורידים מילים שלא חיוניות, כמו "Responsive" ב-Sola Games). מילה חשובה שיורדת עוברת לשורת המשנה בראש עמוד הפרויקט (<code>.project-head__sub</code>).</li>
+            <li>וידאו (Set Design): <code>.card--video</code>, כפתור play אחד בפס התחתון, נפתח בפופ-אפ. מופיע בטאב שלו <b>וגם ב-All, תמיד ממש בסוף</b>, אחרי כל הפרויקטים (גם בדפדוף); לא בבית.</li>
+          </ul></div>
+          <div><h4>Hover</h4><ul>
+            <li>הכרטיס זז <code>-4px -4px</code>, מסגרת ורודה, הפס העליון מתמלא ורוד.</li>
+            <li>רעש סטטי (<code>.card__noise</code>) ב-16%, החץ "דוחף" ימינה.</li>
+            <li><b>בלי</b> שכבת צל כפולה מאחורי הכרטיס.</li>
+          </ul></div>
+        </div>
+      </div>
+
+      <!-- WINDOW + TERMINAL -->
+      <h3 class="ds-h3">Window &amp; terminal<span>.window / .term</span></h3>
+      <div class="ds-comp">
+        <div class="ds-comp__bar"><span>WINDOW</span><b>about, contact, cv, facts, embeds</b></div>
+        <div class="ds-stage" style="align-items:flex-start">
+          <form class="window" style="flex:1 1 380px" onsubmit="return false">
+            <div class="window__bar"><span>new_message.exe</span><span class="window__btns" aria-hidden="true"><i></i><i></i><i></i></span></div>
+            <div class="term__body">
+              <p class="term__hint">// fill in the blanks and hit send_</p>
+              <label class="term__row"><span class="term__prompt">&gt; name:</span><input type="text" placeholder="your name"></label>
+              <label class="term__row"><span class="term__prompt">&gt; email:</span><input type="email" placeholder="you@domain.com"></label>
+              <div class="term__actions"><span class="btn"><span class="btn__face">Send<span class="px-ico" data-px="arrow"></span></span></span><p class="term__status">&gt; ready_</p></div>
+            </div>
+          </form>
+          <figure class="window" style="flex:0 1 260px; margin:0">
+            <div class="window__bar"><span>portrait.bmp</span><span class="window__btns" aria-hidden="true"><i></i><i></i><i></i></span></div>
+            <img src="../assets/img/analog/02.jpg" alt="" style="aspect-ratio:4/5; object-fit:cover; width:100%">
+            <figcaption class="window__foot"><span>RES <b>10×13</b></span><span>Signal found</span></figcaption>
+          </figure>
+        </div>
+        <div class="ds-spec">
+          <div><h4>Window</h4><ul><li>מסגרת 2px ורודה, רקע <code>--bg-2</code>, צל <code>8px 8px 0 --pink-deep</code>.</li><li><code>.window__bar</code>: ורוד מלא, שם קובץ ב-Pixelify Sans 12px, 3 ריבועים (האחרון מלא).</li><li><code>.window__foot</code> אופציונלי: מטא עם ערך מודגש ב-<code>&lt;b&gt;</code>.</li></ul></div>
+          <div><h4>Terminal</h4><ul><li>VT323 22px, פרומפט <code>&gt; name:</code> בוורוד.</li><li>שורה: קו מקווקו; בפוקוס הופך לרציף והפרומפט זוהר.</li><li>הודעות סטטוס באותיות קטנות עם <code>_</code> בסוף.</li></ul></div>
+        </div>
+      </div>
+
+      <!-- SECTION HEAD -->
+      <h3 class="ds-h3">Section head<span>.section__head</span></h3>
+      <div class="ds-comp">
+        <div class="ds-comp__bar"><span>SECTION_HEAD</span><b>eyebrow + h2 + action + rule</b></div>
+        <div class="ds-stage ds-stage--col">
+          <header class="section__head" style="margin:0">
+            <div><p class="eyebrow"><span class="px-ico" data-px="diamond"></span>02 / Work</p><h2 class="h2 glow">Selected work</h2></div>
+            <a class="btn" href="#components"><span class="btn__face">All projects<span class="px-ico" data-px="arrow"></span></span></a>
+            <div class="rule"></div>
+          </header>
+        </div>
+        <div class="ds-spec">
+          <div><h4>Rules</h4><ul><li>eyebrow: <code>NN / Name</code> עם diamond, תואם למספר בניווט (Home 01 · Work 02 · About 03 · CV 04 · Contact 05).</li><li>כפתור פעולה מימין לכותרת, לא מתחת לגריד.</li></ul></div>
+          <div><h4>Rule line</h4><ul><li><code>.rule</code>: קו מקווקו 4/4px ב-<code>--line-strong</code>, תמיד בשורה משלו.</li></ul></div>
+        </div>
+      </div>
+
+      <!-- SCROLL CUE -->
+      <h3 class="ds-h3">Scroll cue<span>.scroll-cue</span></h3>
+      <div class="ds-comp">
+        <div class="ds-comp__bar"><span>SCROLL_CUE</span><b>about · "there's more below"</b></div>
+        <div class="ds-stage">
+          <a class="scroll-cue" href="#components" style="margin-top:0" aria-label="Scroll for more about me">
+            <span class="scroll-cue__label">Scroll for more</span>
+            <svg class="scroll-cue__arrow" viewBox="0 0 7 8" aria-hidden="true" shape-rendering="crispEdges"><path fill="currentColor" d="M3 0h1v5H3zM0 3h1v1H0zM1 4h1v1H1zM2 5h3v1H2zM5 4h1v1H5zM6 3h1v1H6zM3 6h1v1H3z"/></svg>
+          </a>
+        </div>
+        <div class="ds-spec">
+          <div><h4>מתי</h4><ul><li>כשהמסך הראשון של עמוד נראה "שלם" ויש עוד תוכן מתחת (About: אחרי הטקסט, לפני Analog).</li><li>קישור עוגן לסקשן הבא (<code>href="#analog"</code>) עם <code>aria-label</code>.</li><li>ב-About: בתחתית עמודת הטקסט (<code>margin-top: auto</code>), בקו אחד עם תחתית הפורטרט. מתחת ל-900px: 24px מתחת לטקסט.</li></ul></div>
+          <div><h4>מראה ותנועה</h4><ul><li>Pixelify Sans <code>11px</code>, letter-spacing <code>.14em</code>, ורוד עם glow; חץ פיקסל <code>7×8</code> (SVG crispEdges) בגודל <code>14×16px</code>.</li><li>החץ עולה ויורד <code>10px</code> ב-<code>steps(4)</code> במשך <code>1.1s</code> (ב-hover מהיר פי 2); הטקסט מהבהב קלות כל 2.2s.</li><li>reduced motion: בלי אנימציה.</li></ul></div>
+        </div>
+      </div>
+
+      <!-- EYEPIECE -->
+      <h3 class="ds-h3">Eyepiece<span>.vm__peek + dialog.eyepiece</span></h3>
+      <div class="ds-comp">
+        <div class="ds-comp__bar"><span>EYEPIECE</span><b>about · press your eyes to the View-Master</b></div>
+        <div class="ds-stage" style="direction:ltr; flex-direction:column; gap:28px; background:rgba(0,0,0,.9)">
+          <span class="vm__hint" style="position:relative; left:auto; top:auto; font-size:18px; rotate:3deg; animation:none">click to peek in</span>
+          <div class="eyepiece" style="display:flex; flex-direction:column; width:100%; max-width:560px; height:auto">
+            <div class="window__bar"><span>slide_01.view</span><span class="vmodal__close" aria-hidden="true"><span class="px-ico" data-px="close"></span></span></div>
+            <div class="eyepiece__view"><div class="eyepiece__lens" style="animation:none; width:100%"><img src="../assets/img/facts/thilo.jpg" alt="" style="--pos:50% 55%"></div></div>
+            <div class="eyepiece__foot">
+              <span class="pager__btn pager__arrow" aria-hidden="true"><span class="px-ico" data-px="arrowL"></span></span>
+              <p class="eyepiece__cap"><b>01/07</b><span>I live with two cats</span></p>
+              <span class="pager__btn pager__arrow" aria-hidden="true"><span class="px-ico" data-px="arrow"></span></span>
+            </div>
+          </div>
+        </div>
+        <div class="ds-spec">
+          <div><h4>הפעלה</h4><ul><li>שתי העדשות של ה-View-Master הן <code>&lt;button&gt;</code> (הגוף סביבן <code>pointer-events: none</code>). hover/פוקוס: העדשה מתבהרת ומתחתיה תגית נייר <code>click to peek in</code> (<code>.vm__hint.vm__peek</code>, חץ למעלה, עוברת לעדשה שמעליה).</li><li>במסכי מגע (<code>hover: none</code>) התגית תמיד מוצגת, ממורכזת: <code>tap to peek in</code>.</li><li>קליק על עדשה פותח את החלון ולא מושך את הידית.</li></ul></div>
+          <div><h4>החלון</h4><ul><li>ממורכז, <code>min(920px, 100vw − 32px)</code>, מסגרת 2px ורודה + צל offset; <code>window__bar</code> עם <code>slide_0N.view</code> ו-X. backdrop שחור 90% + blur 4px.</li><li>חלל כהה נדיב סביב השקופית: <code>padding: clamp(28px, 6vw, 72px)</code> (24px במובייל), הילה כהה רדיאלית.</li><li>השקופית: יחס 1.68 כמו העדשות (4:3 במובייל), פינות מעוגלות, vignette, <code>--grain</code>, השתקפות, גוון חם (sepia .18), זוהר של אור מאחור, הבהוב עדין.</li></ul></div>
+          <div><h4>תנועה וסאונד</h4><ul><li>כניסה: "מצמידים את העיניים", זום מ-1.25 + blur ב-<code>steps(8)</code>, .6s.</li><li>חצים / מקשי חיצים = אותו <code>pull()</code> של המשקפת: ידית, מצמוץ תריס ו-<code>Sound.reel()</code> <b>בלבד</b> (הקליק עוצר propagation, בלי ה-select הכללי). המשקפת והכרטיס מתעדכנים יחד.</li><li>סגירה: X, Esc, קליק בחוץ. reduced motion: בלי זום והבהוב.</li></ul></div>
+        </div>
+      </div>
+
+      <!-- LISTS -->
+      <h3 class="ds-h3">Lists<span>.socials / .tags / .timeline</span></h3>
+      <div class="ds-comp">
+        <div class="ds-comp__bar"><span>LISTS</span><b>contact · cv</b></div>
+        <div class="ds-stage" style="align-items:flex-start">
+          <ul class="socials" style="flex:1 1 260px">
+            <li><a href="#components">LinkedIn <span class="px-ico" data-px="ext"></span></a></li>
+            <li><a href="#components">Instagram <span class="px-ico" data-px="ext"></span></a></li>
+            <li><a href="#components">Behance <span class="px-ico" data-px="ext"></span></a></li>
+          </ul>
+          <div style="flex:1 1 300px">
+            <ul class="tags" style="margin:0 0 32px"><li>Figma</li><li>Photoshop</li><li>Illustrator</li><li>After Effects</li></ul>
+            <ol class="timeline">
+              <li class="timeline__item"><h3 class="timeline__title">Graphic Designer</h3><p class="timeline__meta">Heidia LTD · <b>2025 — Present</b></p>
+                <ul class="timeline__list"><li>Design print and retail marketing solutions.</li></ul></li>
+              <li class="timeline__item"><h3 class="timeline__title">Freelance UX/UI Designer</h3><p class="timeline__meta"><b>2024 — 2025</b></p></li>
+            </ol>
+          </div>
+        </div>
+        <div class="ds-spec">
+          <div><h4>Socials</h4><ul><li>סדר קבוע: LinkedIn, Instagram, Behance. בלי Dribbble.</li><li>hover: השורה מתמלאת ורוד ונכנסת 16px.</li></ul></div>
+          <div><h4>Tags / timeline</h4><ul><li>tags רק ב-CV (Tools). לא ב-About.</li><li>timeline: קו מקווקו אנכי ונקודת "+" פיקסלית; תאריכים ב-<code>&lt;b&gt;</code>.</li></ul></div>
+        </div>
+      </div>
+
+      <h3 class="ds-h3">Other site components<span>רכיבים מיוחדים (מפורטים ב-context/02)</span></h3>
+      <div class="ds-scroll"><table class="ds-table">
+        <thead><tr><th>Component</th><th>Class / function</th><th>עיקר</th></tr></thead>
+        <tbody>
+          <tr><td>Nav</td><td><code>.nav</code> · <code>initNav</code></td><td>לוגו 30px, קישורים עם אייקון, פעיל = מילוי ורוד; במובייל תפריט מסך מלא</td></tr>
+          <tr><td>HUD</td><td><code>.hud</code></td><td>LVL של הסקשן + קואורדינטות עכבר, רק בדסקטופ. <b>בעמוד פרויקט</b> (v1.20, <code>initLevels</code>): ה-LVL עוקב אחרי הסקשן שקוראים (<code>.cs-sec[id]</code>): <code>LVL 04 — persona</code>, לפי סדר ה-Levels; בראש העמוד חוזר לטקסט המקורי</td></tr>
+          <tr><td>Next project</td><td><code>a.cs-next</code> · <code>initNextProject</code></td><td>(v1.20) בסוף כל עמוד פרויקט, <b>לינק טקסט שקט ולא כפתור</b>: תווית <code>Next project</code> (Pixelify Sans 11px, muted) ומתחתיה שם הפרויקט הבא (13px, <code>--text</code>, ורוד ב-hover) עם חץ שלא נשבר לשורה לבד. ממורכז, מתחת ל-"Thank you for watching" (<code>.cs-end</code>), וב-<code>project.html</code> מתחת לגלריה. נבנה ב-JS מהסדר ב-<code>PROJECTS</code> (בלי סטים ובלי placeholders), והאחרון חוזר לראשון. אין מה לערוך ב-HTML</td></tr>
+          <tr><td>Back to top</td><td><code>.icon-btn.to-top</code> · <code>initToTop</code></td><td>(v1.20) כפתור אייקון קטן <b>מרחף</b> (40px, <code>.icon-btn</code> עם רקע <code>--bg</code> וצל offset 3px, אייקון <code>up</code>; <b>אף פעם לא כפתור ראשי</b>), בכל העמודים. מופיע אחרי גלילה של מסך אחד, ומחזיר לראש העמוד. בדסקטופ בפינה הימנית, מעל ה-HUD (<code>bottom: 56px</code>); במובייל <code>16px / 20px</code> מהפינה</td></tr>
+          <tr><td>Skip link</td><td><code>.skip-link</code> · <code>initSkipLink</code></td><td>(v1.20) "Skip to content": התחנה הראשונה של Tab בכל עמוד, נראה רק בפוקוס מקלדת (ורוד מלא, מסגרת 2px, צל offset), ומעביר את הפוקוס ל-<code>main</code></td></tr>
+          <tr><td>Trophy</td><td><code>.footer__trophy</code> · <code>initTrophy</code></td><td>(v1.20) מי שאסף 5/5 ב-hero מקבל בפוטר, אחרי "Designed with passion", אייקון <code>trophy</code> + <code>5/5</code> ב<b>צהוב</b> (<code>#FFE15C</code>, תגמולים בלבד), בכל העמודים. נשמר ב-<code>localStorage['px-toolkit']</code></td></tr>
+          <tr><td>Cheat code</td><td><code>.confetti</code> · <code>initKonami</code></td><td>(v1.20) ↑↑↓↓←→←→BA: <code>Sound.fanfare()</code>, קונפטי פיקסלים (ורוד / ורוד בהיר / צהוב, נפילה ב-<code>steps(16)</code>) ושורה ב-HUD ל-3.6 שניות: <code>Cheat code accepted — +30 lives</code>. ב-reduced motion בלי קונפטי</td></tr>
+          <tr><td>404</td><td><code>404.html</code></td><td>(v1.20) <code>page-head</code> רגיל: eyebrow <code>404 / File not found</code>, כותרת <code>Game over</code>, "This level doesn't exist. Continue?", כפתור ראשי <b>Continue</b> (בית) ומשני <b>All projects</b></td></tr>
+          <tr><td>Page transition</td><td><code>@view-transition</code> · <code>initPrefetch</code></td><td>(v1.20) מעבר בין עמודים: דיזולב קצר בצעדים (יציאה .14s <code>steps(4)</code>, כניסה .2s <code>steps(5)</code>) במקום חיתוך; דפדפן שלא תומך פשוט מנווט. בלי אנימציה ב-reduced motion. לינק פנימי נטען מראש ב-hover / פוקוס (<code>rel=prefetch</code>)</td></tr>
+          <tr><td>Contact form</td><td><code>#contactForm</code> · <code>CONFIG.formEndpoint</code></td><td>(v1.20) עם endpoint של Formspree הטופס נשלח באמת: <code>&gt; sending...</code> → <code>&gt; message sent_ talk soon!</code>; בכישלון נפתחת תוכנת המייל (mailto). הטופס ב-Formspree: <code>My portfolio</code>, נשלח למייל של שירן</td></tr>
+          <tr><td>Loader</td><td><code>.loader</code> · <code>runLoader</code></td><td>טרמינל "loading...", שנייה אחת, רק בכניסה ראשונה/רענון</td></tr>
+          <tr><td>Hero game</td><td><code>#player</code> · <code>initPlayer</code></td><td>דמות פיקסל, איסוף 5 חפצים, HUD ו-achievement. כרטיס ה-achievement (<code>.hero__hud.is-win</code>) גדול מעט מה-HUD (v1.20): טקסט 12px, כותרת 13.5px, padding 15/21px</td></tr>
+          <tr><td>Marquee</td><td><code>.marquee</code> · <code>initMarquee</code></td><td>תמיד מלא, 55px/s, מפריד pixel spark</td></tr>
+          <tr><td>Portrait</td><td><code>.portrait</code> · <code>initPortrait</code></td><td>"enhance" חד-פעמי, גוון ורוד multiply</td></tr>
+          <tr><td>Collage</td><td><code>.collage</code>, <code>.snap</code>, <code>.filmstrip</code>, <code>.sticker</code></td><td>לוח 4:3 עם מיקומים ב-inline vars</td></tr>
+          <tr><td>View-Master</td><td><code>.vm</code> · <code>initFacts</code></td><td>7 עובדות, דיסק נייר, משקפת SVG; מתחת ל-720px רוחב <code>86%</code> וממורכזת, כך שהידית, תגית <code>pull me!</code> והצללים נשארים בתוך הגריד עם אוויר בצדדים. כרטיס העובדות בגובה קבוע (<code>fitCard</code>: הגובה של העובדה הארוכה ביותר, נמדד מחדש ב-resize), בדסקטופ ובמובייל. הדיסק חצי בחוץ וחצי בפנים: החריץ חוצה אותו באמצע (<code>.vm__body</code> ב-<code>top: 30.6%</code>). <b>שתי העדשות הן כפתורים</b> (v1.13) שפותחים את ה-Eyepiece; קליק בשאר המשקפת מושך את הידית</td></tr>
+          <tr><td>Eyepiece</td><td><code>dialog.eyepiece</code> · <code>initFacts</code></td><td>השקופית הנוכחית בחלון ממורכז עד 920px, חצים מסונכרנים עם המשקפת, X / Esc / קליק בחוץ (ראו Eyepiece למעלה)</td></tr>
+          <tr><td>Video modal</td><td><code>.vmodal</code> · <code>initVideoModal</code></td><td>עד 880px, X / Esc / קליק בחוץ (כלל לכל פופ-אפ)</td></tr>
+          <tr><td>Footer</td><td><code>.footer</code></td><td>"Designed with passion" + לב פיקסלי</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <!-- ============ 05 ICONS ============ -->
+    <section class="container ds-sec" id="icons">
+      <header class="section__head"><div><p class="eyebrow"><span class="px-ico" data-px="diamond"></span>05 / Icons</p><h2 class="h2 glow">Pixel icons</h2></div><div class="rule"></div></header>
+      <p class="ds-p">האייקונים הם מפות מחרוזת ב-<code>PX</code> (main.js): <code>#</code> = פיקסל, <code>.</code> = ריק. <code>pxSVG()</code> הופך אותן ל-SVG עם <code>shape-rendering="crispEdges"</code> ו-<code>fill="currentColor"</code>, כך שהצבע מגיע מה-CSS. גובה: <code>1em</code> של ההורה.</p>
+      <div class="ds-ico-grid" id="dsIcons"></div>
+      <h3 class="ds-h3">Add an icon<span>הוספת אייקון</span></h3>
+      <pre class="ds-pre">// main.js → PX
+star: ['...#...', '..###..', '#######', '.#####.', '.#...#.'],
+
+// HTML
+&lt;span class="px-ico" data-px="star"&gt;&lt;/span&gt;
+
+// then export the SVG files for the brand book / social
+node design-system/tools/build-assets.mjs</pre>
+      <ul class="ds-check" style="margin-top:20px">
+        <li>גריד קטן: 5 עד 11 פיקסלים, אי-זוגי עדיף (מרכז ברור).</li>
+        <li>צבע אחד, בלי חצאי פיקסלים ובלי אלכסונים "חלקים".</li>
+        <li>אותו משקל קו (פיקסל אחד) כמו השאר.</li>
+        <li>גודל בממשק: 10–14px ליד טקסט, 34px למצב ריק.</li>
+      </ul>
+    </section>
+
+    <!-- ============ 06 CURSOR ============ -->
+    <section class="container ds-sec" id="cursor">
+      <header class="section__head"><div><p class="eyebrow"><span class="px-ico" data-px="diamond"></span>06 / Cursor</p><h2 class="h2 glow">Pixel cursor</h2></div><div class="rule"></div></header>
+      <div class="ds-comp">
+        <div class="ds-comp__bar"><span>CURSOR</span><b>you're using it now</b></div>
+        <div class="ds-stage">
+          <img src="assets/cursor/cursor@8x.svg" alt="" style="height:136px; image-rendering:pixelated">
+          <img src="assets/cursor/cursor-hover.svg" alt="" style="height:136px; image-rendering:pixelated; background:var(--bg)">
+          <a class="btn" href="#cursor"><span class="btn__face">Hover me</span></a>
+        </div>
+        <div class="ds-spec">
+          <div><h4>Spec</h4><ul><li>חץ 11×17 פיקסלים, מוגדל ×2 (22×34), hotspot <code>0 0</code>.</li><li>default: קו ורוד, מילוי <code>--bg</code>. hover על לחיץ: מתהפך (קו כהה, מילוי ורוד).</li><li>נוצר ב-<code>initCursor()</code> ונכנס למשתנים <code>--cursor</code> / <code>--cursor-hover</code>.</li></ul></div>
+          <div><h4>Rules</h4><ul><li>רק ב-<code>(pointer: fine)</code>. במגע: סמן מערכת.</li><li>בשדות טקסט: <code>cursor: text</code>. בלוח המשחק: <code>crosshair</code>.</li><li>קבצים: <code>design-system/assets/cursor/</code>.</li></ul></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 07 MOTION ============ -->
+    <section class="container ds-sec" id="motion">
+      <header class="section__head"><div><p class="eyebrow"><span class="px-ico" data-px="diamond"></span>07 / Motion</p><h2 class="h2 glow">Stepped motion</h2></div><div class="rule"></div></header>
+      <p class="ds-p">תנועה תמיד ב-<code>steps()</code>, כמו פריימים של משחק. אין easing חלק, חוץ מהיציאה של הניווט במובייל.</p>
+      <div class="ds-scroll"><table class="ds-table">
+        <thead><tr><th>מה</th><th>Timing</th><th>הערה</th></tr></thead>
+        <tbody>
+          <tr><td>Buttons, chips, links</td><td class="ltr"><code>.15s steps(2)</code></td><td><code>--step-fast</code></td></tr>
+          <tr><td>Cards</td><td class="ltr"><code>.18s steps(3)</code></td><td><code>--step-card</code></td></tr>
+          <tr><td>Scroll reveal</td><td class="ltr"><code>.7s steps(7)</code></td><td><code>.reveal</code> → <code>.is-in</code>, עיכוב <code>--d</code>; clip-path עד <code>inset(-24px)</code> כדי לא לחתוך צללים</td></tr>
+          <tr><td>Text scramble</td><td class="ltr"><code>data-scramble</code></td><td>כותרות סקשן</td></tr>
+          <tr><td>Glow flicker</td><td class="ltr"><code>7s steps(1) infinite</code></td><td><code>.glow</code>, עדין מאוד</td></tr>
+          <tr><td>CRT flicker</td><td class="ltr"><code>9s steps(1) infinite</code></td><td><code>.crt</code></td></tr>
+          <tr><td>Blink</td><td class="ltr"><code>1s steps(1) infinite</code></td><td><code>.cursor-block</code></td></tr>
+          <tr><td>Mobile nav hide</td><td class="ltr"><code>.32s cubic-bezier(.2,.7,.3,1)</code></td><td>החריג היחיד: חלק</td></tr>
+        </tbody>
+      </table></div>
+      <h3 class="ds-h3">Sound<span>צליל</span></h3>
+      <p class="ds-p">WebAudio מסונתז, עדין מאוד: <code>tick()</code> לקליק כללי, <code>select()</code> לאלמנט אינטראקטיבי, ו-<code>pickup()</code>, <code>fanfare()</code>, <code>reel()</code> לרגעים מיוחדים. דלוק כברירת מחדל, כפתור mute בניווט, נשמר ב-<code>localStorage['px-sound-v2']</code>.</p>
+    </section>
+
+    <!-- ============ 08 A11Y ============ -->
+    <section class="container ds-sec" id="a11y">
+      <header class="section__head"><div><p class="eyebrow"><span class="px-ico" data-px="diamond"></span>08 / Accessibility</p><h2 class="h2 glow">Access</h2></div><div class="rule"></div></header>
+      <ul class="ds-check">
+        <li>ניגודיות: <code>--pink</code> על <code>--bg</code> 9.1:1, <code>--text</code> 13.6:1, <code>--muted</code> 6:1. <code>--pink-dim</code>/<code>--pink-deep</code> לא לטקסט.</li>
+        <li>פוקוס: <code>outline: 2px dashed var(--pink)</code> עם offset 4px, בכל אלמנט אינטראקטיבי.</li>
+        <li><code>prefers-reduced-motion</code>: בלי הבהובים, reveal, קפיצות ואנימציות משחק; הדמות קופצת ישר ליעד.</li>
+        <li>אייקונים דקורטיביים: <code>aria-hidden</code>. כפתור אייקון בלבד: <code>aria-label</code>.</li>
+        <li>מטרות מגע: לפחות 40–44px (icon-btn 40, card__go ו-pager 44).</li>
+        <li>מצבים דרך ARIA: <code>aria-pressed</code> (chips, sound), <code>aria-current</code> (pager, pips).</li>
+        <li><b>כל פופ-אפ</b> (v1.13, כלל גורף): <code>&lt;dialog&gt;</code> עם <code>showModal()</code>, ונסגר ב-<b>X, Esc וקליק בחוץ</b> (<code>e.target === dialog</code>, כשהתוכן ממלא את הדיאלוג בלי padding). גלילת העמוד ננעלת בזמן שהוא פתוח. כיום: <code>.vmodal</code> ו-<code>.eyepiece</code>.</li>
+      </ul>
+    </section>
+
+    <!-- ============ 09 CASE STUDY ============ -->
+    <section class="container ds-sec" id="case-study">
+      <header class="section__head"><div><p class="eyebrow"><span class="px-ico" data-px="diamond"></span>09 / Case study</p><h2 class="h2 glow">Case study page</h2></div><div class="rule"></div></header>
+      <p class="ds-p">התבנית לכל פרויקט UX/UI: המצגת של הפרויקט הופכת לעמוד חי (<code>case-&lt;id&gt;.html</code>), <b>לפי סדר המצגת ומספור השקפים</b>. הפיקסל נשאר במסגרת (eyebrow, תוויות, מספרים, חלונות), ומה שקוראים (טקסט, טבלה, תרשים) רגוע: Space Grotesk על קווים של 1px, מעל שכבת ה-CRT. הדוגמה החיה: <code>case-myra.html</code>. העבודה עצמה: הסקיל <code>.claude/skills/case-study</code>.</p>
+
+      <h3 class="ds-h3">Page anatomy<span>מבנה העמוד</span></h3>
+      <div class="ds-scroll"><table class="ds-table">
+        <thead><tr><th>#</th><th>בלוק</th><th>רכיב</th><th>הערות</th></tr></thead>
+        <tbody>
+          <tr><td>0</td><td>Head</td><td><code>.project-head.cs-head</code></td><td>All projects ← · eyebrow <code>02 / UX/UI Case study</code> · שם הפרויקט (glow + scramble) · תת-כותרת <b>בסגנון tags</b>: מילים מופרדות ב-<code> · </code>, לא משפט (<code>UI/UX Case Study · Responsive · E-commerce</code>). פרויקט רספונסיבי: <b>תמיד</b> כולל <code>Responsive</code></td></tr>
+          <tr><td>0</td><td>Hero</td><td><code>.cs-hero</code> = <code>.cs-meta</code> + <code>.cs-toc</code> + מוקאפ</td><td>Meta רק מה שבמצגת + Tools. <b>Levels</b> = תוכן עניינים ממוספר. <b>Levels בנקודת שבירה</b> (v1.12, 2026-10-22, כל עמודי הפרויקטים): עד 900px (כשה-hero נערם), אם יש <b>יותר מ-6</b> נושאים, ה-chips הם <b>שורה אחת שנגללת לצד (swipe)</b>, עם פייד בקצה הימני ותווית <code>swipe →</code> ליד "Levels", כדי שלא יעמיסו על הגלילה. 6 ומטה: נשארים בשורות כרגיל. רק ה-Levels נגללים: שום דבר אחר בעמוד לא נחתך (<code>.cs-hero__info { min-width: 0 }</code> כדי שהעמודה לא תתרחב). CSS בלבד (<code>:has(li:nth-child(7))</code>), בלי שינוי ב-HTML. מוקאפ שקוף <code>--tall</code>. מוקאפ לרוחב (כמה מכשירים): <code>.cs-hero--wide</code>, שתי עמודות שוות ותווית meta צרה יותר, כדי שהטקסט לא יידחס. אותו hero גם בעמודי <code>project.html</code> (שדה <code>hero</code> ב-data.js, <code>.project-hero</code>), עם <code>heading</code>/<code>sub</code> לכותרת. בלי מוקאפ (<code>hero</code> עם <code>meta</code> בלבד): <code>.cs-hero--info</code>, הפרטים על כל הרוחב</td></tr>
+          <tr><td>1…n</td><td>סקשן לכל שקף/נושא</td><td><code>.cs-sec</code> + eyebrow <code>NN / Label</code> + <code>.cs-h2</code></td><td>הסדר והטקסט מהמצגת (תיקוני כתיב בלבד). תת-נושא: <code>.cs-h3</code></td></tr>
+          <tr><td>…</td><td>קישור לפרויקט</td><td><code>a.cs-jump</code></td><td>כשלחלק ב-case study יש עמוד פרויקט משלו (Myra: App one-pager → <code>project.html?id=myra-one-pager</code>): <b>לינק טקסט שקט, לא כפתור</b>, בסגנון של "← All projects" (Pixelify Sans 12px, muted, ורוד ב-hover) עם חץ ימינה בצד ימין, <b>מתחת לכותרת</b> של הסקשן (16px). ובכיוון ההפוך, בעמוד <code>project.html</code>: שדה <code>related: { href, label }</code> ב-data.js → אותו לינק מתחת לתת-הכותרת (One Pager → "See the app case study"). לא כפתור בולט, כדי לא לעודד יציאה לפני הפרוטוטייפ (v1.11, 2026-10-22)</td></tr>
+          <tr><td>…</td><td>Prototype</td><td><code>.window.project__embed</code> · <code>.cs-proto</code></td><td>הטמעת Figma בסוף, אם יש. <b>כמה פרוטוטייפים (דסקטופ / טאבלט / מובייל) = חלון אחד עם טאב לכל אחד</b> (<code>.cs-proto__tabs</code> + <code>.chip</code>), גם בעמודי <code>project.html</code> (שדה <code>tab</code> ב-<code>embed</code>)</td></tr>
+          <tr><td>end</td><td>סיום</td><td><code>.cs-end</code></td><td>רק "Thank you for watching" עם ניצוץ. <b>בלי כפתורים</b></td></tr>
+          <tr><td>data</td><td>באתר</td><td><code>data.js</code></td><td><code>page: 'case-&lt;id&gt;.html'</code> · קטגוריות לפי שיקול דעת, בדרך כלל כמה (<code>ux</code>, <code>ui</code>, <code>mobile</code> לאפליקציה, <code>web</code> לאתר) · <code>featured: true</code> אם הוא בבית (Myra כן)</td></tr>
+        </tbody>
+      </table></div>
+
+      <h3 class="ds-h3">Section head<span>.cs-h2 · .cs-h3</span></h3>
+      <div class="ds-comp">
+        <div class="ds-comp__bar"><span>CS-H2</span><b>Jersey 10, smaller than .h2, no glow/flicker</b></div>
+        <div class="ds-stage ds-stage--col" style="direction:ltr">
+          <header class="cs-sec__head" style="margin:0"><p class="eyebrow"><span class="px-ico" data-px="diamond"></span>06 / Social</p><h2 class="cs-h2">Social media</h2></header>
+          <h3 class="cs-h3" style="margin:clamp(16px, 2vw, 24px) 0 0">Instagram post &amp; story</h3>
+        </div>
+      </div>
+      <p class="ds-p ds-muted"><b>מרווחים של כותרת ותת-כותרת</b> (v1.14, 2026-10-24, שירן): תת-הכותרת <code>.cs-h3</code> שייכת לתוכן שמתחתיה, ולכן היא <b>קרובה לכותרת</b> ו<b>רחוקה יותר מהתוכן</b>. כשאחרי <code>.cs-sec__head</code> בא <code>.cs-h3</code>: המרווח ביניהם <code>clamp(16px, 2vw, 24px)</code> (<code>.cs-sec__head:has(+ .cs-h3)</code>), ומתחת לקו של ה-<code>.cs-h3</code> עד התוכן <code>clamp(28px, 3vw, 40px)</code> (במקום 20px). אף פעם לא כותרת רחוקה מתת-הכותרת ותת-כותרת צמודה לגרפיקה.</p>
+
+      <h3 class="ds-h3">Cards &amp; points<span>.cs-card · .cs-points · .cs-features</span></h3>
+      <div class="ds-comp">
+        <div class="ds-comp__bar"><span>CS-CARD / CS-POINTS</span><b>3 + 2 centred · numbered square · F1 soft dashed rule</b></div>
+        <div class="ds-stage ds-stage--col" style="direction:ltr">
+          <div class="cs-cards"><article class="cs-card" style="flex-basis:300px"><span class="cs-card__ico px-ico" data-px="eye"></span><h3 class="cs-card__title">Ease of Recall</h3><p>Returning users pick up where they left off.</p></article>
+            <article class="cs-card" style="flex-basis:300px"><span class="cs-card__ico px-ico" data-px="lotus"></span><h3 class="cs-card__title">Flexibility</h3><p>Adapts to every level.</p></article></div>
+          <ol class="cs-points"><li><span class="cs-points__n">01</span><div><h3>Motivation</h3><p>Users struggle to stay consistent.</p></div></li><li><span class="cs-points__n">02</span><div><h3>Engagement</h3><p>No sense of progress or reward.</p></div></li></ol>
+          <div class="cs-features"><article><span class="cs-features__n">F1</span><h3>Positive Feedback</h3><p>Content that opens as users finish sessions.</p></article><article><span class="cs-features__n">F2</span><h3>AI Personalization</h3><p>Daily recommendations by mood.</p></article><article><span class="cs-features__n">F3</span><h3>Progress Tracking</h3><p>Growth over time.</p></article></div>
+        </div>
+      </div>
+
+      <h3 class="ds-h3">Table<span>.cs-table</span></h3>
+      <div class="ds-comp">
+        <div class="ds-comp__bar"><span>CS-TABLE</span><b>row header in Jersey · + / − lists · a card per row under 720px</b></div>
+        <div class="ds-stage ds-stage--col" style="direction:ltr">
+          <div class="cs-table-wrap"><table class="cs-table"><thead><tr><th>App</th><th>Purpose</th><th>Advantages</th><th>Disadvantages</th></tr></thead>
+            <tbody><tr><th scope="row">Calm</th><td data-label="Purpose">Sleep and relaxation.</td><td data-label="Advantages"><ul class="cs-pros"><li>The best content quality.</li></ul></td><td data-label="Disadvantages"><ul class="cs-cons"><li>Very expensive.</li></ul></td></tr></tbody></table></div>
+        </div>
+      </div>
+
+      <h3 class="ds-h3">Windows, persona, pill<span>.cs-window · .cs-persona · .cs-pill</span></h3>
+      <div class="ds-comp">
+        <div class="ds-comp__bar"><span>TEXT IN WINDOWS</span><b>file-name bar (problems.txt, persona_01.usr), plain text inside</b></div>
+        <div class="ds-stage" style="direction:ltr; align-items:flex-start">
+          <article class="window cs-window" style="max-width:360px"><div class="window__bar"><span>problems.txt</span><span class="window__btns" aria-hidden="true"><i></i><i></i><i></i></span></div><div class="cs-window__body"><h3>Problems</h3><p>Existing apps feel repetitive and hide content behind paywalls.</p></div></article>
+          <div class="cs-logo__resp"><p class="cs-pill">Responsive Logo</p><img class="cs-logo__spark" src="../assets/img/projects/myra/10-sparkle.png" alt=""></div>
+        </div>
+      </div>
+
+      <h3 class="ds-h3">Diagram<span>.ia — information architecture</span></h3>
+      <div class="ds-comp">
+        <div class="ds-comp__bar"><span>IA</span><b>straight on the page: no box, no frame · lines from the middle of each side · stacked tree when the map doesn't fit</b></div>
+        <div class="ds-stage ds-stage--col" style="direction:ltr">
+          <div class="ia"><div class="ia__flow">
+            <span class="ia__node ia__node--key">Splash</span><span class="ia__v"></span><span class="ia__node ia__node--key">Onboarding</span><span class="ia__v"></span>
+            <div class="ia__row ia__row--merge"><div class="ia__col"><span class="ia__node">Sign in</span><span class="ia__join"></span><span class="ia__base"></span></div><div class="ia__col"><span class="ia__node">Sign up</span><span class="ia__join"></span><span class="ia__base"></span></div></div>
+            <span class="ia__v ia__v--merge"></span>
+            <div class="ia__row"><div class="ia__col"><span class="ia__node ia__node--tab">Library</span><ul class="ia__tree"><li><span class="ia__node">Books</span></li><li><span class="ia__node ia__node--soft">Sleep</span></li></ul></div><div class="ia__col"><span class="ia__node ia__node--tab">Profile</span></div></div>
+          </div></div>
+        </div>
+      </div>
+      <ul class="ds-p" style="margin-top:14px">
+        <li><b>קו יוצא מאמצע הצד</b> (v1.10, 2026-10-21): מאמצע הדופן התחתונה כשהוא יורד, ומהאמצע האנכי של הדופן השמאלית כשהוא נכנס מהצד. <code>initIA</code> (main.js) מודד כל קובייה וכותב <code>--mid</code> / <code>--head</code>, וה-CSS ממקם לפיהם; האלבואים תלויים על הקובייה עצמה (<code>top: 50%</code>).</li>
+        <li><b>הקו נוגע בקובייה</b>: האלבו ברוחב 22px, בדיוק כמו ה-padding של הפריט. בלי רווח.</li>
+        <li><b>לכל הורה גבעול משלו</b>: בין קובייה לשורה שתלויה בה יש <code>.ia__v</code>, והבאס לא יושב על הדופן.</li>
+        <li><b>אין קו על קו</b>: צבע הקווים <code>--line-c: #793A74</code>, האטום (= <code>--line-strong</code> על הרקע), כדי שבמפגש לא ייראה קו כפול.</li>
+        <li><b>אף פעם לא חתוך</b>: המפה הרחבה רק כשהיא נכנסת; אחרת, ותמיד מתחת ל-720px, עץ אחד מוערם וממורכז (<code>.ia--stack</code>, נקבע ב-<code>initIA</code>).</li>
+        <li>התהליך המלא: הסקיל <code>.claude/skills/ia-diagram</code>.</li>
+      </ul>
+
+      <h3 class="ds-h3">Media<span>.cs-media · .cs-screen — תמונות ומוקאפים</span></h3>
+      <div class="ds-comp">
+        <div class="ds-comp__bar"><span>MEDIA</span><b>no frame, no box, transparent PNG, centred on mobile</b></div>
+        <div class="ds-stage" style="direction:ltr; align-items:flex-end">
+          <figure class="cs-media cs-media--tall" style="width:260px"><img src="../assets/img/projects/myra/01-hero.png" alt="" style="max-height:300px"></figure>
+          <div class="cs-screens" style="width:360px; margin:0; gap:14px"><figure class="cs-screen cs-screen--fade"><img src="../assets/img/projects/myra/07-complete.jpg" alt=""></figure><figure class="cs-screen cs-screen--fade"><img src="../assets/img/projects/myra/07-ai-chat.jpg" alt=""></figure><figure class="cs-screen cs-screen--fade"><img src="../assets/img/projects/myra/07-sleep.jpg" alt=""></figure></div>
+        </div>
+      </div>
+      <div class="ds-scroll" style="margin-top:20px"><table class="ds-table">
+        <thead><tr><th>Class</th><th>מתי</th></tr></thead>
+        <tbody>
+          <tr><td class="ltr"><code>.cs-media</code></td><td>כל תמונה/מוקאפ: ישר על רקע האתר, בלי מסגרת ובלי פייד. במובייל ממורכז ברוחב מלא</td></tr>
+          <tr><td class="ltr"><code>--tall</code></td><td>מוקאפ לאורך: גובה עד <code>min(78vh, 680px)</code>, ממורכז</td></tr>
+          <tr><td class="ltr"><code>--md</code> / <code>--lg</code></td><td>רוחב עד 680 / 820px, כדי שמקור קטן לא יימתח ויטשטש</td></tr>
+          <tr><td class="ltr"><code>--soft</code></td><td>פייד עדין לרקע בכל הצדדים. <b>רק</b> למוקאפ שנחתך בקצה (טלפון שיוצא מהפריים)</td></tr>
+          <tr><td class="ltr"><code>--wide</code></td><td>לוח פרטים (components, UI kit): במובייל גובה קריא; רק <code>.cs-scroll-x</code> נגלל לצד, ותווית <code>.cs-swipe</code> מתחתיו נשארת במקום</td></tr>
+          <tr><td class="ltr"><code>.cs-screen</code></td><td>מסך אפליקציה שטוח כטלפון (מסגרת מכשיר דקה). <code>--fade</code> = נעלם למטה (שלושה בשורה ב-<code>.cs-screens</code>), <code>--solo</code> = מסך בודד</td></tr>
+        </tbody>
+      </table></div>
+      <ul class="ds-check" style="margin-top:20px">
+        <li>מוקאפים: PNG שקוף מהמקור של שירן, אחרי <code>solid</code> (בלי צל רצפה, שנראה כמו רקע כהה). רק אם אין: <code>lift</code> מהשקף + <code>polish</code>.</li>
+        <li><b>פרטים לא מתעמעמים:</b> רכיבים, UI kit, ווירפריימים ומידע חשוב תמיד שלמים, חדים ובהירים. בלי פייד.</li>
+        <li>אין מוקאפ חתוך כשיש גרסה שלמה. אין רקע סגול/שחור של השקף מאחורי מוקאפ.</li>
+        <li>במובייל כל תמונה ממורכזת גם <b>ויזואלית</b> (בלי צל שמושך לצד).</li>
+        <li>טיפוגרפיה וצבעים של המוצר המוצג: חיים (Google Fonts רק בעמוד הזה, <code>--ff</code>), לא צילום של השקף.</li>
+        <li>טבלאות ותרשימים: HTML אמיתי, לא תמונה. בתרשים אין קופסה, מסגרת או קו מפריד, ובמובייל הוא ממורכז כבלוק אחד.</li>
+        <li>Main features: הקו המקווקו העדין מעל כל פיצ'ר, לא קו ורוד מלא.</li>
+        <li>Responsive logo: <code>.cs-pill</code> נקי (בלי סימן צבעוני), והסימן הרספונסיבי (נחתך מקובץ הלוגו, אותה זווית) לצידו ומעט מתחתיו, לא ליד הלוגו הראשי.</li>
+        <li>לוח פרטים במובייל: רק <code>.cs-scroll-x</code> נגלל, תווית <code>swipe →</code> נשארת במקום.</li>
+        <li>לוחות שקופים (UI kit, רכיבים): רק <code>trim</code>, בלי <code>solid</code> (ה-glow חלק מהעיצוב).</li>
+        <li>טקסט רץ (<code>.cs-text</code>, <code>.cs-note</code>) נפרס על כל רוחב הגריד ומיושר לשמאל, לא גוש צר וממורכז.</li>
+        <li>אחרי כל שינוי: להעלות את <code>?v=N</code> של style.css, main.js ו-data.js בכל העמודים.</li>
+      </ul>
+
+      <h3 class="ds-h3">Brand identity<span>.cs-logos--pair · .cs-type__ramp · .cs-colors--five</span></h3>
+      <div class="ds-comp">
+        <div class="ds-comp__bar"><span>LOGO · TYPE · COLORS</span><b>two logo versions side by side · font as an image with a weight ramp · hex + RGB</b></div>
+        <div class="ds-stage ds-stage--col" style="direction:ltr">
+          <div class="cs-logos cs-logos--pair" style="width:100%">
+            <img src="../assets/img/projects/dyson/02-logo-white.png" alt="" width="784" height="186">
+            <span class="cs-logos__box"><img src="../assets/img/projects/dyson/02-logo-black.png" alt="" width="784" height="186"></span>
+          </div>
+          <div class="cs-type" style="width:100%">
+            <div class="cs-type__row">
+              <p class="cs-type__name"><img class="cs-type__img" src="../assets/img/projects/dyson/03-type-mendel-name.png" alt="" width="945" height="143"></p>
+              <p class="cs-type__abc"><img class="cs-type__img" src="../assets/img/projects/dyson/03-type-mendel-lower.png" alt="" width="1073" height="84"><img class="cs-type__img" src="../assets/img/projects/dyson/03-type-mendel-num.png" alt="" width="836" height="81"></p>
+              <div class="cs-type__meta"><p class="cs-type__use">Weights</p><img class="cs-type__img cs-type__ramp" src="../assets/img/projects/dyson/03-type-mendel-weights.png" alt="" width="634" height="63"></div>
+            </div>
+          </div>
+          <ul class="cs-colors cs-colors--five" style="width:100%">
+            <li><span class="cs-colors__chip" style="--c:#532B88"></span><code>#532B88</code><code>RGB 83, 43, 136</code></li>
+            <li><span class="cs-colors__chip" style="--c:#9B72CF"></span><code>#9B72CF</code><code>RGB 155, 114, 207</code></li>
+            <li><span class="cs-colors__chip" style="--c:#C8B1E4"></span><code>#C8B1E4</code><code>RGB 200, 177, 228</code></li>
+            <li><span class="cs-colors__chip" style="--c:#F4EFFA"></span><code>#F4EFFA</code><code>RGB 244, 239, 250</code></li>
+            <li><span class="cs-colors__chip" style="--c:#000000"></span><code>#000000</code><code>RGB 0, 0, 0</code></li>
+          </ul>
+        </div>
+      </div>
+      <ul class="ds-check" style="margin-top:20px">
+        <li><b>שתי גרסאות לוגו</b> (v1.15, 2026-10-25, Dyson): <code>.cs-logos.cs-logos--pair</code>, זו לצד זו ו<b>באותו גודל</b>. גרסה שחורה (או עם קופסה במצגת) מתהפכת לרקע הכהה: <code>.cs-logos__box</code> = קופסה לבנה עם הלוגו השחור בפנים. במובייל אחת מתחת לשנייה, ממורכזות.</li>
+        <li><b>פונט בלי רישיון web ובלי קובץ</b>: נחתך מהשקף ברזולוציה מלאה, והדיו הכהה הופך לשקיפות בלבן (שם) / <code>#F7C4EE</code> (אלפבית, משקלים). שתי שורות אלפבית (a–z, מספרים) = שתי תמונות זו מתחת לזו; שורת המשקלים מהשקף בעמודת ה-meta תחת <code>Weights</code> (<code>.cs-type__ramp</code>, עד 29px).</li>
+        <li><b>צבעים עם hex + RGB</b> ב-<code>.cs-colors--five</code>: בדסקטופ 5 בשורה; מתחת ל-720px <b>אחד בשורה</b> (<code>:has(code + code)</code>), כדי ששורת ה-RGB לא תישבר. לבדוק שה-RGB תואם ל-hex (ב-Dyson השקף טעה ב-1).</li>
+      </ul>
+
+      <h3 class="ds-h3">Brand page<span>.cs-brandmarks + .cs-text · .cs-colors small · .cs-ratio · .cs-quad</span></h3>
+      <div class="ds-comp">
+        <div class="ds-comp__bar"><span>LOGO TEXT · COLOR USE · PROPORTIONS · MOCKUP GRID</span><b>graphic brand page (Double Shesh, v1.16)</b></div>
+        <div class="ds-stage ds-stage--col" style="direction:ltr">
+          <ul class="cs-colors cs-colors--mark cs-colors--five" style="width:100%">
+            <li><img class="cs-colors__mark" src="../assets/img/projects/double-shesh/mark-ca1515.svg" alt="" width="279" height="299"><b>Signal Red</b><code>#CA1515</code><code>RGB 202, 21, 21</code><small>The accent: the smallest, point-like element.</small></li>
+            <li><img class="cs-colors__mark cs-colors__mark--outline" src="../assets/img/projects/double-shesh/mark-000000.svg" alt="" width="279" height="299"><b>Black</b><code>#000000</code><code>RGB 0, 0, 0</code><small>Logo, type, full-bleed surfaces.</small></li>
+            <li><img class="cs-colors__mark cs-colors__mark--outline" src="../assets/img/projects/double-shesh/mark-242423.svg" alt="" width="279" height="299"><b>Gray</b><code>#242423</code><code>RGB 36, 36, 35</code><small>Soft dark surfaces, overlays.</small></li>
+            <li><img class="cs-colors__mark" src="../assets/img/projects/double-shesh/mark-d9d9d9.svg" alt="" width="279" height="299"><b>Silver</b><code>#D9D9D9</code><code>RGB 217, 217, 217</code><small>Dividers, captions, quiet fields.</small></li>
+            <li><img class="cs-colors__mark" src="../assets/img/projects/double-shesh/mark-white.svg" alt="" width="279" height="299"><b>White</b><code>#FFFFFF</code><code>RGB 255, 255, 255</code><small>Primary background.</small></li>
+          </ul>
+          <div class="cs-ratio" style="width:100%" role="img" aria-label="Color proportions"><span style="--c:#FFFFFF; --p:46%"></span><span style="--c:#000000; --p:22%"></span><span style="--c:#242423; --p:18%"></span><span style="--c:#D9D9D9; --p:10%"></span><span style="--c:#CA1515; --p:4%"></span></div>
+          <ul class="cs-quad" style="width:100%; max-width:520px">
+            <li><img src="../assets/img/projects/double-shesh/10-tote.jpg" alt="" width="1500" height="2000"></li>
+            <li><img src="../assets/img/projects/double-shesh/09-tshirt.jpg" alt="" width="1500" height="2000"></li>
+            <li><img src="../assets/img/projects/double-shesh/06-letterhead.jpg" style="--pos:60% 50%" alt="" width="2000" height="1415"></li>
+            <li><img src="../assets/img/projects/double-shesh/11-business-cards.jpg" alt="" width="1500" height="2000"></li>
+          </ul>
+        </div>
+      </div>
+      <ul class="ds-check" style="margin-top:20px">
+        <li><b>עמוד מיתוג גרפי</b> (v1.16, 2026-10-25, Double Shesh): <b>התוכן מהשקפים, לא העיצוב שלהם</b>. לוגו <b>לבן בלבד, בלי רקע</b>, ב-<code>.cs-brandmarks</code> (כותרות Logo / Responsive), ו<b>מתחת, בלי כותרת</b>, פסקת הקונספט (<code>.cs-brandmarks + .cs-text</code>, רווח <code>clamp(40px, 5vw, 64px)</code>).</li>
+        <li><b>צבעים כסימן של המותג</b>: <code>.cs-colors--mark.cs-colors--five</code>, הסימן הרספונסיבי בכל צבע (שחור ואפור עם <code>--outline</code>), ואחריו שם, hex, RGB ו<b>שימוש</b> ב-<code>&lt;small&gt;</code> (13px, muted). מתחת ל-720px אחד בשורה: הסימן 72px משמאל והטקסט לצידו.</li>
+        <li><b>צבעים בעמודות במובייל</b> <code>.cs-colors--stack</code> (v1.19, 2026-11-10, The Hill of Memory): מתחת ל-720px כל צבע = הסימן (או ריבוע הצבע) למעלה, ומתחתיו השם וה-hex ממורכזים, <b>שניים בשורה</b> ואחרון בודד ממורכז, כמו הצבעים של Zenthor. דורס את הרשימה של צבע אחד בשורה (<code>--five</code> / <code>--six</code> / <code>--plain</code>). בפרויקט עם פלטה בסגנון משחק אפשר לוותר על RGB ועל שורת השימוש, ובדמויות להציג רק hex.</li>
+        <li><b>פס פרופורציות</b> <code>.cs-ratio</code>: כשהמצגת מראה כמה מקום כל צבע תופס. 14px, מסגרת <code>--line-strong</code>, כל קטע <code>--c</code> + <code>--p</code> (אחוז), ומתחתיו משפט ההיררכיה ב-<code>.cs-note</code>.</li>
+        <li><b>גריד מוקאפים</b> <code>.cs-quad</code>: ארבעה צילומים כרבעייה מסודרת, 2×2, רווחים שווים (<code>clamp(12px, 2vw, 24px)</code>), עד 960px, גם במובייל. כולם במסגרת 3:4 עם <code>object-fit: cover</code>; <b>נחתך רק רקע ריק</b>, וכשצריך מזיזים עם <code>--pos</code>.</li>
+        <li><b>פונט בלי רישיון שמותקן אצל שירן</b> (Arfilit): כמו Far Cry, רונדר כתמונה ב-headless Chrome מ-<code>~/Library/Fonts</code> (שם לבן, השאר <code>#F7C4EE</code>). <b>לא מעלים קבצי פונט לאתר.</b> שתי שפות = שני <code>.cs-type__ramp</code> זה מתחת לזה (רווח 10px).</li>
+      </ul>
+
+      <h3 class="ds-h3">Prototype tabs<span>.cs-proto</span></h3>
+      <div class="ds-comp">
+        <div class="ds-comp__bar"><span>CS-PROTO</span><b>one window, a chip tab per device; iframes load on first open</b></div>
+        <div class="ds-stage" style="direction:ltr">
+          <figure class="window project__embed cs-proto" style="width:100%; max-width:560px; margin:0">
+            <div class="window__bar"><span>prototype.fig</span><span class="window__btns" aria-hidden="true"><i></i><i></i><i></i></span></div>
+            <div class="cs-proto__tabs" role="tablist" aria-label="Prototype device">
+              <button class="chip" type="button" role="tab" aria-selected="true">Desktop</button>
+              <button class="chip" type="button" role="tab" aria-selected="false" tabindex="-1">Tablet</button>
+              <button class="chip" type="button" role="tab" aria-selected="false" tabindex="-1">Mobile</button>
+            </div>
+            <div class="project__frame" style="--ratio:16 / 10; display:grid; place-items:center"><span class="eyebrow" style="margin:0">figma embed</span></div>
+          </figure>
+        </div>
+      </div>
+      <ul class="ds-check" style="margin-top:20px">
+        <li>רק כשיש יותר מפרוטוטייפ אחד. אחד = חלון רגיל.</li>
+        <li>הטאב הפעיל = chip מלא בוורוד. חיצים ימינה/שמאלה עוברים בין טאבים (<code>initProtoTabs</code> ב-main.js).</li>
+        <li>רק ה-iframe של הטאב הראשון נטען מיד; האחרים (<code>data-src</code>) נטענים בפתיחה הראשונה.</li>
+      </ul>
+    </section>
+
+    <!-- ============ 10 RULES ============ -->
+    <section class="container ds-sec" id="rules">
+      <header class="section__head"><div><p class="eyebrow"><span class="px-ico" data-px="diamond"></span>10 / Rules</p><h2 class="h2 glow">Before you ship</h2></div><div class="rule"></div></header>
+      <p class="ds-p">צ'קליסט לכל רכיב או עמוד חדש:</p>
+      <ul class="ds-check">
+        <li>רק צבעים מהטוקנים. צבע חדש נכנס קודם ל-<code>:root</code> ול-<code>tokens.css</code>, לא ישר לרכיב.</li>
+        <li>מסגרות 2px, פינות ישרות, צל אטום מהרשימה.</li>
+        <li>הפונט לפי התפקיד (display / pixel / body / mono), לא לפי טעם.</li>
+        <li>כפתור = <code>.btn</code> הקיים. אין וריאנט מקומי.</li>
+        <li>אנימציה ב-<code>steps()</code> + גרסה ל-reduced motion.</li>
+        <li>אייקון חדש = מפה ב-<code>PX</code>, לא SVG מבחוץ.</li>
+        <li>אין סתירה עם <code>context/04-decisions.md</code>.</li>
+        <li>עדכון של <code>context/02-design-system.md</code> ושל הקובץ הזה אם נוסף רכיב.</li>
+        <li>עמוד case study חדש: לפי מקטע 09 ולפי הסקיל <code>case-study</code>.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="footer"><div class="container footer__inner ltr"><span>s.design design system v1.20</span><span class="footer__made">Designed with passion <span class="px-ico" data-px="heart"></span></span><a href="brand-book.html">Brand book <span class="px-ico" data-px="arrow"></span></a></div></footer>
+
+  <script>
+    // icon gallery: built before main.js renders every [data-px]
+    (() => {
+      const USE = {
+        home: 'nav · Home', grid: 'nav · Work', user: 'nav · About', doc: 'nav · CV', chat: 'nav · Contact',
+        play: 'hero eyebrow, video card', arrow: 'buttons, card go, next', arrowL: 'previous', up: 'back to top',
+        diamond: 'eyebrows', spark: 'marquee separator', heart: 'footer', sound: 'sound on', mute: 'sound off',
+        menu: 'mobile menu', close: 'close modal', copy: 'copy email', ext: 'external link', download: 'Download PDF',
+        cartridge: 'empty card', trophy: 'footer · 5/5 collected (yellow)',
+        eye: 'case study · ease of recall', book: 'case study · ease of learning', lotus: 'case study · flexibility', cloud: 'case study · effectiveness',
+        invaderA: 'legacy', invaderB: 'legacy'
+      };
+      document.getElementById('dsIcons').innerHTML = Object.entries(USE)
+        .map(([n, u]) => `<div class="ds-ico"><span class="px-ico" data-px="${n}"></span><span><b>${n}</b><small>${u}</small></span></div>`).join('');
+    })();
+  </script>
+  <script src="../assets/js/data.js"></script>
+  <script src="../assets/js/main.js?v=52"></script>
+</body>
+</html>

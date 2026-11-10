@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Flamingo — Evening Dress Rental App — Shiran Revivo</title>
+  <meta name="description" content="Flamingo, a UX/UI mobile app by Shiran Revivo for renting evening dresses: logo, colors, home and filter screens, wireframes and a Figma prototype.">
+  <meta name="theme-color" content="#0B0408">
+  <!-- link preview. og:image must become an absolute URL (https://domain/…) once the site has a domain -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Shiran Revivo">
+  <meta property="og:title" content="Flamingo — Evening Dress Rental App — Shiran Revivo">
+  <meta property="og:description" content="Flamingo, a UX/UI mobile app by Shiran Revivo for renting evening dresses: logo, colors, home and filter screens, wireframes and a Figma prototype.">
+  <meta property="og:image" content="assets/img/projects/flamingo/cover.jpg">
+  <meta property="og:image:width" content="2000">
+  <meta property="og:image:height" content="1250">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/svg+xml" href="assets/img/logo/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jersey+10&family=Pixelify+Sans:wght@400..700&family=Space+Grotesk:wght@400;500;600&family=VT323&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css?v=92">
+</head>
+<body data-page="project" class="is-case">
+
+  <canvas id="dots" aria-hidden="true"></canvas>
+  <div class="crt" aria-hidden="true"></div>
+
+  <header class="nav" id="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo" aria-label="Shiran Revivo — home">
+        <img class="nav__logo-img" src="assets/img/logo/s-design-logo.svg" alt="s.design" width="140" height="35">
+      </a>
+      <nav class="nav__links" aria-label="Main">
+        <a href="index.html" class="nav__link"><span class="px-ico" data-px="home"></span>Home<span class="nav__num">01</span></a>
+        <a href="projects.html" class="nav__link is-active"><span class="px-ico" data-px="grid"></span>Work<span class="nav__num">02</span></a>
+        <a href="about.html" class="nav__link"><span class="px-ico" data-px="user"></span>About<span class="nav__num">03</span></a>
+        <a href="cv.html" class="nav__link"><span class="px-ico" data-px="doc"></span>CV<span class="nav__num">04</span></a>
+        <a href="contact.html" class="nav__link"><span class="px-ico" data-px="chat"></span>Contact<span class="nav__num">05</span></a>
+      </nav>
+      <div class="nav__actions">
+        <button class="icon-btn" id="soundBtn" type="button" aria-pressed="false" aria-label="Turn sound on"><span class="px-ico" data-px="mute"></span></button>
+        <button class="icon-btn nav__menu" id="menuBtn" type="button" aria-expanded="false" aria-label="Menu"><span class="px-ico" data-px="menu"></span></button>
+      </div>
+    </div>
+  </header>
+
+  <div class="hud" aria-hidden="true">
+    <span>LVL <b>02</b> — project</span>
+    <span id="hudCoords">X <b>0000</b> · Y <b>0000</b></span>
+  </div>
+
+  <main class="cs">
+    <!-- ============ HEAD (slide 1) ============ -->
+    <section class="page-head project-head cs-head">
+      <div class="container">
+        <a class="project-head__back reveal" href="projects.html"><span class="px-ico" data-px="arrowL"></span>All projects</a>
+        <p class="eyebrow reveal"><span class="px-ico" data-px="diamond"></span>02 / Mobile App</p>
+        <h1 class="project-head__title glow reveal" style="--d:.08s"><span data-scramble>Flamingo</span></h1>
+        <p class="project-head__sub reveal" style="--d:.16s">UX/UI · Mobile App</p>
+
+        <div class="cs-hero cs-hero--top">
+          <div class="cs-hero__info reveal" style="--d:.2s">
+            <dl class="cs-meta">
+              <div><dt>Project</dt><dd>A three-screen design for an evening dress rental app, created as a home assignment for a job application. The brief was to completely redesign a few existing screens, with a new brand identity and different functional choices from the original.</dd></div>
+              <div><dt>Tools</dt><dd>Claude · Figma</dd></div>
+            </dl>
+            <nav class="cs-toc" aria-label="Project sections">
+              <p class="cs-toc__label">Levels</p>
+              <ol>
+                <li><a href="#logo">Logo</a></li>
+                <li><a href="#colors">Colors</a></li>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#filter">Filter</a></li>
+                <li><a href="#wireframes">Wireframes</a></li>
+                <li><a href="#prototype">Prototype</a></li>
+              </ol>
+            </nav>
+          </div>
+          <figure class="cs-media cs-media--tall cs-hero__shot reveal" style="--d:.28s">
+            <img src="assets/img/projects/flamingo/01-hero.png?v=2" alt="Two Flamingo screens on floating phones: sign in, and the home feed of green evening dresses" width="1240" height="1628" fetchpriority="high">
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ LOGO (slide 1) ============ -->
+    <section class="cs-sec" id="logo">
+      <div class="container">
+        <header class="cs-sec__head">
+          <p class="eyebrow reveal"><span class="px-ico" data-px="diamond"></span>01 / Brand</p>
+          <h2 class="cs-h2 reveal" style="--d:.06s">Logo</h2>
+        </header>
+        <div class="cs-logos">
+          <img class="reveal" src="assets/img/projects/flamingo/logo.png" alt="Flamingo logo: a rose-gold serif wordmark with a flamingo standing after the o" width="1993" height="475" loading="lazy">
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ COLORS (slide 2) ============ -->
+    <section class="cs-sec" id="colors">
+      <div class="container">
+        <header class="cs-sec__head">
+          <p class="eyebrow reveal"><span class="px-ico" data-px="diamond"></span>02 / Design system</p>
+          <h2 class="cs-h2 reveal" style="--d:.06s">Colors</h2>
+        </header>
+        <ul class="cs-colors cs-colors--mark cs-colors--five">
+          <li class="reveal" style="--d:0.00s"><img class="cs-colors__mark" src="assets/img/projects/flamingo/02-diamond-1.png" alt="A diamond in Pearl Silk" width="332" height="261" loading="lazy"><b>Pearl Silk</b><code>#F6EDE8</code></li>
+          <li class="reveal" style="--d:0.06s"><img class="cs-colors__mark" src="assets/img/projects/flamingo/02-diamond-2.png" alt="A diamond in Rose Gold" width="331" height="261" loading="lazy"><b>Rose Gold</b><code>#DDB88A</code></li>
+          <li class="reveal" style="--d:0.12s"><img class="cs-colors__mark" src="assets/img/projects/flamingo/02-diamond-3.png" alt="A diamond in Velvet Ruby" width="332" height="261" loading="lazy"><b>Velvet Ruby</b><code>#A83E56</code></li>
+          <li class="reveal" style="--d:0.18s"><img class="cs-colors__mark" src="assets/img/projects/flamingo/02-diamond-4.png" alt="A diamond in Plum Velvet" width="332" height="261" loading="lazy"><b>Plum Velvet</b><code>#2A1620</code></li>
+          <li class="reveal" style="--d:0.24s"><img class="cs-colors__mark cs-colors__mark--outline" src="assets/img/projects/flamingo/02-diamond-5.png" alt="A diamond in Caviar Noir" width="332" height="261" loading="lazy"><b>Caviar Noir</b><code>#160B10</code></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ HOME (slide 3) ============ -->
+    <section class="cs-sec" id="home">
+      <div class="container">
+        <header class="cs-sec__head">
+          <p class="eyebrow reveal"><span class="px-ico" data-px="diamond"></span>03 / Screens</p>
+          <h2 class="cs-h2 reveal" style="--d:.06s">Home</h2>
+        </header>
+        <figure class="cs-media cs-media--phone reveal">
+          <img src="assets/img/projects/flamingo/03-home.png" alt="Home: search, event-type chips, 47 matching dresses filtered by date, size S and green, and a grid of dresses with price per day" width="700" height="1414" loading="lazy">
+        </figure>
+      </div>
+    </section>
+
+    <!-- ============ FILTER (slide 4) ============ -->
+    <section class="cs-sec" id="filter">
+      <div class="container">
+        <header class="cs-sec__head">
+          <p class="eyebrow reveal"><span class="px-ico" data-px="diamond"></span>04 / Screens</p>
+          <h2 class="cs-h2 reveal" style="--d:.06s">Filter</h2>
+        </header>
+        <div class="cs-flow">
+          <figure class="cs-media reveal"><img src="assets/img/projects/flamingo/04-filter-1.png" alt="Filter, top: active filters, event dates, pick-up location, search radius and size" width="700" height="1414" loading="lazy"></figure>
+          <span class="cs-flow__arrow reveal" style="--d:.08s" aria-hidden="true"><span class="px-ico" data-px="arrow"></span></span>
+          <figure class="cs-media reveal" style="--d:.16s"><img src="assets/img/projects/flamingo/04-filter-2.png" alt="Filter, scrolled: daily budget histogram, dress details and lender options, with a Show 47 dresses button" width="700" height="1414" loading="lazy"></figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ WIREFRAMES (slide 5) ============ -->
+    <section class="cs-sec" id="wireframes">
+      <div class="container">
+        <header class="cs-sec__head">
+          <p class="eyebrow reveal"><span class="px-ico" data-px="diamond"></span>05 / Low-fi</p>
+          <h2 class="cs-h2 reveal" style="--d:.06s">Wireframes</h2>
+        </header>
+        <figure class="cs-media cs-media--lg reveal">
+          <img src="assets/img/projects/flamingo/05-wireframes.png" alt="Grey wireframes of the sign-in, home and filter screens" width="1448" height="1600" loading="lazy">
+        </figure>
+      </div>
+    </section>
+
+    <!-- ============ PROTOTYPE ============ -->
+    <section class="cs-sec" id="prototype">
+      <div class="container">
+        <header class="cs-sec__head">
+          <p class="eyebrow reveal"><span class="px-ico" data-px="diamond"></span>06 / Play it</p>
+          <h2 class="cs-h2 reveal" style="--d:.06s">Prototype</h2>
+        </header>
+        <figure class="window project__embed reveal">
+          <div class="window__bar"><span>flamingo_prototype.fig</span><span class="window__btns" aria-hidden="true"><i></i><i></i><i></i></span></div>
+          <div class="project__frame" style="--ratio:16 / 10">
+            <iframe src="https://embed.figma.com/proto/YroNvfUh0aipHhlbmYhvlK/Flaminga?node-id=32-3476&amp;viewport=-659%2C-207%2C0.43&amp;scaling=scale-down&amp;content-scaling=fixed&amp;starting-point-node-id=32%3A3476&amp;page-id=11%3A17132&amp;embed-host=share"
+              title="Flamingo — Figma prototype" loading="lazy" allowfullscreen
+              sandbox="allow-same-origin allow-scripts allow-pointer-lock allow-forms allow-popups allow-popups-to-escape-sandbox"></iframe>
+          </div>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ============ END (slide 6) ============ -->
+    <section class="cs-sec cs-end">
+      <div class="container">
+        <p class="cs-end__title glow reveal"><span class="px-ico" data-px="spark"></span><span data-scramble>Thank you for watching</span></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <span>© <span id="year">2026</span> Shiran Revivo</span>
+      <span class="footer__made">Designed with passion <span class="px-ico" data-px="heart"></span></span>
+      <a href="#top" onclick="scrollTo({top:0});return false">Back to top <span class="px-ico" data-px="up"></span></a>
+    </div>
+  </footer>
+
+  <script src="assets/js/data.js?v=62"></script>
+  <script src="assets/js/main.js?v=59"></script>
+</body>
+</html>

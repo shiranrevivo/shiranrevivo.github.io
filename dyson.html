@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dyson — Rebranding, E-Commerce &amp; One Pager — Shiran Revivo</title>
+  <meta name="description" content="Dyson rebranding, a team project with Shiran Revivo: a new logo, typography and color palette for the Supersonic HD07 hair dryer, and Figma prototypes of the e-commerce site and the one pager.">
+  <meta name="theme-color" content="#0B0408">
+  <!-- link preview. og:image must become an absolute URL (https://domain/…) once the site has a domain -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Shiran Revivo">
+  <meta property="og:title" content="Dyson — Rebranding, E-Commerce &amp; One Pager — Shiran Revivo">
+  <meta property="og:description" content="Dyson rebranding, a team project with Shiran Revivo: a new logo, typography and color palette for the Supersonic HD07 hair dryer, and Figma prototypes of the e-commerce site and the one pager.">
+  <meta property="og:image" content="assets/img/projects/dyson/cover.jpg">
+  <meta property="og:image:width" content="2000">
+  <meta property="og:image:height" content="1250">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/svg+xml" href="assets/img/logo/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jersey+10&family=Pixelify+Sans:wght@400..700&family=Space+Grotesk:wght@400;500;600&family=VT323&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css?v=92">
+</head>
+<body data-page="project" class="is-case">
+
+  <canvas id="dots" aria-hidden="true"></canvas>
+  <div class="crt" aria-hidden="true"></div>
+
+  <header class="nav" id="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo" aria-label="Shiran Revivo — home">
+        <img class="nav__logo-img" src="assets/img/logo/s-design-logo.svg" alt="s.design" width="140" height="35">
+      </a>
+      <nav class="nav__links" aria-label="Main">
+        <a href="index.html" class="nav__link"><span class="px-ico" data-px="home"></span>Home<span class="nav__num">01</span></a>
+        <a href="projects.html" class="nav__link is-active"><span class="px-ico" data-px="grid"></span>Work<span class="nav__num">02</span></a>
+        <a href="about.html" class="nav__link"><span class="px-ico" data-px="user"></span>About<span class="nav__num">03</span></a>
+        <a href="cv.html" class="nav__link"><span class="px-ico" data-px="doc"></span>CV<span class="nav__num">04</span></a>
+        <a href="contact.html" class="nav__link"><span class="px-ico" data-px="chat"></span>Contact<span class="nav__num">05</span></a>
+      </nav>
+      <div class="nav__actions">
+        <button class="icon-btn" id="soundBtn" type="button" aria-pressed="false" aria-label="Turn sound on"><span class="px-ico" data-px="mute"></span></button>
+        <button class="icon-btn nav__menu" id="menuBtn" type="button" aria-expanded="false" aria-label="Menu"><span class="px-ico" data-px="menu"></span></button>
+      </div>
+    </div>
+  </header>
+
+  <div class="hud" aria-hidden="true">
+    <span>LVL <b>02</b> — project</span>
+    <span id="hudCoords">X <b>0000</b> · Y <b>0000</b></span>
+  </div>
+
+  <main class="cs">
+    <!-- ============ HEAD (slide 1) ============ -->
+    <section class="page-head project-head cs-head">
+      <div class="container">
+        <a class="project-head__back reveal" href="projects.html"><span class="px-ico" data-px="arrowL"></span>All projects</a>
+        <p class="eyebrow reveal"><span class="px-ico" data-px="diamond"></span>02 / UI Design</p>
+        <h1 class="project-head__title glow reveal" style="--d:.08s"><span data-scramble>Dyson</span></h1>
+        <p class="project-head__sub reveal" style="--d:.16s">Rebranding · E-commerce · One Pager</p>
+
+        <div class="cs-hero cs-hero--wide">
+          <div class="cs-hero__info reveal" style="--d:.2s">
+            <dl class="cs-meta">
+              <div><dt>Project</dt><dd>Rebranding team project</dd></div>
+              <div><dt>By</dt><dd>Mai Saphir | Arbel Ivry | Ortal Mamuya |<br>Shiran Revivo | Shira Cohen | Nicole Gurevich</dd></div>
+              <div><dt>Tools</dt><dd>Figma · Photoshop</dd></div>
+            </dl>
+            <nav class="cs-toc" aria-label="Project sections">
+              <p class="cs-toc__label">Levels</p>
+              <ol>
+                <li><a href="#branding">Branding process</a></li>
+                <li><a href="#logo">Logo</a></li>
+                <li><a href="#design-system">Typography &amp; colors</a></li>
+                <li><a href="#prototype">Prototype</a></li>
+              </ol>
+            </nav>
+          </div>
+          <figure class="cs-media cs-hero__shot reveal" style="--d:.28s">
+            <img src="assets/img/projects/dyson/01-hero.png" alt="The new Dyson e-commerce site on three screens: the hair dryers category, the home page with No damage with Dyson, and the Airstrait offer with New arrivals" width="1626" height="1101" fetchpriority="high">
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ BRANDING PROCESS (slide 2) ============ -->
+    <section class="cs-sec" id="branding">
+      <div class="container">
+        <header class="cs-sec__head">
+          <p class="eyebrow reveal"><span class="px-ico" data-px="diamond"></span>01 / Overview</p>
+          <h2 class="cs-h2 reveal" style="--d:.06s">Branding process</h2>
+        </header>
+        <div class="cs-text reveal">
+          <p>Our student project centers on rebranding Dyson’s Supersonic HD07 hair dryer for women who care deeply about personal grooming and advanced technology. We’re crafting a sleek new identity, from a refined logo to dynamic visual assets that highlight HD07’s precision temperature control, aerodynamic form, and quiet performance.</p>
+          <p>By unifying typography, color palette, and imagery into a cohesive system, we aim to reinforce Dyson’s legacy of innovation and luxury, appealing directly to style-conscious women who demand premium, high-tech hair-care solutions.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ LOGO (slide 3) ============ -->
+    <section class="cs-sec" id="logo">
+      <div class="container">
+        <header class="cs-sec__head">
+          <p class="eyebrow reveal"><span class="px-ico" data-px="diamond"></span>02 / Identity</p>
+          <h2 class="cs-h2 reveal" style="--d:.06s">Logo</h2>
+        </header>
+        <!-- the deck shows the wordmark plain and inside a box; on the dark site both are inverted -->
+        <div class="cs-logos cs-logos--pair">
+          <img class="reveal" src="assets/img/projects/dyson/02-logo-white.png" alt="The new Dyson wordmark in white, with a long slanted S" width="784" height="186" loading="lazy">
+          <span class="cs-logos__box reveal" style="--d:.06s"><img src="assets/img/projects/dyson/02-logo-black.png" alt="The Dyson wordmark in black inside a white box" width="784" height="186" loading="lazy"></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ TYPOGRAPHY & COLORS (slide 4) ============ -->
+    <section class="cs-sec" id="design-system">
+      <div class="container">
+        <header class="cs-sec__head">
+          <p class="eyebrow reveal"><span class="px-ico" data-px="diamond"></span>03 / Design system</p>
+          <h2 class="cs-h2 reveal" style="--d:.06s">Typography &amp; colors</h2>
+        </header>
+
+        <h3 class="cs-h3 reveal">Typography</h3>
+        <div class="cs-type">
+          <!-- Mendel Sans and Avenir have no web licence: cut from the slide, the ink turned white / soft pink -->
+          <div class="cs-type__row reveal">
+            <p class="cs-type__name"><img class="cs-type__img" src="assets/img/projects/dyson/03-type-mendel-name.png" alt="Mendel Sans" width="945" height="143"></p>
+            <p class="cs-type__abc">
+              <img class="cs-type__img" src="assets/img/projects/dyson/03-type-mendel-lower.png" alt="abcdefghijklmnopqrstuvwxyz in Mendel Sans" width="1073" height="84">
+              <img class="cs-type__img" src="assets/img/projects/dyson/03-type-mendel-num.png" alt="1234567890!@?#$%&amp; in Mendel Sans" width="836" height="81">
+            </p>
+            <div class="cs-type__meta">
+              <p class="cs-type__use">Weights</p>
+              <img class="cs-type__img cs-type__ramp" src="assets/img/projects/dyson/03-type-mendel-weights.png" alt="The letter A in Mendel Sans from the thinnest to the heaviest weight" width="634" height="63">
+            </div>
+          </div>
+          <div class="cs-type__row reveal">
+            <p class="cs-type__name"><img class="cs-type__img" src="assets/img/projects/dyson/03-type-avenir-name.png" alt="Avenir" width="578" height="141"></p>
+            <p class="cs-type__abc">
+              <img class="cs-type__img" src="assets/img/projects/dyson/03-type-avenir-lower.png" alt="abcdefghijklmnopqrstuvwxyz in Avenir" width="1157" height="93">
+              <img class="cs-type__img" src="assets/img/projects/dyson/03-type-avenir-num.png" alt="1234567890!@?#$%&amp; in Avenir" width="856" height="78">
+            </p>
+            <div class="cs-type__meta">
+              <p class="cs-type__use">Weights</p>
+              <img class="cs-type__img cs-type__ramp" src="assets/img/projects/dyson/03-type-avenir-weights.png" alt="The letter A in four Avenir weights" width="248" height="63">
+            </div>
+          </div>
+        </div>
+
+        <h3 class="cs-h3 reveal">Colors</h3>
+        <ul class="cs-colors cs-colors--five">
+          <li class="reveal" style="--d:0.00s"><span class="cs-colors__chip" style="--c:#532B88"></span><code>#532B88</code><code>RGB 83, 43, 136</code></li>
+          <li class="reveal" style="--d:0.06s"><span class="cs-colors__chip" style="--c:#9B72CF"></span><code>#9B72CF</code><code>RGB 155, 114, 207</code></li>
+          <li class="reveal" style="--d:0.12s"><span class="cs-colors__chip" style="--c:#C8B1E4"></span><code>#C8B1E4</code><code>RGB 200, 177, 228</code></li>
+          <li class="reveal" style="--d:0.18s"><span class="cs-colors__chip" style="--c:#F4EFFA"></span><code>#F4EFFA</code><code>RGB 244, 239, 250</code></li>
+          <li class="reveal" style="--d:0.24s"><span class="cs-colors__chip" style="--c:#000000"></span><code>#000000</code><code>RGB 0, 0, 0</code></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ PROTOTYPE ============ -->
+    <section class="cs-sec" id="prototype">
+      <div class="container">
+        <header class="cs-sec__head">
+          <p class="eyebrow reveal"><span class="px-ico" data-px="diamond"></span>04 / Play it</p>
+          <h2 class="cs-h2 reveal" style="--d:.06s">Prototype</h2>
+        </header>
+        <figure class="window project__embed cs-proto reveal">
+          <div class="window__bar"><span>dyson_prototype.fig</span><span class="window__btns" aria-hidden="true"><i></i><i></i><i></i></span></div>
+          <div class="cs-proto__tabs" role="tablist" aria-label="Prototype">
+            <button class="chip" type="button" role="tab" id="proto-tab-0" aria-controls="proto-0" aria-selected="true">E-commerce</button>
+            <button class="chip" type="button" role="tab" id="proto-tab-1" aria-controls="proto-1" aria-selected="false" tabindex="-1">One pager</button>
+          </div>
+          <div class="project__frame" style="--ratio:16 / 10" role="tabpanel" id="proto-0" aria-labelledby="proto-tab-0">
+            <iframe src="https://embed.figma.com/proto/gFkJMNZsVdziUwH4TXLZH4/dyson-rebranding?page-id=0%3A1&amp;node-id=0-1446&amp;viewport=-262%2C218%2C0.16&amp;scaling=scale-down-width&amp;content-scaling=fixed&amp;starting-point-node-id=0%3A1446&amp;embed-host=share"
+              title="Dyson — E-commerce prototype" loading="lazy" allowfullscreen
+              sandbox="allow-same-origin allow-scripts allow-pointer-lock allow-forms allow-popups allow-popups-to-escape-sandbox"></iframe>
+          </div>
+          <div class="project__frame" style="--ratio:16 / 10" role="tabpanel" id="proto-1" aria-labelledby="proto-tab-1" hidden>
+            <iframe data-src="https://embed.figma.com/proto/gFkJMNZsVdziUwH4TXLZH4/dyson-rebranding?page-id=1%3A2890&amp;node-id=1-3515&amp;viewport=291%2C165%2C0.24&amp;scaling=scale-down-width&amp;content-scaling=fixed&amp;embed-host=share"
+              title="Dyson — One pager prototype" loading="lazy" allowfullscreen
+              sandbox="allow-same-origin allow-scripts allow-pointer-lock allow-forms allow-popups allow-popups-to-escape-sandbox"></iframe>
+          </div>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ============ END ============ -->
+    <section class="cs-sec cs-end">
+      <div class="container">
+        <p class="cs-end__title glow reveal"><span class="px-ico" data-px="spark"></span><span data-scramble>Thanks for watching</span></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <span>© <span id="year">2026</span> Shiran Revivo</span>
+      <span class="footer__made">Designed with passion <span class="px-ico" data-px="heart"></span></span>
+      <a href="#top" onclick="scrollTo({top:0});return false">Back to top <span class="px-ico" data-px="up"></span></a>
+    </div>
+  </footer>
+
+  <script src="assets/js/data.js?v=62"></script>
+  <script src="assets/js/main.js?v=59"></script>
+</body>
+</html>

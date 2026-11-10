@@ -1,0 +1,407 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Logo Sketches</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Jersey+10&family=Mr+Dafoe&family=Silkscreen:wght@400;700&family=Space+Grotesk:wght@400;500;600&family=Unbounded:wght@800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0B0408; --pink:#FF7BF8; --soft:#FFC4FC; --dim:#93408F; --deep:#3B1440;
+    --cream:#FFF4FB; --yellow:#FFE15C; --text:#F6E6F5;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--text);font:16px/1.65 "Space Grotesk",system-ui,sans-serif}
+  .wrap{max-width:1180px;margin:0 auto;padding:56px 24px 96px}
+  .eyebrow{font:700 12px "Silkscreen",monospace;letter-spacing:.12em;color:var(--pink);text-transform:uppercase;margin:0 0 10px}
+  h1{font:400 clamp(48px,8vw,88px)/.9 "Jersey 10",monospace;color:var(--pink);margin:0 0 18px;text-shadow:0 0 18px rgba(255,123,248,.35)}
+  h2{font:400 44px/1 "Jersey 10",monospace;color:var(--pink);margin:0 0 6px}
+  h3{font:700 13px "Silkscreen",monospace;color:var(--soft);margin:22px 0 8px;letter-spacing:.06em}
+  p{margin:0 0 12px}
+  .lead{max-width:760px;font-size:18px;color:#e9d3e8}
+  ul{margin:0;padding-inline-start:18px}
+  li{margin-bottom:4px}
+  b{color:var(--soft);font-weight:600}
+
+  /* summary */
+  .threads{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:36px 0 18px}
+  .thread{border:2px solid var(--deep);padding:16px;background:#12070f}
+  .thread .eyebrow{color:var(--soft)}
+  .thread p{font-size:14px;color:#cdb6cc;margin:0}
+  .motifs{display:flex;flex-wrap:wrap;gap:10px;margin:8px 0 0}
+  .chip{font:400 12px "Silkscreen",monospace;border:2px solid var(--dim);padding:6px 10px;color:var(--soft)}
+  .palette{display:flex;gap:0;margin:26px 0 0;border:2px solid var(--deep);width:max-content;max-width:100%;flex-wrap:wrap}
+  .sw{width:110px;padding:56px 10px 8px;font:400 11px "Silkscreen",monospace;color:#fff}
+  .sw.light{color:var(--bg)}
+
+  /* direction cards */
+  .dir{display:grid;grid-template-columns:1.35fr 1fr;gap:0;border:2px solid var(--pink);box-shadow:6px 6px 0 var(--dim);margin-top:56px;background:#0f050c}
+  .dir__art{border-inline-start:2px solid var(--pink);display:flex;flex-direction:column}
+  .dir__art svg{display:block;width:100%;height:auto;direction:ltr}
+  .dir__bar{display:flex;justify-content:space-between;align-items:center;padding:8px 14px;border-bottom:2px solid var(--pink);font:700 12px "Silkscreen",monospace;color:var(--bg);background:var(--pink)}
+  .dir__body{padding:26px 28px}
+  .num{font:400 18px "Silkscreen",monospace;color:var(--dim)}
+  .from{font-size:14px;color:#cdb6cc}
+  .pc{display:grid;grid-template-columns:1fr 1fr;gap:14px;font-size:14px}
+  .pc h3{margin-top:14px}
+  .fit{display:inline-block;margin-top:16px;font:700 11px "Silkscreen",monospace;padding:6px 10px;background:var(--deep);color:var(--soft)}
+  .minis{display:flex;flex-wrap:wrap;gap:0;border-top:2px solid var(--pink);margin-top:auto}
+  .mini{flex:1 1 33%;min-width:150px;padding:14px;display:flex;align-items:center;justify-content:center;gap:10px;font:700 14px "Silkscreen",monospace}
+  .mini + .mini{border-inline-start:2px solid var(--deep)}
+  .mini svg{width:auto;direction:ltr}
+
+  .rec{margin-top:64px;border:2px dashed var(--pink);padding:26px 28px}
+  .rec ol{margin:0;padding-inline-start:20px}
+  .rec li{margin-bottom:8px}
+  .note{margin-top:28px;font-size:13px;color:#a98fa8}
+
+  @media (max-width:900px){
+    .threads{grid-template-columns:1fr 1fr}
+    .dir{grid-template-columns:1fr}
+    .dir__art{border-inline-start:0;border-bottom:2px solid var(--pink)}
+  }
+  @media (max-width:560px){
+    .wrap{padding:36px 16px 72px}
+    .threads{grid-template-columns:1fr}
+    .pc{grid-template-columns:1fr}
+    .dir__body{padding:20px 18px}
+    .sw{width:33.33%}
+  }
+</style>
+</head>
+<body>
+
+<!-- shared shapes -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <!-- smooth 4-point sparkle (NASA / DWRS / Manic / IKEA) -->
+    <symbol id="spark" viewBox="-1 -1 2 2" overflow="visible">
+      <path d="M0,-1 Q0.08,-0.08 1,0 Q0.08,0.08 0,1 Q-0.08,0.08 -1,0 Q-0.08,-0.08 0,-1Z"/>
+    </symbol>
+    <!-- pixel sparkle (Sweet Dreams + the site) -->
+    <symbol id="pxspark" viewBox="0 0 7 7" shape-rendering="crispEdges">
+      <rect x="3" y="0" width="1" height="7"/><rect x="0" y="3" width="7" height="1"/><rect x="2" y="2" width="3" height="3"/>
+    </symbol>
+    <!-- 5-point star (Starman / Sweet Dreams) -->
+    <symbol id="star5" viewBox="-1.2 -1.2 2.4 2.4" overflow="visible">
+      <polygon points="0,-1 .253,-.348 .951,-.309 .409,.133 .588,.809 0,.43 -.588,.809 -.409,.133 -.951,-.309 -.253,-.348" stroke-linejoin="round"/>
+    </symbol>
+    <filter id="neon" x="-30%" y="-60%" width="160%" height="220%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="9" result="b1"/>
+      <feFlood flood-color="#FF2CD5" flood-opacity=".75"/><feComposite in2="b1" operator="in" result="g1"/>
+      <feGaussianBlur in="SourceAlpha" stdDeviation="2.5" result="b2"/>
+      <feFlood flood-color="#FF7BF8"/><feComposite in2="b2" operator="in" result="g2"/>
+      <feMerge><feMergeNode in="g1"/><feMergeNode in="g2"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="soft-glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="4" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+</svg>
+
+<main class="wrap">
+  <p class="eyebrow">Brand · Logo sketches · v01</p>
+  <h1>Logo directions</h1>
+  <p class="lead">סיכום של 11 ההשראות וחמישה כיווני סקיצה ללוגו, בשפה של האתר (רקע כמעט שחור, ורוד <b>#FF7BF8</b>, פיקסלים וצללי offset). אלו סקיצות לכיוון, לא לוגו סופי: האותיות בנויות מפונטים קיימים, ובשלב הבא כדאי לצייר אותן מחדש בווקטור.</p>
+
+  <!-- ============ SUMMARY ============ -->
+  <div class="threads">
+    <div class="thread"><p class="eyebrow">01 · Neon 80s</p><p>DREAMS, Vice City. קווי ניאון זוהרים, סקריפט מכחול, משולש כפול, שמיים עם כוכבים.</p></div>
+    <div class="thread"><p class="eyebrow">02 · Pixel / 8-bit</p><p>Sweet Dreams, Hyper Vyper / Retro Gaming. אותיות פיקסל, כוכב נופל, קו מתאר עבה כמו סטיקר.</p></div>
+    <div class="thread"><p class="eyebrow">03 · Y2K Space</p><p>NASA, IKEA, DWRS, PlayStation. מסלולים (אליפסות), טייפ רחב ועגול, ניגוד חזק בין צורה מלאה לקו דק.</p></div>
+    <div class="thread"><p class="eyebrow">04 · Sticker / Comic</p><p>Starman, Manic, Spicy Dollz. אותיות שמנות עם עומק 3D, פיצוץ (burst), צורות חדות ותנועה.</p></div>
+  </div>
+  <h3>מוטיבים שחוזרים כמעט בכל ההשראות</h3>
+  <div class="motifs">
+    <span class="chip">✦ ניצוץ 4 קצוות (ב-8 מתוך 11)</span>
+    <span class="chip">קו מתאר + עומק offset</span>
+    <span class="chip">מסלול / קשת סביב השם</span>
+    <span class="chip">שילוב פונט כבד + פונט עדין</span>
+    <span class="chip">צבע אחד חזק על רקע כהה</span>
+  </div>
+  <div class="palette" aria-label="palette">
+    <div class="sw" style="background:#0B0408;box-shadow:inset 0 0 0 1px #3B1440">#0B0408</div>
+    <div class="sw light" style="background:#FF7BF8">#FF7BF8</div>
+    <div class="sw light" style="background:#FFC4FC">#FFC4FC</div>
+    <div class="sw" style="background:#93408F">#93408F</div>
+    <div class="sw" style="background:#3B1440">#3B1440</div>
+    <div class="sw light" style="background:#FFE15C">#FFE15C אקסנט</div>
+  </div>
+
+  <!-- ============ 01 PIXEL STAR ============ -->
+  <section class="dir">
+    <div class="dir__art">
+      <div class="dir__bar"><span>01 · PIXEL STAR</span><span>s.design</span></div>
+      <svg viewBox="0 0 640 360" role="img" aria-label="Pixel Star sketch">
+        <rect width="640" height="360" fill="#0B0408"/>
+        <!-- shooting star arc -->
+        <path d="M78 262 C 170 120, 360 52, 520 92" fill="none" stroke="#3B1440" stroke-width="34" stroke-linecap="round"/>
+        <path d="M78 262 C 170 120, 360 52, 520 92" fill="none" stroke="#FFC4FC" stroke-width="22" stroke-linecap="round"/>
+        <use href="#star5" x="478" y="44" width="104" height="104" fill="#FFC4FC" stroke="#3B1440" stroke-width=".16" transform="rotate(14 530 96)"/>
+        <!-- word: sticker outline → extrude → face -->
+        <g font-family="Silkscreen" font-weight="700" font-size="92" text-anchor="middle">
+          <text x="320" y="214" textLength="500" lengthAdjust="spacingAndGlyphs" fill="#FFC4FC" stroke="#FFC4FC" stroke-width="26" stroke-linejoin="round">s.design</text>
+          <text x="327" y="221" textLength="500" lengthAdjust="spacingAndGlyphs" fill="#FFC4FC" stroke="#FFC4FC" stroke-width="26" stroke-linejoin="round">s.design</text>
+          <text x="327" y="221" textLength="500" lengthAdjust="spacingAndGlyphs" fill="#93408F" stroke="#0B0408" stroke-width="6" paint-order="stroke">s.design</text>
+          <text x="320" y="214" textLength="500" lengthAdjust="spacingAndGlyphs" fill="#FF7BF8" stroke="#0B0408" stroke-width="6" paint-order="stroke">s.design</text>
+        </g>
+        <text x="324" y="296" text-anchor="middle" font-family="Silkscreen" font-size="15" fill="#FFC4FC" letter-spacing="7">SHIRAN REVIVO · UX/UI</text>
+        <g fill="#fff">
+          <use href="#pxspark" x="84" y="104" width="28" height="28"/>
+          <use href="#pxspark" x="236" y="70" width="18" height="18"/>
+          <use href="#pxspark" x="562" y="226" width="24" height="24"/>
+          <use href="#pxspark" x="140" y="300" width="14" height="14"/>
+        </g>
+      </svg>
+      <div class="minis">
+        <div class="mini" style="background:#0B0408">
+          <svg viewBox="0 0 270 60" height="30"><g font-family="Silkscreen" font-weight="700" font-size="44" text-anchor="middle"><text x="138" y="47" fill="#93408F">s.design</text><text x="135" y="44" fill="#FF7BF8">s.design</text></g></svg>
+        </div>
+        <div class="mini" style="background:#FF7BF8">
+          <svg viewBox="0 0 270 60" height="30"><g font-family="Silkscreen" font-weight="700" font-size="44" text-anchor="middle"><text x="138" y="47" fill="#FFC4FC">s.design</text><text x="135" y="44" fill="#0B0408">s.design</text></g></svg>
+        </div>
+        <div class="mini" style="background:#FFF4FB">
+          <svg viewBox="0 0 270 60" height="30"><g font-family="Silkscreen" font-weight="700" font-size="44" text-anchor="middle"><text x="138" y="47" fill="#0B0408">s.design</text><text x="135" y="44" fill="#FF7BF8">s.design</text></g></svg>
+        </div>
+      </div>
+    </div>
+    <div class="dir__body">
+      <span class="num">01</span>
+      <h2>Pixel Star</h2>
+      <p class="from">השראות: Sweet Dreams, Retro Gaming, Starman</p>
+      <p>הכיוון הכי קרוב לאתר. אותיות פיקסל כמו בתפריט, עם מתאר סטיקר עבה ועומק offset (בדיוק כמו הצל של הכפתורים). קשת של כוכב נופל עוברת מאחורי השם, וניצוצות פיקסל מסביב.</p>
+      <div class="pc">
+        <div><h3>+ יתרונות</h3><ul><li>מרגיש חלק טבעי מהאתר</li><li>עובד מצוין קטן (בלי הקשת)</li><li>קל להנפיש: הכוכב "נופל"</li></ul></div>
+        <div><h3>− חסרונות</h3><ul><li>פיקסל נפוץ, צריך פרט ייחודי</li><li>פחות "בוגר" למיתוג מחוץ לאתר</li></ul></div>
+      </div>
+      <span class="fit">התאמה לאתר: ★★★★★</span>
+    </div>
+  </section>
+
+  <!-- ============ 02 NEON ORBIT ============ -->
+  <section class="dir">
+    <div class="dir__art">
+      <div class="dir__bar"><span>02 · NEON ORBIT</span><span>shiran design</span></div>
+      <svg viewBox="0 0 640 360" role="img" aria-label="Neon Orbit sketch">
+        <rect width="640" height="360" fill="#0B0408"/>
+        <ellipse cx="320" cy="176" rx="236" ry="80" fill="#FF7BF8" transform="rotate(-11 320 176)"/>
+        <ellipse cx="320" cy="176" rx="284" ry="118" fill="none" stroke="#FFC4FC" stroke-width="2.5" transform="rotate(14 320 176)"/>
+        <g font-family="Unbounded" font-weight="800" font-size="104" text-anchor="middle">
+          <text x="326" y="218" textLength="470" lengthAdjust="spacingAndGlyphs" fill="#0B0408" stroke="#0B0408" stroke-width="8" stroke-linejoin="round">shiran</text>
+          <text x="320" y="212" textLength="470" lengthAdjust="spacingAndGlyphs" fill="#FFF4FB" stroke="#0B0408" stroke-width="7" paint-order="stroke" stroke-linejoin="round">shiran</text>
+        </g>
+        <text x="327" y="330" text-anchor="middle" font-family="Silkscreen" font-weight="700" font-size="18" fill="#FFC4FC" letter-spacing="14">DESIGN</text>
+        <use href="#spark" x="470" y="26" width="64" height="64" fill="#FFC4FC"/>
+        <use href="#spark" x="104" y="262" width="40" height="40" fill="#FF7BF8"/>
+        <use href="#spark" x="560" y="246" width="20" height="20" fill="#fff"/>
+        <use href="#spark" x="70" y="70" width="14" height="14" fill="#fff"/>
+      </svg>
+      <div class="minis">
+        <div class="mini" style="background:#0B0408">
+          <svg viewBox="0 0 64 64" height="40"><ellipse cx="32" cy="32" rx="30" ry="13" fill="#FF7BF8" transform="rotate(-11 32 32)"/><text x="32" y="44" text-anchor="middle" font-family="Unbounded" font-weight="800" font-size="36" fill="#FFF4FB" stroke="#0B0408" stroke-width="3" paint-order="stroke">s</text></svg>
+          <svg viewBox="0 0 230 60" height="30"><text x="0" y="44" font-family="Unbounded" font-weight="800" font-size="40" fill="#FFF4FB">shiran<tspan fill="#FF7BF8">✦</tspan></text></svg>
+        </div>
+        <div class="mini" style="background:#FF7BF8">
+          <svg viewBox="0 0 230 60" height="30"><text x="0" y="44" font-family="Unbounded" font-weight="800" font-size="40" fill="#0B0408">shiran<tspan fill="#FFF4FB">✦</tspan></text></svg>
+        </div>
+      </div>
+    </div>
+    <div class="dir__body">
+      <span class="num">02</span>
+      <h2>Neon Orbit</h2>
+      <p class="from">השראות: NASA, IKEA, DWRS, PlayStation</p>
+      <p>Y2K חללי. השם באותיות רחבות ועגולות בצבע שמנת, חוצה אליפסה ורודה מלאה, ומסביב מסלול דק ונצנוצים חלקים. הצל הכהה של האותיות נראה רק כשהוא עובר על הוורוד, וזה יוצר עומק בלי עוד צבע.</p>
+      <div class="pc">
+        <div><h3>+ יתרונות</h3><ul><li>הכי "מותג", עובד גם על חולצה/סטיקר</li><li>האליפסה היא אייקון בפני עצמה</li><li>אלגנטי ופחות צפוי</li></ul></div>
+        <div><h3>− חסרונות</h3><ul><li>פחות פיקסלי מהאתר</li><li>"design" קטן נעלם בגדלים קטנים</li></ul></div>
+      </div>
+      <span class="fit">התאמה לאתר: ★★★★☆</span>
+    </div>
+  </section>
+
+  <!-- ============ 03 NEON SCRIPT ============ -->
+  <section class="dir">
+    <div class="dir__art">
+      <div class="dir__bar"><span>03 · NEON SCRIPT</span><span>Shiran design</span></div>
+      <svg viewBox="0 0 640 360" role="img" aria-label="Neon Script sketch">
+        <rect width="640" height="360" fill="#0B0408"/>
+        <g id="stars3" fill="#fff"></g>
+        <!-- double triangle (DREAMS) -->
+        <g fill="none" stroke-width="3" stroke-linejoin="miter" filter="url(#soft-glow)">
+          <polygon points="196,40 444,40 320,262" stroke="#93408F"/>
+          <polygon points="208,30 456,30 332,252" stroke="#FFC4FC" opacity=".8"/>
+        </g>
+        <g filter="url(#neon)">
+          <text x="318" y="196" text-anchor="middle" font-family="Mr Dafoe" font-size="158" fill="#FFB3FB" transform="rotate(-7 318 170)">Shiran</text>
+          <path d="M150 248 C 270 226, 410 214, 516 212 C 410 224, 280 236, 156 256 Z" fill="#FFB3FB"/>
+        </g>
+        <text x="326" y="300" text-anchor="middle" font-family="Silkscreen" font-size="18" fill="#FFC4FC" letter-spacing="16">DESIGN</text>
+      </svg>
+      <div class="minis">
+        <div class="mini" style="background:#0B0408">
+          <svg viewBox="0 0 200 80" height="40"><text x="100" y="58" text-anchor="middle" font-family="Mr Dafoe" font-size="62" fill="#FFB3FB" filter="url(#neon)">Shiran</text></svg>
+        </div>
+        <div class="mini" style="background:#FF7BF8">
+          <svg viewBox="0 0 200 80" height="40"><text x="100" y="58" text-anchor="middle" font-family="Mr Dafoe" font-size="62" fill="#0B0408">Shiran</text></svg>
+        </div>
+      </div>
+    </div>
+    <div class="dir__body">
+      <span class="num">03</span>
+      <h2>Neon Script</h2>
+      <p class="from">השראות: Vice City, DREAMS, Last Dance</p>
+      <p>שלט ניאון מהאייטיז. "Shiran" בכתב יד זוהר עם קו תחתון במשיכת מכחול, ו-DESIGN בפיקסלים מרווחים מתחת: בדיוק השילוב של פונט עדין ופונט כבד שחוזר בהשראות. מאחור משולש כפול ושמיים עם כוכבים.</p>
+      <div class="pc">
+        <div><h3>+ יתרונות</h3><ul><li>הכי אישי: זה השם שלך, בכתב יד</li><li>אפקט wow בהירו של האתר</li><li>קל לאנימציה (ניאון מהבהב)</li></ul></div>
+        <div><h3>− חסרונות</h3><ul><li>תלוי ב-glow, פחות חזק בלי רקע כהה</li><li>הסקריפט צריך ציור ידני כדי להיות מקורי</li></ul></div>
+      </div>
+      <span class="fit">התאמה לאתר: ★★★★☆</span>
+    </div>
+  </section>
+
+  <!-- ============ 04 STICKER BURST ============ -->
+  <section class="dir">
+    <div class="dir__art">
+      <div class="dir__bar"><span>04 · STICKER BURST</span><span>shiran design</span></div>
+      <svg viewBox="0 0 640 360" role="img" aria-label="Sticker Burst sketch">
+        <rect width="640" height="360" fill="#0B0408"/>
+        <g transform="rotate(-4 320 182)">
+          <path id="burstOuter" fill="#FF7BF8"/>
+          <path id="burstInner" fill="#FFF4FB"/>
+        </g>
+        <g font-family="Bungee" font-size="70" text-anchor="middle" transform="rotate(-6 320 190)" stroke-linejoin="round">
+          <text x="326" y="180" textLength="340" lengthAdjust="spacingAndGlyphs" fill="#93408F" stroke="#0B0408" stroke-width="8" paint-order="stroke">SHIRAN</text>
+          <text x="320" y="174" textLength="340" lengthAdjust="spacingAndGlyphs" fill="#FF7BF8" stroke="#0B0408" stroke-width="8" paint-order="stroke">SHIRAN</text>
+          <text x="326" y="254" textLength="300" lengthAdjust="spacingAndGlyphs" fill="#93408F" stroke="#0B0408" stroke-width="8" paint-order="stroke">DESIGN</text>
+          <text x="320" y="248" textLength="300" lengthAdjust="spacingAndGlyphs" fill="#FFE15C" stroke="#0B0408" stroke-width="8" paint-order="stroke">DESIGN</text>
+        </g>
+        <use href="#star5" x="118" y="58" width="78" height="78" fill="#FFE15C" stroke="#0B0408" stroke-width=".1" transform="rotate(-14 157 97)"/>
+        <use href="#star5" x="198" y="62" width="34" height="34" fill="#FFE15C" stroke="#0B0408" stroke-width=".16"/>
+        <use href="#star5" x="452" y="236" width="72" height="72" fill="#FFE15C" stroke="#0B0408" stroke-width=".1" transform="rotate(12 488 272)"/>
+        <use href="#spark" x="508" y="84" width="34" height="34" fill="#0B0408"/>
+      </svg>
+      <div class="minis">
+        <div class="mini" style="background:#0B0408">
+          <svg viewBox="0 0 70 70" height="44"><path id="burstMini" fill="#FF7BF8"/><text x="35" y="47" text-anchor="middle" font-family="Bungee" font-size="34" fill="#FFE15C" stroke="#0B0408" stroke-width="4" paint-order="stroke">S</text></svg>
+        </div>
+        <div class="mini" style="background:#FFF4FB">
+          <svg viewBox="0 0 260 60" height="30"><g font-family="Bungee" font-size="44"><text x="4" y="48" fill="#93408F">SHIRAN</text><text x="0" y="44" fill="#FF7BF8" stroke="#0B0408" stroke-width="3" paint-order="stroke">SHIRAN</text></g></svg>
+        </div>
+      </div>
+    </div>
+    <div class="dir__body">
+      <span class="num">04</span>
+      <h2>Sticker Burst</h2>
+      <p class="from">השראות: Starman, Manic, Spicy Dollz</p>
+      <p>הכיוון הכי שובב: מדבקה בצורת פיצוץ קומיקס, אותיות שמנות עם עומק 3D וכוכבים צהובים כאקסנט. מרגיש כמו מדבקה על לפטופ או מסך פתיחה של משחק ארקייד.</p>
+      <div class="pc">
+        <div><h3>+ יתרונות</h3><ul><li>הכי הרבה אנרגיה ואופי</li><li>מושלם למרצ'נדייז ומדבקות</li><li>צהוב נותן נקודת עניין</li></ul></div>
+        <div><h3>− חסרונות</h3><ul><li>עמוס, לא מתאים לניווט כמו שהוא</li><li>יכול להרגיש פחות "UX מקצועי"</li></ul></div>
+      </div>
+      <span class="fit">התאמה לאתר: ★★★☆☆</span>
+    </div>
+  </section>
+
+  <!-- ============ 05 PIXEL MONOGRAM ============ -->
+  <section class="dir">
+    <div class="dir__art">
+      <div class="dir__bar"><span>05 · PIXEL MONOGRAM</span><span>s✦</span></div>
+      <svg viewBox="0 0 640 360" role="img" aria-label="Pixel Monogram sketch">
+        <rect width="640" height="360" fill="#0B0408"/>
+        <ellipse cx="320" cy="172" rx="230" ry="70" fill="none" stroke="#3B1440" stroke-width="3" transform="rotate(-16 320 172)"/>
+        <g id="monoBig"></g>
+        <text x="320" y="334" text-anchor="middle" font-family="Silkscreen" font-weight="700" font-size="16" fill="#FFC4FC" letter-spacing="8">SHIRAN DESIGN</text>
+      </svg>
+      <div class="minis">
+        <div class="mini" style="background:#0B0408"><svg class="mono" data-c="#FF7BF8" data-s="#93408F" data-k="#fff" height="48"></svg><svg class="mono" data-c="#FF7BF8" data-s="#93408F" data-k="#fff" height="24"></svg><svg class="mono" data-c="#FF7BF8" data-s="#93408F" data-k="#fff" height="16"></svg></div>
+        <div class="mini" style="background:#FF7BF8"><svg class="mono" data-c="#0B0408" data-s="#FFC4FC" data-k="#0B0408" height="36"></svg><span style="color:#0B0408">s.design</span></div>
+        <div class="mini" style="background:#FFF4FB"><svg class="mono" data-c="#FF7BF8" data-s="#0B0408" data-k="#FF7BF8" height="36"></svg><span style="color:#0B0408">SHIRAN<b style="color:#FF7BF8">.</b>DESIGN</span></div>
+      </div>
+    </div>
+    <div class="dir__body">
+      <span class="num">05</span>
+      <h2>Pixel Monogram</h2>
+      <p class="from">השראות: PlayStation, Hyper Vyper, הניצוץ שחוזר בכולן</p>
+      <p>סימן קטן ולא מילה: S פיקסלית שמנה עם צל offset (כמו הכפתורים באתר), וניצוץ פיקסל שנוצץ בפינה שלה (אפשר גם להחליף בו את הנקודה של s.design). זה ה-favicon, האייקון בניווט (במקום ה-invader של היום) והחותמת על העבודות. אפשר לשלב אותו עם כל אחד מהכיוונים 1–4.</p>
+      <div class="pc">
+        <div><h3>+ יתרונות</h3><ul><li>חד גם ב-16px</li><li>אייקון שאפשר לזהות בלי השם</li><li>מתחבר ישר למערכת האייקונים באתר</li></ul></div>
+        <div><h3>− חסרונות</h3><ul><li>לבד הוא פחות מספר סיפור</li><li>צריך לוגוטייפ לצידו</li></ul></div>
+      </div>
+      <span class="fit">התאמה לאתר: ★★★★★</span>
+    </div>
+  </section>
+
+  <!-- ============ RECOMMENDATION ============ -->
+  <section class="rec">
+    <p class="eyebrow">My take</p>
+    <h2>ההמלצה שלי</h2>
+    <ol>
+      <li><b>מערכת ולא לוגו אחד:</b> מונוגרמה (05) לאייקון, favicon וניווט + לוגוטייפ מלא לכותרות, כרטיס ביקור וקורות חיים.</li>
+      <li><b>ללוגוטייפ:</b> 01 Pixel Star אם רוצים התאמה מלאה לאתר; 03 Neon Script אם רוצים משהו יותר אישי ורגשי. אפשר גם לשלב: "Shiran" בסקריפט ניאון + DESIGN בפיקסל (כבר ככה ב-03).</li>
+      <li><b>השם:</b> <b>s.design</b> קצר וחזק לאייקון ולניווט, אבל לבד הוא פחות זכיר. <b>Shiran design</b> עדיף ללוגו המלא. הנקודה ב-s.design יכולה להיות הניצוץ, וזה קושר ביניהם.</li>
+      <li><b>צבע:</b> ורוד ושחור כבסיס, וצהוב <b>#FFE15C</b> רק כאקסנט קטן (כוכב/ניצוץ), אם בכלל.</li>
+    </ol>
+    <p class="note">הסקיצות בנויות מ-Google Fonts (Silkscreen, Unbounded, Mr Dafoe, Bungee) רק לבדיקת כיוון. ללוגו הסופי כדאי לצייר את האותיות מחדש (או לפחות לשנות אותן), כדי שיהיה מקורי ושלך.</p>
+  </section>
+</main>
+
+<script>
+  // burst shape for 04 (seeded so it looks the same every time)
+  function burst(cx, cy, spikes, rOut, rIn, sx, seed) {
+    var s = seed, rnd = function () { s = (s * 9301 + 49297) % 233280; return s / 233280; };
+    var d = '';
+    for (var i = 0; i < spikes * 2; i++) {
+      var a = (Math.PI * i) / spikes - Math.PI / 2;
+      var r = i % 2 ? rIn * (0.92 + rnd() * 0.12) : rOut * (0.84 + rnd() * 0.22);
+      d += (i ? 'L' : 'M') + (cx + Math.cos(a) * r * sx).toFixed(1) + ' ' + (cy + Math.sin(a) * r).toFixed(1);
+    }
+    return d + 'Z';
+  }
+  document.getElementById('burstOuter').setAttribute('d', burst(320, 184, 15, 176, 132, 1.62, 7));
+  document.getElementById('burstInner').setAttribute('d', burst(320, 184, 15, 148, 116, 1.6, 7));
+  document.getElementById('burstMini').setAttribute('d', burst(35, 35, 10, 34, 24, 1, 3));
+
+  // starfield for 03
+  (function () {
+    var g = document.getElementById('stars3'), s = 11, out = '';
+    function rnd() { s = (s * 9301 + 49297) % 233280; return s / 233280; }
+    for (var i = 0; i < 70; i++) {
+      out += '<circle cx="' + (rnd() * 640).toFixed(0) + '" cy="' + (rnd() * 360).toFixed(0) + '" r="' + (rnd() < .85 ? .9 : 1.8) + '" opacity="' + (.3 + rnd() * .6).toFixed(2) + '"/>';
+    }
+    g.innerHTML = out;
+  })();
+
+  // pixel monogram for 05: chunky S + pixel sparkle as the dot
+  var S = [
+    '.######',
+    '#######',
+    '##.....',
+    '######.',
+    '.######',
+    '.....##',
+    '#######',
+    '######.'
+  ];
+  var K = ['...#...', '...#...', '..###..', '#######', '..###..', '...#...', '...#...'];
+  function mono(c, sh, k) {
+    var r = '';
+    S.forEach(function (row, y) { row.split('').forEach(function (ch, x) { if (ch === '#') r += '<rect x="' + (x + 1) + '" y="' + (y + 1) + '" width="1" height="1" fill="' + sh + '"/>'; }); });
+    S.forEach(function (row, y) { row.split('').forEach(function (ch, x) { if (ch === '#') r += '<rect x="' + x + '" y="' + y + '" width="1" height="1" fill="' + c + '"/>'; }); });
+    K.forEach(function (row, y) { row.split('').forEach(function (ch, x) { if (ch === '#') r += '<rect x="' + (x + 8) + '" y="' + (y - 3) + '" width="1" height="1" fill="' + k + '"/>'; }); });
+    return r;
+  }
+  document.querySelectorAll('svg.mono').forEach(function (el) {
+    el.setAttribute('viewBox', '0 -3 15 12');
+    el.setAttribute('shape-rendering', 'crispEdges');
+    el.innerHTML = mono(el.dataset.c, el.dataset.s, el.dataset.k);
+  });
+  var big = document.getElementById('monoBig');
+  big.setAttribute('transform', 'translate(185 118) scale(18)');
+  big.setAttribute('shape-rendering', 'crispEdges');
+  big.innerHTML = mono('#FF7BF8', '#93408F', '#fff');
+</script>
+</body>
+</html>

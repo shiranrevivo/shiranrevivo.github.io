@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CV — Shiran Revivo</title>
+  <meta name="description" content="Curriculum vitae of Shiran Revivo, UX/UI and Visual Designer — experience, education, tools and skills.">
+  <meta name="theme-color" content="#0B0408">
+  <!-- link preview. og:image must become an absolute URL (https://domain/…) once the site has a domain -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Shiran Revivo">
+  <meta property="og:title" content="CV — Shiran Revivo">
+  <meta property="og:description" content="Curriculum vitae of Shiran Revivo, UX/UI and Visual Designer — experience, education, tools and skills.">
+  <meta property="og:image" content="assets/img/og/share.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/svg+xml" href="assets/img/logo/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jersey+10&family=Pixelify+Sans:wght@400..700&family=Space+Grotesk:wght@400;500;600&family=VT323&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css?v=92">
+</head>
+<body data-page="cv">
+
+  <canvas id="dots" aria-hidden="true"></canvas>
+  <div class="crt" aria-hidden="true"></div>
+
+  <header class="nav" id="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo" aria-label="Shiran Revivo — home">
+        <img class="nav__logo-img" src="assets/img/logo/s-design-logo.svg" alt="s.design" width="140" height="35">
+      </a>
+      <nav class="nav__links" aria-label="Main">
+        <a href="index.html" class="nav__link"><span class="px-ico" data-px="home"></span>Home<span class="nav__num">01</span></a>
+        <a href="projects.html" class="nav__link"><span class="px-ico" data-px="grid"></span>Work<span class="nav__num">02</span></a>
+        <a href="about.html" class="nav__link"><span class="px-ico" data-px="user"></span>About<span class="nav__num">03</span></a>
+        <a href="cv.html" class="nav__link is-active" aria-current="page"><span class="px-ico" data-px="doc"></span>CV<span class="nav__num">04</span></a>
+        <a href="contact.html" class="nav__link"><span class="px-ico" data-px="chat"></span>Contact<span class="nav__num">05</span></a>
+      </nav>
+      <div class="nav__actions">
+        <button class="icon-btn" id="soundBtn" type="button" aria-pressed="false" aria-label="Turn sound on"><span class="px-ico" data-px="mute"></span></button>
+        <button class="icon-btn nav__menu" id="menuBtn" type="button" aria-expanded="false" aria-label="Menu"><span class="px-ico" data-px="menu"></span></button>
+      </div>
+    </div>
+  </header>
+
+  <div class="hud" aria-hidden="true">
+    <span>LVL <b>04</b> — cv</span>
+    <span id="hudCoords">X <b>0000</b> · Y <b>0000</b></span>
+  </div>
+
+  <main>
+    <!-- ============ HEAD ============ -->
+    <section class="page-head cv-head">
+      <div class="container">
+        <p class="eyebrow reveal"><span class="px-ico" data-px="diamond"></span>04 / Curriculum vitae</p>
+        <div class="cv-head__row">
+          <div>
+            <h1 class="page-head__title glow reveal" style="--d:.08s"><span data-scramble>Shiran Revivo</span></h1>
+            <p class="cv-head__role reveal" style="--d:.16s">UX/UI and Visual Designer</p>
+          </div>
+          <div class="cv-head__cta reveal" style="--d:.24s">
+            <a class="btn" href="assets/Shiran_Revivo_CV.pdf" download="Shiran_Revivo_CV.pdf"><span class="btn__face">Download PDF<span class="px-ico" data-px="download"></span></span></a>
+          </div>
+        </div>
+
+        <dl class="cv-info reveal" style="--d:.3s">
+          <div><dt>Email</dt><dd><a href="mailto:shiranrevivo193@gmail.com">shiranrevivo193@gmail.com</a></dd></div>
+          <div><dt>Phone</dt><dd><a href="tel:+972504234988">050-4234988</a></dd></div>
+          <div><dt>LinkedIn</dt><dd><a href="https://www.linkedin.com/in/shiran-revivo-093736347/" target="_blank" rel="noopener">shiran-revivo <span class="px-ico" data-px="ext"></span></a></dd></div>
+          <div><dt>Languages</dt><dd>Hebrew <span class="cv-muted">(native)</span> · English <span class="cv-muted">(working)</span></dd></div>
+        </dl>
+
+        <p class="cv-about reveal">I am a UX/UI and Visual Designer with a background in art direction and set design for the film industry. I leverage my experience in crafting physical environments to translate user needs into intuitive, highly visual digital interfaces.</p>
+      </div>
+    </section>
+
+    <!-- ============ BODY ============ -->
+    <section class="container cv-grid">
+      <div class="cv-main">
+        <!-- Experience -->
+        <section class="cv-block" aria-labelledby="cvExp">
+          <header class="cv-block__head reveal">
+            <h2 class="cv-block__title" id="cvExp"><span data-scramble>Experience</span></h2>
+            <div class="rule"></div>
+          </header>
+
+          <ol class="timeline">
+            <li class="timeline__item reveal">
+              <h3 class="timeline__title">Graphic Designer</h3>
+              <p class="timeline__meta">Heidia LTD · <b>2025 — Present</b></p>
+              <ul class="timeline__list">
+                <li>Design print and retail marketing solutions for major brands.</li>
+                <li>Create high-impact visual assets that directly influence the consumer experience in the physical world.</li>
+              </ul>
+            </li>
+            <li class="timeline__item reveal">
+              <h3 class="timeline__title">Freelance UX/UI &amp; Graphic Designer</h3>
+              <p class="timeline__meta"><b>2024 — 2025</b></p>
+              <ul class="timeline__list">
+                <li>Developed branding and comprehensive UX/UI website design for Double Shesh Productions.</li>
+                <li>Managed end-to-end design projects for diverse clients across print and digital media.</li>
+                <li>Created digital visual assets, including social media campaigns and podcast cover art.</li>
+                <li>Designed promotional materials for film festivals and theatre groups, combining art direction and photography.</li>
+              </ul>
+              <a class="cv-link" href="double-shesh.html"><span class="cv-link__tag">Highlighted project</span>Double Shesh — Brand Identity &amp; Website<span class="cv-link__go" aria-hidden="true">→</span></a>
+            </li>
+            <li class="timeline__item reveal">
+              <h3 class="timeline__title">Freelance Art Director &amp; Set Designer</h3>
+              <p class="timeline__meta"><b>2021 — 2024</b></p>
+              <ul class="timeline__list">
+                <li>Led art direction and set design for film, commercials, and music videos, translating scripts into immersive visual worlds.</li>
+                <li>Managed projects from concept to execution, overseeing props, set dressing, and costume styling.</li>
+                <li><mark>Award-winning</mark> — Best Art Design at the Cinema South Festival for "Paradise Express".</li>
+                <li>Designed for "Yes", "Death In Umm Al-Hiran" (Docaviv Winner), "Hide and Seek" (Jerusalem FF Selection).</li>
+              </ul>
+              <a class="cv-link" href="projects.html?filter=set" data-play="set-01"><span class="cv-link__tag">Highlighted project</span>I love you — Music video<span class="cv-link__go" aria-hidden="true">→</span></a>
+            </li>
+          </ol>
+        </section>
+
+        <!-- Education -->
+        <section class="cv-block" aria-labelledby="cvEdu">
+          <header class="cv-block__head reveal">
+            <h2 class="cv-block__title" id="cvEdu"><span data-scramble>Education</span></h2>
+            <div class="rule"></div>
+          </header>
+
+          <ol class="timeline">
+            <li class="timeline__item reveal">
+              <h3 class="timeline__title">UX for Complex Systems — Practical Course</h3>
+              <p class="timeline__meta">HackerU · <b>2026</b></p>
+              <ul class="timeline__list">
+                <li>Focused on designing B2B enterprise systems, emphasizing data visualization and streamlined user workflows.</li>
+              </ul>
+              <a class="cv-link" href="case-zenthor.html"><span class="cv-link__tag">Highlighted project</span>Zenthor — B2B Dashboard<span class="cv-link__go" aria-hidden="true">→</span></a>
+            </li>
+            <li class="timeline__item reveal">
+              <h3 class="timeline__title">UX/UI &amp; Graphic Design — Professional Certification</h3>
+              <p class="timeline__meta">HackerU · <b>2024 — 2025</b></p>
+              <a class="cv-link" href="case-myra.html"><span class="cv-link__tag">Highlighted project</span>Mindfulness App — Research &amp; Design<span class="cv-link__go" aria-hidden="true">→</span></a>
+            </li>
+            <li class="timeline__item reveal">
+              <h3 class="timeline__title">B.F.A. in Film</h3>
+              <p class="timeline__meta">Sapir College · <b>2019 — 2023</b></p>
+            </li>
+            <li class="timeline__item reveal">
+              <h3 class="timeline__title">Photography Course</h3>
+              <p class="timeline__meta">Alon Kira · <b>2018</b></p>
+            </li>
+          </ol>
+        </section>
+      </div>
+
+      <aside class="cv-side">
+        <div class="window cv-box reveal">
+          <div class="window__bar"><span>tools.inv</span><span class="window__btns" aria-hidden="true"><i></i><i></i><i></i></span></div>
+          <div class="cv-box__body">
+            <h3 class="cv-box__label">Product &amp; Web</h3>
+            <ul class="tags"><li>Figma</li><li>Claude Code</li><li>Wix Studio</li><li>Framer</li></ul>
+            <h3 class="cv-box__label">Visual &amp; Branding</h3>
+            <ul class="tags"><li>Photoshop</li><li>Illustrator</li><li>InDesign</li><li>Lightroom</li></ul>
+            <h3 class="cv-box__label">Motion</h3>
+            <ul class="tags"><li>After Effects</li><li>Premiere Pro</li><li>DaVinci Resolve</li></ul>
+          </div>
+        </div>
+
+        <div class="window cv-box reveal">
+          <div class="window__bar"><span>ai_tools.inv</span><span class="window__btns" aria-hidden="true"><i></i><i></i><i></i></span></div>
+          <div class="cv-box__body">
+            <h3 class="cv-box__label">Research</h3>
+            <ul class="tags"><li>Claude</li><li>Gemini Pro</li><li>ChatGPT</li></ul>
+            <h3 class="cv-box__label">UI &amp; Prototyping</h3>
+            <ul class="tags"><li>Claude Code</li><li>Lovable</li><li>Figma AI</li><li>Stitch</li><li>Google AI Studio</li><li>Uizard</li></ul>
+            <h3 class="cv-box__label">Visual</h3>
+            <ul class="tags"><li>Nano Banana</li><li>Midjourney</li><li>Luma</li><li>Runway</li></ul>
+          </div>
+        </div>
+
+        <div class="window cv-box reveal">
+          <div class="window__bar"><span>skills.tree</span><span class="window__btns" aria-hidden="true"><i></i><i></i><i></i></span></div>
+          <div class="cv-box__body">
+            <h3 class="cv-box__label">UX Research &amp; Strategy</h3>
+            <ul class="cv-skills">
+              <li>User Flows</li><li>Information Architecture (IA)</li><li>Usability Testing</li>
+              <li>Competitive Analysis</li><li>Wireframing</li><li>User Personas</li>
+            </ul>
+            <h3 class="cv-box__label">UI &amp; Interaction Design</h3>
+            <ul class="cv-skills">
+              <li>Design Systems &amp; Variables</li><li>Prototyping &amp; Interactions</li><li>Responsive &amp; Mobile-first</li>
+              <li>Accessibility (WCAG)</li><li>Figma Mastery (Auto Layout)</li>
+            </ul>
+            <h3 class="cv-box__label">Print &amp; Production</h3>
+            <ul class="cv-skills">
+              <li>Pre-press &amp; file export</li><li>Printing workflows</li>
+            </ul>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <span>© <span id="year">2026</span> Shiran Revivo</span>
+      <span class="footer__made">Designed with passion <span class="px-ico" data-px="heart"></span></span>
+      <a href="index.html">Back home <span class="px-ico" data-px="up"></span></a>
+    </div>
+  </footer>
+
+  <script src="assets/js/data.js?v=62"></script>
+  <script src="assets/js/main.js?v=59"></script>
+</body>
+</html>

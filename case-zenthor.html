@@ -1,0 +1,667 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Zenthor — Complex B2B Dashboard — Shiran Revivo</title>
+  <meta name="description" content="Zenthor, a UX/UI case study by Shiran Revivo: a B2B cybersecurity monitoring dashboard for SOC analysts. Usability testing, market research, persona, user flow, information architecture, wireframes, branding, UI kit and prototype.">
+  <meta name="theme-color" content="#0B0408">
+  <!-- link preview. og:image must become an absolute URL (https://domain/…) once the site has a domain -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Shiran Revivo">
+  <meta property="og:title" content="Zenthor — Complex B2B Dashboard — Shiran Revivo">
+  <meta property="og:description" content="Zenthor, a UX/UI case study by Shiran Revivo: a B2B cybersecurity monitoring dashboard for SOC analysts. Usability testing, market research, persona, user flow, information architecture, wireframes, branding, UI kit and prototype.">
+  <meta property="og:image" content="assets/img/projects/zenthor/cover.jpg">
+  <meta property="og:image:width" content="2000">
+  <meta property="og:image:height" content="1250">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/svg+xml" href="assets/img/logo/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jersey+10&family=Pixelify+Sans:wght@400..700&family=Space+Grotesk:wght@400;500;600&family=VT323&display=swap" rel="stylesheet">
+  <!-- Zenthor's own type, only for the typography specimens on this page -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;800&family=Roboto:wght@300;400;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css?v=92">
+</head>
+<body data-page="project" class="is-case">
+
+  <canvas id="dots" aria-hidden="true"></canvas>
+  <div class="crt" aria-hidden="true"></div>
+
+  <header class="nav" id="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo" aria-label="Shiran Revivo — home">
+        <img class="nav__logo-img" src="assets/img/logo/s-design-logo.svg" alt="s.design" width="140" height="35">
+      </a>
+      <nav class="nav__links" aria-label="Main">
+        <a href="index.html" class="nav__link"><span class="px-ico" data-px="home"></span>Home<span class="nav__num">01</span></a>
+        <a href="projects.html" class="nav__link is-active"><span class="px-ico" data-px="grid"></span>Work<span class="nav__num">02</span></a>
+        <a href="about.html" class="nav__link"><span class="px-ico" data-px="user"></span>About<span class="nav__num">03</span></a>
+        <a href="cv.html" class="nav__link"><span class="px-ico" data-px="doc"></span>CV<span class="nav__num">04</span></a>
+        <a href="contact.html" class="nav__link"><span class="px-ico" data-px="chat"></span>Contact<span class="nav__num">05</span></a>
+      </nav>
+      <div class="nav__actions">
+        <button class="icon-btn" id="soundBtn" type="button" aria-pressed="false" aria-label="Turn sound on"><span class="px-ico" data-px="mute"></span></button>
+        <button class="icon-btn nav__menu" id="menuBtn" type="button" aria-expanded="false" aria-label="Menu"><span class="px-ico" data-px="menu"></span></button>
+      </div>
+    </div>
+  </header>
+
+  <div class="hud" aria-hidden="true">
+    <span>LVL <b>02</b> — case study</span>
+    <span id="hudCoords">X <b>0000</b> · Y <b>0000</b></span>
+  </div>
+
+  <main class="cs">
+    <!-- ============ HEAD (slide 1) ============ -->
+    <section class="page-head project-head cs-head">
+      <div class="container">
+        <a class="project-head__back reveal" href="projects.html"><span class="px-ico" data-px="arrowL"></span>All projects</a>
+        <p class="eyebrow reveal"><span class="px-ico" data-px="diamond"></span>02 / UX/UI Case study</p>
+        <h1 class="project-head__title glow reveal" style="--d:.08s"><span data-scramble>Zenthor</span></h1>
+        <p class="project-head__sub reveal" style="--d:.16s">UX/UI Case Study · B2B Dashboard</p>
+
+        <div class="cs-hero cs-hero--wide">
+          <div class="cs-hero__info reveal" style="--d:.2s">
+            <dl class="cs-meta">
+              <div><dt>Project</dt><dd>B2B Cybersecurity Monitoring System</dd></div>
+              <div><dt>By</dt><dd>Shiran Revivo | Elisheva Ben-Ari</dd></div>
+              <div><dt>Time frame</dt><dd>1 month</dd></div>
+              <div><dt>Tools</dt><dd>Figma · Illustrator · Photoshop · Gemini</dd></div>
+            </dl>
+            <nav class="cs-toc" aria-label="Case study sections">
+              <p class="cs-toc__label">Levels</p>
+              <ol>
+                <li><a href="#overview">Overview</a></li>
+                <li><a href="#process">Process</a></li>
+                <li><a href="#usability">Usability testing</a></li>
+                <li><a href="#problem">Problem</a></li>
+                <li><a href="#pain-points">Pain points</a></li>
+                <li><a href="#market">Market</a></li>
+                <li><a href="#persona">Persona</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#user-flow">User flow</a></li>
+                <li><a href="#ia">IA</a></li>
+                <li><a href="#wireframes">Wireframes</a></li>
+                <li><a href="#branding">Branding</a></li>
+                <li><a href="#design-system">Design system</a></li>
+                <li><a href="#ui-kit">UI kit</a></li>
+                <li><a href="#one-pager">One-pager</a></li>
+                <li><a href="#social">Social</a></li>
+                <li><a href="#prototype">Prototype</a></li>
+              </ol>
+            </nav>
+          </div>
+          <figure class="cs-media cs-hero__shot reveal" style="--d:.28s">
+            <img src="assets/img/projects/zenthor/01-hero.png" alt="Zenthor on two iMacs: the threat dashboard with KPI cards, severity breakdown and affected systems, and the Hello Again sign-in screen" width="1643" height="922" fetchpriority="high">
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PROJECT OVERVIEW (slide 1) ============ -->
+    <section class="cs-sec" id="overview">
+      <div class="container">
+        <div class="cs-text">
+          <p class="eyebrow reveal"><span class="px-ico" data-px="diamond"></span>01 / Overview</p>
+          <h2 class="cs-h2 reveal" style="--d:.06s">Project overview</h2>
+          <p class="cs-lead reveal" style="--d:.1s">This project introduces a centralized platform designed to proactively monitor, analyze, and mitigate phishing breaches.</p>
+          <p class="reveal" style="--d:.12s">By transforming complex security data into a streamlined, intuitive interface, the system empowers analysts to quickly pinpoint critical threats and execute rapid responses, effectively bridging the gap between advanced threat detection and a seamless user experience.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ DESIGN PROCESS & TIMELINE (slide 2) ============ -->
+    <section class="cs-sec" id="process">
+      <div class="container">
+        <div class="cs-split">
+          <header class="cs-sec__head">
+            <p class="eyebrow reveal"><span class="px-ico" data-px="diamond"></span>02 / Process</p>
+            <h2 class="cs-h2 reveal" style="--d:.06s">Design process &amp; timeline</h2>
+          </header>
+          <figure class="cs-media cs-media--sm reveal" style="--d:.1s">
+            <img src="assets/img/projects/zenthor/02-process.png" alt="The Zenthor dashboard on a tilted iMac" width="923" height="914" loading="lazy">
+          </figure>
+        </div>
+        <ol class="cs-points cs-points--four">
+          <li class="reveal"><span class="cs-points__n">01</span><div><h3>Research &amp; Strategy</h3><p>Understanding users and competitors to build a data-driven product strategy.</p></div></li>
+          <li class="reveal" style="--d:.06s"><span class="cs-points__n">02</span><div><h3>Information Architecture</h3><p>Structuring content and defining user flows for intuitive, seamless navigation.</p></div></li>
+          <li class="reveal" style="--d:.12s"><span class="cs-points__n">03</span><div><h3>Wireframing</h3><p>Creating low-fidelity structural blueprints to map out layouts and functionality.</p></div></li>
+          <li class="reveal" style="--d:.18s"><span class="cs-points__n">04</span><div><h3>UI Design</h3><p>Crafting the final visual language, typography, and interactive user components.</p></div></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============ USABILITY TESTING STRATEGY (slide 2) ============ -->
+    <section class="cs-sec" id="usability">
+      <div class="container">
+        <header class="cs-sec__head">
+          <p class="eyebrow reveal"><span class="px-ico" data-px="diamond"></span>03 / Usability</p>
+          <h2 class="cs-h2 reveal" style="--d:.06s">Usability testing strategy</h2>
+        </header>
+        <div class="cs-cards">
+          <article class="cs-card reveal" style="--d:0.00s">
+            <span class="cs-card__n">01</span>
+            <h3 class="cs-card__title">Alert Triage &amp; Prioritization</h3>
+            <p><b class="cs-card__k">Test scenario</b>Assess the user’s ability to identify the most critical phishing threat from an aggregated alert feed, relying on visual risk scoring rather than chronological order.</p>
+            <p><b class="cs-card__k">What we measured</b>Time on Task (speed of pinpointing the critical threat) and Accuracy (distinguishing real threats from false positives).</p>
+          </article>
+          <article class="cs-card reveal" style="--d:0.06s">
+            <span class="cs-card__n">02</span>
+            <h3 class="cs-card__title">Rapid Remediation &amp; Control</h3>
+            <p><b class="cs-card__k">Test scenario</b>Evaluate the efficiency of executing a containment action (e.g., block sender) or marking an alert as “Normal Behavior” directly from the main dashboard, without navigating to secondary screens.</p>
+            <p><b class="cs-card__k">What we measured</b>Task Success Rate for error-free completion, and Click Count to ensure the process requires minimal steps and reduces operational noise.</p>
+          </article>
+          <article class="cs-card reveal" style="--d:0.12s">
+            <span class="cs-card__n">03</span>
+            <h3 class="cs-card__title">Progressive Disclosure</h3>
+            <p><b class="cs-card__k">Test scenario</b>Test the intuitiveness of the investigation flow transitioning from a high-level incident summary down into raw technical logs to uncover historical context.</p>
+            <p><b class="cs-card__k">What we measured</b>Navigation Efficiency, measured by tracking the misclick rate to ensure seamless transitions between information layers.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PROBLEM & SOLUTION (slide 3) ============ -->
+    <section class="cs-sec" id="problem">
+      <div class="container">
+        <header class="cs-sec__head">
+          <p class="eyebrow reveal"><span class="px-ico" data-px="diamond"></span>04 / Problem</p>
+          <h2 class="cs-h2 reveal" style="--d:.06s">Problem &amp; solution</h2>
+        </header>
+        <div class="cs-split cs-split--even">
+          <article class="window cs-window reveal">
+            <div class="window__bar"><span>problem.txt</span><span class="window__btns" aria-hidden="true"><i></i><i></i><i></i></span></div>
+            <div class="cs-window__body">
+              <h3>Problem</h3>
+              <p>SOC analysts drown in high-volume alerts, where 80% are false positives. Constantly jumping between disconnected systems to gather basic context creates severe cognitive load, obscuring critical threats and delaying response times.</p>
+            </div>
+          </article>
+          <article class="window cs-window reveal" style="--d:.08s">
+            <div class="window__bar"><span>solution.txt</span><span class="window__btns" aria-hidden="true"><i></i><i></i><i></i></span></div>
+            <div class="cs-window__body">
+              <h3>The Solution</h3>
+              <p>We designed a value-driven “Unified Cockpit” that aggregates raw events into prioritized incidents using visual risk-scoring. This single-pane workspace provides immediate context and one-click remediation, filtering out noise and allowing analysts to neutralize threats without breaking their mental flow.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PAIN POINTS (slide 3) ============ -->
+    <section class="cs-sec" id="pain-points">
+      <div class="container">
+        <header class="cs-sec__head">
+          <p class="eyebrow reveal"><span class="px-ico" data-px="diamond"></span>05 / Pain points</p>
+          <h2 class="cs-h2 reveal" style="--d:.06s">Pain points</h2>
+        </header>
+        <div class="cs-features cs-features--two">
+          <article class="reveal"><span class="cs-features__n">P1</span><h3>Alert Fatigue</h3><p>High volumes of raw events and false positives create an overwhelming cognitive load, making it difficult for analysts to identify critical threats in real-time.</p></article>
+          <article class="reveal" style="--d:.06s"><span class="cs-features__n">P2</span><h3>Context Switching &amp; Fragmented Focus</h3><p>Analysts are forced to jump between disconnected management tools to gather data and take action, breaking their mental flow and significantly delaying response times.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ MARKET RESEARCH (slide 4) ============ -->
+    <section class="cs-sec" id="market">
+      <div class="container">
+        <header class="cs-sec__head">
+          <p class="eyebrow reveal"><span class="px-ico" data-px="diamond"></span>06 / Research</p>
+          <h2 class="cs-h2 reveal" style="--d:.06s">Market research</h2>
+        </header>
+        <div class="cs-table-wrap reveal">
+          <table class="cs-table">
+            <thead>
+              <tr><th scope="col">Company</th><th scope="col">Target audience</th><th scope="col">Key strengths</th><th scope="col">Main weaknesses</th></tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">SpyCloud</th><td data-label="Target audience">Enterprise SOC</td><td data-label="Key strengths">Automated remediation, strong stealer logs focus.</td><td data-label="Main weaknesses">Alert fatigue, lacks full-text document search.</td></tr>
+              <tr><th scope="row">Breachsense</th><td data-label="Target audience">SecOps &amp; MSPs</td><td data-label="Key strengths">Full-text leaked doc search, dark web forum tracking.</td><td data-label="Main weaknesses">Lacks broader brand and social media protection.</td></tr>
+              <tr><th scope="row">ZeroFox</th><td data-label="Target audience">Brand Protection</td><td data-label="Key strengths">Social media monitoring, active site takedowns.</td><td data-label="Main weaknesses">Complex UI/configuration, less focus on deep logs.</td></tr>
+              <tr><th scope="row">ReliaQuest</th><td data-label="Target audience">Enterprise SOC</td><td data-label="Key strengths">Correlates external/internal threats, SOC integration.</td><td data-label="Main weaknesses">Heavy platform, expensive for SMBs, lost standalone product.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PERSONA (slide 4) ============ -->
+    <section class="cs-sec" id="persona">
+      <div class="container">
+        <header class="cs-sec__head">
+          <p class="eyebrow reveal"><span class="px-ico" data-px="diamond"></span>07 / Persona</p>
+          <h2 class="cs-h2 reveal" style="--d:.06s">Persona</h2>
+        </header>
+        <article class="window cs-persona reveal">
+          <div class="window__bar"><span>persona_01.usr</span><span class="window__btns" aria-hidden="true"><i></i><i></i><i></i></span></div>
+          <div class="cs-persona__body">
+            <div class="cs-persona__who">
+              <img class="cs-persona__photo cs-persona__photo--round" src="assets/img/projects/zenthor/06-persona.png" alt="Robert Levy, smiling, in a black turtleneck" width="720" height="720" loading="lazy">
+              <h3 class="cs-persona__name">Robert Levy</h3>
+              <dl class="cs-meta cs-meta--tight">
+                <div><dt>Age</dt><dd>27</dd></div>
+                <div><dt>Role</dt><dd>SOC Analyst</dd></div>
+                <div><dt>Education</dt><dd>B.Sc. in Computer Science &amp; Cybersecurity Certifications</dd></div>
+              </dl>
+              <blockquote class="cs-quote">“I spend more time closing false positives and jumping between tools than actually hunting real threats.”</blockquote>
+            </div>
+            <div class="cs-persona__info">
+              <div>
+                <h4>Bio</h4>
+                <p>Robert is a dedicated SOC Analyst at an MSSP, monitoring security for dozens of organizations during demanding shifts. Operating across 3–4 screens simultaneously, he handles an average of 30–50 security events daily. His core expertise lies in log analysis, anomaly detection, and rapid forensic investigations.</p>
+              </div>
+              <div>
+                <h4>Frustrations &amp; pain points</h4>
+                <ul class="cs-list">
+                  <li><strong>Extreme Alert Fatigue:</strong> Bombarded with 30–50 alerts daily, where 80% are false positives. Struggles to distinguish real, critical threats from the overwhelming noise.</li>
+                  <li><strong>Missing Immediate Context:</strong> Forced to jump between 4–5 different systems just to gather necessary data for a single incident. This context-switching wastes precious time and breaks mental flow.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ FEATURES (slide 5) ============ -->
+    <section class="cs-sec" id="features">
+      <div class="container">
+        <header class="cs-sec__head">
+          <p class="eyebrow reveal"><span class="px-ico" data-px="diamond"></span>08 / Features</p>
+          <h2 class="cs-h2 reveal" style="--d:.06s">Features</h2>
+        </header>
+        <div class="cs-split cs-split--even">
+          <article class="window cs-window reveal">
+            <div class="window__bar"><span>nice_to_have.txt</span><span class="window__btns" aria-hidden="true"><i></i><i></i><i></i></span></div>
+            <div class="cs-window__body">
+              <h3>Nice to have</h3>
+              <ul class="cs-list">
+                <li>Global Threat Map — Visual representation worldwide</li>
+                <li>Relation Graph — Visualizing attack spread</li>
+                <li>Kanban View — Task management workflow</li>
+                <li>AI Co-Pilot — Natural language summaries</li>
+              </ul>
+            </div>
+          </article>
+          <article class="window cs-window reveal" style="--d:.08s">
+            <div class="window__bar"><span>must_have.txt</span><span class="window__btns" aria-hidden="true"><i></i><i></i><i></i></span></div>
+            <div class="cs-window__body">
+              <h3>Must have</h3>
+              <ul class="cs-list">
+                <li>High-impact KPI cards (Open/Critical) and Recent Activity feed</li>
+                <li>Color-coded severity (Red/Orange/Yellow), Multi-attribute filtering</li>
+                <li>Unified Investigation View (Timeline, Entity Mapping &amp; Response Controls)</li>
+                <li>Dark Mode — SOC industry standard</li>
+                <li>Smart Aggregation / Incident Grouping</li>
+                <li>Modular Widgets — Customizable dashboard</li>
+                <li>Dynamic Risk Scoring based on past behavior with VIP tagging</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ USER FLOW (slide 5) ============ -->
+    <section class="cs-sec" id="user-flow">
+      <div class="container">
+        <header class="cs-sec__head">
+          <p class="eyebrow reveal"><span class="px-ico" data-px="diamond"></span>09 / Flow</p>
+          <h2 class="cs-h2 reveal" style="--d:.06s">User flow</h2>
+        </header>
+        <div class="ia reveal" role="img" aria-label="User flow: Start, Login, Dashboard, High Severity Alert. No: back to the Dashboard. Yes: Event Detail Screen, Confirmation Modal (Actions and Impact), Executing Remediation Modal (In-Progress), Remediation (All Success), Dashboard (Updated, Critical Alert Clear), End.">
+          <div class="ia__flow" aria-hidden="true">
+            <span class="ia__node ia__node--key">Start</span>
+            <span class="ia__v"></span>
+            <span class="ia__node">Login</span>
+            <span class="ia__v"></span>
+            <span class="ia__node">Dashboard</span>
+            <span class="ia__v"></span>
+            <span class="ia__node ia__node--key">High Severity Alert</span>
+            <span class="ia__v"></span>
+            <div class="ia__row">
+              <div class="ia__col"><span class="ia__node ia__node--soft">Back to Dashboard<span class="ia__label">No</span></span></div>
+              <div class="ia__col">
+                <span class="ia__node">Event Detail Screen<span class="ia__label">Yes</span></span>
+                <span class="ia__v"></span>
+                <span class="ia__node">Confirmation Modal (Actions &amp; Impact)</span>
+                <span class="ia__v"></span>
+                <span class="ia__node">Executing Remediation Modal (In-Progress)</span>
+                <span class="ia__v"></span>
+                <span class="ia__node">Remediation (All Success)</span>
+                <span class="ia__v"></span>
+                <span class="ia__node">Dashboard (Updated, Critical Alert Clear)</span>
+                <span class="ia__v"></span>
+                <span class="ia__node ia__node--key">End</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ INFORMATION ARCHITECTURE (slide 6) ============ -->
+    <section class="cs-sec" id="ia">
+      <div class="container">
+        <header class="cs-sec__head">
+          <p class="eyebrow reveal"><span class="px-ico" data-px="diamond"></span>10 / Structure</p>
+          <h2 class="cs-h2 reveal" style="--d:.06s">Information architecture</h2>
+        </header>
+
+        <div class="ia reveal" role="img" aria-label="Zenthor platform map: the platform root splits into the Top Bar Navigation (Global Search, User Profile with Settings and Account, Notification Center with Alerts) and the Sidebar Navigation, which leads to the Dashboard.">
+          <div class="ia__branch" aria-hidden="true">
+            <p class="ia__caption">Zenthor Platform Root <span>— navigation</span></p>
+            <div class="ia__row ia__row--tabs">
+              <div class="ia__col">
+                <span class="ia__node ia__node--key">Top Bar Navigation</span>
+                <ul class="ia__tree">
+                  <li><span class="ia__node">Global Search</span></li>
+                  <li><span class="ia__node">User Profile</span>
+                    <ul class="ia__tree">
+                      <li><span class="ia__node">Settings</span></li>
+                      <li><span class="ia__node">Account</span></li>
+                    </ul>
+                  </li>
+                  <li><span class="ia__node">Notification Center</span>
+                    <ul class="ia__tree">
+                      <li><span class="ia__node">Alerts</span></li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+              <div class="ia__col">
+                <span class="ia__node ia__node--key">Sidebar Navigation</span>
+                <ul class="ia__tree">
+                  <li><span class="ia__node ia__node--key">Dashboard</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ia ia--next reveal" role="img" aria-label="The Dashboard holds the Summary Cards Section (Total Incidents, AI-Prioritized Threats, Average Resolution Time), the Visual Data Section (Security Incident Graph, Affected Systems List) and the Incident Management Table (Filters, Search Incidents, Incident List, which opens the Incident Detail View and shows Severity, Source, Timestamp, Status).">
+          <div class="ia__branch" aria-hidden="true">
+            <p class="ia__caption">Dashboard <span>— sections</span></p>
+            <div class="ia__row ia__row--tabs">
+              <div class="ia__col">
+                <span class="ia__node ia__node--key">Summary Cards Section</span>
+                <ul class="ia__tree">
+                  <li><span class="ia__node">Total Incidents</span></li>
+                  <li><span class="ia__node">AI-Prioritized Threats</span></li>
+                  <li><span class="ia__node">Average Resolution Time</span></li>
+                </ul>
+              </div>
+              <div class="ia__col">
+                <span class="ia__node ia__node--key">Visual Data Section</span>
+                <ul class="ia__tree">
+                  <li><span class="ia__node">Security Incident Graph</span></li>
+                  <li><span class="ia__node">Affected Systems List</span></li>
+                </ul>
+              </div>
+              <div class="ia__col">
+                <span class="ia__node ia__node--key">Incident Management Table</span>
+                <ul class="ia__tree">
+                  <li><span class="ia__node">Filters</span></li>
+                  <li><span class="ia__node">Search Incidents</span></li>
+                  <li><span class="ia__node">Incident List</span>
+                    <ul class="ia__tree">
+                      <li><span class="ia__node ia__node--key">Incident Detail View</span></li>
+                      <li><span class="ia__node ia__node--soft ia__node--wrap ia__node--wrap-lg">Severity, Source, Timestamp, Status</span></li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ia ia--next reveal" role="img" aria-label="The Incident Detail View holds Incident Timeline and Status, Email Analysis (Email Subject, Sender Information, Content Preview, Quarantine Email Action), Affected Users List (User Details with Reset Password and Isolate User actions) and Indicators of Compromise (Malicious URLs/IPs, Block All Action).">
+          <div class="ia__branch" aria-hidden="true">
+            <p class="ia__caption">Incident Detail View <span>— investigation</span></p>
+            <div class="ia__row ia__row--tabs">
+              <div class="ia__col">
+                <span class="ia__node ia__node--key">Incident Timeline &amp; Status</span>
+              </div>
+              <div class="ia__col">
+                <span class="ia__node ia__node--key">Email Analysis</span>
+                <ul class="ia__tree">
+                  <li><span class="ia__node">Email Subject</span></li>
+                  <li><span class="ia__node">Sender Information</span></li>
+                  <li><span class="ia__node">Content Preview</span></li>
+                  <li><span class="ia__node ia__node--wrap">Quarantine Email Action</span></li>
+                </ul>
+              </div>
+              <div class="ia__col">
+                <span class="ia__node ia__node--key">Affected Users List</span>
+                <ul class="ia__tree">
+                  <li><span class="ia__node">User Details</span>
+                    <ul class="ia__tree">
+                      <li><span class="ia__node ia__node--wrap">Reset Password Action</span></li>
+                      <li><span class="ia__node ia__node--wrap">Isolate User Action</span></li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+              <div class="ia__col">
+                <span class="ia__node ia__node--key">Indicators of Compromise</span>
+                <ul class="ia__tree">
+                  <li><span class="ia__node">Malicious URLs/IPs</span></li>
+                  <li><span class="ia__node">Block All Action</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ia ia--next reveal" role="img" aria-label="The AI Remediation Hub in the Incident Detail View: Remediate All Primary Action, Step 1 Confirmation Modal, Review Impact and Proposed Actions, Step 2 Execution Modal with a Progress Bar and Real-time Action Logs, Step 3 Result Modal, Success/Failure Report, then Final Report or Return to Dashboard.">
+          <div class="ia__branch" aria-hidden="true">
+            <p class="ia__caption">Incident Detail View <span>— AI Remediation Hub</span></p>
+            <div class="ia__flow">
+              <span class="ia__node ia__node--key">AI Remediation Hub</span>
+              <span class="ia__v"></span>
+              <span class="ia__node ia__node--key">Remediate All Primary Action</span>
+              <span class="ia__v"></span>
+              <span class="ia__node">Step 1: Confirmation Modal</span>
+              <span class="ia__v"></span>
+              <span class="ia__node">Review Impact &amp; Proposed Actions</span>
+              <span class="ia__v"></span>
+              <span class="ia__node">Step 2: Execution Modal</span>
+              <span class="ia__v"></span>
+              <div class="ia__row">
+                <div class="ia__col"><span class="ia__node">Progress Bar</span></div>
+                <div class="ia__col">
+                  <span class="ia__node">Real-time Action Logs</span>
+                  <span class="ia__v"></span>
+                  <span class="ia__node">Step 3: Result Modal</span>
+                  <span class="ia__v"></span>
+                  <span class="ia__node">Success/Failure Report</span>
+                  <span class="ia__v"></span>
+                  <div class="ia__row">
+                    <div class="ia__col"><span class="ia__node">Final Report</span></div>
+                    <div class="ia__col"><span class="ia__node ia__node--key">Return to Dashboard</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ WIREFRAMES (slide 6) ============ -->
+    <section class="cs-sec" id="wireframes">
+      <div class="container">
+        <header class="cs-sec__head">
+          <p class="eyebrow reveal"><span class="px-ico" data-px="diamond"></span>11 / Low-fi</p>
+          <h2 class="cs-h2 reveal" style="--d:.06s">Wireframes</h2>
+        </header>
+        <figure class="cs-media reveal">
+          <img src="assets/img/projects/zenthor/06-wireframes.png" alt="Grey wireframes: sign-in, the main dashboard, incident details, the analyst profile and the Executing Remediation modal over a dimmed screen" width="2377" height="1902" loading="lazy">
+        </figure>
+      </div>
+    </section>
+
+    <!-- ============ LOGO & BRANDING (slide 7) ============ -->
+    <section class="cs-sec" id="branding">
+      <div class="container">
+        <div class="cs-text">
+          <p class="eyebrow reveal"><span class="px-ico" data-px="diamond"></span>12 / Brand</p>
+          <h2 class="cs-h2 reveal" style="--d:.06s">Logo &amp; branding</h2>
+          <p class="reveal">Zenthor combines clarity and protection: “Zen” represents calm control in complex environments, while “Thor” symbolizes strength and defense against cyber threats. Together, the name reflects a system that helps security analysts manage threats efficiently.</p>
+          <p class="reveal">The Gamma Orionis font was chosen for its modern, geometric style, which conveys technology, precision, and reliability, key qualities for a cybersecurity platform.</p>
+        </div>
+        <div class="cs-brandmarks">
+          <div>
+            <h3 class="cs-h3 reveal">Logo</h3>
+            <img class="cs-brandmarks__logo reveal" src="assets/img/projects/zenthor/logo.svg" alt="Zenthor logo: an orange wave mark and the white wordmark" width="570" height="127" loading="lazy">
+          </div>
+          <div>
+            <h3 class="cs-h3 reveal" style="--d:.06s">Responsive</h3>
+            <img class="cs-brandmarks__mark reveal" style="--d:.08s" src="assets/img/projects/zenthor/mark-e56a2e.svg" alt="The responsive logo: the orange mark alone" width="150" height="127" loading="lazy">
+          </div>
+        </div>
+        <div class="cs-split cs-split--pair">
+          <figure class="cs-media reveal"><img src="assets/img/projects/zenthor/07-pins.jpg" alt="Three orange pin buttons with the white Zenthor mark" width="1400" height="1050" loading="lazy"></figure>
+          <figure class="cs-media reveal" style="--d:.08s"><img src="assets/img/projects/zenthor/07-building.jpg" alt="The Zenthor logo as a sign on a glass office building" width="1400" height="1050" loading="lazy"></figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ TYPOGRAPHY & COLORS (slide 8) ============ -->
+    <section class="cs-sec" id="design-system">
+      <div class="container">
+        <header class="cs-sec__head">
+          <p class="eyebrow reveal"><span class="px-ico" data-px="diamond"></span>13 / Design system</p>
+          <h2 class="cs-h2 reveal" style="--d:.06s">Typography &amp; colors</h2>
+        </header>
+
+        <h3 class="cs-h3 reveal">Typography</h3>
+        <div class="cs-type">
+          <div class="cs-type__row reveal" style="--ff: 'Montserrat', sans-serif">
+            <p class="cs-type__name cs-type__name--long">Montserrat</p>
+            <p class="cs-type__abc">ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>abcdefghijklmnopqrstuvwxyz<br>0123456789</p>
+            <div class="cs-type__meta">
+              <p class="cs-type__use">Weights</p>
+              <ul class="cs-type__weights"><li style="font-weight:300">Light</li><li>Regular</li><li style="font-weight:700">Bold</li><li style="font-weight:800">Extra Bold</li></ul>
+            </div>
+          </div>
+          <div class="cs-type__row reveal" style="--ff: 'Roboto', sans-serif">
+            <p class="cs-type__name">Roboto</p>
+            <p class="cs-type__abc">ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>abcdefghijklmnopqrstuvwxyz<br>0123456789</p>
+            <div class="cs-type__meta">
+              <p class="cs-type__use">Weights</p>
+              <ul class="cs-type__weights"><li style="font-weight:300">Light</li><li>Regular</li><li style="font-weight:700">Bold</li><li style="font-weight:800">Extra Bold</li></ul>
+            </div>
+          </div>
+        </div>
+
+        <h3 class="cs-h3 reveal">Colors</h3>
+        <ul class="cs-colors cs-colors--mark">
+          <li class="reveal" style="--d:0.00s"><img class="cs-colors__mark cs-colors__mark--outline" src="assets/img/projects/zenthor/mark-101010.svg" alt="The Zenthor mark in #101010" width="150" height="127" loading="lazy"><code>#101010</code></li>
+          <li class="reveal" style="--d:0.06s"><img class="cs-colors__mark cs-colors__mark--outline" src="assets/img/projects/zenthor/mark-282828.svg" alt="The Zenthor mark in #282828" width="150" height="127" loading="lazy"><code>#282828</code></li>
+          <li class="reveal" style="--d:0.12s"><img class="cs-colors__mark" src="assets/img/projects/zenthor/mark-e56a2e.svg" alt="The Zenthor mark in orange #E56A2E" width="150" height="127" loading="lazy"><code>#E56A2E</code></li>
+          <li class="reveal" style="--d:0.18s"><img class="cs-colors__mark" src="assets/img/projects/zenthor/mark-ffffff.svg" alt="The Zenthor mark in white #FFFFFF" width="150" height="127" loading="lazy"><code>#FFFFFF</code></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ UI KIT (slide 9) ============ -->
+    <section class="cs-sec" id="ui-kit">
+      <div class="container">
+        <header class="cs-sec__head">
+          <p class="eyebrow reveal"><span class="px-ico" data-px="diamond"></span>14 / Components</p>
+          <h2 class="cs-h2 reveal" style="--d:.06s">UI kit</h2>
+        </header>
+        <figure class="cs-media cs-media--wide reveal">
+          <div class="cs-scroll-x"><img src="assets/img/projects/zenthor/09-ui-kit.png" alt="Zenthor UI kit: more and next buttons, Contact Us and View Alerts buttons in their states, twelve icon buttons, a dropdown menu (View Full Headers, Download EML, Search Similar) and status tags from Investigating to VIP" width="2400" height="907" loading="lazy"></div>
+          <figcaption class="cs-swipe" aria-hidden="true">swipe <span class="px-ico" data-px="arrow"></span></figcaption>
+        </figure>
+
+        <div class="cs-split cs-split--tokens">
+          <div class="cs-table-wrap reveal">
+            <table class="cs-table cs-tokens">
+              <thead><tr><th scope="col">Name</th><th scope="col">Value</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">Primary</th><td><i class="cs-tokens__chip" style="--c:#FFFFFF"></i>FFFFFF</td></tr>
+                <tr><th scope="row">Primary</th><td><i class="cs-tokens__chip" style="--c:#101010"></i>101010</td></tr>
+                <tr><th scope="row">Primary</th><td><i class="cs-tokens__chip" style="--c:#282828"></i>282828</td></tr>
+                <tr><th scope="row">Primary</th><td><i class="cs-tokens__chip" style="--c:#E56A2E"></i>E56A2E</td></tr>
+                <tr><th scope="row">Stroke</th><td><i class="cs-tokens__chip" style="--c:linear-gradient(135deg,#8a8a8a,#2a2a2a)"></i>Linear</td></tr>
+                <tr><th scope="row">Cards_Corner</th><td>16</td></tr>
+                <tr><th scope="row">Icons_Corner</th><td>13</td></tr>
+                <tr><th scope="row">BTN_Corner</th><td>12</td></tr>
+                <tr><th scope="row">Label_Corner</th><td>8</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <figure class="cs-media reveal" style="--d:.08s">
+            <img src="assets/img/projects/zenthor/09-laptop.png" alt="The incident details screen on a laptop: Suspected Email Account Takeover, the incident timeline, email preview and affected users" width="1385" height="896" loading="lazy">
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ONE-PAGER (slide 10) ============ -->
+    <section class="cs-sec" id="one-pager">
+      <div class="container">
+        <header class="cs-sec__head">
+          <p class="eyebrow reveal"><span class="px-ico" data-px="diamond"></span>15 / Web</p>
+          <h2 class="cs-h2 reveal" style="--d:.06s">One-pager</h2>
+          <a class="cs-jump reveal" style="--d:.1s" href="project.html?id=zenthor-one-pager">See the one pager<span class="px-ico" data-px="arrow"></span></a>
+        </header>
+        <figure class="cs-media reveal">
+          <img src="assets/img/projects/zenthor/10-one-pager.png" alt="The Zenthor landing page on a display (Detect. Investigate. Neutralize.) and the pricing section on a laptop: Essentials, Pro and Enterprise" width="1846" height="985" loading="lazy">
+        </figure>
+      </div>
+    </section>
+
+    <!-- ============ SOCIAL MEDIA (slide 10) ============ -->
+    <section class="cs-sec" id="social">
+      <div class="container">
+        <header class="cs-sec__head">
+          <p class="eyebrow reveal"><span class="px-ico" data-px="diamond"></span>16 / Social</p>
+          <h2 class="cs-h2 reveal" style="--d:.06s">Social media</h2>
+        </header>
+        <figure class="cs-media reveal">
+          <img src="assets/img/projects/zenthor/10-social.png" alt="Zenthor Instagram posts: Everything your SOC needs in one platform, 82% of phishing attacks are missed by traditional email security, Detect. Investigate. Neutralize. and Why Zenthor" width="1798" height="921" loading="lazy">
+        </figure>
+      </div>
+    </section>
+
+    <!-- ============ PROTOTYPE ============ -->
+    <section class="cs-sec" id="prototype">
+      <div class="container">
+        <header class="cs-sec__head">
+          <p class="eyebrow reveal"><span class="px-ico" data-px="diamond"></span>17 / Play it</p>
+          <h2 class="cs-h2 reveal" style="--d:.06s">Prototype</h2>
+        </header>
+        <figure class="window project__embed reveal">
+          <div class="window__bar"><span>zenthor_prototype.fig</span><span class="window__btns" aria-hidden="true"><i></i><i></i><i></i></span></div>
+          <div class="project__frame project__frame--screen" style="--ratio:16 / 10">
+            <iframe src="https://embed.figma.com/proto/TMKxatACkOTpVAt59sTbfK/Zenthor-Complex-System?node-id=164-2514&amp;viewport=-518%2C-93%2C0.06&amp;scaling=scale-down-width&amp;content-scaling=fixed&amp;starting-point-node-id=164%3A2514&amp;page-id=1%3A220&amp;embed-host=share"
+              title="Zenthor — Desktop prototype" loading="lazy" allowfullscreen
+              sandbox="allow-same-origin allow-scripts allow-pointer-lock allow-forms allow-popups allow-popups-to-escape-sandbox"></iframe>
+          </div>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ============ END (slide 11) ============ -->
+    <section class="cs-sec cs-end">
+      <div class="container">
+        <p class="cs-end__title glow reveal"><span class="px-ico" data-px="spark"></span><span data-scramble>Thank you for watching</span></p>      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <span>© <span id="year">2026</span> Shiran Revivo</span>
+      <span class="footer__made">Designed with passion <span class="px-ico" data-px="heart"></span></span>
+      <a href="#top" onclick="scrollTo({top:0});return false">Back to top <span class="px-ico" data-px="up"></span></a>
+    </div>
+  </footer>
+
+  <script src="assets/js/data.js?v=62"></script>
+  <script src="assets/js/main.js?v=59"></script>
+</body>
+</html>

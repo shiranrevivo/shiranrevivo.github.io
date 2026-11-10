@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About — Shiran Revivo</title>
+  <meta name="description" content="About Shiran Revivo — UX/UI and Visual Designer.">
+  <meta name="theme-color" content="#0B0408">
+  <!-- link preview. og:image must become an absolute URL (https://domain/…) once the site has a domain -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Shiran Revivo">
+  <meta property="og:title" content="About — Shiran Revivo">
+  <meta property="og:description" content="About Shiran Revivo — UX/UI and Visual Designer.">
+  <meta property="og:image" content="assets/img/og/share.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/svg+xml" href="assets/img/logo/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jersey+10&family=Pixelify+Sans:wght@400..700&family=Space+Grotesk:wght@400;500;600&family=VT323&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css?v=92">
+</head>
+<body data-page="about">
+
+  <canvas id="dots" aria-hidden="true"></canvas>
+  <div class="crt" aria-hidden="true"></div>
+
+  <header class="nav" id="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo" aria-label="Shiran Revivo — home">
+        <img class="nav__logo-img" src="assets/img/logo/s-design-logo.svg" alt="s.design" width="140" height="35">
+      </a>
+      <nav class="nav__links" aria-label="Main">
+        <a href="index.html" class="nav__link"><span class="px-ico" data-px="home"></span>Home<span class="nav__num">01</span></a>
+        <a href="projects.html" class="nav__link"><span class="px-ico" data-px="grid"></span>Work<span class="nav__num">02</span></a>
+        <a href="about.html" class="nav__link is-active" aria-current="page"><span class="px-ico" data-px="user"></span>About<span class="nav__num">03</span></a>
+        <a href="cv.html" class="nav__link"><span class="px-ico" data-px="doc"></span>CV<span class="nav__num">04</span></a>
+        <a href="contact.html" class="nav__link"><span class="px-ico" data-px="chat"></span>Contact<span class="nav__num">05</span></a>
+      </nav>
+      <div class="nav__actions">
+        <button class="icon-btn" id="soundBtn" type="button" aria-pressed="false" aria-label="Turn sound on"><span class="px-ico" data-px="mute"></span></button>
+        <button class="icon-btn nav__menu" id="menuBtn" type="button" aria-expanded="false" aria-label="Menu"><span class="px-ico" data-px="menu"></span></button>
+      </div>
+    </div>
+  </header>
+
+  <div class="hud" aria-hidden="true">
+    <span>LVL <b>03</b> — about</span>
+    <span id="hudCoords">X <b>0000</b> · Y <b>0000</b></span>
+  </div>
+
+  <main>
+    <section class="page-head">
+      <div class="container">
+        <p class="eyebrow reveal"><span class="px-ico" data-px="diamond"></span>03 / About</p>
+        <h1 class="page-head__title glow reveal" style="--d:.08s"><span data-scramble>Player profile</span></h1>
+        <p class="page-head__sub reveal" style="--d:.16s">The designer behind the pixels — how I work and what I love making.</p>
+      </div>
+    </section>
+
+    <section class="section about page-body">
+      <div class="container">
+        <div class="about__grid">
+          <figure class="window portrait reveal">
+            <div class="window__bar"><span>portrait.bmp</span><span class="window__btns" aria-hidden="true"><i></i><i></i><i></i></span></div>
+            <div class="portrait__screen">
+              <canvas id="portrait" role="img" aria-label="Portrait of Shiran Revivo"></canvas>
+              <div class="portrait__tint" aria-hidden="true"></div>
+              <div class="portrait__grid" aria-hidden="true"></div>
+            </div>
+            <figcaption class="window__foot"><span>RES <b id="portraitRes">10×13</b></span><span id="portraitState">Signal found</span></figcaption>
+          </figure>
+
+          <div class="about__text">
+            <p class="lead reveal">A film frame has a few seconds to show you where to look. So does a screen.</p>
+            <p class="reveal" style="--d:.08s">I spent years designing sets for film, always thinking about the person watching. Now I design digital products with that same focus: what they see first, what they need next, and what they&rsquo;ll never notice because it just works.</p>
+            <p class="reveal" style="--d:.14s">I adapt to every product and its needs. Before anything else, I dive deep into its world: the people who&rsquo;ll use it, the field it lives in and the feeling it should carry, both functionally and visually. The design grows from there, shaped by the product, not by my habits.</p>
+
+            <a class="scroll-cue reveal" href="#analog" style="--d:.22s" aria-label="Scroll for more about me">
+              <span class="scroll-cue__label">Scroll for more</span>
+              <svg class="scroll-cue__arrow" viewBox="0 0 7 8" aria-hidden="true" shape-rendering="crispEdges"><path fill="currentColor" d="M3 0h1v5H3zM0 3h1v1H0zM1 4h1v1H1zM2 5h3v1H2zM5 4h1v1H5zM6 3h1v1H6zM3 6h1v1H3z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ANALOG ============ -->
+    <section class="section analog" id="analog" data-section="analog">
+      <div class="container">
+        <header class="section__head">
+          <div>
+            <p class="eyebrow reveal"><span class="px-ico" data-px="heart"></span>Off screen / Analog</p>
+            <h2 class="h2 glow reveal" style="--d:.08s"><span data-scramble>Through the lens</span></h2>
+          </div>
+          <p class="section__note reveal" style="--d:.12s">When I'm not pushing pixels, I'm shooting film — mostly people. A 35mm camera, a few rolls, and the slow joy of waiting to see what came out.</p>
+          <div class="rule reveal" style="--d:.15s"></div>
+        </header>
+
+        <div class="collage">
+          <figure class="filmstrip reveal" style="--x:2.08%;--y:4.44%;--w:15.42%;--r:-4deg;--z:20;--mx:2.00%;--my:2.10%;--mw:29.50%">
+            <div class="filmstrip__body">
+              <span class="filmstrip__code" aria-hidden="true">KODAK 400TX ▸ 14</span>
+              <img src="assets/img/analog/14.jpg" alt="Black and white frame from a film strip" loading="lazy" decoding="async">
+              <img src="assets/img/analog/15.jpg" alt="Black and white frame from a film strip" loading="lazy" decoding="async">
+              <img src="assets/img/analog/16.jpg" alt="Film frame from Zikhron Ya'akov" loading="lazy" decoding="async">
+              <span class="filmstrip__code" aria-hidden="true">▸ 15A · 16 · 16A</span>
+            </div>
+            <svg class="pin" viewBox="0 0 12 34" aria-hidden="true" shape-rendering="crispEdges"><path d="M4 0h4v2H4zM2 2h2v4H2zM8 2h2v4H8zM4 6h4v2H4zM3 8h2v24H3zM7 8h2v20H7zM5 32h2v2H5zM7 28h2v2H7z"/></svg>
+          </figure>
+          <figure class="snap reveal" style="--x:19.58%;--y:3.33%;--w:17.92%;--r:3deg;--z:1;--d:0.00s;--mx:29.50%;--my:0.00%;--mw:37.50%">
+            <div class="snap__frame"><img src="assets/img/analog/01.jpg" alt="Portrait of a woman with curly hair, shot on film" loading="lazy" decoding="async"><figcaption>zikhron · 24</figcaption></div>
+          </figure>
+          <figure class="snap reveal" style="--x:39.17%;--y:6.67%;--w:24.17%;--r:-3deg;--z:2;--d:0.06s;--mx:3.50%;--my:22.10%;--mw:52.00%">
+            <div class="snap__frame"><img src="assets/img/analog/03.jpg" alt="A figure under a large tree, shot on film" loading="lazy" decoding="async"><figcaption>zikhron · 24</figcaption></div>
+          </figure>
+          <figure class="snap reveal" style="--x:65.42%;--y:1.67%;--w:16.67%;--r:4deg;--z:3;--d:0.12s;--mx:64.50%;--my:3.24%;--mw:33.50%">
+            <div class="snap__frame"><img src="assets/img/analog/02.jpg" alt="Film portrait in profile by the sea, Haifa" loading="lazy" decoding="async"><figcaption>haifa · 25</figcaption></div>
+          </figure>
+          <figure class="snap reveal" style="--x:81.25%;--y:16.67%;--w:17.92%;--r:-6deg;--z:4;--d:0.18s;--mx:49.50%;--my:23.81%;--mw:48.00%">
+            <div class="snap__frame"><img src="assets/img/analog/05.jpg" alt="Color film photo of a woman lying down" loading="lazy" decoding="async"><figcaption>inbar</figcaption></div>
+          </figure>
+          <figure class="snap reveal" style="--x:2.92%;--y:52.78%;--w:22.50%;--r:-3deg;--z:5;--d:0.24s;--mx:34.50%;--my:76.19%;--mw:45.00%">
+            <div class="snap__frame"><img src="assets/img/analog/09.jpg" alt="Black and white film photo by a car" loading="lazy" decoding="async"><figcaption>maxim b&w</figcaption></div>
+          </figure>
+          <figure class="snap reveal" style="--x:27.50%;--y:39.44%;--w:16.25%;--r:-5deg;--z:6;--d:0.30s;--mx:1.50%;--my:36.67%;--mw:34.00%">
+            <div class="snap__frame"><img src="assets/img/analog/04.jpg" alt="Film portrait against a wall in Tel Aviv" loading="lazy" decoding="async"><figcaption>agfa 400</figcaption></div>
+          </figure>
+          <figure class="snap reveal" style="--x:46.67%;--y:36.11%;--w:17.08%;--r:3deg;--z:7;--d:0.00s;--mx:33.00%;--my:37.90%;--mw:35.00%">
+            <div class="snap__frame"><img src="assets/img/analog/12.jpg" alt="Color film portrait in an armchair" loading="lazy" decoding="async"><figcaption>inbar</figcaption></div>
+          </figure>
+          <figure class="snap reveal" style="--x:65.00%;--y:47.78%;--w:23.33%;--r:-2deg;--z:8;--d:0.06s;--mx:3.00%;--my:59.52%;--mw:50.00%">
+            <div class="snap__frame"><img src="assets/img/analog/13.jpg" alt="Black and white film photo by a window" loading="lazy" decoding="async"><figcaption>maxim b&w</figcaption></div>
+          </figure>
+          <figure class="snap reveal" style="--x:25.00%;--y:66.67%;--w:15.00%;--r:6deg;--z:9;--d:0.12s;--mx:4.50%;--my:73.33%;--mw:33.00%">
+            <div class="snap__frame"><img src="assets/img/analog/08.jpg" alt="Film portrait at a market in Haifa" loading="lazy" decoding="async"><figcaption>haifa · 25</figcaption></div>
+          </figure>
+          <figure class="snap reveal" style="--x:42.08%;--y:71.11%;--w:22.50%;--r:-4deg;--z:10;--d:0.18s;--mx:47.50%;--my:60.95%;--mw:50.50%">
+            <div class="snap__frame"><img src="assets/img/analog/11.jpg" alt="Woman lying on a rock, shot on film" loading="lazy" decoding="async"><figcaption>zikhron · 24</figcaption></div>
+          </figure>
+          <figure class="snap reveal" style="--x:84.58%;--y:62.22%;--w:14.58%;--r:5deg;--z:11;--d:0.24s;--mx:67.00%;--my:36.95%;--mw:31.50%">
+            <div class="snap__frame"><img src="assets/img/analog/10.jpg" alt="Film portrait, Tel Aviv" loading="lazy" decoding="async"><figcaption>agfa 400</figcaption></div>
+          </figure>
+          <figure class="snap reveal" style="--x:66.67%;--y:78.33%;--w:19.17%;--r:2deg;--z:12;--d:0.30s;--mx:44.00%;--my:86.19%;--mw:49.00%">
+            <div class="snap__frame"><img src="assets/img/analog/06.jpg" alt="Black and white film photo" loading="lazy" decoding="async"><figcaption>maxim b&w</figcaption></div>
+          </figure>
+          <span class="sticker sticker--burst reveal" style="--x:84%;--y:-3%;--mx:76%;--my:-1.5%;--r:12deg;--d:.4s" aria-hidden="true"><b>35mm</b></span>
+          <span class="sticker sticker--label reveal" style="--x:2%;--y:44%;--mx:44%;--my:58.2%;--r:-6deg;--d:.45s" aria-hidden="true">Shot on film ✦ no filters</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FUN FACTS (view-master) ============ -->
+    <section class="section facts" data-section="facts">
+      <div class="container">
+        <header class="section__head">
+          <div>
+            <p class="eyebrow reveal"><span class="px-ico" data-px="spark"></span>Fun facts / Reel 01</p>
+            <h2 class="h2 glow reveal" style="--d:.08s"><span data-scramble>Fun facts about me</span></h2>
+          </div>
+          <p class="section__note reveal" style="--d:.12s">Pull the lever to click to the next slide.</p>
+          <div class="rule reveal" style="--d:.15s"></div>
+        </header>
+
+        <div class="facts__grid">
+          <div class="vm reveal" id="viewer" tabindex="0" aria-label="Fun facts viewer. Press the right arrow for the next slide.">
+            <div class="vm__reel" aria-hidden="true">
+              <div class="vm__disc" id="vmDisc"></div>
+              <p class="vm__label"><small>shiran's</small><b>fun facts</b><span>reel <i></i> 01</span></p>
+            </div>
+            <button class="vm__lever" id="vmLever" type="button" aria-label="Next slide"><i class="vm__arm"></i><i class="vm__knob"></i></button>
+            <span class="vm__hint" id="vmHint" aria-hidden="true">pull me!</span>
+            <span class="vm__hint vm__peek" aria-hidden="true"><span class="vm__peek-m">click</span><span class="vm__peek-t">tap</span> to peek in</span>
+            <div class="vm__body">
+              <svg class="vm__shell" viewBox="0 0 920 640" aria-hidden="true">
+                <defs>
+                  <linearGradient id="vmBody" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFC2FC"/><stop offset=".22" stop-color="#FF7BF8"/><stop offset=".85" stop-color="#EE63E7"/><stop offset="1" stop-color="#D24FCB"/></linearGradient>
+                  <linearGradient id="vmChin" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#C94AC2"/><stop offset=".12" stop-color="#F36BEC"/><stop offset=".8" stop-color="#E05AD9"/><stop offset="1" stop-color="#B83FB1"/></linearGradient>
+                  <linearGradient id="vmRim" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFD4FD"/><stop offset=".45" stop-color="#FF8DF9"/><stop offset="1" stop-color="#E75FE0"/></linearGradient>
+                  <filter id="vmGrain" x="0" y="0" width="100%" height="100%">
+                    <feTurbulence type="fractalNoise" baseFrequency="1.1" numOctaves="2" seed="7" result="n"/>
+                    <feColorMatrix in="n" type="matrix" values="0 0 0 0 .23  0 0 0 0 .08  0 0 0 0 .25  1 0 0 0 -.42" result="speck"/>
+                    <feComposite in="speck" in2="SourceGraphic" operator="in" result="grain"/>
+                    <feMerge><feMergeNode in="SourceGraphic"/><feMergeNode in="grain"/></feMerge>
+                  </filter>
+                  <linearGradient id="vmGlass" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#050204"/><stop offset=".7" stop-color="#180816"/><stop offset="1" stop-color="#2A0F28"/></linearGradient>
+                </defs>
+                <g filter="url(#vmGrain)">
+                <!-- lower half: the "chin" with the embossed name -->
+                <path d="M86 380H834L810 574Q803 624 752 624H168Q117 624 110 574Z" fill="url(#vmChin)"/>
+                <path d="M150 600H770" stroke="#3B1440" stroke-opacity=".18" stroke-width="4" stroke-linecap="round"/>
+                <g font-family="'Jersey 10', monospace" font-size="104" text-anchor="middle">
+                  <text x="457" y="537" fill="#fff" fill-opacity=".45">s.view<tspan font-size="52" dy="-46">3D</tspan></text>
+                  <text x="463" y="543" fill="#3B1440" fill-opacity=".35">s.view<tspan font-size="52" dy="-46">3D</tspan></text>
+                  <text x="460" y="540" fill="#EA61E3">s.view<tspan font-size="52" dy="-46">3D</tspan></text>
+                </g>
+                <!-- upper housing, slightly wider at the bottom, with the slot the reel drops into -->
+                <path d="M140 26H780Q850 26 856 96L866 262H54L64 96Q70 26 140 26Z" fill="url(#vmBody)"/>
+                <rect x="296" y="22" width="328" height="16" rx="8" fill="#2A0F28"/>
+                <rect x="120" y="46" width="680" height="9" rx="4.5" fill="#fff" fill-opacity=".35"/>
+                <text x="98" y="122" transform="rotate(-8 98 122)" font-family="VT323, monospace" font-style="italic" font-size="48" fill="#FFF3FE">fun facts</text>
+                <!-- visor: a chunky rim that sticks out past the body, dark glass, two lens bezels -->
+                <rect x="14" y="160" width="892" height="270" rx="92" fill="#A93BA2"/>
+                <rect x="14" y="146" width="892" height="270" rx="92" fill="url(#vmRim)"/>
+                <rect x="50" y="176" width="820" height="214" rx="66" fill="url(#vmGlass)"/>
+                <rect x="70" y="182" width="780" height="10" rx="5" fill="#fff" fill-opacity=".08"/>
+                <rect x="112" y="198" width="282" height="174" rx="30" fill="#0B0408" stroke="#FF7BF8" stroke-opacity=".3" stroke-width="3"/>
+                <rect x="526" y="198" width="282" height="174" rx="30" fill="#0B0408" stroke="#FF7BF8" stroke-opacity=".3" stroke-width="3"/>
+                <rect x="428" y="232" width="64" height="104" rx="26" fill="#1E0B1B"/>
+                </g>
+              </svg>
+              <div class="vm__visor" id="vmVisor">
+                <button class="vm__lens" type="button" aria-haspopup="dialog" aria-label="Look into the viewer: open this slide full screen"><img alt="" decoding="async"></button>
+                <button class="vm__lens vm__lens--r" type="button" tabindex="-1" aria-haspopup="dialog" aria-label="Look into the viewer: open this slide full screen"><img alt="" decoding="async"></button>
+              </div>
+            </div>
+            <!-- collage bits stuck on top -->
+            <svg class="vm__spark" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 0L52.3 44.5L69.8 30.2L55.5 47.7L100 50L55.5 52.3L69.8 69.8L52.3 55.5L50 100L47.7 55.5L30.2 69.8L44.5 52.3L0 50L44.5 47.7L30.2 30.2L47.7 44.5Z"/></svg>
+          </div>
+
+          <article class="window facts__card reveal" style="--d:.1s" aria-live="polite">
+            <div class="window__bar"><span id="factFile">slide_01.txt</span><span class="window__btns" aria-hidden="true"><i></i><i></i><i></i></span></div>
+            <div class="facts__body">
+              <p class="facts__num">Slide <b id="factNum">01</b> / <span id="factTotal">06</span></p>
+              <h3 class="facts__title" id="factTitle">Fact</h3>
+              <p class="facts__text" id="factText"></p>
+            </div>
+            <div class="facts__foot pager" id="factPager"></div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <span>© <span id="year">2026</span> Shiran Revivo</span>
+      <span class="footer__made">Designed with passion <span class="px-ico" data-px="heart"></span></span>
+      <a href="index.html">Back home <span class="px-ico" data-px="up"></span></a>
+    </div>
+  </footer>
+
+  <script src="assets/js/data.js?v=62"></script>
+  <script src="assets/js/main.js?v=59"></script>
+</body>
+</html>

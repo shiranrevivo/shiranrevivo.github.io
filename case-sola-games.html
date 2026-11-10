@@ -1,0 +1,593 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sola Games — Gaming E-Commerce — Shiran Revivo</title>
+  <meta name="description" content="Sola Games, a responsive UX/UI case study by Shiran Revivo: market research, survey, personas, wireframes, design system and responsive UI for a gaming e-commerce website.">
+  <meta name="theme-color" content="#0B0408">
+  <!-- link preview. og:image must become an absolute URL (https://domain/…) once the site has a domain -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Shiran Revivo">
+  <meta property="og:title" content="Sola Games — Gaming E-Commerce — Shiran Revivo">
+  <meta property="og:description" content="Sola Games, a responsive UX/UI case study by Shiran Revivo: market research, survey, personas, wireframes, design system and responsive UI for a gaming e-commerce website.">
+  <meta property="og:image" content="assets/img/projects/sola-games/cover.jpg">
+  <meta property="og:image:width" content="2000">
+  <meta property="og:image:height" content="1250">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/svg+xml" href="assets/img/logo/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jersey+10&family=Pixelify+Sans:wght@400..700&family=Space+Grotesk:wght@400;500;600&family=VT323&display=swap" rel="stylesheet">
+  <!-- Sola Games' own type, only for the typography specimens on this page -->
+  <link href="https://fonts.googleapis.com/css2?family=Genos:wght@400;600;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>@font-face { font-family: "Pavelt"; src: url("assets/fonts/pavelt.ttf") format("truetype"); font-display: swap; }</style>
+  <link rel="stylesheet" href="assets/css/style.css?v=92">
+</head>
+<body data-page="project" class="is-case">
+
+  <canvas id="dots" aria-hidden="true"></canvas>
+  <div class="crt" aria-hidden="true"></div>
+
+  <header class="nav" id="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo" aria-label="Shiran Revivo — home">
+        <img class="nav__logo-img" src="assets/img/logo/s-design-logo.svg" alt="s.design" width="140" height="35">
+      </a>
+      <nav class="nav__links" aria-label="Main">
+        <a href="index.html" class="nav__link"><span class="px-ico" data-px="home"></span>Home<span class="nav__num">01</span></a>
+        <a href="projects.html" class="nav__link is-active"><span class="px-ico" data-px="grid"></span>Work<span class="nav__num">02</span></a>
+        <a href="about.html" class="nav__link"><span class="px-ico" data-px="user"></span>About<span class="nav__num">03</span></a>
+        <a href="cv.html" class="nav__link"><span class="px-ico" data-px="doc"></span>CV<span class="nav__num">04</span></a>
+        <a href="contact.html" class="nav__link"><span class="px-ico" data-px="chat"></span>Contact<span class="nav__num">05</span></a>
+      </nav>
+      <div class="nav__actions">
+        <button class="icon-btn" id="soundBtn" type="button" aria-pressed="false" aria-label="Turn sound on"><span class="px-ico" data-px="mute"></span></button>
+        <button class="icon-btn nav__menu" id="menuBtn" type="button" aria-expanded="false" aria-label="Menu"><span class="px-ico" data-px="menu"></span></button>
+      </div>
+    </div>
+  </header>
+
+  <div class="hud" aria-hidden="true">
+    <span>LVL <b>02</b> — case study</span>
+    <span id="hudCoords">X <b>0000</b> · Y <b>0000</b></span>
+  </div>
+
+  <main class="cs">
+    <!-- ============ HEAD (slide 1) ============ -->
+    <section class="page-head project-head cs-head">
+      <div class="container">
+        <a class="project-head__back reveal" href="projects.html"><span class="px-ico" data-px="arrowL"></span>All projects</a>
+        <p class="eyebrow reveal"><span class="px-ico" data-px="diamond"></span>02 / UX/UI Case study</p>
+        <h1 class="project-head__title glow reveal" style="--d:.08s"><span data-scramble>Sola Games</span></h1>
+        <p class="project-head__sub reveal" style="--d:.16s">UI/UX Case Study · Responsive · E-commerce</p>
+
+        <div class="cs-hero cs-hero--wide">
+          <div class="cs-hero__info reveal" style="--d:.2s">
+            <dl class="cs-meta">
+              <div><dt>The mission</dt><dd>A student project to design an e-commerce website for a gaming brand, selling digital games across all platforms.</dd></div>
+              <div><dt>By</dt><dd>Shiran Revivo | Elisheva Ben-Ari</dd></div>
+              <div><dt>Time frame</dt><dd>3 weeks</dd></div>
+              <div><dt>Tools</dt><dd>Photoshop · Figma</dd></div>
+            </dl>
+            <nav class="cs-toc" aria-label="Case study sections">
+              <p class="cs-toc__label">Levels</p>
+              <ol>
+                <li><a href="#overview">Overview</a></li>
+                <li><a href="#usability">Usability</a></li>
+                <li><a href="#pain-points">Pain points</a></li>
+                <li><a href="#competitors">Competitors</a></li>
+                <li><a href="#survey">Survey</a></li>
+                <li><a href="#persona">Persona</a></li>
+                <li><a href="#wireframes">Wireframes</a></li>
+                <li><a href="#design-system">Design system</a></li>
+                <li><a href="#logo">Logo</a></li>
+                <li><a href="#light-mode">Light mode</a></li>
+                <li><a href="#responsive-ui">Responsive UI</a></li>
+                <li><a href="#prototype">Prototype</a></li>
+              </ol>
+            </nav>
+          </div>
+          <figure class="cs-media cs-hero__shot reveal" style="--d:.28s">
+            <img src="assets/img/projects/sola-games/01-hero.png?v=3" alt="Sola Games on a laptop, a tablet and a phone: the Battlefield 2042 summer sale, Featured Games and gamer reviews" width="1562" height="967" fetchpriority="high">
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PROJECT OVERVIEW + MAIN GOALS (slide 2) ============ -->
+    <section class="cs-sec" id="overview">
+      <div class="container">
+        <div class="cs-text">
+          <p class="eyebrow reveal"><span class="px-ico" data-px="diamond"></span>01 / Overview</p>
+          <h2 class="cs-h2 reveal" style="--d:.06s">Project overview</h2>
+          <p class="cs-lead reveal" style="--d:.1s">Sola Games is an e-commerce website dedicated to selling video games.</p>
+          <p class="reveal" style="--d:.12s">When we built Sola Games, it was important for us to emphasize three key aspects: <strong>ease of navigation, more attractive prices than other sites, and special features designed to give users a better shopping experience.</strong></p>
+          <p class="reveal" style="--d:.14s">To make browsing even smoother, we developed an intuitive “sort by” system and advanced filters, allowing customers to quickly find exactly what they’re looking for, whether it’s the newest releases, bestsellers, or hidden gems.</p>
+        </div>
+
+        <h3 class="cs-h3 reveal">Main goals</h3>
+        <ol class="cs-points">
+          <li class="reveal"><span class="cs-points__n">01</span><div><h3>Ease of Navigation</h3><p>Create a simple, user-friendly shopping experience.</p></div></li>
+          <li class="reveal" style="--d:.06s"><span class="cs-points__n">02</span><div><h3>Transparent Deals</h3><p>Our deals are always clear, simple, and transparent.</p></div></li>
+          <li class="reveal"><span class="cs-points__n">03</span><div><h3>Smart Shopping Tools</h3><p>Provide “sort by” options and advanced filters for quick and easy browsing.</p></div></li>
+          <li class="reveal" style="--d:.06s"><span class="cs-points__n">04</span><div><h3>Enhanced User Experience</h3><p>Add special features that make game shopping enjoyable and seamless.</p></div></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============ USABILITY FEATURES (slide 2) ============ -->
+    <section class="cs-sec" id="usability">
+      <div class="container">
+        <header class="cs-sec__head">
+          <p class="eyebrow reveal"><span class="px-ico" data-px="diamond"></span>02 / Usability</p>
+          <h2 class="cs-h2 reveal" style="--d:.06s">Usability features</h2>
+        </header>
+        <div class="cs-cards">
+          <article class="cs-card reveal" style="--d:0.00s">
+            <span class="cs-card__n">01</span>
+            <h3 class="cs-card__title">Effectiveness</h3>
+            <p>Navigation on Sola Games is intuitive with an advanced “Sort by” system and smart filters. The sign-up, cart, and checkout process is clear and straightforward.</p>
+          </article>
+          <article class="cs-card reveal" style="--d:0.06s">
+            <span class="cs-card__n">02</span>
+            <h3 class="cs-card__title">Learnability</h3>
+            <p>New users can easily understand how to perform key actions such as searching for a game, creating an account, or making a purchase. Thanks to the site’s simple navigation structure and clean UI.</p>
+          </article>
+          <article class="cs-card reveal" style="--d:0.12s">
+            <span class="cs-card__n">03</span>
+            <h3 class="cs-card__title">Flexibility</h3>
+            <p>The site suits both beginners and advanced users, through easy browsing or advanced filters, making it accessible for everyone.</p>
+          </article>
+          <article class="cs-card reveal" style="--d:0.00s">
+            <span class="cs-card__n">04</span>
+            <h3 class="cs-card__title">Memorability</h3>
+            <p>Returning users can easily recall filters, cart, and checkout, ensuring smooth use without “re-learning.”</p>
+          </article>
+          <article class="cs-card reveal" style="--d:0.06s">
+            <span class="cs-card__n">05</span>
+            <h3 class="cs-card__title">Error Handling &amp; Confidence</h3>
+            <p>Clear error messages guide users when something goes wrong (e.g., wrong password or missing field), keeping the process smooth and frustration-free.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PAIN POINTS + SOLUTION (slide 3) ============ -->
+    <section class="cs-sec" id="pain-points">
+      <div class="container">
+        <header class="cs-sec__head">
+          <p class="eyebrow reveal"><span class="px-ico" data-px="diamond"></span>03 / Pain points</p>
+          <h2 class="cs-h2 reveal" style="--d:.06s">Pain points &amp; solution</h2>
+        </header>
+        <div class="cs-split cs-split--even">
+          <article class="window cs-window reveal">
+            <div class="window__bar"><span>pain_points.txt</span><span class="window__btns" aria-hidden="true"><i></i><i></i><i></i></span></div>
+            <div class="cs-window__body">
+              <h3>Pain Points</h3>
+              <ul class="cs-list">
+                <li>Unclear categories and limited search make games hard to find.</li>
+                <li>Prices vary and lack transparency on discounts.</li>
+                <li>Too many steps and confusing registration.</li>
+                <li>No tailored recommendations for users.</li>
+                <li>Missing reviews and reliable ratings.</li>
+                <li>Excessive banners disrupt the shopping experience.</li>
+              </ul>
+            </div>
+          </article>
+          <article class="window cs-window reveal" style="--d:.08s">
+            <div class="window__bar"><span>solution.txt</span><span class="window__btns" aria-hidden="true"><i></i><i></i><i></i></span></div>
+            <div class="cs-window__body">
+              <h3>Solution</h3>
+              <ul class="cs-list">
+                <li>Smart filters and “Sort by” make finding games effortless.</li>
+                <li>Competitive prices with clear, transparent deals.</li>
+                <li>Streamlined sign-up, cart, and payment.</li>
+                <li>Tailored recommendations beyond basic search.</li>
+                <li>Trust and transparency, user reviews and ratings build confidence.</li>
+                <li>Clean, clutter-free layout for a smooth experience.</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ MARKET COMPETITORS (slide 3) ============ -->
+    <section class="cs-sec" id="competitors">
+      <div class="container">
+        <header class="cs-sec__head">
+          <p class="eyebrow reveal"><span class="px-ico" data-px="diamond"></span>04 / Competitors</p>
+          <h2 class="cs-h2 reveal" style="--d:.06s">Market competitors</h2>
+        </header>
+        <div class="cs-table-wrap reveal">
+          <table class="cs-table cs-matrix">
+            <thead>
+              <tr><th scope="col">Feature</th><th scope="col"><span class="cs-matrix__name">Steam</span><img class="cs-matrix__logo" src="assets/img/projects/sola-games/logos/steam.png" alt="" width="240" height="240" loading="lazy"></th><th scope="col"><span class="cs-matrix__name">Epic Games</span><img class="cs-matrix__logo" src="assets/img/projects/sola-games/logos/epic.png" alt="" width="240" height="274" loading="lazy"></th><th scope="col"><span class="cs-matrix__name">Green Man Gaming</span><img class="cs-matrix__logo" src="assets/img/projects/sola-games/logos/gmg.png" alt="" width="480" height="117" loading="lazy"></th><th scope="col"><span class="cs-matrix__name">Instant Gaming</span><img class="cs-matrix__logo" src="assets/img/projects/sola-games/logos/instant.png" alt="" width="360" height="330" loading="lazy"></th><th scope="col"><span class="cs-matrix__name">GOG</span><img class="cs-matrix__logo cs-matrix__logo--inv" src="assets/img/projects/sola-games/logos/gog.png" alt="" width="218" height="208" loading="lazy"></th><th scope="col"><span class="cs-matrix__name">Ubisoft</span><img class="cs-matrix__logo" src="assets/img/projects/sola-games/logos/ubisoft.svg" alt="" width="1000" height="915" loading="lazy"></th></tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">Game variety</th><td data-label="Steam"><span class="cs-yes px-ico" data-px="check" role="img" aria-label="Yes"></span></td><td data-label="Epic Games"><span class="cs-yes px-ico" data-px="check" role="img" aria-label="Yes"></span></td><td data-label="Green Man Gaming"><span class="cs-yes px-ico" data-px="check" role="img" aria-label="Yes"></span></td><td data-label="Instant Gaming"><span class="cs-yes px-ico" data-px="check" role="img" aria-label="Yes"></span></td><td data-label="GOG"><span class="cs-yes px-ico" data-px="check" role="img" aria-label="Yes"></span></td><td data-label="Ubisoft"><span class="cs-no px-ico" data-px="close" role="img" aria-label="No"></span></td></tr>
+              <tr><th scope="row">Smart filtering</th><td data-label="Steam"><span class="cs-yes px-ico" data-px="check" role="img" aria-label="Yes"></span></td><td data-label="Epic Games"><span class="cs-no px-ico" data-px="close" role="img" aria-label="No"></span></td><td data-label="Green Man Gaming"><span class="cs-yes px-ico" data-px="check" role="img" aria-label="Yes"></span></td><td data-label="Instant Gaming"><span class="cs-no px-ico" data-px="close" role="img" aria-label="No"></span></td><td data-label="GOG"><span class="cs-no px-ico" data-px="close" role="img" aria-label="No"></span></td><td data-label="Ubisoft"><span class="cs-no px-ico" data-px="close" role="img" aria-label="No"></span></td></tr>
+              <tr><th scope="row">Clear discounts</th><td data-label="Steam"><span class="cs-yes px-ico" data-px="check" role="img" aria-label="Yes"></span></td><td data-label="Epic Games"><span class="cs-yes px-ico" data-px="check" role="img" aria-label="Yes"></span></td><td data-label="Green Man Gaming"><span class="cs-yes px-ico" data-px="check" role="img" aria-label="Yes"></span></td><td data-label="Instant Gaming"><span class="cs-yes px-ico" data-px="check" role="img" aria-label="Yes"></span></td><td data-label="GOG"><span class="cs-no px-ico" data-px="close" role="img" aria-label="No"></span></td><td data-label="Ubisoft"><span class="cs-no px-ico" data-px="close" role="img" aria-label="No"></span></td></tr>
+              <tr><th scope="row">Game info &amp; reviews</th><td data-label="Steam"><span class="cs-yes px-ico" data-px="check" role="img" aria-label="Yes"></span></td><td data-label="Epic Games"><span class="cs-no px-ico" data-px="close" role="img" aria-label="No"></span></td><td data-label="Green Man Gaming"><span class="cs-yes px-ico" data-px="check" role="img" aria-label="Yes"></span></td><td data-label="Instant Gaming"><span class="cs-no px-ico" data-px="close" role="img" aria-label="No"></span></td><td data-label="GOG"><span class="cs-no px-ico" data-px="close" role="img" aria-label="No"></span></td><td data-label="Ubisoft"><span class="cs-no px-ico" data-px="close" role="img" aria-label="No"></span></td></tr>
+              <tr><th scope="row">Secure payments</th><td data-label="Steam"><span class="cs-yes px-ico" data-px="check" role="img" aria-label="Yes"></span></td><td data-label="Epic Games"><span class="cs-yes px-ico" data-px="check" role="img" aria-label="Yes"></span></td><td data-label="Green Man Gaming"><span class="cs-yes px-ico" data-px="check" role="img" aria-label="Yes"></span></td><td data-label="Instant Gaming"><span class="cs-yes px-ico" data-px="check" role="img" aria-label="Yes"></span></td><td data-label="GOG"><span class="cs-yes px-ico" data-px="check" role="img" aria-label="Yes"></span></td><td data-label="Ubisoft"><span class="cs-yes px-ico" data-px="check" role="img" aria-label="Yes"></span></td></tr>
+              <tr><th scope="row">Account features</th><td data-label="Steam"><span class="cs-yes px-ico" data-px="check" role="img" aria-label="Yes"></span></td><td data-label="Epic Games"><span class="cs-yes px-ico" data-px="check" role="img" aria-label="Yes"></span></td><td data-label="Green Man Gaming"><span class="cs-no px-ico" data-px="close" role="img" aria-label="No"></span></td><td data-label="Instant Gaming"><span class="cs-no px-ico" data-px="close" role="img" aria-label="No"></span></td><td data-label="GOG"><span class="cs-no px-ico" data-px="close" role="img" aria-label="No"></span></td><td data-label="Ubisoft"><span class="cs-no px-ico" data-px="close" role="img" aria-label="No"></span></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="cs-note reveal">Current platforms like Steam, Epic, and GOG offer strong features but leave gamers frustrated with cluttered browsing, unclear deals, missing reviews, and inconsistent account tools. Sola Games solves this by combining game variety, smart filtering, transparent discounts, reviews, secure payments, and modern account features for a complete, gamer-first experience.</p>
+      </div>
+    </section>
+
+    <!-- ============ SURVEY (slide 4) ============ -->
+    <section class="cs-sec" id="survey">
+      <div class="container">
+        <header class="cs-sec__head">
+          <p class="eyebrow reveal"><span class="px-ico" data-px="diamond"></span>05 / Research</p>
+          <h2 class="cs-h2 reveal" style="--d:.06s">Survey</h2>
+        </header>
+        <p class="cs-lead reveal" style="margin:0 0 clamp(36px,5vw,56px)">In a survey we conducted, 40 people participated. Below are the results of the survey.</p>
+        <div class="cs-bars-grid">
+          <figure class="cs-bars reveal">
+            <figcaption>What are the most important factors when you choose where to buy games online? (Choose all that apply)</figcaption>
+            <ul>
+              <li style="--v:85"><span class="cs-bars__label">Site reliability</span><span class="cs-bars__track"><span class="cs-bars__fill"></span></span><span class="cs-bars__val">85% <small>(34 votes)</small></span></li>
+              <li style="--v:77.5"><span class="cs-bars__label">Price</span><span class="cs-bars__track"><span class="cs-bars__fill"></span></span><span class="cs-bars__val">77.5% <small>(31 votes)</small></span></li>
+              <li style="--v:62.5"><span class="cs-bars__label">Discounts and promotions</span><span class="cs-bars__track"><span class="cs-bars__fill"></span></span><span class="cs-bars__val">62.5% <small>(25 votes)</small></span></li>
+              <li style="--v:52.5"><span class="cs-bars__label">User reviews</span><span class="cs-bars__track"><span class="cs-bars__fill"></span></span><span class="cs-bars__val">52.5% <small>(21 votes)</small></span></li>
+              <li style="--v:40"><span class="cs-bars__label">Easy checkout</span><span class="cs-bars__track"><span class="cs-bars__fill"></span></span><span class="cs-bars__val">40% <small>(16 votes)</small></span></li>
+              <li style="--v:20"><span class="cs-bars__label">Multiple payment options</span><span class="cs-bars__track"><span class="cs-bars__fill"></span></span><span class="cs-bars__val">20% <small>(8 votes)</small></span></li>
+              <li style="--v:15"><span class="cs-bars__label">Download/activation time</span><span class="cs-bars__track"><span class="cs-bars__fill"></span></span><span class="cs-bars__val">15% <small>(6 votes)</small></span></li>
+            </ul>
+          </figure>
+          <figure class="cs-bars reveal">
+            <figcaption>What is important to you in the user experience of a gaming website? (Choose all that apply)</figcaption>
+            <ul>
+              <li style="--v:72.5"><span class="cs-bars__label">Advanced filtering system</span><span class="cs-bars__track"><span class="cs-bars__fill"></span></span><span class="cs-bars__val">72.5% <small>(29 votes)</small></span></li>
+              <li style="--v:67.5"><span class="cs-bars__label">Attractive prices and discounts</span><span class="cs-bars__track"><span class="cs-bars__fill"></span></span><span class="cs-bars__val">67.5% <small>(27 votes)</small></span></li>
+              <li style="--v:62.5"><span class="cs-bars__label">Clear product descriptions</span><span class="cs-bars__track"><span class="cs-bars__fill"></span></span><span class="cs-bars__val">62.5% <small>(25 votes)</small></span></li>
+              <li style="--v:45"><span class="cs-bars__label">Images &amp; videos of the games</span><span class="cs-bars__track"><span class="cs-bars__fill"></span></span><span class="cs-bars__val">45% <small>(18 votes)</small></span></li>
+              <li style="--v:45"><span class="cs-bars__label">Large game selection</span><span class="cs-bars__track"><span class="cs-bars__fill"></span></span><span class="cs-bars__val">45% <small>(18 votes)</small></span></li>
+              <li style="--v:30"><span class="cs-bars__label">Fast loading speed</span><span class="cs-bars__track"><span class="cs-bars__fill"></span></span><span class="cs-bars__val">30% <small>(12 votes)</small></span></li>
+              <li style="--v:20"><span class="cs-bars__label">Personal recommendations</span><span class="cs-bars__track"><span class="cs-bars__fill"></span></span><span class="cs-bars__val">20% <small>(8 votes)</small></span></li>
+              <li style="--v:15"><span class="cs-bars__label">Modern design</span><span class="cs-bars__track"><span class="cs-bars__fill"></span></span><span class="cs-bars__val">15% <small>(6 votes)</small></span></li>
+              <li style="--v:5"><span class="cs-bars__label">Mobile-friendly site</span><span class="cs-bars__track"><span class="cs-bars__fill"></span></span><span class="cs-bars__val">5% <small>(2 votes)</small></span></li>
+            </ul>
+          </figure>
+          <figure class="cs-bars reveal">
+            <figcaption>What feature or functionality do you sometimes find missing on digital gaming websites?</figcaption>
+            <ul>
+              <li style="--v:100"><span class="cs-bars__label">Advanced Filtering</span><span class="cs-bars__track"><span class="cs-bars__fill"></span></span><span class="cs-bars__val">10 votes</span></li>
+              <li style="--v:80"><span class="cs-bars__label">Countdown for Deals</span><span class="cs-bars__track"><span class="cs-bars__fill"></span></span><span class="cs-bars__val">8 votes</span></li>
+              <li style="--v:60"><span class="cs-bars__label">System Compatibility Check</span><span class="cs-bars__track"><span class="cs-bars__fill"></span></span><span class="cs-bars__val">6 votes</span></li>
+              <li style="--v:50"><span class="cs-bars__label">Quick Access to Active Deals</span><span class="cs-bars__track"><span class="cs-bars__fill"></span></span><span class="cs-bars__val">5 votes</span></li>
+              <li style="--v:50"><span class="cs-bars__label">Ratings from Trusted Sources</span><span class="cs-bars__track"><span class="cs-bars__fill"></span></span><span class="cs-bars__val">5 votes</span></li>
+              <li style="--v:40"><span class="cs-bars__label">DLC Purchase</span><span class="cs-bars__track"><span class="cs-bars__fill"></span></span><span class="cs-bars__val">4 votes</span></li>
+              <li style="--v:20"><span class="cs-bars__label">Fast &amp; Easy Checkout</span><span class="cs-bars__track"><span class="cs-bars__fill"></span></span><span class="cs-bars__val">2 votes</span></li>
+            </ul>
+          </figure>
+        </div>
+
+        <h3 class="cs-h3 reveal">User survey conclusions</h3>
+        <div class="cs-text">
+          <p class="reveal">Most gamers use Steam or Epic, prioritize price, reviews, and ease of use, and prefer PayPal or credit cards. Pain points include unclear bundles and limited payment options, while users want advanced filtering, clear information, and personalized recommendations.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PERSONA (slide 5) ============ -->
+    <section class="cs-sec" id="persona">
+      <div class="container">
+        <header class="cs-sec__head">
+          <p class="eyebrow reveal"><span class="px-ico" data-px="diamond"></span>06 / Persona</p>
+          <h2 class="cs-h2 reveal" style="--d:.06s">Persona</h2>
+        </header>
+        <h3 class="cs-h3 reveal">Target audience</h3>
+        <div class="cs-text" style="margin-bottom:clamp(36px,5vw,56px)">
+          <p class="reveal">Our main users are gamers aged 18–35, mostly students and professionals in tech, design, and creative fields (e.g., software engineers, game developers, graphic designers, IT specialists).</p>
+          <p class="reveal">They are tech-savvy and passionate about gaming, and they expect a smooth, reliable, and transparent shopping experience.</p>
+        </div>
+        <div class="cs-stack">
+        <article class="window cs-persona reveal">
+          <div class="window__bar"><span>persona_01.usr</span><span class="window__btns" aria-hidden="true"><i></i><i></i><i></i></span></div>
+          <div class="cs-persona__body">
+            <div class="cs-persona__who">
+              <img class="cs-persona__photo" src="assets/img/projects/sola-games/05-persona-liam.jpg" alt="Liam Novak, cheering with a game controller and headphones at his desk" width="900" height="527" loading="lazy">
+              <h3 class="cs-persona__name">Liam Novak</h3>
+              <dl class="cs-meta cs-meta--tight">
+                <div><dt>Age</dt><dd>24</dd></div>
+                <div><dt>Profession</dt><dd>Computer Science Student &amp; Streamer</dd></div>
+                <div><dt>Location</dt><dd>Berlin, Germany</dd></div>
+              </dl>
+            </div>
+            <div class="cs-persona__info">
+              <div>
+                <h4>Biography</h4>
+                <p>Liam is a passionate gamer who streams part-time on Twitch and keeps up with the latest game releases. He plays mostly on PC and occasionally on console. He’s tech-savvy, always hunting for great deals, and loves discovering hidden indie gems alongside AAA titles. He prefers platforms that are fast, intuitive, and make it easy to build a wishlist and track sales.</p>
+              </div>
+              <div>
+                <h4>Goals</h4>
+                <ul class="cs-list">
+                  <li>Find new games at competitive prices</li>
+                  <li>Build a personal library of favorite games</li>
+                  <li>Discover hidden gems and niche titles</li>
+                  <li>Save time with smart filters and fast checkout</li>
+                </ul>
+              </div>
+              <div>
+                <h4>Motivations</h4>
+                <ul class="cs-list">
+                  <li>Always looking for a good deal or limited-time offer</li>
+                  <li>Wants a smooth, no-hassle buying experience</li>
+                  <li>Enjoys sharing game finds with friends or his followers</li>
+                  <li>Appreciates a modern and gamer-focused interface</li>
+                </ul>
+              </div>
+              <div>
+                <h4>Pain points</h4>
+                <ul class="cs-list">
+                  <li>Confusing navigation on crowded websites</li>
+                  <li>Missing wishlist or sale alerts</li>
+                  <li>Platforms that push only AAA games</li>
+                  <li>Having to visit multiple sites to compare prices</li>
+                </ul>
+              </div>
+              <div>
+                <h4>Favorite brands &amp; games</h4>
+                <ul class="cs-list">
+                  <li>CD Projekt Red (The Witcher, Cyberpunk)</li>
+                  <li>FromSoftware (Elden Ring, Dark Souls)</li>
+                  <li>Devolver Digital (Cult of the Lamb, Hotline Miami)</li>
+                  <li>Steam, Epic Games (but uses them mostly for sales)</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </article>
+        <article class="window cs-persona reveal">
+          <div class="window__bar"><span>persona_02.usr</span><span class="window__btns" aria-hidden="true"><i></i><i></i><i></i></span></div>
+          <div class="cs-persona__body">
+            <div class="cs-persona__who">
+              <img class="cs-persona__photo" src="assets/img/projects/sola-games/05-persona-sofia.jpg" alt="Sofia Alvarez, with blue hair, making peace signs" width="900" height="527" loading="lazy">
+              <h3 class="cs-persona__name">Sofia Alvarez</h3>
+              <dl class="cs-meta cs-meta--tight">
+                <div><dt>Age</dt><dd>27</dd></div>
+                <div><dt>Profession</dt><dd>Visual Communication Student</dd></div>
+                <div><dt>Location</dt><dd>Barcelona, Spain</dd></div>
+              </dl>
+            </div>
+            <div class="cs-persona__info">
+              <div>
+                <h4>Biography</h4>
+                <p>Sofia is a master’s student in Visual Communication at a design school in Barcelona. She has a sharp eye for aesthetics and spends much of her day experimenting with colors, typography, and storytelling through visuals. After long hours of studying and working on creative projects, she looks for a way to relax and recharge her imagination.</p>
+              </div>
+              <div>
+                <h4>Goals</h4>
+                <ul class="cs-list">
+                  <li>Discover games that match her vibe and current mood</li>
+                  <li>Find good deals quickly without spending hours searching</li>
+                  <li>Organize her game library by themes, feelings, or aesthetics</li>
+                  <li>Receive personalized recommendations that truly align with her taste</li>
+                </ul>
+              </div>
+              <div>
+                <h4>Motivations</h4>
+                <ul class="cs-list">
+                  <li>Seeks gaming experiences that are calming and creatively inspiring</li>
+                  <li>Values beautiful design, graphics, and soundtracks</li>
+                  <li>Loves games that provide a sense of personal growth or reflection</li>
+                  <li>Enjoys sharing game recommendations with friends and classmates</li>
+                </ul>
+              </div>
+              <div>
+                <h4>Pain points</h4>
+                <ul class="cs-list">
+                  <li>Sites that only highlight noisy, action-heavy games</li>
+                  <li>Difficulty finding niche, artistic titles suited to her preferences</li>
+                  <li>Mobile versions that feel outdated and clunky</li>
+                  <li>No option to receive alerts when her favorite games go on sale</li>
+                </ul>
+              </div>
+              <div>
+                <h4>Favorite brands &amp; games</h4>
+                <ul class="cs-list">
+                  <li>Nintendo (Animal Crossing, Zelda: Breath of the Wild)</li>
+                  <li>Thatgamecompany (Journey, Sky)</li>
+                  <li>Cozy Grove, Stardew Valley, Gris</li>
+                  <li>Uses Steam, Nintendo eShop, GOG</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ UX WIREFRAMES (slide 6) ============ -->
+    <section class="cs-sec" id="wireframes">
+      <div class="container">
+        <header class="cs-sec__head">
+          <p class="eyebrow reveal"><span class="px-ico" data-px="diamond"></span>07 / Low-fi</p>
+          <h2 class="cs-h2 reveal" style="--d:.06s">UX wireframes</h2>
+        </header>
+        <figure class="cs-media cs-media--lg reveal">
+          <img src="assets/img/projects/sola-games/06-wireframes.png" alt="Grey wireframes of the home page, category page, product page, shopping cart, checkout and the order-confirmed pop-up" width="2400" height="2993" loading="lazy">
+        </figure>
+      </div>
+    </section>
+
+    <!-- ============ DESIGN SYSTEM (slides 7–9) ============ -->
+    <section class="cs-sec" id="design-system">
+      <div class="container">
+        <header class="cs-sec__head">
+          <p class="eyebrow reveal"><span class="px-ico" data-px="diamond"></span>08 / Design system</p>
+          <h2 class="cs-h2 reveal" style="--d:.06s">Design system</h2>
+        </header>
+
+        <h3 class="cs-h3 reveal">Colors</h3>
+        <ul class="cs-colors cs-colors--mark">
+          <li class="reveal" style="--d:0.00s"><img class="cs-colors__mark" src="assets/img/projects/sola-games/07-swirl-light.png" alt="The Sola swirl in Ghost Light" width="400" height="391" loading="lazy"><b>Ghost Light</b><code>#F6FBFF</code><code>RGB: 246, 251, 255</code></li>
+          <li class="reveal" style="--d:0.06s"><img class="cs-colors__mark" src="assets/img/projects/sola-games/07-swirl-neon.png" alt="The Sola swirl in Neon Pulse" width="400" height="391" loading="lazy"><b>Neon Pulse</b><code>#00FF88</code><code>RGB: 0, 255, 136</code></li>
+          <li class="reveal" style="--d:0.12s"><img class="cs-colors__mark" src="assets/img/projects/sola-games/07-swirl-steel.png" alt="The Sola swirl in Steel Shadow" width="400" height="390" loading="lazy"><b>Steel Shadow</b><code>#3F484B</code><code>RGB: 63, 72, 75</code></li>
+          <li class="reveal" style="--d:0.18s"><img class="cs-colors__mark cs-colors__mark--outline" src="assets/img/projects/sola-games/07-swirl-void.png" alt="The Sola swirl in Void Black" width="400" height="391" loading="lazy"><b>Void Black</b><code>#000000</code><code>RGB: 0, 0, 0</code></li>
+        </ul>
+
+        <h3 class="cs-h3 reveal">Typography</h3>
+        <div class="cs-type">
+          <div class="cs-type__row reveal" style="--ff: 'Genos', sans-serif">
+            <p class="cs-type__name">Genos</p>
+            <p class="cs-type__abc">ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>abcdefghijklmnopqrstuvwxyz<br>1234567890</p>
+            <div class="cs-type__meta">
+              <p class="cs-type__use">Font 1</p>
+              <ul class="cs-type__weights"><li>Regular</li><li style="font-weight:600">SemiBold</li><li style="font-weight:700">Bold</li></ul>
+            </div>
+          </div>
+          <div class="cs-type__row reveal" style="--ff: 'Roboto', sans-serif">
+            <p class="cs-type__name">Roboto</p>
+            <p class="cs-type__abc">ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>abcdefghijklmnopqrstuvwxyz<br>1234567890</p>
+            <div class="cs-type__meta">
+              <p class="cs-type__use">Font 2</p>
+              <ul class="cs-type__weights"><li>Regular</li><li style="font-weight:700">Bold</li></ul>
+            </div>
+          </div>
+          <div class="cs-type__row reveal" style="--ff: 'Pavelt', sans-serif">
+            <p class="cs-type__name">Pavelt</p>
+            <p class="cs-type__abc">ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>abcdefghijklmnopqrstuvwxyz<br>1234567890</p>
+            <div class="cs-type__meta">
+              <p class="cs-type__use">Logo</p>
+              <ul class="cs-type__weights"><li>Regular</li></ul>
+            </div>
+          </div>
+        </div>
+
+        <h3 class="cs-h3 reveal">Type scale</h3>
+        <div class="cs-table-wrap reveal">
+          <table class="cs-table">
+            <thead>
+              <tr><th scope="col">Style</th><th scope="col">Desktop</th><th scope="col">Tablet</th><th scope="col">Mobile</th></tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">H1</th><td data-label="Desktop">Genos Regular 100px</td><td data-label="Tablet">Genos Regular 100px</td><td data-label="Mobile">Genos Regular 60px</td></tr>
+              <tr><th scope="row">H2</th><td data-label="Desktop">Genos SemiBold 55px</td><td data-label="Tablet">Genos SemiBold 55px</td><td data-label="Mobile">Genos Bold 28px</td></tr>
+              <tr><th scope="row">H3</th><td data-label="Desktop">Genos Regular 45px</td><td data-label="Tablet">Genos Regular 45px</td><td data-label="Mobile">Genos Regular 18px</td></tr>
+              <tr><th scope="row">H4</th><td data-label="Desktop">Genos Regular 30px</td><td data-label="Tablet">Genos Regular 30px</td><td data-label="Mobile">—</td></tr>
+              <tr><th scope="row">Nav Bar</th><td data-label="Desktop">Roboto Bold 20px</td><td data-label="Tablet">—</td><td data-label="Mobile">—</td></tr>
+              <tr><th scope="row">BTN</th><td data-label="Desktop">Genos Bold 22px</td><td data-label="Tablet">Genos Bold 22px</td><td data-label="Mobile">Genos Bold 22px</td></tr>
+              <tr><th scope="row">Price</th><td data-label="Desktop">Genos Bold 30px</td><td data-label="Tablet">Genos SemiBold 30px</td><td data-label="Mobile">Genos SemiBold 16px</td></tr>
+              <tr><th scope="row">Run Text</th><td data-label="Desktop">Roboto Regular 20px</td><td data-label="Tablet">Roboto Regular 20px</td><td data-label="Mobile">Roboto Regular 14px</td></tr>
+              <tr><th scope="row">Text in Footer</th><td data-label="Desktop">Roboto Regular 20px</td><td data-label="Tablet">Roboto Regular 20px</td><td data-label="Mobile">Roboto Regular 14px</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3 class="cs-h3 reveal">Buttons &amp; icons</h3>
+        <figure class="cs-media cs-media--wide reveal">
+          <div class="cs-scroll-x"><img src="assets/img/projects/sola-games/09-buttons-icons.png" alt="Sola buttons and icons: Checkout and View More buttons in their states, gift checkbox, play and cart buttons, wishlist hearts and social icons" width="2400" height="605" loading="lazy"></div>
+          <figcaption class="cs-swipe" aria-hidden="true">swipe <span class="px-ico" data-px="arrow"></span></figcaption>
+        </figure>
+
+        <h3 class="cs-h3 reveal">Mega menu</h3>
+        <figure class="cs-media cs-media--wide reveal">
+          <div class="cs-scroll-x"><img src="assets/img/projects/sola-games/09-nav.png" alt="The navigation bar: Home, Shop All, Categories, Deals, Pre-Orders, Contact, Support" width="2400" height="100" loading="lazy"></div>
+          <figcaption class="cs-swipe" aria-hidden="true">swipe <span class="px-ico" data-px="arrow"></span></figcaption>
+        </figure>
+        <figure class="cs-media cs-media--sm reveal" style="margin-top:clamp(24px,3vw,40px)">
+          <img src="assets/img/projects/sola-games/09-mega-menu.png" alt="The Categories mega menu: Special Sections, Genres, Game Play and Support" width="1313" height="1399" loading="lazy">
+        </figure>
+      </div>
+    </section>
+
+    <!-- ============ LOGO (slide 10) ============ -->
+    <section class="cs-sec" id="logo">
+      <div class="container">
+        <header class="cs-sec__head">
+          <p class="eyebrow reveal"><span class="px-ico" data-px="diamond"></span>09 / Brand</p>
+          <h2 class="cs-h2 reveal" style="--d:.06s">Logo</h2>
+        </header>
+        <div class="cs-logos">
+          <img class="reveal" src="assets/img/projects/sola-games/logo.svg" alt="Sola Games logo in white with the green swirl" width="781" height="413" loading="lazy">
+        </div>
+        <p class="cs-note reveal">We chose the name Sola because it means “light” in Latin. Just like light guides the way, Sola aims to guide gamers to the newest releases, and a brighter gaming experience.</p>
+      </div>
+    </section>
+
+    <!-- ============ LIGHT MODE VERSION (slide 11) ============ -->
+    <section class="cs-sec" id="light-mode">
+      <div class="container">
+        <header class="cs-sec__head">
+          <p class="eyebrow reveal"><span class="px-ico" data-px="diamond"></span>10 / Light mode</p>
+          <h2 class="cs-h2 reveal" style="--d:.06s">Light mode version</h2>
+        </header>
+        <figure class="cs-media reveal">
+          <img src="assets/img/projects/sola-games/11-light-mode.png" alt="The light mode: the home page on an iMac with the Far Cry 6 banner, a product page and the Shooter category page" width="1641" height="842" loading="lazy">
+        </figure>
+      </div>
+    </section>
+
+    <!-- ============ RESPONSIVE UI DESIGN (slide 10) ============ -->
+    <section class="cs-sec" id="responsive-ui">
+      <div class="container">
+        <header class="cs-sec__head">
+          <p class="eyebrow reveal"><span class="px-ico" data-px="diamond"></span>11 / Hi-fi</p>
+          <h2 class="cs-h2 reveal" style="--d:.06s">Responsive UI design</h2>
+        </header>
+        <figure class="cs-media reveal">
+          <img src="assets/img/projects/sola-games/10-responsive.png" alt="Sola Games on a laptop, a tablet and a phone: the home page hero, Discounts and the gift card section" width="1721" height="679" loading="lazy">
+        </figure>
+      </div>
+    </section>
+
+    <!-- ============ PROTOTYPE ============ -->
+    <section class="cs-sec" id="prototype">
+      <div class="container">
+        <header class="cs-sec__head">
+          <p class="eyebrow reveal"><span class="px-ico" data-px="diamond"></span>12 / Play it</p>
+          <h2 class="cs-h2 reveal" style="--d:.06s">Prototype</h2>
+        </header>
+        <figure class="window project__embed cs-proto reveal">
+          <div class="window__bar"><span>sola_prototype.fig</span><span class="window__btns" aria-hidden="true"><i></i><i></i><i></i></span></div>
+          <div class="cs-proto__tabs" role="tablist" aria-label="Prototype device">
+            <button class="chip" type="button" role="tab" id="proto-tab-0" aria-controls="proto-0" aria-selected="true">Desktop</button>
+            <button class="chip" type="button" role="tab" id="proto-tab-1" aria-controls="proto-1" aria-selected="false" tabindex="-1">Tablet</button>
+            <button class="chip" type="button" role="tab" id="proto-tab-2" aria-controls="proto-2" aria-selected="false" tabindex="-1">Mobile</button>
+          </div>
+          <div class="project__frame" style="--ratio:16 / 10" role="tabpanel" id="proto-0" aria-labelledby="proto-tab-0">
+            <iframe src="https://embed.figma.com/proto/GTfq2cEBZ240RX6FLXVLTI/Sola-Gaming-E-commerce?node-id=3440-9348&amp;viewport=588%2C650%2C0.1&amp;scaling=scale-down-width&amp;content-scaling=fixed&amp;starting-point-node-id=3440%3A9348&amp;page-id=1%3A22&amp;embed-host=share"
+              title="Sola Games — Desktop prototype" loading="lazy" allowfullscreen
+              sandbox="allow-same-origin allow-scripts allow-pointer-lock allow-forms allow-popups allow-popups-to-escape-sandbox"></iframe>
+          </div>
+          <div class="project__frame" style="--ratio:16 / 10" role="tabpanel" id="proto-1" aria-labelledby="proto-tab-1" hidden>
+            <iframe data-src="https://embed.figma.com/proto/GTfq2cEBZ240RX6FLXVLTI/Sola-Gaming-E-commerce?node-id=3440-2439&amp;viewport=556%2C472%2C0.1&amp;scaling=scale-down&amp;content-scaling=fixed&amp;page-id=1284%3A5123&amp;embed-host=share"
+              title="Sola Games — Tablet prototype" loading="lazy" allowfullscreen
+              sandbox="allow-same-origin allow-scripts allow-pointer-lock allow-forms allow-popups allow-popups-to-escape-sandbox"></iframe>
+          </div>
+          <div class="project__frame" style="--ratio:16 / 10" role="tabpanel" id="proto-2" aria-labelledby="proto-tab-2" hidden>
+            <iframe data-src="https://embed.figma.com/proto/GTfq2cEBZ240RX6FLXVLTI/Sola-Gaming-E-commerce?node-id=3440-3889&amp;viewport=688%2C872%2C0.18&amp;scaling=scale-down&amp;content-scaling=fixed&amp;page-id=657%3A165&amp;embed-host=share"
+              title="Sola Games — Mobile prototype" loading="lazy" allowfullscreen
+              sandbox="allow-same-origin allow-scripts allow-pointer-lock allow-forms allow-popups allow-popups-to-escape-sandbox"></iframe>
+          </div>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ============ END ============ -->
+    <section class="cs-sec cs-end">
+      <div class="container">
+        <p class="cs-end__title glow reveal"><span class="px-ico" data-px="spark"></span><span data-scramble>Thank you for watching</span></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <span>© <span id="year">2026</span> Shiran Revivo</span>
+      <span class="footer__made">Designed with passion <span class="px-ico" data-px="heart"></span></span>
+      <a href="#top" onclick="scrollTo({top:0});return false">Back to top <span class="px-ico" data-px="up"></span></a>
+    </div>
+  </footer>
+
+  <script src="assets/js/data.js?v=62"></script>
+  <script src="assets/js/main.js?v=59"></script>
+</body>
+</html>

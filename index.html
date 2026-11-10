@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shiran Revivo — UX/UI Designer</title>
+  <meta name="description" content="Shiran Revivo — UX/UI designer crafting intuitive, playful digital products. Portfolio and case studies.">
+  <meta name="theme-color" content="#0B0408">
+  <!-- link preview. og:image must become an absolute URL (https://domain/…) once the site has a domain -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Shiran Revivo">
+  <meta property="og:title" content="Shiran Revivo — UX/UI Designer">
+  <meta property="og:description" content="Shiran Revivo — UX/UI designer crafting intuitive, playful digital products. Portfolio and case studies.">
+  <meta property="og:image" content="assets/img/og/share.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/svg+xml" href="assets/img/logo/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jersey+10&family=Pixelify+Sans:wght@400..700&family=Space+Grotesk:wght@400;500;600&family=VT323&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css?v=92">
+  <script>
+    // loader plays on first entry and on refresh — not when arriving from another page of the site
+    try {
+      var nav = performance.getEntriesByType('navigation')[0], type = nav && nav.type;
+      var internal = sessionStorage.getItem('px-internal');
+      sessionStorage.removeItem('px-internal');
+      if (type === 'back_forward' || (type !== 'reload' && internal)) document.documentElement.classList.add('skip-loader');
+    } catch (e) {}
+  </script>
+</head>
+<body class="is-loading" data-page="home">
+
+  <!-- ============ LOADER ============ -->
+  <div class="loader" id="loader">
+    <div class="loader__inner">
+      <div class="loader__log" id="loaderLog" aria-hidden="true"></div>
+      <p class="loader__label"><span class="loader__text">loading</span><span class="loader__dots"></span></p>
+      <div class="loader__bar" role="progressbar" aria-label="Loading site" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+        <div class="loader__fill" id="loaderFill"></div>
+      </div>
+      <div class="loader__meta"><span id="loaderStatus">BOOTING PORTFOLIO.EXE</span><b id="loaderPct">000%</b></div>
+    </div>
+  </div>
+
+  <canvas id="dots" aria-hidden="true"></canvas>
+  <div class="crt" aria-hidden="true"></div>
+
+  <!-- ============ NAV ============ -->
+  <header class="nav" id="nav">
+    <div class="container nav__inner">
+      <a href="#home" class="nav__logo" aria-label="Shiran Revivo — home">
+        <img class="nav__logo-img" src="assets/img/logo/s-design-logo.svg" alt="s.design" width="140" height="35">
+      </a>
+      <nav class="nav__links" aria-label="Main">
+        <a href="#home" class="nav__link is-active" data-target="home"><span class="px-ico" data-px="home"></span>Home<span class="nav__num">01</span></a>
+        <a href="projects.html" class="nav__link"><span class="px-ico" data-px="grid"></span>Work<span class="nav__num">02</span></a>
+        <a href="about.html" class="nav__link"><span class="px-ico" data-px="user"></span>About<span class="nav__num">03</span></a>
+        <a href="cv.html" class="nav__link"><span class="px-ico" data-px="doc"></span>CV<span class="nav__num">04</span></a>
+        <a href="contact.html" class="nav__link"><span class="px-ico" data-px="chat"></span>Contact<span class="nav__num">05</span></a>
+      </nav>
+      <div class="nav__actions">
+        <button class="icon-btn" id="soundBtn" type="button" aria-pressed="false" aria-label="Turn sound on"><span class="px-ico" data-px="mute"></span></button>
+        <button class="icon-btn nav__menu" id="menuBtn" type="button" aria-expanded="false" aria-label="Menu"><span class="px-ico" data-px="menu"></span></button>
+      </div>
+    </div>
+  </header>
+
+  <div class="hud" aria-hidden="true">
+    <span id="hudLevel">LVL <b>01</b> — home</span>
+    <span id="hudCoords">X <b>0000</b> · Y <b>0000</b></span>
+  </div>
+
+  <main>
+    <!-- ============ HERO ============ -->
+    <section class="hero" id="home" data-section="home">
+      <div class="container hero__grid">
+        <div class="hero__content">
+          <p class="eyebrow reveal"><span class="px-ico" data-px="play"></span>Hi, I'm Shiran</p>
+          <h1 class="hero__title glow reveal" style="--d:.1s">
+            <span class="line line--soft" data-scramble>UX/UI</span>
+            <span class="line"><span data-scramble>Designer</span><span class="cursor-block" aria-hidden="true"></span></span>
+          </h1>
+          <p class="hero__sub reveal" style="--d:.25s">
+            I design apps and websites for <mark>the person on the other side of the screen</mark>,
+            turning complex flows into something that just feels right.
+          </p>
+          <div class="hero__cta reveal" style="--d:.4s">
+            <a class="btn" href="projects.html"><span class="btn__face">My work<span class="px-ico" data-px="arrow"></span></span></a>
+            <a class="btn btn--ghost" href="cv.html"><span class="btn__face"><span class="px-ico" data-px="doc"></span>My CV</span></a>
+          </div>
+        </div>
+
+        <div class="hero__visual reveal" style="--d:.2s">
+          <canvas id="player" role="img" aria-label="Pixel-art Shiran on a tiny game board. Click anywhere, or use the arrow keys, to walk her there and collect the five things on the floor"></canvas>
+          <span class="hero__bubble" id="playerBubble" aria-hidden="true">Hi! Click anywhere</span>
+          <span class="hero__name" id="playerName" aria-hidden="true">shiran</span>
+        </div>
+      </div>
+
+      <div class="marquee" aria-hidden="true">
+        <div class="marquee__track">
+          <div class="marquee__group">
+            <span>UX Research <i class="px-ico" data-px="spark"></i></span>
+            <span>User Flows <i class="px-ico" data-px="spark"></i></span>
+            <span>Information Architecture <i class="px-ico" data-px="spark"></i></span>
+            <span>Usability Testing <i class="px-ico" data-px="spark"></i></span>
+            <span>Competitive Analysis <i class="px-ico" data-px="spark"></i></span>
+            <span>Wireframing <i class="px-ico" data-px="spark"></i></span>
+            <span>User Personas <i class="px-ico" data-px="spark"></i></span>
+            <span>UI Design <i class="px-ico" data-px="spark"></i></span>
+            <span>Interaction Design <i class="px-ico" data-px="spark"></i></span>
+            <span>Design Systems <i class="px-ico" data-px="spark"></i></span>
+            <span>Prototyping <i class="px-ico" data-px="spark"></i></span>
+            <span>Responsive Design <i class="px-ico" data-px="spark"></i></span>
+            <span>Mobile First <i class="px-ico" data-px="spark"></i></span>
+            <span>Accessibility <i class="px-ico" data-px="spark"></i></span>
+            <span>Graphic Design <i class="px-ico" data-px="spark"></i></span>
+            <span>Branding <i class="px-ico" data-px="spark"></i></span>
+            <span>Art Direction <i class="px-ico" data-px="spark"></i></span>
+            <span>Set Design <i class="px-ico" data-px="spark"></i></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ WORK ============ -->
+    <section class="section work" id="work" data-section="work">
+      <div class="container">
+        <header class="section__head">
+          <div>
+            <p class="eyebrow reveal"><span class="px-ico" data-px="diamond"></span>02 / Work</p>
+            <h2 class="h2 glow reveal" style="--d:.08s"><span data-scramble>Selected work</span></h2>
+          </div>
+          <a class="btn reveal" style="--d:.15s" href="projects.html"><span class="btn__face">All projects<span class="px-ico" data-px="arrow"></span></span></a>
+          <div class="rule reveal" style="--d:.2s"></div>
+        </header>
+
+        <div class="work__grid" id="featuredGrid"></div>
+
+      </div>
+    </section>
+
+    <!-- ============ ABOUT ============ -->
+    <section class="section about" id="about" data-section="about">
+      <div class="container">
+        <header class="section__head">
+          <div>
+            <p class="eyebrow reveal"><span class="px-ico" data-px="diamond"></span>03 / About</p>
+            <h2 class="h2 glow reveal" style="--d:.08s"><span data-scramble>Player profile</span></h2>
+          </div>
+          <div class="rule reveal" style="--d:.15s"></div>
+        </header>
+
+        <div class="about__grid">
+          <figure class="window portrait reveal">
+            <div class="window__bar"><span>portrait.bmp</span><span class="window__btns" aria-hidden="true"><i></i><i></i><i></i></span></div>
+            <div class="portrait__screen">
+              <canvas id="portrait" role="img" aria-label="Portrait of Shiran Revivo"></canvas>
+              <div class="portrait__tint" aria-hidden="true"></div>
+              <div class="portrait__grid" aria-hidden="true"></div>
+            </div>
+            <figcaption class="window__foot"><span>RES <b id="portraitRes">10×13</b></span><span id="portraitState">Signal found</span></figcaption>
+          </figure>
+
+          <div class="about__text">
+            <p class="lead reveal">A film frame has a few seconds to show you where to look. So does a screen.</p>
+            <p class="reveal" style="--d:.08s">I spent years designing sets for film, always thinking about the person watching. Now I design digital products with that same focus: what they see first, what they need next, and what they&rsquo;ll never notice because it just works.</p>
+            <p class="reveal" style="--d:.14s">I adapt to every product and its needs. Before anything else, I dive deep into its world: the people who&rsquo;ll use it, the field it lives in and the feeling it should carry, both functionally and visually. The design grows from there, shaped by the product, not by my habits.</p>
+
+            <a class="btn about__more reveal" style="--d:.26s" href="about.html"><span class="btn__face">More about me<span class="px-ico" data-px="arrow"></span></span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section class="section contact" id="contact" data-section="contact">
+      <div class="container">
+        <header class="section__head">
+          <div>
+            <p class="eyebrow reveal"><span class="px-ico" data-px="diamond"></span>04 / Contact</p>
+            <h2 class="h2 glow reveal" style="--d:.08s"><span data-scramble>Let&rsquo;s talk.</span></h2>
+          </div>
+          <div class="rule reveal" style="--d:.15s"></div>
+        </header>
+
+        <div class="contact__grid">
+          <form class="window term reveal" id="contactForm" novalidate>
+            <div class="window__bar"><span>new_message.sh</span><span class="window__btns" aria-hidden="true"><i></i><i></i><i></i></span></div>
+            <div class="term__body">
+              <p class="term__hint">// fill in the blanks and hit send_</p>
+              <label class="term__row"><span class="term__prompt">&gt; name:</span><input name="name" type="text" required autocomplete="name" placeholder="your name"></label>
+              <label class="term__row"><span class="term__prompt">&gt; email:</span><input name="email" type="email" required autocomplete="email" placeholder="you@domain.com"></label>
+              <label class="term__row term__row--area"><span class="term__prompt">&gt; message:</span><textarea name="message" required rows="4" placeholder="tell me about your quest..."></textarea></label>
+              <div class="term__actions">
+                <p class="term__status" id="formStatus" aria-live="polite"></p>
+                <button class="btn" type="submit"><span class="btn__face">Send message<span class="px-ico" data-px="arrow"></span></span></button>
+              </div>
+            </div>
+          </form>
+
+          <div>
+            <p class="contact__lead reveal" style="--d:.08s">Looking for a UX/UI&nbsp;designer?</p>
+            <div class="email-row reveal" style="--d:.14s">
+              <a data-email href="mailto:shiranrevivo193@gmail.com">shiranrevivo193@gmail.com</a>
+              <button class="copy-btn" id="copyEmail" type="button"><span class="px-ico" data-px="copy"></span><span class="copy-btn__txt">Copy</span></button>
+            </div>
+            <ul class="socials reveal" style="--d:.2s">
+              <li><a href="https://www.linkedin.com/in/shiran-revivo-093736347/" target="_blank" rel="noopener">LinkedIn <span class="px-ico" data-px="ext"></span></a></li>
+              <li><a href="https://www.instagram.com/shiran_designer/" target="_blank" rel="noopener">Instagram <span class="px-ico" data-px="ext"></span></a></li>
+              <li><a href="https://www.behance.net/shiranrevivo" target="_blank" rel="noopener">Behance <span class="px-ico" data-px="ext"></span></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <span>© <span id="year">2026</span> Shiran Revivo</span>
+      <span class="footer__made">Designed with passion <span class="px-ico" data-px="heart"></span></span>
+      <a href="#home">Back to top <span class="px-ico" data-px="up"></span></a>
+    </div>
+  </footer>
+
+  <script src="assets/js/data.js?v=62"></script>
+  <script src="assets/js/main.js?v=59"></script>
+</body>
+</html>

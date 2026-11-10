@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact — Shiran Revivo</title>
+  <meta name="description" content="Get in touch with Shiran Revivo — UX/UI and Visual Designer.">
+  <meta name="theme-color" content="#0B0408">
+  <!-- link preview. og:image must become an absolute URL (https://domain/…) once the site has a domain -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Shiran Revivo">
+  <meta property="og:title" content="Contact — Shiran Revivo">
+  <meta property="og:description" content="Get in touch with Shiran Revivo — UX/UI and Visual Designer.">
+  <meta property="og:image" content="assets/img/og/share.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/svg+xml" href="assets/img/logo/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jersey+10&family=Pixelify+Sans:wght@400..700&family=Space+Grotesk:wght@400;500;600&family=VT323&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css?v=92">
+</head>
+<body data-page="contact">
+
+  <canvas id="dots" aria-hidden="true"></canvas>
+  <div class="crt" aria-hidden="true"></div>
+
+  <header class="nav" id="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo" aria-label="Shiran Revivo — home">
+        <img class="nav__logo-img" src="assets/img/logo/s-design-logo.svg" alt="s.design" width="140" height="35">
+      </a>
+      <nav class="nav__links" aria-label="Main">
+        <a href="index.html" class="nav__link"><span class="px-ico" data-px="home"></span>Home<span class="nav__num">01</span></a>
+        <a href="projects.html" class="nav__link"><span class="px-ico" data-px="grid"></span>Work<span class="nav__num">02</span></a>
+        <a href="about.html" class="nav__link"><span class="px-ico" data-px="user"></span>About<span class="nav__num">03</span></a>
+        <a href="cv.html" class="nav__link"><span class="px-ico" data-px="doc"></span>CV<span class="nav__num">04</span></a>
+        <a href="contact.html" class="nav__link is-active" aria-current="page"><span class="px-ico" data-px="chat"></span>Contact<span class="nav__num">05</span></a>
+      </nav>
+      <div class="nav__actions">
+        <button class="icon-btn" id="soundBtn" type="button" aria-pressed="false" aria-label="Turn sound on"><span class="px-ico" data-px="mute"></span></button>
+        <button class="icon-btn nav__menu" id="menuBtn" type="button" aria-expanded="false" aria-label="Menu"><span class="px-ico" data-px="menu"></span></button>
+      </div>
+    </div>
+  </header>
+
+  <div class="hud" aria-hidden="true">
+    <span>LVL <b>05</b> — contact</span>
+    <span id="hudCoords">X <b>0000</b> · Y <b>0000</b></span>
+  </div>
+
+  <main>
+    <section class="page-head">
+      <div class="container">
+        <p class="eyebrow reveal"><span class="px-ico" data-px="diamond"></span>05 / Contact</p>
+        <h1 class="page-head__title glow reveal" style="--d:.08s"><span data-scramble>Let&rsquo;s talk.</span></h1>
+      </div>
+    </section>
+
+    <section class="section contact page-body">
+      <div class="container">
+        <div class="contact__grid">
+          <form class="window term reveal" id="contactForm" novalidate>
+            <div class="window__bar"><span>new_message.sh</span><span class="window__btns" aria-hidden="true"><i></i><i></i><i></i></span></div>
+            <div class="term__body">
+              <p class="term__hint">// fill in the blanks and hit send_</p>
+              <label class="term__row"><span class="term__prompt">&gt; name:</span><input name="name" type="text" required autocomplete="name" placeholder="your name"></label>
+              <label class="term__row"><span class="term__prompt">&gt; email:</span><input name="email" type="email" required autocomplete="email" placeholder="you@domain.com"></label>
+              <label class="term__row term__row--area"><span class="term__prompt">&gt; message:</span><textarea name="message" required rows="4" placeholder="tell me about your quest..."></textarea></label>
+              <div class="term__actions">
+                <p class="term__status" id="formStatus" aria-live="polite"></p>
+                <button class="btn" type="submit"><span class="btn__face">Send message<span class="px-ico" data-px="arrow"></span></span></button>
+              </div>
+            </div>
+          </form>
+
+          <div>
+            <p class="contact__lead reveal" style="--d:.08s">Looking for a UX/UI&nbsp;designer?</p>
+            <div class="email-row reveal" style="--d:.14s">
+              <a data-email href="mailto:shiranrevivo193@gmail.com">shiranrevivo193@gmail.com</a>
+              <button class="copy-btn" id="copyEmail" type="button"><span class="px-ico" data-px="copy"></span><span class="copy-btn__txt">Copy</span></button>
+            </div>
+            <ul class="socials reveal" style="--d:.2s">
+              <li><a href="https://www.linkedin.com/in/shiran-revivo-093736347/" target="_blank" rel="noopener">LinkedIn <span class="px-ico" data-px="ext"></span></a></li>
+              <li><a href="https://www.instagram.com/shiran_designer/" target="_blank" rel="noopener">Instagram <span class="px-ico" data-px="ext"></span></a></li>
+              <li><a href="https://www.behance.net/shiranrevivo" target="_blank" rel="noopener">Behance <span class="px-ico" data-px="ext"></span></a></li>
+            </ul>
+          </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <span>© <span id="year">2026</span> Shiran Revivo</span>
+      <span class="footer__made">Designed with passion <span class="px-ico" data-px="heart"></span></span>
+      <a href="index.html">Back home <span class="px-ico" data-px="up"></span></a>
+    </div>
+  </footer>
+
+  <script src="assets/js/data.js?v=62"></script>
+  <script src="assets/js/main.js?v=59"></script>
+</body>
+</html>

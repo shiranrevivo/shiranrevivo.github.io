@@ -1,0 +1,70 @@
+/* ==========================================================================
+   s.design — DESIGN TOKENS (reference copy)
+   Mirrors the :root block of assets/css/style.css, plus names for the few
+   colours the site writes as raw hex (#FFA3FA, #FFE15C, #F6EFF2, #F2D7A0, #E8A33A).
+   The site does NOT import this file. If a value changes on the site, update it
+   here too, then run: node design-system/tools/build-assets.mjs
+   ========================================================================== */
+
+:root {
+  /* ---------- texture ---------- */
+  --grain: url("assets/graphics/grain.svg");   /* paper/film grain (on the site: the same noise inline as a data URI, in :root since v1.13) */
+
+  /* ---------- colour: night (backgrounds) ---------- */
+  --bg: #0B0408;            /* page background, "ink black" */
+  --bg-2: #12060F;          /* windows, cards */
+  --surface: #180914;       /* raised surface */
+
+  /* ---------- colour: pink (the brand) ---------- */
+  --pink: #FF7BF8;          /* primary: headings, buttons, glow, the S dot */
+  --pink-hover: #FFA3FA;    /* hover fill of a primary button */
+  --pink-soft: #FFC4FC;     /* lead text, chips, soft highlights */
+  --pink-dim: #93408F;      /* offset shadow of buttons / chips */
+  --pink-deep: #3B1440;     /* offset shadow of windows, ink on paper */
+
+  /* ---------- colour: text ---------- */
+  --text: #F7C4EE;          /* body copy on night */
+  --muted: #B07AA5;         /* meta, labels, numbers */
+
+  /* ---------- colour: lines ---------- */
+  --line: rgba(255, 123, 248, .18);
+  --line-strong: rgba(255, 123, 248, .45);
+
+  /* ---------- colour: accents (use sparingly) ---------- */
+  --yellow: #FFE15C;        /* game rewards only: "+1", achievements */
+  --paper: #F6EFF2;         /* collage: photo borders, sticker cut-lines, tags */
+  --kraft: #F2D7A0;         /* collage: label sticker */
+  --amber: #E8A33A;         /* collage: film-edge code */
+
+  /* ---------- effects ---------- */
+  --glow: 0 0 4px rgba(255, 123, 248, .65), 0 0 18px rgba(255, 123, 248, .3);
+  --shadow-btn: 4px 4px 0 var(--pink-dim);        /* buttons */
+  --shadow-btn-hover: 5px 5px 0 var(--pink-dim);
+  --shadow-sm: 3px 3px 0 var(--pink-dim);         /* chips, arrow buttons, pager */
+  --shadow-window: 8px 8px 0 var(--pink-deep);    /* windows, embeds */
+  --shadow-sticker: 4px 4px 0 var(--pink-deep);   /* collage stickers */
+
+  /* ---------- type ---------- */
+  --f-display: "Jersey 10", "Pixelify Sans", ui-monospace, monospace;   /* headings */
+  --f-pixel: "Pixelify Sans", ui-monospace, monospace;                 /* labels, nav, buttons */
+  --f-mono: "VT323", ui-monospace, monospace;                       /* terminal, loader, counters */
+  --f-body: "Space Grotesk", system-ui, -apple-system, sans-serif;  /* running text */
+
+  /* ---------- layout ---------- */
+  --nav-h: 76px;
+  --gutter: clamp(16px, 4vw, 48px);
+  --maxw: 1240px;
+  --border: 2px;            /* every frame on the site is 2px, square corners */
+  --pixel: 8px;             /* base grid: dot matrix, card screens, portrait grid */
+
+  /* stepped "pixel" corners */
+  --notch: polygon(0 6px, 3px 6px, 3px 3px, 6px 3px, 6px 0, calc(100% - 6px) 0, calc(100% - 6px) 3px, calc(100% - 3px) 3px, calc(100% - 3px) 6px, 100% 6px, 100% calc(100% - 6px), calc(100% - 3px) calc(100% - 6px), calc(100% - 3px) calc(100% - 3px), calc(100% - 6px) calc(100% - 3px), calc(100% - 6px) 100%, 6px 100%, 6px calc(100% - 3px), 3px calc(100% - 3px), 3px calc(100% - 6px), 0 calc(100% - 6px));
+
+  /* ---------- motion: always stepped, never smooth ---------- */
+  --step-fast: .15s steps(2);    /* buttons, chips, links */
+  --step-card: .18s steps(3);    /* cards */
+
+  /* the pixel cursor is injected by initCursor() in main.js */
+  --cursor: auto;
+  --cursor-hover: pointer;
+}

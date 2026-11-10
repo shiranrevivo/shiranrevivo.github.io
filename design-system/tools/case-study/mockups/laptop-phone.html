@@ -1,0 +1,41 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Hero</title>
+<style>
+  html, body { margin: 0; background: var(--bg, transparent); }
+  /* same language as the phone (phone.html): dark body #161615, thin translucent rim, dark glass edge */
+  .stage { position: relative; width: 1000px; height: 540px; }
+  .cover { width: 1000px; height: 625px; overflow: hidden; position: relative; }
+  .cover .stage { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%) scale(.84); }
+
+  .laptop { position: absolute; left: 0; bottom: 0; width: 900px; }
+  .lid { position: relative; width: 800px; margin: 0 auto; box-sizing: border-box; padding: 16px 16px 20px;
+    border-radius: 26px 26px 6px 6px; background: #161615;
+    box-shadow: inset 0 0 0 1.5px rgba(255,255,255,.22), inset 0 0 0 3px rgba(0,0,0,.6); }
+  .lid::before { content: ""; position: absolute; left: 50%; top: 6px; width: 6px; height: 6px; margin-left: -3px; border-radius: 50%; background: #2c2c2b; }
+  .screen { width: 768px; height: 480px; border-radius: 6px; overflow: hidden; background: #F0F0F0; }
+  .screen img { display: block; width: 100%; height: auto; }
+  .base { position: relative; height: 22px; border-radius: 2px 2px 16px 16px;
+    background: linear-gradient(#3a3a39, #222221 45%, #121211);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.28), inset 0 0 0 1px rgba(255,255,255,.1); }
+  .base::before { content: ""; position: absolute; left: 50%; top: 0; width: 140px; height: 8px; margin-left: -70px;
+    border-radius: 0 0 10px 10px; background: #151514; box-shadow: inset 0 -1px 0 rgba(255,255,255,.12); }
+
+  .phone { position: absolute; right: 0; bottom: 0; width: 232px; }
+  .phone img { display: block; width: 100%; height: auto; }
+</style>
+<body>
+<div class="wrap">
+  <div class="stage">
+    <div class="laptop">
+      <div class="lid"><div class="screen"><img src="d-home.png" alt=""></div></div>
+      <div class="base"></div>
+    </div>
+    <div class="phone"><img src="m-about.png" alt=""></div>
+  </div>
+</div>
+<script>
+  const q = new URLSearchParams(location.search);
+  if (q.get('bg')) { document.body.style.setProperty('--bg', q.get('bg')); document.querySelector('.wrap').className = 'cover'; }
+</script>
+</body>

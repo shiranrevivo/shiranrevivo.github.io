@@ -1,0 +1,852 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>s.design — Brand Book</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/img/logo/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jersey+10&family=Pixelify+Sans:wght@400..700&family=Space+Grotesk:wght@400;500;600&family=VT323&family=Heebo:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="tokens.css">
+  <!--
+    BRAND BOOK — מי המותג, איך הוא נראה ואיך הוא מדבר. כולל ערכת סושיאל.
+    קובץ עצמאי: לא מושפע מהאתר ולא משפיע עליו. קורא רק את design-system/tokens.css ואת design-system/assets/.
+    ?only=<post|quote|carousel|story|banner|share> מציג תבנית סושיאל אחת ב-100% (לייצוא PNG: tools/export-social.sh).
+  -->
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background:
+        url("assets/graphics/dot-grid-tile.svg") 0 0 / 8px 8px,
+        var(--bg);
+      color: var(--text);
+      font-family: "Heebo", var(--f-body);
+      font-size: 17px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { display: block; max-width: 100%; }
+    a { color: var(--pink); }
+    ::selection { background: var(--pink); color: var(--bg); }
+    .ltr { direction: ltr; unicode-bidi: isolate; }
+    code, .code { direction: ltr; unicode-bidi: isolate; font-family: var(--f-mono); font-size: 1.15em; color: var(--pink-soft); }
+
+    /* CRT layer, like the site */
+    .crt {
+      position: fixed; inset: 0; z-index: 900; pointer-events: none;
+      background:
+        repeating-linear-gradient(to bottom, transparent 0 2px, rgba(0, 0, 0, .16) 2px 3px),
+        radial-gradient(ellipse at center, transparent 55%, rgba(0, 0, 0, .5) 100%);
+    }
+
+    .wrap { max-width: 1180px; margin: 0 auto; padding: 0 clamp(16px, 4vw, 48px); }
+
+    /* ---------- side index ---------- */
+    .toc {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(11, 4, 8, .88);
+      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--line);
+    }
+    .toc__inner { display: flex; align-items: center; gap: 20px; height: 64px; overflow-x: auto; scrollbar-width: none; }
+    .toc__inner::-webkit-scrollbar { display: none; }
+    .toc img { height: 24px; width: auto; flex: none; }
+    .toc nav { display: flex; gap: 2px; }
+    .toc a {
+      flex: none; padding: 7px 10px;
+      font: 11px/1 var(--f-pixel); letter-spacing: .08em; text-transform: uppercase;
+      color: var(--muted); text-decoration: none; white-space: nowrap;
+    }
+    .toc a:hover { color: var(--pink); }
+    .toc a span { color: var(--pink-dim); margin-left: 4px; }
+
+    /* ---------- section scaffolding ---------- */
+    .sec { padding: clamp(80px, 11vw, 140px) 0 0; }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: .6em; margin: 0 0 18px;
+      direction: ltr;
+      font: 13px/1 var(--f-pixel); letter-spacing: .1em; text-transform: uppercase; color: var(--pink);
+    }
+    .eyebrow img { height: 11px; width: auto; }
+    .h2 {
+      margin: 0 0 12px;
+      font: 400 clamp(52px, 7.2vw, 96px)/.9 var(--f-display);
+      letter-spacing: .01em; text-transform: uppercase; color: var(--pink);
+      text-shadow: var(--glow);
+      direction: ltr; text-align: right;
+    }
+    .h2 small { display: block; margin-top: 10px; font: 500 22px/1.3 "Heebo", sans-serif; text-transform: none; color: var(--pink-soft); text-shadow: none; }
+    .rule { height: 2px; margin: 28px 0 44px; background: repeating-linear-gradient(90deg, var(--line-strong) 0 4px, transparent 4px 8px); }
+    .h3 { margin: 56px 0 16px; font: 400 34px/1 var(--f-display); text-transform: uppercase; color: var(--pink); direction: ltr; text-align: right; }
+    .h3 span { font: 500 17px "Heebo", sans-serif; text-transform: none; color: var(--muted); margin-right: 10px; }
+    .lead { max-width: 40em; margin: 0 0 20px; font-size: clamp(19px, 2vw, 24px); line-height: 1.5; font-weight: 500; color: var(--pink-soft); }
+    p { max-width: 46em; }
+    .muted { color: var(--muted); }
+
+    .grid { display: grid; gap: 20px; }
+    .g2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .g3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .g4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    @media (max-width: 900px) { .g3, .g4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 600px) { .g2, .g3, .g4 { grid-template-columns: 1fr; } }
+
+    /* a box = the site's .window */
+    .box { border: 2px solid var(--line-strong); background: var(--bg-2); }
+    .box--win { border-color: var(--pink); box-shadow: var(--shadow-window); }
+    .box__bar {
+      display: flex; justify-content: space-between; align-items: center; gap: 10px;
+      padding: 8px 12px; direction: ltr;
+      font: 11px/1 var(--f-pixel); letter-spacing: .06em; color: var(--muted);
+      border-bottom: 2px solid var(--line-strong);
+    }
+    .box--win .box__bar { background: var(--pink); color: var(--bg); border-color: var(--pink); }
+    .wbtns { display: flex; gap: 5px; }
+    .wbtns i { width: 10px; height: 10px; border: 2px solid var(--bg); }
+    .wbtns i:last-child { background: var(--bg); }
+    .box__body { padding: 20px; }
+    .box__body > :first-child { margin-top: 0; }
+    .box__body > :last-child { margin-bottom: 0; }
+    .label { font: 11px/1.3 var(--f-pixel); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); direction: ltr; }
+    .label b { color: var(--pink); font-weight: 400; }
+
+    /* ---------- cover ---------- */
+    .cover { min-height: calc(100vh - 64px); display: grid; align-content: center; gap: 40px; padding: 80px 0; position: relative; }
+    .cover__logo { width: min(620px, 90%); filter: drop-shadow(0 0 18px rgba(255, 123, 248, .35)); }
+    .cover__title { margin: 0; font: 400 clamp(64px, 12vw, 170px)/.8 var(--f-display); text-transform: uppercase; color: var(--pink); text-shadow: var(--glow); direction: ltr; text-align: right; }
+    .cover__meta { display: flex; flex-wrap: wrap; gap: 12px 32px; }
+    .cover__spark { position: absolute; left: 4%; top: 18%; width: clamp(90px, 14vw, 180px); transform: rotate(12deg); }
+    .cursor-block { display: inline-block; width: .32em; height: .62em; margin-right: .08em; vertical-align: .02em; background: var(--pink); box-shadow: var(--glow); animation: blink 1s steps(1) infinite; }
+    @keyframes blink { 50% { opacity: 0; } }
+
+    /* ---------- essence ---------- */
+    .pillar .box__body { min-height: 190px; }
+    .pillar h4 { margin: 0 0 8px; font: 400 40px/1 var(--f-display); text-transform: uppercase; color: var(--pink); direction: ltr; text-align: right; }
+    .tagline { margin: 48px 0 0; padding: 36px; border: 2px dashed var(--line-strong); text-align: center; }
+    .tagline p { max-width: none; margin: 0; font: 400 clamp(40px, 6vw, 80px)/.9 var(--f-display); text-transform: uppercase; color: var(--pink); text-shadow: var(--glow); direction: ltr; }
+    .tagline small { display: block; margin-top: 14px; font-size: 15px; color: var(--muted); }
+
+    /* ---------- logo ---------- */
+    .logo-tile { aspect-ratio: 16 / 9; display: grid; place-items: center; padding: 12%; }
+    .logo-tile img { max-height: 100%; }
+    .on-night { background: var(--bg); }
+    .on-pink { background: var(--pink); }
+    .on-paper { background: var(--paper); }
+    .clear { position: relative; display: inline-block; padding: 34px; margin: 0 auto; border: 1px dashed var(--pink-dim); background: repeating-linear-gradient(45deg, transparent 0 6px, rgba(255, 123, 248, .06) 6px 8px); }
+    .clear img { height: 70px; background: var(--bg); }
+    .clear span { position: absolute; font: 10px var(--f-pixel); color: var(--muted); direction: ltr; }
+    .dont { position: relative; }
+    .dont::after { content: "✕"; position: absolute; top: 8px; left: 10px; font: 18px var(--f-pixel); color: #FF5A6E; }
+    .dont .logo-tile { opacity: .9; }
+
+    /* ---------- colour ---------- */
+    .sw { border: 2px solid var(--line-strong); background: var(--bg-2); }
+    .sw__chip { height: 140px; border-bottom: 2px solid var(--line-strong); }
+    .sw__body { padding: 14px 14px 16px; }
+    .sw__name { margin: 0; font: 400 26px/1 var(--f-display); text-transform: uppercase; color: var(--pink); direction: ltr; text-align: right; }
+    .sw__hex { margin: 6px 0 4px; font: 20px/1 var(--f-mono); color: var(--pink-soft); direction: ltr; text-align: right; }
+    .sw__use { margin: 0; font-size: 14px; color: var(--muted); line-height: 1.45; }
+    .ratio { display: flex; height: 64px; border: 2px solid var(--pink); direction: ltr; }
+    .ratio div { display: grid; place-items: center; font: 11px var(--f-pixel); letter-spacing: .06em; }
+    .pairs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+    @media (max-width: 800px) { .pairs { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    .pair { padding: 18px; border: 2px solid var(--line); }
+    .pair b { display: block; font: 400 34px/1 var(--f-display); text-transform: uppercase; direction: ltr; text-align: right; }
+    .pair span { font: 11px var(--f-pixel); letter-spacing: .06em; direction: ltr; display: block; text-align: right; margin-top: 8px; }
+
+    /* ---------- type ---------- */
+    .type-row { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 24px; padding: 28px 0; border-bottom: 1px solid var(--line); align-items: center; }
+    @media (max-width: 720px) { .type-row { grid-template-columns: 1fr; gap: 10px; } }
+    .type-row__meta h4 { margin: 0 0 4px; font: 400 26px/1 var(--f-display); color: var(--pink); direction: ltr; text-align: right; }
+    .type-row__sample { direction: ltr; text-align: left; color: var(--pink); overflow-wrap: anywhere; }
+    .s-display { font: 400 clamp(56px, 8vw, 104px)/.85 var(--f-display); text-transform: uppercase; text-shadow: var(--glow); }
+    .s-pixel { font: 400 clamp(20px, 2.6vw, 30px)/1.2 var(--f-pixel); letter-spacing: .08em; text-transform: uppercase; }
+    .s-body { font: 400 clamp(19px, 2vw, 24px)/1.45 var(--f-body); color: var(--text); }
+    .s-mono { font: 400 clamp(30px, 3.6vw, 44px)/1.1 var(--f-mono); }
+    .hier { direction: ltr; text-align: left; padding: 32px; }
+    .hier > * { margin: 0; }
+
+    /* ---------- graphic language ---------- */
+    .ico-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(118px, 1fr)); gap: 10px; }
+    .ico { display: grid; justify-items: center; gap: 12px; padding: 22px 8px 14px; border: 2px solid var(--line); background: var(--bg-2); transition: border-color .15s steps(2); }
+    .ico:hover { border-color: var(--pink); }
+    .ico img { height: 32px; width: auto; image-rendering: pixelated; }
+    .ico span { font: 10px var(--f-pixel); letter-spacing: .06em; color: var(--muted); direction: ltr; }
+    .el { display: grid; grid-template-rows: 200px auto; border: 2px solid var(--line-strong); background: var(--bg-2); }
+    .el__stage { position: relative; display: grid; place-items: center; overflow: hidden; border-bottom: 2px solid var(--line-strong); }
+    .el__body { padding: 14px 16px 16px; }
+    .el__body h4 { margin: 0 0 4px; font: 400 26px/1 var(--f-display); text-transform: uppercase; color: var(--pink); direction: ltr; text-align: right; }
+    .el__body p { margin: 0; font-size: 14px; line-height: 1.5; color: var(--muted); }
+    .px { image-rendering: pixelated; }
+    .burst { width: 120px; aspect-ratio: 1; display: grid; place-items: center; background: var(--pink); color: var(--bg); transform: rotate(12deg);
+      clip-path: polygon(50% 0, 59% 15%, 75% 7%, 76% 24%, 93% 25%, 85% 41%, 100% 50%, 85% 59%, 93% 75%, 76% 76%, 75% 93%, 59% 85%, 50% 100%, 41% 85%, 25% 93%, 24% 76%, 7% 75%, 15% 59%, 0 50%, 15% 41%, 7% 25%, 24% 24%, 25% 7%, 41% 15%);
+      font: 400 30px/1 var(--f-display); text-transform: uppercase; }
+    .burst b { font-weight: 400; transform: rotate(-8deg); }
+    .label-sticker { padding: .7em 1em; background: var(--kraft); color: var(--pink-deep); border: 2px dashed rgba(59, 20, 64, .35); box-shadow: var(--shadow-sticker); font: 12px var(--f-pixel); letter-spacing: .08em; text-transform: uppercase; transform: rotate(-6deg); direction: ltr; }
+    .snap { width: 130px; padding: 8px 8px 26px; background: var(--paper); box-shadow: var(--shadow-sticker); transform: rotate(-4deg); }
+    .snap img { aspect-ratio: 1; object-fit: cover; width: 100%; }
+    .corners { position: relative; width: 70%; height: 70%; }
+    .corners::before, .corners::after, .corners i::before, .corners i::after { content: ""; position: absolute; width: 18px; height: 18px; border: 2px solid var(--pink); }
+    .corners::before { top: 0; left: 0; border-right: 0; border-bottom: 0; }
+    .corners::after { top: 0; right: 0; border-left: 0; border-bottom: 0; }
+    .corners i::before { bottom: 0; left: 0; border-right: 0; border-top: 0; }
+    .corners i::after { bottom: 0; right: 0; border-left: 0; border-top: 0; }
+    .mark { background: var(--pink); color: var(--bg); padding: 0 .25em; }
+    .sprites { display: flex; flex-wrap: wrap; justify-content: center; align-items: flex-end; gap: 28px; padding: 36px; }
+    .sprites figure { margin: 0; display: grid; justify-items: center; gap: 10px; }
+    .sprites img { width: 88px; image-rendering: pixelated; }
+    .sprites figcaption { font: 10px var(--f-pixel); letter-spacing: .06em; color: var(--muted); direction: ltr; }
+    .cursor-demo { display: flex; gap: 44px; align-items: flex-start; direction: ltr; }
+    .cursor-demo img { width: 66px; image-rendering: pixelated; }
+    .live-cursor { cursor: url("assets/cursor/cursor.svg") 0 0, auto; }
+    .live-cursor:hover { cursor: url("assets/cursor/cursor-hover.svg") 0 0, pointer; }
+
+    /* ---------- voice ---------- */
+    .tscroll { overflow-x: auto; }
+    .voice { min-width: 620px; } .spec { min-width: 560px; }
+    main { overflow-x: clip; }
+    .voice td, .voice th { padding: 14px 12px; border-bottom: 1px solid var(--line); text-align: right; vertical-align: top; }
+    .voice { width: 100%; border-collapse: collapse; font-size: 15px; }
+    .voice th { font: 11px var(--f-pixel); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); font-weight: 400; }
+    .voice .en { direction: ltr; text-align: left; font-family: var(--f-mono); font-size: 20px; color: var(--pink-soft); }
+    .yes { color: #7CF0B0; } .no { color: #FF5A6E; }
+    .dd { list-style: none; margin: 0; padding: 0; }
+    .dd li { padding: 9px 0 9px; border-bottom: 1px dashed var(--line); font-size: 15px; }
+    .dd li::before { content: "■"; margin-left: 10px; font-size: 9px; vertical-align: 2px; }
+    .dd--yes li::before { color: #7CF0B0; } .dd--no li::before { color: #FF5A6E; }
+
+    /* ---------- social kit ---------- */
+    .kit__list { display: flex; flex-wrap: wrap; gap: 40px 32px; align-items: flex-start; direction: ltr; }
+    .kit__item { margin: 0; }
+    .kit__item figcaption { margin-top: 12px; font: 11px/1.5 var(--f-pixel); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+    .kit__item figcaption b { color: var(--pink); font-weight: 400; }
+    .kit__item figcaption a { color: var(--pink-soft); }
+    .kit__frame { overflow: hidden; outline: 1px solid var(--line); }
+    .kit__frame > .tpl { transform-origin: 0 0; }
+    .spec { width: 100%; border-collapse: collapse; font-size: 15px; }
+    .spec th, .spec td { padding: 12px; border-bottom: 1px solid var(--line); text-align: right; }
+    .spec th { font: 11px var(--f-pixel); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); font-weight: 400; }
+    .spec td:first-child { font: 400 22px/1 var(--f-display); text-transform: uppercase; color: var(--pink); }
+
+    footer.end { margin-top: 140px; padding: 28px 0 60px; border-top: 1px solid var(--line); }
+    footer.end .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; font: 11px var(--f-pixel); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); direction: ltr; }
+
+    /* ==========================================================
+       SOCIAL TEMPLATES — the site, ×3 (--u: 3px)
+       ========================================================== */
+    .tpl {
+      --u: 3px;
+      position: relative; overflow: hidden; direction: ltr; text-align: left;
+      background: url("assets/graphics/dot-grid-tile.svg") 0 0 / calc(8 * var(--u)) calc(8 * var(--u)), var(--bg);
+      color: var(--text); font-family: var(--f-body); line-height: 1.6;
+    }
+    .tpl::after {
+      content: ""; position: absolute; inset: 0; z-index: 50; pointer-events: none;
+      background:
+        repeating-linear-gradient(to bottom, transparent 0 calc(2 * var(--u)), rgba(0, 0, 0, .16) calc(2 * var(--u)) calc(3 * var(--u))),
+        radial-gradient(ellipse at center, transparent 55%, rgba(0, 0, 0, .5) 100%);
+    }
+    .tpl p { max-width: none; }
+    .tpl > * { flex-shrink: 0; }
+    .tpl--post, .tpl--carousel { width: 1080px; height: 1350px; }
+    .tpl--quote { width: 1080px; height: 1080px; }
+    .tpl--story { width: 1080px; height: 1920px; }
+    .tpl--banner { width: 1584px; height: 396px; }
+    .tpl--share { width: 1200px; height: 630px; }
+    .t-logo { height: calc(22 * var(--u)); width: auto; filter: drop-shadow(0 0 calc(6 * var(--u)) rgba(255, 123, 248, .35)); }
+    .t-eyebrow { display: inline-flex; align-items: center; gap: .6em; margin: 0; font: calc(11 * var(--u)) / 1 var(--f-pixel); letter-spacing: .1em; text-transform: uppercase; color: var(--pink); }
+    .t-eyebrow img { height: .85em; width: auto; }
+    .t-title { margin: 0; font: 400 calc(44 * var(--u)) / .82 var(--f-display); letter-spacing: .01em; text-transform: uppercase; color: var(--pink);
+      text-shadow: 0 0 calc(4 * var(--u)) rgba(255, 123, 248, .65), 0 0 calc(18 * var(--u)) rgba(255, 123, 248, .3); }
+    .t-sub { margin: 0; font-size: calc(12 * var(--u)); line-height: 1.45; color: var(--muted); }
+    .t-mark { background: var(--pink); color: var(--bg); padding: 0 .12em; text-shadow: none; }
+    .t-btn { display: inline-flex; align-items: center; gap: .75em; padding: calc(14 * var(--u)) calc(24 * var(--u)); background: var(--pink); color: var(--bg);
+      border: calc(2 * var(--u)) solid var(--pink); box-shadow: calc(4 * var(--u)) calc(4 * var(--u)) 0 var(--pink-dim);
+      font: calc(13 * var(--u)) / 1 var(--f-pixel); letter-spacing: .08em; text-transform: uppercase; white-space: nowrap; }
+    .t-btn img { height: .8em; width: auto; }
+    .t-btn--ghost { background: transparent; color: var(--pink); }
+    .t-window { border: calc(2 * var(--u)) solid var(--pink); background: var(--bg-2); box-shadow: calc(8 * var(--u)) calc(8 * var(--u)) 0 var(--pink-deep); }
+    .t-window__bar { display: flex; align-items: center; justify-content: space-between; padding: calc(8 * var(--u)) calc(12 * var(--u)); background: var(--pink); color: var(--bg); font: calc(11 * var(--u)) / 1 var(--f-pixel); letter-spacing: .06em; }
+    .t-window__btns { display: flex; gap: calc(5 * var(--u)); }
+    .t-window__btns i { width: calc(10 * var(--u)); height: calc(10 * var(--u)); border: calc(2 * var(--u)) solid var(--bg); }
+    .t-window__btns i:last-child { background: var(--bg); }
+    .t-window__img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; }
+    .t-window__foot { display: flex; justify-content: space-between; padding: calc(10 * var(--u)) calc(12 * var(--u)); border-top: calc(2 * var(--u)) solid var(--pink); font: calc(10 * var(--u)) / 1 var(--f-pixel); letter-spacing: .08em; color: var(--muted); }
+    .t-window__foot b { color: var(--pink); font-weight: 400; }
+    .t-rule { height: calc(2 * var(--u)); background: repeating-linear-gradient(90deg, var(--line-strong) 0 calc(4 * var(--u)), transparent calc(4 * var(--u)) calc(8 * var(--u))); }
+    .t-handle { font: calc(10 * var(--u)) / 1 var(--f-pixel); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+    .t-handle b { color: var(--pink); font-weight: 400; }
+    .t-cursor { display: inline-block; width: .32em; height: .62em; margin-left: .08em; vertical-align: .02em; background: var(--pink); box-shadow: var(--glow); }
+    .t-spark { position: absolute; z-index: 5; filter: drop-shadow(0 0 calc(8 * var(--u)) rgba(255, 123, 248, .5)); }
+    .t-burst { position: absolute; z-index: 6; display: grid; place-items: center; background: var(--pink); color: var(--bg);
+      clip-path: polygon(50% 0, 59% 15%, 75% 7%, 76% 24%, 93% 25%, 85% 41%, 100% 50%, 85% 59%, 93% 75%, 76% 76%, 75% 93%, 59% 85%, 50% 100%, 41% 85%, 25% 93%, 24% 76%, 7% 75%, 15% 59%, 0 50%, 15% 41%, 7% 25%, 24% 24%, 25% 7%, 41% 15%);
+      font: 400 calc(26 * var(--u)) / 1 var(--f-display); text-transform: uppercase; }
+    .t-burst b { font-weight: 400; transform: rotate(-8deg); }
+    .t-corners { position: absolute; pointer-events: none; }
+    .t-corners::before, .t-corners::after, .t-corners i::before, .t-corners i::after { content: ""; position: absolute; width: calc(18 * var(--u)); height: calc(18 * var(--u)); border: calc(2 * var(--u)) solid var(--pink); }
+    .t-corners::before { top: 0; left: 0; border-right: 0; border-bottom: 0; }
+    .t-corners::after { top: 0; right: 0; border-left: 0; border-bottom: 0; }
+    .t-corners i::before { bottom: 0; left: 0; border-right: 0; border-top: 0; }
+    .t-corners i::after { bottom: 0; right: 0; border-left: 0; border-top: 0; }
+    /* 01 post */
+    .tpl--post { display: flex; flex-direction: column; padding: 72px 84px 84px; }
+    .post__top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 52px; }
+    .post__win { margin-bottom: 56px; }
+    .post__title { margin-bottom: 18px; font-size: calc(38 * var(--u)); }
+    .post__bottom { margin-top: auto; display: flex; justify-content: space-between; align-items: flex-end; }
+    /* 02 quote */
+    .tpl--quote { display: flex; flex-direction: column; padding: 96px; }
+    .quote__title { font-size: calc(58 * var(--u)); line-height: .8; margin-top: 56px; }
+    .quote__body { margin-top: 48px; max-width: 22em; font-size: calc(12.5 * var(--u)); line-height: 1.45; color: var(--text); }
+    .quote__foot { margin-top: auto; display: flex; justify-content: space-between; align-items: center; }
+    /* 03 carousel */
+    .tpl--carousel { display: flex; flex-direction: column; padding: 96px 90px; }
+    .car__lvl { font: 400 calc(110 * var(--u)) / .75 var(--f-display); color: transparent; -webkit-text-stroke: calc(1.5 * var(--u)) var(--pink); text-transform: uppercase; margin: 48px 0 24px -8px; }
+    .car__title { font-size: calc(48 * var(--u)); }
+    .car__foot { margin-top: auto; display: flex; justify-content: space-between; align-items: center; }
+    .car__pips { display: flex; gap: 18px; }
+    .car__pips i { width: 30px; height: 30px; border: 6px solid var(--line-strong); }
+    .car__pips i:first-child { background: var(--pink); border-color: var(--pink); box-shadow: 6px 6px 0 var(--pink-dim); }
+    /* 04 story — top 250 / bottom 340 stay free for the Instagram UI */
+    .tpl--story { display: flex; flex-direction: column; align-items: center; padding: 260px 96px 340px; text-align: center; }
+    .story__label { margin: 40px 0 28px; font: calc(32 * var(--u)) / 1 var(--f-mono); letter-spacing: .04em; color: var(--pink); text-shadow: var(--glow); }
+    .story__bar { width: 100%; height: calc(26 * var(--u)); padding: calc(4 * var(--u)); border: calc(3 * var(--u)) solid var(--pink); border-radius: calc(8 * var(--u)); box-shadow: var(--glow); }
+    .story__fill { width: 72%; height: 100%; border-radius: calc(3 * var(--u)); background: repeating-linear-gradient(90deg, transparent 0 calc(12 * var(--u)), rgba(11, 4, 8, .28) calc(12 * var(--u)) calc(14 * var(--u))), var(--pink); box-shadow: 0 0 calc(14 * var(--u)) rgba(255, 123, 248, .8); }
+    .story__meta { width: 100%; display: flex; justify-content: space-between; margin-top: 24px; font: calc(10 * var(--u)) / 1 var(--f-pixel); letter-spacing: .1em; color: var(--muted); }
+    .story__meta b { color: var(--pink); font-weight: 400; }
+    .story__win { width: 100%; margin-top: 64px; text-align: left; }
+    .story__cta { margin-top: 56px; }
+    /* 05 banner — x < 420 stays clear for the LinkedIn profile photo */
+    .tpl--banner { --u: 2px; display: flex; align-items: center; gap: 64px; padding: 0 96px 0 460px; }
+    .banner__text { flex: 1; }
+    .banner__title { font-size: calc(44 * var(--u)); margin: 18px 0 20px; }
+    .tpl--banner .t-eyebrow { white-space: nowrap; }
+    .banner__items { display: flex; align-items: flex-end; gap: 22px; }
+    .banner__items img { width: 60px; image-rendering: pixelated; }
+    /* 06 share — the link preview (og:image) on LinkedIn / WhatsApp; the middle stays readable when it is cropped to a square */
+    .tpl--share { --u: 2px; display: flex; flex-direction: column; padding: 64px 80px; }
+    .share__top { display: flex; justify-content: space-between; align-items: center; }
+    .share__title { font-size: calc(74 * var(--u)); margin: auto 0 28px; padding-top: 28px; }
+    .share__bottom { display: flex; justify-content: space-between; align-items: flex-end; gap: 48px; }
+    .share__bottom .t-rule { flex: 1; margin-bottom: 6px; }
+    .share__items { display: flex; align-items: flex-end; gap: 22px; }
+    .share__items img { width: 56px; image-rendering: pixelated; }
+
+    /* ?only=<id>: one template, nothing else (export) */
+    body.is-only { background: var(--bg); }
+    body.is-only > :not(#social-host) { display: none !important; }
+    body.is-only #social-host { display: block; }
+    body.is-only #social-host .kit__item { display: none; }
+    body.is-only #social-host .kit__item.is-on { display: block; }
+    body.is-only .kit__frame { width: auto !important; height: auto !important; outline: 0; }
+    body.is-only .kit__frame > .tpl { transform: none !important; }
+    #social-host { display: none; }
+  </style>
+</head>
+<body>
+  <div class="crt" aria-hidden="true"></div>
+
+  <header class="toc">
+    <div class="wrap toc__inner">
+      <img src="../brand/final/s-design-logo.svg" alt="s.design">
+      <nav class="ltr" aria-label="Brand book">
+        <a href="#essence"><span>01</span>Essence</a>
+        <a href="#logo"><span>02</span>Logo</a>
+        <a href="#colour"><span>03</span>Colour</a>
+        <a href="#type"><span>04</span>Type</a>
+        <a href="#graphics"><span>05</span>Graphics</a>
+        <a href="#voice"><span>06</span>Voice</a>
+        <a href="#social"><span>07</span>Social</a>
+        <a href="#case-study"><span>08</span>Case study</a>
+        <a href="#rules"><span>09</span>Do · Don't</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============ COVER ============ -->
+    <section class="wrap cover">
+      <img class="cover__spark" src="assets/graphics/sparkle-sticker.svg" alt="">
+      <img class="cover__logo" src="../brand/final/s-design-logo.svg" alt="s.design">
+      <h1 class="cover__title">Brand book<span class="cursor-block"></span></h1>
+      <div class="cover__meta">
+        <span class="label">Shiran Revivo · <b>UX/UI Designer</b></span>
+        <span class="label">Version <b>1.20</b> · 2026-11-10</span>
+        <span class="label">Companion: <b>design-system.html</b></span>
+      </div>
+      <p class="muted" style="margin:0">השפה של המותג s.design: מי הוא, איך הוא נראה, איך הוא מדבר, ואיך מתרגמים אותו לסושיאל. כל מה שכאן נגזר מהאתר. המפרט הטכני של הרכיבים נמצא ב-<a href="design-system.html">Design System</a>.</p>
+    </section>
+
+    <!-- ============ 01 ESSENCE ============ -->
+    <section class="sec wrap" id="essence">
+      <p class="eyebrow"><img src="assets/icons/diamond.svg" alt="">01 / Essence</p>
+      <h2 class="h2">The player<small>מי המותג</small></h2>
+      <div class="rule"></div>
+      <p class="lead">Retro pixel UI עם לב עכשווי. דיגיטלי, חדשני ושובב, עם קריצה ואהבה לממשקים של פעם.</p>
+      <p>המותג הוא שירן: מעצבת UX/UI שמגיעה מקולנוע, עיצוב סטים, צילום אנלוגי ויצירה ביד. המסך הוא לוח משחק, המבקר הוא שחקן, וכל פרויקט הוא שלב. האתר לא רק מציג עבודות, הוא <b>מזמין לשחק</b>: ללחוץ, לאסוף, לגלות.</p>
+
+      <div class="grid g3" style="margin-top:40px">
+        <div class="box pillar"><div class="box__bar"><span>VALUE_01</span><span class="wbtns"><i></i><i></i><i></i></span></div>
+          <div class="box__body"><h4>Playful</h4><p class="muted">שובבות עם כוונה: משחק איסוף, דמות שמפהקת, צליל קליק עדין. הנאה שמשרתת את המוצר, לא קישוט.</p></div></div>
+        <div class="box pillar"><div class="box__bar"><span>VALUE_02</span><span class="wbtns"><i></i><i></i><i></i></span></div>
+          <div class="box__body"><h4>Pixel-precise</h4><p class="muted">כל אלמנט בנוי על גריד פיקסלים: פינות ישרות, מסגרות 2px, צללים שזזים בצעדים. דיוק של מעצבת.</p></div></div>
+        <div class="box pillar"><div class="box__bar"><span>VALUE_03</span><span class="wbtns"><i></i><i></i><i></i></span></div>
+          <div class="box__body"><h4>Analog heart</h4><p class="muted">מתחת למסך יש נייר, פילם וגרעיניות: קולאז', פולארויד, מדבקות. העולם האישי של שירן נכנס לממשק.</p></div></div>
+      </div>
+
+      <div class="tagline">
+        <p>UX/UI Designer<span class="cursor-block"></span></p>
+        <small>כותרת ה-hero (v1.18, 2026-11-10; החליפה את Pixeling joy into products). פשוטה וברורה: התפקיד, בשתי שורות UX/UI / Designer, "UX/UI" בצבע הטקסט ו-"Designer" בוורוד מלא. מעליה eyebrow "Hi, I'm Shiran", ומתחתיה תת-הכותרת שאומרת איך היא חושבת. הקודם: Pixeling joy / into products</small>
+      </div>
+    </section>
+
+    <!-- ============ 02 LOGO ============ -->
+    <section class="sec wrap" id="logo">
+      <p class="eyebrow"><img src="assets/icons/diamond.svg" alt="">02 / Logo</p>
+      <h2 class="h2">s.design<small>הלוגו והאייקון</small></h2>
+      <div class="rule"></div>
+      <p>ה-S המקורית של שירן עם החתך והנקודה, ו-"design" ב-Unbounded 800 עם ניצוץ ורוד במקום הנקודה של ה-i. הנקודה של ה-S והניצוץ תמיד <b>ורודים <code>#FF7BF8</code></b>, לא בסגול של הלוגו הישן. הקבצים הם paths וקטוריים, בלי פונט: <code>brand/final/</code>.</p>
+
+      <div class="grid g3" style="margin-top:32px">
+        <figure class="box" style="margin:0"><div class="logo-tile on-night"><img src="../brand/final/s-design-logo.svg" alt=""></div><figcaption class="box__body label">ראשי · רקע כהה · <b>s-design-logo.svg</b></figcaption></figure>
+        <figure class="box" style="margin:0"><div class="logo-tile on-pink"><img src="../brand/final/s-design-logo-on-pink.svg" alt=""></div><figcaption class="box__body label">על ורוד · <b>s-design-logo-on-pink.svg</b></figcaption></figure>
+        <figure class="box" style="margin:0"><div class="logo-tile on-paper"><img src="../brand/final/s-design-logo-dark.svg" alt=""></div><figcaption class="box__body label">רקע בהיר · <b>s-design-logo-dark.svg</b></figcaption></figure>
+      </div>
+      <div class="grid g4" style="margin-top:20px">
+        <figure class="box" style="margin:0"><div class="logo-tile on-night" style="aspect-ratio:1"><img src="../brand/final/s-design-icon.svg" alt=""></div><figcaption class="box__body label">אייקון · <b>s-design-icon.svg</b></figcaption></figure>
+        <figure class="box" style="margin:0"><div class="logo-tile on-paper" style="aspect-ratio:1"><img src="../brand/final/s-design-icon-dark.svg" alt=""></div><figcaption class="box__body label">אייקון בהיר · <b>-icon-dark.svg</b></figcaption></figure>
+        <figure class="box" style="margin:0"><div class="logo-tile" style="aspect-ratio:1"><img src="../assets/img/logo/favicon.svg" alt="" style="width:60%"></div><figcaption class="box__body label">Favicon / תמונת פרופיל · <b>favicon.svg</b></figcaption></figure>
+        <div class="box"><div class="box__body">
+          <p class="label" style="margin-bottom:12px"><b>מינימום</b></p>
+          <p style="font-size:15px">לוגו מלא: גובה 24px במסך / 12 מ"מ בדפוס. מתחת לזה: רק האייקון (מינימום 16px).</p>
+          <p style="font-size:15px" class="muted">באתר: 30px בניווט, 26px במובייל, עם glow ורוד עדין.</p>
+        </div></div>
+      </div>
+
+      <h3 class="h3">Clear space<span>מרווח ביטחון</span></h3>
+      <p>סביב הלוגו נשאר מרווח ריק ששווה לפחות לגובה ה-S חלקי 2. שום טקסט, אייקון או קצה של תמונה לא נכנס לשם.</p>
+      <div style="text-align:center; margin-top:24px"><div class="clear"><img src="../brand/final/s-design-logo.svg" alt=""><span style="top:10px; left:50%; transform:translateX(-50%)">½ S</span><span style="bottom:10px; left:50%; transform:translateX(-50%)">½ S</span></div></div>
+
+      <h3 class="h3">Don't<span>לא עושים</span></h3>
+      <div class="grid g4">
+        <div class="box dont"><div class="logo-tile on-night"><img src="../brand/final/s-design-logo.svg" alt="" style="transform:scaleX(1.5)"></div><p class="box__body label" style="margin:0">לא למתוח או לעוות</p></div>
+        <div class="box dont"><div class="logo-tile on-night"><img src="../brand/final/s-design-logo.svg" alt="" style="filter:hue-rotate(110deg)"></div><p class="box__body label" style="margin:0">לא לשנות צבע (גם לא לסגול הישן)</p></div>
+        <div class="box dont"><div class="logo-tile" style="background:url('../assets/img/projects/mandy/cover.jpg') center/cover"><img src="../brand/final/s-design-logo.svg" alt=""></div><p class="box__body label" style="margin:0">לא על תמונה עמוסה בלי שכבה כהה</p></div>
+        <div class="box dont"><div class="logo-tile on-night"><img src="../brand/final/s-design-logo.svg" alt="" style="transform:rotate(-12deg); filter:drop-shadow(6px 6px 0 #FFE15C)"></div><p class="box__body label" style="margin:0">לא להטות ולא להוסיף צל צבעוני</p></div>
+      </div>
+    </section>
+
+    <!-- ============ 03 COLOUR ============ -->
+    <section class="sec wrap" id="colour">
+      <p class="eyebrow"><img src="assets/icons/diamond.svg" alt="">03 / Colour</p>
+      <h2 class="h2">Night &amp; neon<small>פלטת הצבעים</small></h2>
+      <div class="rule"></div>
+      <p>פלטה מונוכרומטית: לילה כמעט שחור וורוד ניאון אחד, עם גוונים שנגזרים ממנו. הצבעים החמים של הקולאז' (נייר, קראפט, ענבר) והצהוב של המשחק הם אקסנטים בלבד.</p>
+
+      <h3 class="h3">Core<span>הבסיס</span></h3>
+      <div class="grid g4">
+        <div class="sw"><div class="sw__chip" style="background:var(--bg)"></div><div class="sw__body"><p class="sw__name">Night</p><p class="sw__hex">#0B0408 · --bg</p><p class="sw__use">רקע של הכל.</p></div></div>
+        <div class="sw"><div class="sw__chip" style="background:var(--pink); box-shadow: inset 0 0 40px rgba(255,255,255,.2)"></div><div class="sw__body"><p class="sw__name">Neon pink</p><p class="sw__hex">#FF7BF8 · --pink</p><p class="sw__use">הצבע של המותג: כותרות, כפתור ראשי, glow, הנקודה של ה-S.</p></div></div>
+        <div class="sw"><div class="sw__chip" style="background:var(--text)"></div><div class="sw__body"><p class="sw__name">Blush</p><p class="sw__hex">#F7C4EE · --text</p><p class="sw__use">טקסט רץ על הלילה.</p></div></div>
+        <div class="sw"><div class="sw__chip" style="background:var(--muted)"></div><div class="sw__body"><p class="sw__name">Mauve</p><p class="sw__hex">#B07AA5 · --muted</p><p class="sw__use">מטא, תוויות, מספרים.</p></div></div>
+      </div>
+      <h3 class="h3">Pink scale<span>נגזרות הוורוד</span></h3>
+      <div class="grid g4">
+        <div class="sw"><div class="sw__chip" style="background:var(--pink-soft)"></div><div class="sw__body"><p class="sw__name">Soft</p><p class="sw__hex">#FFC4FC · --pink-soft</p><p class="sw__use">טקסט lead, chips, הדגשות רכות.</p></div></div>
+        <div class="sw"><div class="sw__chip" style="background:var(--pink-hover)"></div><div class="sw__body"><p class="sw__name">Hover</p><p class="sw__hex">#FFA3FA · --pink-hover</p><p class="sw__use">מילוי של כפתור ראשי ב-hover.</p></div></div>
+        <div class="sw"><div class="sw__chip" style="background:var(--pink-dim)"></div><div class="sw__body"><p class="sw__name">Dim</p><p class="sw__hex">#93408F · --pink-dim</p><p class="sw__use">הצל ה-offset של כפתורים ו-chips.</p></div></div>
+        <div class="sw"><div class="sw__chip" style="background:var(--pink-deep)"></div><div class="sw__body"><p class="sw__name">Deep</p><p class="sw__hex">#3B1440 · --pink-deep</p><p class="sw__use">צל של חלונות, "דיו" על נייר.</p></div></div>
+      </div>
+      <h3 class="h3">Accents<span>במשורה</span></h3>
+      <div class="grid g4">
+        <div class="sw"><div class="sw__chip" style="background:var(--paper)"></div><div class="sw__body"><p class="sw__name">Paper</p><p class="sw__hex">#F6EFF2 · --paper</p><p class="sw__use">קולאז': מסגרת פולארויד, קו גזירה של מדבקה.</p></div></div>
+        <div class="sw"><div class="sw__chip" style="background:var(--kraft)"></div><div class="sw__body"><p class="sw__name">Kraft</p><p class="sw__hex">#F2D7A0 · --kraft</p><p class="sw__use">קולאז': תווית מדבקה.</p></div></div>
+        <div class="sw"><div class="sw__chip" style="background:var(--amber)"></div><div class="sw__body"><p class="sw__name">Amber</p><p class="sw__hex">#E8A33A · --amber</p><p class="sw__use">קולאז': קוד בשוליים של פילם.</p></div></div>
+        <div class="sw"><div class="sw__chip" style="background:var(--yellow)"></div><div class="sw__body"><p class="sw__name">Coin</p><p class="sw__hex">#FFE15C · --yellow</p><p class="sw__use">רק תגמולים במשחק: "+1", achievement.</p></div></div>
+      </div>
+
+      <h3 class="h3">Ratio<span>יחסי שימוש בכל פריים</span></h3>
+      <div class="ratio">
+        <div style="flex:70; background:var(--bg); color:var(--muted)">NIGHT 70%</div>
+        <div style="flex:18; background:var(--pink); color:var(--bg)">PINK 18%</div>
+        <div style="flex:9; background:var(--text); color:var(--bg)">TEXT 9%</div>
+        <div style="flex:3; background:var(--kraft)"></div>
+      </div>
+      <p class="muted" style="margin-top:12px">הלילה הוא הבמה, הוורוד הוא האור. אם פוסט מרגיש "ורוד מדי", זה סימן שחסר לו לילה. לרקע ורוד מלא משתמשים רק כרגע מודגש (שקופית אחת בקרוסלה, כפתור).</p>
+
+      <h3 class="h3">Pairs<span>שילובים מותרים וניגודיות</span></h3>
+      <div class="pairs">
+        <div class="pair" style="background:var(--bg); color:var(--pink)"><b>Aa pink</b><span>on night · 9.1:1 · AAA</span></div>
+        <div class="pair" style="background:var(--bg); color:var(--text)"><b>Aa text</b><span>on night · 13.6:1 · AAA</span></div>
+        <div class="pair" style="background:var(--bg); color:var(--muted)"><b>Aa muted</b><span>on night · 6:1 · AA</span></div>
+        <div class="pair" style="background:var(--pink); color:var(--bg)"><b>Aa night</b><span>on pink · 9.1:1 · AAA</span></div>
+      </div>
+      <p class="muted" style="margin-top:12px"><code>--pink-dim</code> ו-<code>--pink-deep</code> הם לצללים ולקישוט בלבד, לא לטקסט (ניגודיות נמוכה מדי).</p>
+    </section>
+
+    <!-- ============ 04 TYPE ============ -->
+    <section class="sec wrap" id="type">
+      <p class="eyebrow"><img src="assets/icons/diamond.svg" alt="">04 / Type</p>
+      <h2 class="h2">Four voices<small>טיפוגרפיה</small></h2>
+      <div class="rule"></div>
+      <p>ארבעה פונטים חינמיים מ-Google Fonts, לכל אחד תפקיד אחד. לא מערבבים תפקידים. כל הכותרות באותיות גדולות.</p>
+
+      <div class="type-row"><div class="type-row__meta"><h4>Jersey 10</h4><p class="label">Display · <b>--f-display</b></p><p class="muted" style="font-size:14px">כותרות: hero, כותרות עמוד וסקשן, כותרות כרטיסים. חד וקריא, לא מעוגל.</p></div>
+        <div class="type-row__sample s-display">UX/UI Designer</div></div>
+      <div class="type-row"><div class="type-row__meta"><h4>Pixelify Sans</h4><p class="label">Pixel label · <b>--f-pixel</b></p><p class="muted" style="font-size:14px">תוויות, ניווט, כפתורים, eyebrow, chips. תמיד UPPERCASE עם ריווח 0.06–0.1em.</p></div>
+        <div class="type-row__sample s-pixel">02 / Selected work</div></div>
+      <div class="type-row"><div class="type-row__meta"><h4>Space Grotesk</h4><p class="label">Body · <b>--f-body</b></p><p class="muted" style="font-size:14px">טקסט רץ, תיאורים. 18px באתר, line-height 1.6.</p></div>
+        <div class="type-row__sample s-body">I design apps and websites for <span class="mark">the person on the other side of the screen</span>.</div></div>
+      <div class="type-row"><div class="type-row__meta"><h4>VT323</h4><p class="label">Terminal · <b>--f-mono</b></p><p class="muted" style="font-size:14px">טעינה, טרמינל, מונים, כיתובים בכתב "מכונה".</p></div>
+        <div class="type-row__sample s-mono">&gt; loading... 072%</div></div>
+      <p class="muted" style="margin-top:20px">עברית (לסושיאל בעברית): <b>Heebo</b> לטקסט ו-Heebo 700 לכותרות. Jersey ו-Pixelify Sans נשארים לתוויות ומספרים באנגלית.</p>
+
+      <h3 class="h3">Hierarchy<span>סדר קבוע בכל פריים</span></h3>
+      <div class="box box--win"><div class="box__bar"><span>hierarchy.txt</span><span class="wbtns"><i></i><i></i><i></i></span></div>
+        <div class="hier">
+          <p style="font:13px var(--f-pixel); letter-spacing:.1em; text-transform:uppercase; color:var(--pink)">◆ 01 / eyebrow — Pixelify Sans</p>
+          <p style="font:400 72px/.9 var(--f-display); text-transform:uppercase; color:var(--pink); text-shadow:var(--glow); margin:14px 0">Title — Jersey 10</p>
+          <p style="font-size:19px; color:var(--text); max-width:30em">Body — Space Grotesk. One idea per paragraph, short sentences, one <span class="mark">highlight</span> at most.</p>
+          <p style="font:22px var(--f-mono); color:var(--muted); margin-top:14px">meta — VT323 · status · numbers</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 05 GRAPHICS ============ -->
+    <section class="sec wrap" id="graphics">
+      <p class="eyebrow"><img src="assets/icons/diamond.svg" alt="">05 / Graphic language</p>
+      <h2 class="h2">The toolkit<small>שפה גרפית: אייקונים, סמן, כוכבים, טקסטורות</small></h2>
+      <div class="rule"></div>
+
+      <h3 class="h3">Pixel icons<span>אייקונים</span></h3>
+      <p>כל אייקון הוא מפת פיקסלים קטנה (5–11 פיקסלים), בצבע אחד, בלי anti-aliasing. מגדילים רק בכפולות שלמות. הקבצים: <code>design-system/assets/icons/</code> (ורוד) ו-<code>icons/ink/</code> (כהה, לרקע ורוד או בהיר).</p>
+      <div class="ico-grid" id="icoGrid" style="margin-top:20px"></div>
+
+      <h3 class="h3">Cursor<span>העכבר של האתר</span></h3>
+      <div class="grid g2">
+        <div class="box"><div class="box__body cursor-demo">
+          <figure style="margin:0"><img src="assets/cursor/cursor.svg" alt=""><figcaption class="label" style="margin-top:10px">default</figcaption></figure>
+          <figure style="margin:0"><img src="assets/cursor/cursor-hover.svg" alt="" style="background:var(--bg)"><figcaption class="label" style="margin-top:10px">hover</figcaption></figure>
+        </div></div>
+        <div class="box live-cursor"><div class="box__body">
+          <p style="margin-top:0">חץ פיקסלי ורוד עם מילוי לילה, ובמעבר על אלמנט לחיץ הוא <b>מתהפך</b>: מילוי ורוד וקו כהה. רק במכשירים עם עכבר. <span class="muted">(העבירי את העכבר על הקופסה הזו)</span></p>
+          <p class="muted" style="margin-bottom:0">בסושיאל: <code>cursor@8x.svg</code> כ"יד" שמצביעה על כפתור או פרט חשוב.</p>
+        </div></div>
+      </div>
+
+      <h3 class="h3">Elements<span>אלמנטים גרפיים</span></h3>
+      <div class="grid g3">
+        <div class="el"><div class="el__stage"><img src="assets/graphics/sparkle.svg" alt="" style="width:110px; filter:drop-shadow(0 0 10px rgba(255,123,248,.6))"></div>
+          <div class="el__body"><h4>Sparkle</h4><p>הניצוץ של הלוגו (8 קרניים). מעל ה-i, ככוכב בסושיאל, ליד מילה מודגשת. <code>sparkle.svg</code></p></div></div>
+        <div class="el"><div class="el__stage" style="background:var(--pink-deep)"><img src="assets/graphics/sparkle-sticker.svg" alt="" style="width:120px; transform:rotate(12deg)"></div>
+          <div class="el__body"><h4>Sparkle sticker</h4><p>גרסת הקולאז': נייר עם קו ורוד, מוטה 12°. על תמונות ושקופיות. <code>sparkle-sticker.svg</code></p></div></div>
+        <div class="el"><div class="el__stage" style="background:radial-gradient(ellipse at center, #161616 0%, #000 65%)">
+            <div style="position:relative; width:62%; aspect-ratio:1.68; border-radius:7%/11%; background:radial-gradient(ellipse at 45% 40%, #C9A27A, #6B4A3A 55%, #1A0D0A 100%); box-shadow:0 0 30px rgba(255,255,255,.2), inset 0 0 26px rgba(0,0,0,.85)"></div>
+            <span style="position:absolute; bottom:14px; padding:.2em .6em .3em; background:var(--paper); color:var(--pink-deep); font-family:'VT323',monospace; font-style:italic; font-size:18px; line-height:1; box-shadow:3px 3px 0 var(--pink-dim); rotate:3deg">click to peek in</span></div>
+          <div class="el__body"><h4>Eyepiece</h4><p>"להצמיד את העיניים למשקפת": שקופית מוארת מאחור בחלל כהה, פינות מעוגלות, vignette, גרעיניות וגוון חם. נפתחת מתגית נייר בכתב יד. נוסטלגיה, לא מסך מלא.</p></div></div>
+        <div class="el"><div class="el__stage"><span class="burst"><b>35mm</b></span></div>
+          <div class="el__body"><h4>Burst sticker</h4><p>כוכב 12 קודקודים, ורוד מלא, מילה אחת ב-Jersey. ל-NEW, 35MM, מספרים. <code>burst.svg</code></p></div></div>
+        <div class="el"><div class="el__stage"><img class="px" src="assets/graphics/pixel-spark.svg" alt="" style="width:84px"></div>
+          <div class="el__body"><h4>Pixel spark</h4><p>הגרסה הפיקסלית: מפריד ב-marquee, תבליט, eyebrow. <code>pixel-spark.svg</code></p></div></div>
+        <div class="el"><div class="el__stage" style="background:url('assets/graphics/dot-grid-strong-tile.svg') 0 0/8px 8px"></div>
+          <div class="el__body"><h4>Dot matrix</h4><p>גריד נקודות של 8px. הרקע של כל האתר (7%) ושל מסכי כרטיסים (20%). באתר הוא נדלק סביב העכבר.</p></div></div>
+        <div class="el"><div class="el__stage" style="background:repeating-linear-gradient(to bottom, transparent 0 2px, rgba(0,0,0,.5) 2px 3px), radial-gradient(ellipse, var(--pink-deep), var(--bg) 70%)"></div>
+          <div class="el__body"><h4>CRT scanlines</h4><p>קווים כל 3px + vignette, הבהוב עדין מאוד. השכבה העליונה של כל פריים. לא על העבודות עצמן בעמוד פרויקט.</p></div></div>
+        <div class="el"><div class="el__stage"><div class="corners"><i></i></div></div>
+          <div class="el__body"><h4>Frame corners</h4><p>4 פינות של 18px בקו 2px. ממסגרות אזור בלי לסגור אותו. <code>frame-corners.svg</code></p></div></div>
+        <div class="el"><div class="el__stage"><div class="box box--win" style="width:70%"><div class="box__bar"><span>window.exe</span><span class="wbtns"><i></i><i></i><i></i></span></div><div style="height:70px"></div></div></div>
+          <div class="el__body"><h4>Retro window</h4><p>מסגרת 2px, פס כותרת ורוד עם שם קובץ, צל 8px. העטיפה של תמונות, טפסים ועובדות.</p></div></div>
+        <div class="el"><div class="el__stage" style="direction:ltr"><span style="font:400 54px/1 var(--f-display); color:var(--pink); text-transform:uppercase">Ready<span class="cursor-block"></span></span></div>
+          <div class="el__body"><h4>Block cursor</h4><p>ריבוע מהבהב בסוף כותרת. פעם אחת בפריים, רק בכותרת הראשית.</p></div></div>
+        <div class="el"><div class="el__stage" style="direction:ltr"><span style="font-size:26px">make it <span class="mark">delightful</span></span></div>
+          <div class="el__body"><h4>Highlight</h4><p>Marker ורוד מלא עם טקסט כהה. מילה אחת או שתיים, לא משפט.</p></div></div>
+        <div class="el"><div class="el__stage" style="background:url('assets/graphics/grain.svg'), var(--paper)"><span class="snap"><img src="../assets/img/analog/01.jpg" alt=""></span><span class="label-sticker" style="position:absolute; bottom:22px; left:18px">Shot on film ✦</span></div>
+          <div class="el__body"><h4>Collage</h4><p>פולארויד, פילם, מדבקות קראפט, צל offset ורוד. לתוכן אישי (צילום, עובדות), לא ל-UI.</p></div></div>
+        <div class="el"><div class="el__stage"><div style="width:70%; height:2px; background:repeating-linear-gradient(90deg, var(--line-strong) 0 4px, transparent 4px 8px)"></div></div>
+          <div class="el__body"><h4>Dashed rule</h4><p>קו מקווקו 4/4px. מפריד בין כותרת סקשן לתוכן.</p></div></div>
+      </div>
+
+      <h3 class="h3">Shiran's things<span>הספרייטים מהמשחק</span></h3>
+      <p>חמשת החפצים מה-hero, עם קו מתאר ורוד חצי שקוף. הם "הדמויות" של המותג: אפשר להשתמש בהם כאייקונים לנושאים (חתול = אישי, pen = עיצוב, לפטופ = UI, קפה = תהליך, מצלמה = צילום).</p>
+      <div class="box"><div class="sprites">
+        <figure><img src="assets/sprites/cat.svg" alt=""><figcaption>cat</figcaption></figure>
+        <figure><img src="assets/sprites/pen.svg" alt=""><figcaption>pen tool</figcaption></figure>
+        <figure><img src="assets/sprites/laptop.svg" alt=""><figcaption>laptop</figcaption></figure>
+        <figure><img src="assets/sprites/coffee.svg" alt=""><figcaption>coffee</figcaption></figure>
+        <figure><img src="assets/sprites/camera.svg" alt=""><figcaption>film camera</figcaption></figure>
+        <figure><img src="assets/sprites/clapper.svg" alt=""><figcaption>clapper</figcaption></figure>
+      </div></div>
+    </section>
+
+    <!-- ============ 06 VOICE ============ -->
+    <section class="sec wrap" id="voice">
+      <p class="eyebrow"><img src="assets/icons/diamond.svg" alt="">06 / Voice</p>
+      <h2 class="h2">Player talk<small>קול וטון</small></h2>
+      <div class="rule"></div>
+      <p class="lead">חם, קליל ובטוח. מדברת כמו מעצבת, לא כמו סוכנות. קריצות של משחקים וממשקים ישנים, אבל המשפט עצמו תמיד ברור.</p>
+      <div class="tscroll"><table class="voice">
+        <thead><tr><th>מה</th><th>כך</th><th>ולא כך</th></tr></thead>
+        <tbody>
+          <tr><td>מטאפורות משחק</td><td class="en">LVL 01 · collect my things · achievement unlocked</td><td class="en no">Level up your business synergy</td></tr>
+          <tr><td>שמות קבצים כתוויות</td><td class="en">PROJECT_03.FIG · portrait.bmp · slide_02.txt</td><td class="en no">image_final_v2_NEW.jpg</td></tr>
+          <tr><td>טרמינל, באותיות קטנות</td><td class="en">&gt; loading... · // fill in the blanks_</td><td class="en no">PLEASE WAIT WHILE LOADING</td></tr>
+          <tr><td>כפתורים: 1–3 מילים</td><td class="en">My work → · Download PDF · More about me</td><td class="en no">Click here to see all of my projects</td></tr>
+          <tr><td>כותרות: קצרות וברורות, בלי משחקי מילים</td><td class="en">UX/UI Designer</td><td class="en no">Pixeling joy into products</td></tr>
+          <tr><td>טקסט רץ: רגוע ובוגר, בלי קלישאות</td><td class="en">for the person on the other side of the screen</td><td class="en no">incredible experiences · delightful · complex problems</td></tr>
+          <tr><td>אישי וכן</td><td class="en">Certified movie freak</td><td class="en no">Passionate creative ninja</td></tr>
+        </tbody>
+      </table></div>
+      <p class="muted" style="margin-top:16px">האתר והסושיאל המקצועי באנגלית. פוסטים בעברית מותרים בסושיאל (Heebo), עם אותן תוויות פיקסל באנגלית.</p>
+    </section>
+
+    <!-- ============ 07 SOCIAL ============ -->
+    <section class="sec wrap" id="social">
+      <p class="eyebrow"><img src="assets/icons/diamond.svg" alt="">07 / Social</p>
+      <h2 class="h2">On the feed<small>תרגום השפה לסושיאל</small></h2>
+      <div class="rule"></div>
+      <p>כל תבנית היא האתר <b>פי 3</b> (<code>--u: 3px</code>): מסגרת של 2px באתר היא 6px בפוסט, צל 4px הוא 12px. כך הכל נשאר באותם יחסים. הטקסטים והתמונות ניתנים לעריכה בקובץ הזה, ואז מייצאים PNG בפקודה אחת.</p>
+
+      <h3 class="h3">Formats<span>גדלים ואזורים בטוחים</span></h3>
+      <div class="tscroll"><table class="spec">
+        <thead><tr><th>תבנית</th><th>גודל</th><th>שימוש</th><th>שוליים / safe zone</th></tr></thead>
+        <tbody>
+          <tr><td>Post</td><td class="ltr">1080×1350 (4:5)</td><td>הצגת פרויקט: חלון + תמונה + כותרת</td><td>84px מכל צד</td></tr>
+          <tr><td>Quote</td><td class="ltr">1080×1080 (1:1)</td><td>טיפ, מחשבה, משפט</td><td>96px</td></tr>
+          <tr><td>Carousel</td><td class="ltr">1080×1350 (4:5)</td><td>שער של case study, אחריו שקופיות פנים</td><td>90px; pips למטה</td></tr>
+          <tr><td>Story</td><td class="ltr">1080×1920 (9:16)</td><td>טיזר, "loading", הפניה לאתר</td><td>250px למעלה, 340px למטה פנויים</td></tr>
+          <tr><td>Banner</td><td class="ltr">1584×396</td><td>LinkedIn cover</td><td>x&lt;420 פנוי (תמונת פרופיל)</td></tr>
+          <tr><td>Share</td><td class="ltr">1200×630 (1.91:1)</td><td>התצוגה המקדימה של קישור לאתר (og:image) בלינקדאין / וואטסאפ. האתר טוען עותק: <code>assets/img/og/share.png</code>. לעמוד פרויקט התמונה היא ה-cover שלו</td><td>64px למעלה ולמטה, 80px בצדדים</td></tr>
+        </tbody>
+      </table></div>
+
+      <h3 class="h3">Templates<span>תבניות</span></h3>
+      <div id="social-host-preview"></div>
+
+      <h3 class="h3">Export<span>ייצוא ל-PNG</span></h3>
+      <p>עורכים את הטקסט/התמונה בתבנית בקובץ הזה (מחפשים <code>data-id="post"</code> וכו'), ואז מריצים:</p>
+      <pre class="box" style="padding:16px; direction:ltr; overflow-x:auto"><code>bash design-system/tools/export-social.sh          # all
+bash design-system/tools/export-social.sh story    # one</code></pre>
+      <p class="muted">הקבצים נשמרים ב-<code>design-system/exports/</code>. לעבודה ב-Figma או Canva: הצבעים ב-<code>tokens.json</code>, האייקונים והגרפיקות כ-SVG ב-<code>design-system/assets/</code>.</p>
+
+      <h3 class="h3">Feed rules<span>כללי הפיד</span></h3>
+      <div class="grid g2">
+        <ul class="dd dd--yes">
+          <li>כל פוסט: לוגו או handle, eyebrow אחד, כותרת אחת.</li>
+          <li>עבודה תמיד בתוך <b>חלון רטרו</b> או מסגרת 2px, אף פעם לא "צפה".</li>
+          <li>רקע לילה + dot matrix + scanlines כברירת מחדל. ורוד מלא רק בשקופית שיא.</li>
+          <li>מקסימום אלמנט קישוטי אחד או שניים (ניצוץ, burst, ספרייט).</li>
+          <li>בקרוסלה: כל שקופית ממוספרת (<span class="ltr">01/08</span>) כמו "שלב".</li>
+        </ul>
+        <ul class="dd dd--no">
+          <li>בלי גרדיאנטים, פינות מעוגלות או צללים רכים (חוץ מה-glow).</li>
+          <li>בלי צבעים מחוץ לפלטה, ובלי צהוב חוץ מ"תגמול".</li>
+          <li>בלי יותר מ-2 פונטים בפריים אחד (לא כולל תווית קטנה).</li>
+          <li>בלי scanlines על העבודה עצמה כשהיא צריכה להיראות נקייה (תמונה מלאה של פרויקט).</li>
+          <li>בלי לטשטש/לעגל פיקסלים: אייקונים וספרייטים תמיד pixelated.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ 08 CASE STUDY ============ -->
+    <section class="sec wrap" id="case-study">
+      <p class="eyebrow"><img src="assets/icons/diamond.svg" alt="">08 / Case study</p>
+      <h2 class="h2">Level breakdown<small>איך מציגים פרויקט UX/UI</small></h2>
+      <div class="rule"></div>
+      <p>כל case study הוא המצגת של הפרויקט, מתורגמת לעמוד חי באתר: אותו סדר, אותו תוכן, אבל טקסט אמיתי, טבלאות ותרשימים אמיתיים, ורספונסיבי. המותג (פיקסל, ורוד, LVL) הוא <b>המסגרת</b>; העבודה של הפרויקט (הצבעים, הפונטים והמוקאפים שלו) היא <b>התוכן</b>, ומוצגת נקי.</p>
+      <div class="grid g2" style="margin-top:24px">
+        <div class="box box--win"><div class="box__bar"><span>case_do.txt</span><span class="wbtns"><i></i><i></i><i></i></span></div><div class="box__body">
+          <ul class="dd dd--yes">
+            <li>לפי סדר המצגת ומספור השקפים, בלי לדלג ובלי להמציא תוכן.</li>
+            <li>פיקסל במסגרת בלבד: eyebrow <code>NN / Label</code>, כותרות Jersey, מספרים בריבוע ורוד, חלונות עם שם קובץ.</li>
+            <li>מה שקוראים רגוע: טקסט, טבלה ותרשים ב-Space Grotesk על קווים של 1px, בלי scanlines.</li>
+            <li>מוקאפים שקופים, ישר על רקע האתר, בלי צל רצפה. ממורכזים במובייל.</li>
+            <li>פייד עדין <b>רק</b> כשמוקאפ נחתך בקצה, או במסכים שנעלמים למטה (Main features).</li>
+            <li>פרטים חשובים (UI kit, רכיבים, ווירפריימים) שלמים, חדים ובהירים. במובייל: גלילה לצד.</li>
+            <li>תוכן העניינים "Levels" ב-hero, ופרוטוטייפ Figma בסוף. במסכים צרים (עד 900px), כשיש יותר מ-6 נושאים, ה-Levels הם שורה אחת שנגללת לצד (swipe), כדי לא להעמיס על הגלילה.</li>
+            <li>באתר: בכל הקטגוריות שמתאימות (UX, UI, Mobile App, Web), ובעמוד הבית אם שירן בוחרת.</li>
+            <li>קווים עדינים: הקו המקווקו של האתר, לא קו ורוד מלא. תרשים בלי קופסה ובלי מפריד; כל קו יוצא מאמצע הצד של הקובייה ונוגע בה, ואין קו על קו.</li>
+            <li>מרווחים מאוזנים: תת-כותרת קרובה לכותרת שמעליה ורחוקה יותר מהתוכן שמתחתיה, כי היא שייכת לתוכן.</li>
+            <li>מיתוג של מוצר: גרסאות הלוגו מהמצגת זו לצד זו ובאותו גודל, גרסה שחורה מתהפכת לקופסה לבנה. פונט בלי רישיון web מוצג כתמונה מהשקף, בלבן/ורוד בהיר. צבעים עם hex ו-RGB שנבדקו.</li>
+            <li>עמוד מיתוג גרפי: התוכן מהמצגת בשפת האתר, לא השקפים. לוגו לבן בלי רקע ופסקת קונספט מתחתיו בלי כותרת; צבעים עם השימוש שלהם ופס פרופורציות; מוקאפים כרבעייה מסודרת (רק רקע ריק נחתך).</li>
+          </ul></div></div>
+        <div class="box"><div class="box__bar"><span>case_dont.txt</span><span class="wbtns"><i></i><i></i><i></i></span></div><div class="box__body">
+          <ul class="dd dd--no">
+            <li>לא צילומי שקופיות של טקסט, טבלאות או תרשימים.</li>
+            <li>לא מסגרת ורודה או קופסה שחורה סביב תמונות ותרשימים.</li>
+            <li>לא רקע של השקף מאחורי מוקאפ, ולא מוקאפ חתוך כשיש שלם.</li>
+            <li>לא פייד על מידע (אייקונים, רכיבים, טבלאות).</li>
+            <li>לא להגדיל תמונה מעבר למה שהמקור מחזיק (אז היא מטושטשת).</li>
+            <li>לא כפתורים בסוף העמוד: רק "Thank you for watching".</li>
+            <li>לא סימנים צבעוניים מיותרים בתגיות (ה-pill נקי).</li>
+            <li>לא פרטים שלא במצגת (שנה, משך, תפקיד) בלי אישור; Tools כן.</li>
+          </ul></div></div>
+      </div>
+      <p class="muted" style="margin-top:20px">המפרט הטכני והרכיבים החיים: <a href="design-system.html#case-study">Design System · 09</a>. תהליך העבודה: הסקיל <code>.claude/skills/case-study</code>. דוגמה: <code>case-myra.html</code>.</p>
+    </section>
+
+    <!-- ============ 09 RULES ============ -->
+    <section class="sec wrap" id="rules">
+      <p class="eyebrow"><img src="assets/icons/diamond.svg" alt="">09 / Do · Don't</p>
+      <h2 class="h2">House rules<small>כללים קבועים של המותג</small></h2>
+      <div class="rule"></div>
+      <div class="grid g2">
+        <div class="box box--win"><div class="box__bar"><span>do.txt</span><span class="wbtns"><i></i><i></i><i></i></span></div><div class="box__body">
+          <ul class="dd dd--yes">
+            <li>פינות ישרות ומסגרות 2px בכל מקום.</li>
+            <li>צל offset אטום (בלי blur) בוורוד כהה.</li>
+            <li>תנועה בצעדים (<code>steps()</code>), כמו פריימים של משחק.</li>
+            <li>אחידות: כפתור נראה אותו דבר בכל מקום, בלי עיצוב מקומי.</li>
+            <li>מקום לנשום: מרווח גדול לפני הפוטר ובין סקשנים.</li>
+            <li>כבוד ל-reduced motion: בלי הבהובים ואנימציות כשמבקשים.</li>
+          </ul></div></div>
+        <div class="box"><div class="box__bar"><span>dont.txt</span><span class="wbtns"><i></i><i></i><i></i></span></div><div class="box__body">
+          <ul class="dd dd--no">
+            <li>לא להחזיר את הסגול הישן או את <code>#FF2CD5</code>.</li>
+            <li>לא פינות חתוכות לכפתורים (נוסה ונדחה).</li>
+            <li>לא מוני סטטיסטיקה ("5 years, 40 projects").</li>
+            <li>לא Dribbble, לא תגיות Skills חוזרות.</li>
+            <li>לא לופים מעייפים: אפקט "enhance" ופיהוק קורים פעם אחת.</li>
+            <li>לא צליל בולט: הקליק עדין מאוד.</li>
+          </ul></div></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="end"><div class="wrap"><span>s.design brand book v1.20</span><span>Designed with passion ♥</span><a href="design-system.html" style="color:var(--pink)">Design system →</a></div></footer>
+
+  <!-- social templates (rendered into #social-host-preview as thumbnails, or alone with ?only=<id>) -->
+  <div id="social-host">
+    <div class="kit__list">
+
+      <figure class="kit__item" data-id="post" data-w="1080" data-h="1350"><div class="kit__frame">
+        <article class="tpl tpl--post">
+          <div class="post__top">
+            <img class="t-logo" src="../brand/final/s-design-logo.svg" alt="s.design">
+            <p class="t-eyebrow"><img src="assets/icons/diamond.svg" alt="">New project · 03</p>
+          </div>
+          <div class="t-window post__win">
+            <div class="t-window__bar"><span>PROJECT_03.FIG</span><span class="t-window__btns"><i></i><i></i><i></i></span></div>
+            <img class="t-window__img" src="../assets/img/projects/mandy/cover.jpg" alt="">
+          </div>
+          <h2 class="t-title post__title">Film poster — Mandy</h2>
+          <p class="t-sub">Graphic Design · Poster</p>
+          <div class="post__bottom">
+            <span class="t-handle">@<b>shiran_designer</b></span>
+            <span class="t-btn">Link in bio<img src="assets/icons/ink/arrow.svg" alt=""></span>
+          </div>
+        </article>
+      </div><figcaption><b>01 · Post</b> · 1080×1350 · <a href="?only=post">100%</a></figcaption></figure>
+
+      <figure class="kit__item" data-id="quote" data-w="1080" data-h="1080"><div class="kit__frame">
+        <article class="tpl tpl--quote">
+          <p class="t-eyebrow"><img src="assets/icons/spark.svg" alt="">UX tip · 01</p>
+          <h2 class="t-title quote__title">Make it<br>feel like<br><span class="t-mark">a game</span><span class="t-cursor"></span></h2>
+          <p class="quote__body">Small rewards, clear progress and a little surprise turn a task into something people want to finish.</p>
+          <img class="t-spark" src="assets/graphics/sparkle-sticker.svg" alt="" style="width:230px; right:92px; top:150px; transform:rotate(12deg)">
+          <div class="quote__foot">
+            <img class="t-logo" src="../brand/final/s-design-logo.svg" alt="s.design">
+            <span class="t-handle">@<b>shiran_designer</b></span>
+          </div>
+        </article>
+      </div><figcaption><b>02 · Quote</b> · 1080×1080 · <a href="?only=quote">100%</a></figcaption></figure>
+
+      <figure class="kit__item" data-id="carousel" data-w="1080" data-h="1350"><div class="kit__frame">
+        <article class="tpl tpl--carousel">
+          <span class="t-corners" style="inset:48px"><i></i></span>
+          <p class="t-eyebrow"><img src="assets/icons/play.svg" alt="">Case study</p>
+          <p class="car__lvl">LVL 01</p>
+          <h2 class="t-title car__title">Stamping —<br>home page UI</h2>
+          <p class="t-sub" style="margin-top:28px; max-width:20em">From research to the last pixel: how I redesigned the first screen.</p>
+          <span class="t-burst" style="width:250px; aspect-ratio:1; right:110px; top:330px; transform:rotate(12deg)"><b>new</b></span>
+          <div class="car__foot">
+            <div class="car__pips"><i></i><i></i><i></i><i></i><i></i></div>
+            <span class="t-btn t-btn--ghost">Swipe<img src="assets/icons/arrow.svg" alt=""></span>
+          </div>
+        </article>
+      </div><figcaption><b>03 · Carousel cover</b> · 1080×1350 · <a href="?only=carousel">100%</a></figcaption></figure>
+
+      <figure class="kit__item" data-id="story" data-w="1080" data-h="1920"><div class="kit__frame">
+        <article class="tpl tpl--story">
+          <img class="t-logo" src="../brand/final/s-design-logo.svg" alt="s.design">
+          <p class="story__label">loading...</p>
+          <div class="story__bar"><div class="story__fill"></div></div>
+          <div class="story__meta"><span>BOOTING NEW_PROJECT.EXE</span><b>072%</b></div>
+          <div class="t-window story__win">
+            <div class="t-window__bar"><span>sneak_peek.png</span><span class="t-window__btns"><i></i><i></i><i></i></span></div>
+            <img class="t-window__img" src="../assets/img/projects/out-of-character/cover.jpg" alt="">
+            <div class="t-window__foot"><span>STATUS <b>WIP</b></span><span>coming soon</span></div>
+          </div>
+          <span class="t-btn story__cta">My work<img src="assets/icons/ink/arrow.svg" alt=""></span>
+        </article>
+      </div><figcaption><b>04 · Story</b> · 1080×1920 · <a href="?only=story">100%</a></figcaption></figure>
+
+      <figure class="kit__item" data-id="banner" data-w="1584" data-h="396"><div class="kit__frame">
+        <article class="tpl tpl--banner">
+          <div class="banner__text">
+            <p class="t-eyebrow"><img src="assets/icons/play.svg" alt="">Hi, I'm Shiran</p>
+            <h2 class="t-title banner__title">UX/UI<br>Designer<span class="t-cursor"></span></h2>
+            <div class="t-rule"></div>
+          </div>
+          <div class="banner__items">
+            <img src="assets/sprites/cat.svg" alt=""><img src="assets/sprites/pen.svg" alt=""><img src="assets/sprites/laptop.svg" alt=""><img src="assets/sprites/coffee.svg" alt=""><img src="assets/sprites/camera.svg" alt="">
+          </div>
+        </article>
+      </div><figcaption><b>05 · LinkedIn banner</b> · 1584×396 · <a href="?only=banner">100%</a></figcaption></figure>
+
+      <figure class="kit__item" data-id="share" data-w="1200" data-h="630"><div class="kit__frame">
+        <article class="tpl tpl--share">
+          <div class="share__top">
+            <img class="t-logo" src="../brand/final/s-design-logo.svg" alt="s.design">
+            <p class="t-eyebrow"><img src="assets/icons/play.svg" alt="">Hi, I'm Shiran</p>
+          </div>
+          <h2 class="t-title share__title">UX/UI<br>Designer<span class="t-cursor"></span></h2>
+          <div class="share__bottom">
+            <div class="t-rule"></div>
+            <div class="share__items">
+              <img src="assets/sprites/cat.svg" alt=""><img src="assets/sprites/pen.svg" alt=""><img src="assets/sprites/laptop.svg" alt=""><img src="assets/sprites/coffee.svg" alt=""><img src="assets/sprites/camera.svg" alt="">
+            </div>
+          </div>
+        </article>
+      </div><figcaption><b>06 · Share preview</b> · 1200×630 · <a href="?only=share">100%</a></figcaption></figure>
+
+    </div>
+  </div>
+
+  <script>
+    (() => {
+      // icon gallery from the exported files (same names as PX in main.js)
+      const ICONS = ['home', 'grid', 'user', 'doc', 'chat', 'play', 'arrow', 'arrowL', 'up', 'diamond', 'spark', 'heart',
+        'sound', 'mute', 'menu', 'close', 'copy', 'ext', 'download', 'cartridge', 'trophy', 'eye', 'book', 'lotus', 'cloud', 'invaderA', 'invaderB'];
+      const grid = document.getElementById('icoGrid');
+      grid.innerHTML = ICONS.map(n => `<div class="ico"><img src="assets/icons/${n}.svg" alt=""><span>${n}</span></div>`).join('');
+
+      // social templates: ?only=<id> → one at 100%; otherwise thumbnails inside the Social section
+      const host = document.getElementById('social-host');
+      const only = new URLSearchParams(location.search).get('only');
+      const items = [...host.querySelectorAll('.kit__item')];
+      if (only) {
+        document.body.classList.add('is-only');
+        items.forEach(it => it.classList.toggle('is-on', it.dataset.id === only));
+        return;
+      }
+      const target = document.getElementById('social-host-preview');
+      target.appendChild(host.firstElementChild);
+      const fit = () => {
+        const avail = target.clientWidth;
+        items.forEach(it => {
+          const w = +it.dataset.w, h = +it.dataset.h;
+          let s = it.dataset.id === 'banner' ? Math.min(.6, avail / w) : Math.min(380 / h, (avail) / w);
+          const frame = it.querySelector('.kit__frame');
+          frame.style.width = (w * s) + 'px';
+          frame.style.height = (h * s) + 'px';
+          frame.firstElementChild.style.transform = `scale(${s})`;
+        });
+      };
+      fit();
+      addEventListener('resize', fit);
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,554 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Myra — Mindfulness App — Shiran Revivo</title>
+  <meta name="description" content="Myra, a UX/UI case study by Shiran Revivo: research, persona, information architecture, wireframes, design system and UI for a mindfulness mobile app.">
+  <meta name="theme-color" content="#0B0408">
+  <!-- link preview. og:image must become an absolute URL (https://domain/…) once the site has a domain -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Shiran Revivo">
+  <meta property="og:title" content="Myra — Mindfulness App — Shiran Revivo">
+  <meta property="og:description" content="Myra, a UX/UI case study by Shiran Revivo: research, persona, information architecture, wireframes, design system and UI for a mindfulness mobile app.">
+  <meta property="og:image" content="assets/img/projects/myra/cover.jpg">
+  <meta property="og:image:width" content="2000">
+  <meta property="og:image:height" content="1250">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/svg+xml" href="assets/img/logo/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jersey+10&family=Pixelify+Sans:wght@400..700&family=Space+Grotesk:wght@400;500;600&family=VT323&display=swap" rel="stylesheet">
+  <!-- Myra's own type, only for the typography specimens on this page -->
+  <link href="https://fonts.googleapis.com/css2?family=Righteous&family=DM+Sans:wght@100;400;500;600;700&family=Inter:wght@100;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css?v=92">
+</head>
+<body data-page="project" class="is-case">
+
+  <canvas id="dots" aria-hidden="true"></canvas>
+  <div class="crt" aria-hidden="true"></div>
+
+  <header class="nav" id="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo" aria-label="Shiran Revivo — home">
+        <img class="nav__logo-img" src="assets/img/logo/s-design-logo.svg" alt="s.design" width="140" height="35">
+      </a>
+      <nav class="nav__links" aria-label="Main">
+        <a href="index.html" class="nav__link"><span class="px-ico" data-px="home"></span>Home<span class="nav__num">01</span></a>
+        <a href="projects.html" class="nav__link is-active"><span class="px-ico" data-px="grid"></span>Work<span class="nav__num">02</span></a>
+        <a href="about.html" class="nav__link"><span class="px-ico" data-px="user"></span>About<span class="nav__num">03</span></a>
+        <a href="cv.html" class="nav__link"><span class="px-ico" data-px="doc"></span>CV<span class="nav__num">04</span></a>
+        <a href="contact.html" class="nav__link"><span class="px-ico" data-px="chat"></span>Contact<span class="nav__num">05</span></a>
+      </nav>
+      <div class="nav__actions">
+        <button class="icon-btn" id="soundBtn" type="button" aria-pressed="false" aria-label="Turn sound on"><span class="px-ico" data-px="mute"></span></button>
+        <button class="icon-btn nav__menu" id="menuBtn" type="button" aria-expanded="false" aria-label="Menu"><span class="px-ico" data-px="menu"></span></button>
+      </div>
+    </div>
+  </header>
+
+  <div class="hud" aria-hidden="true">
+    <span>LVL <b>02</b> — case study</span>
+    <span id="hudCoords">X <b>0000</b> · Y <b>0000</b></span>
+  </div>
+
+  <main class="cs">
+    <!-- ============ HEAD (slide 1) ============ -->
+    <section class="page-head project-head cs-head">
+      <div class="container">
+        <a class="project-head__back reveal" href="projects.html"><span class="px-ico" data-px="arrowL"></span>All projects</a>
+        <p class="eyebrow reveal"><span class="px-ico" data-px="diamond"></span>02 / UX/UI Case study</p>
+        <h1 class="project-head__title glow reveal" style="--d:.08s"><span data-scramble>Myra — Mindfulness App</span></h1>
+        <p class="project-head__sub reveal" style="--d:.16s">UX/UI Case Study · Mobile App</p>
+
+        <div class="cs-hero">
+          <div class="cs-hero__info reveal" style="--d:.2s">
+            <dl class="cs-meta">
+              <div><dt>Project</dt><dd>UX/UI · Mobile app</dd></div>
+              <div><dt>By</dt><dd>Shiran Revivo &amp; Elisheva Ben Ari</dd></div>
+              <div><dt>Tools</dt><dd>Figma · Illustrator · Photoshop</dd></div>
+            </dl>
+            <nav class="cs-toc" aria-label="Case study sections">
+              <p class="cs-toc__label">Levels</p>
+              <ol>
+                <li><a href="#overview">Overview</a></li>
+                <li><a href="#pain-points">Pain points</a></li>
+                <li><a href="#market">Market research</a></li>
+                <li><a href="#user-research">User research</a></li>
+                <li><a href="#persona">User persona</a></li>
+                <li><a href="#ia">Information architecture</a></li>
+                <li><a href="#wireframes">Wireframes</a></li>
+                <li><a href="#design-system">Design system</a></li>
+                <li><a href="#app-ui">App UI</a></li>
+                <li><a href="#prototype">Prototype</a></li>
+              </ol>
+            </nav>
+          </div>
+          <figure class="cs-media cs-media--tall cs-hero__shot reveal" style="--d:.28s">
+            <img src="assets/img/projects/myra/01-hero.png" alt="Two Myra app screens on floating phones: a sleep check-in dial and a sleep story player" width="1015" height="1546" fetchpriority="high">
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ OVERVIEW (slide 2) ============ -->
+    <section class="cs-sec" id="overview">
+      <div class="container cs-split cs-split--media-first">
+        <figure class="cs-screen cs-screen--solo reveal">
+          <img src="assets/img/projects/myra/02-profile.jpg" alt="Myra profile screen, History tab: sessions from yesterday, last week and last month" width="461" height="1000" loading="lazy">
+        </figure>
+        <div class="cs-text">
+          <p class="eyebrow reveal"><span class="px-ico" data-px="diamond"></span>01 / Overview</p>
+          <h2 class="cs-h2 reveal" style="--d:.06s">Overview</h2>
+          <p class="cs-lead reveal" style="--d:.1s">Myra is a mindfulness and well-being mobile app designed to help users manage stress, improve focus, and cultivate healthy mental habits through short guided sessions and personalized recommendations.</p>
+          <p class="reveal" style="--d:.12s">It combines modern technology with mindful design to create a calm, intuitive experience that fits seamlessly into the user’s daily routine.</p>
+          <p class="reveal" style="--d:.14s">Myra offers a rich library of guided meditations, breathing exercises, and soundscapes, personalized through an AI assistant that analyzes user moods and habits to suggest the most relevant content.</p>
+          <p class="reveal" style="--d:.16s">In this project, the focus was on building a soothing and accessible UX, one that encourages consistency and emotional balance through simple interactions, soft visuals, and a flexible interface that adapts to different user needs.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ USABILITY FEATURES (slides 2–3) ============ -->
+    <section class="cs-sec" id="usability">
+      <div class="container">
+        <header class="cs-sec__head">
+          <p class="eyebrow reveal"><span class="px-ico" data-px="diamond"></span>02 / Usability</p>
+          <h2 class="cs-h2 reveal" style="--d:.06s">Usability features</h2>
+        </header>
+        <div class="cs-cards">
+          <article class="cs-card reveal">
+            <span class="cs-card__ico px-ico" data-px="eye"></span>
+            <h3 class="cs-card__title">Ease of Recall</h3>
+            <p>Returning users can easily pick up where they left off, continuing goals, challenges, or favorite sessions without needing to relearn the interface.</p>
+          </article>
+          <article class="cs-card reveal" style="--d:.06s">
+            <span class="cs-card__ico px-ico" data-px="book"></span>
+            <h3 class="cs-card__title">Ease of Learning</h3>
+            <p>Myra’s interface is designed for instant familiarity. New users quickly understand how to use the app and complete key actions within minutes.</p>
+          </article>
+          <article class="cs-card reveal" style="--d:.12s">
+            <span class="cs-card__ico px-ico" data-px="lotus"></span>
+            <h3 class="cs-card__title">Flexibility</h3>
+            <p>Whether you’re new to mindfulness or an experienced practitioner, Myra adapts to your level, offering personalized guidance or open exploration based on your preferences.</p>
+          </article>
+          <article class="cs-card reveal">
+            <span class="cs-card__ico px-ico" data-px="heart"></span>
+            <h3 class="cs-card__title">Satisfaction</h3>
+            <p>Every interaction is meant to leave the user feeling calm, accomplished, and connected, turning technology into a mindful experience.</p>
+          </article>
+          <article class="cs-card reveal" style="--d:.06s">
+            <span class="cs-card__ico px-ico" data-px="cloud"></span>
+            <h3 class="cs-card__title">Effectiveness</h3>
+            <p>Users can intuitively navigate Myra, from signing up and setting goals to starting a meditation or class. Every action feels clear, smooth, and purposeful.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PAIN POINTS (slide 3) ============ -->
+    <section class="cs-sec" id="pain-points">
+      <div class="container">
+        <header class="cs-sec__head">
+          <p class="eyebrow reveal"><span class="px-ico" data-px="diamond"></span>03 / Pain points</p>
+          <h2 class="cs-h2 reveal" style="--d:.06s">Pain points</h2>
+        </header>
+        <ol class="cs-points">
+          <li class="reveal"><span class="cs-points__n">01</span><div><h3>Motivation</h3><p>Users struggle to stay consistent with mindfulness or healthy habits. They often lose motivation without reminders, encouragement, or engaging app mechanics that bring them back to practice.</p></div></li>
+          <li class="reveal" style="--d:.06s"><span class="cs-points__n">02</span><div><h3>Engagement</h3><p>There’s little emotional connection, no sense of progress or reward that motivates users to return. The experience feels passive rather than inspiring.</p></div></li>
+          <li class="reveal"><span class="cs-points__n">03</span><div><h3>Limited Content</h3><p>Many mindfulness apps lock their best content behind paywalls, while free options feel limited and repetitive. Users are frustrated by the lack of variety and accessibility.</p></div></li>
+          <li class="reveal" style="--d:.06s"><span class="cs-points__n">04</span><div><h3>Navigation</h3><p>Poor filtering and unclear structure make it difficult to find free or relevant content quickly, discouraging users from exploring further.</p></div></li>
+          <li class="reveal"><span class="cs-points__n">05</span><div><h3>Personalization</h3><p>Users want experiences tailored to their mood, emotional state, and daily needs, but most apps provide generic recommendations that don’t adapt dynamically.</p></div></li>
+          <li class="reveal" style="--d:.06s"><span class="cs-points__n">06</span><div><h3>Time and Stress</h3><p>The target audience leads busy lives with little time for self-care. They need short, effective 5–10 minute sessions with gentle reminders that fit naturally into their daily routine.</p></div></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============ MARKET RESEARCH (slide 4) ============ -->
+    <section class="cs-sec" id="market">
+      <div class="container">
+        <header class="cs-sec__head">
+          <p class="eyebrow reveal"><span class="px-ico" data-px="diamond"></span>04 / Competitors</p>
+          <h2 class="cs-h2 reveal" style="--d:.06s">Market research</h2>
+        </header>
+        <div class="cs-table-wrap reveal">
+          <table class="cs-table">
+            <thead>
+              <tr><th scope="col">App</th><th scope="col">Purpose</th><th scope="col">Advantages</th><th scope="col">Disadvantages</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Balance</th>
+                <td data-label="Purpose">A personalized meditation app for everyone, beginners and advanced users worldwide.</td>
+                <td data-label="Advantages"><ul class="cs-pros"><li>AI-powered personalization that adapts to your goals, stress, and emotions.</li><li>Daily, weekly, and monthly programs evolve with your habits and progress.</li></ul></td>
+                <td data-label="Disadvantages"><ul class="cs-cons"><li>Limited content and mostly English-based.</li><li>Requires setup time for goals.</li><li>Some users report navigation or technical issues.</li></ul></td>
+              </tr>
+              <tr>
+                <th scope="row">Calm</th>
+                <td data-label="Purpose">Focuses mainly on sleep and relaxation. Includes stories, music, guided meditations, and breathing techniques.</td>
+                <td data-label="Advantages"><ul class="cs-pros"><li>The best content and design quality.</li><li>Wide variety of features, from bedtime stories (narrated by celebrities such as Matthew McConaughey) to guided meditations and relaxing music.</li></ul></td>
+                <td data-label="Disadvantages"><ul class="cs-cons"><li>Very expensive.</li><li>Part of the community claims that the app feels “commercial” and repetitive.</li><li>Less content is available for free.</li></ul></td>
+              </tr>
+              <tr>
+                <th scope="row">Insight Timer</th>
+                <td data-label="Purpose">Huge library with thousands of meditations, talks, and online courses.</td>
+                <td data-label="Advantages"><ul class="cs-pros"><li>The largest meditation content library.</li><li>Community-oriented, open for teachers worldwide.</li><li>Free version offers almost everything (including thousands of guided meditations).</li></ul></td>
+                <td data-label="Disadvantages"><ul class="cs-cons"><li>Overwhelming amount of content, it’s hard to choose or focus.</li><li>App’s design feels old and dated.</li><li>Some technical bugs.</li></ul></td>
+              </tr>
+              <tr>
+                <th scope="row">Breethe</th>
+                <td data-label="Purpose">Offers meditations, sleep aid, music, coaching, and stress-relief tools.</td>
+                <td data-label="Advantages"><ul class="cs-pros"><li>Very wide range of content: meditation, sleep, relaxation, breathing, music, stress, and life coaching.</li><li>Suitable both for beginners and advanced users.</li></ul></td>
+                <td data-label="Disadvantages"><ul class="cs-cons"><li>Most content is paid or behind a subscription.</li><li>Interface can feel cluttered.</li><li>Not as visually appealing as Calm or Balance.</li></ul></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ USER RESEARCH (slide 5) ============ -->
+    <section class="cs-sec" id="user-research">
+      <div class="container">
+        <header class="cs-sec__head">
+          <p class="eyebrow reveal"><span class="px-ico" data-px="diamond"></span>05 / Research</p>
+          <h2 class="cs-h2 reveal" style="--d:.06s">User research</h2>
+        </header>
+        <div class="cs-split">
+          <div class="cs-stack">
+            <article class="window cs-window reveal">
+              <div class="window__bar"><span>problems.txt</span><span class="window__btns" aria-hidden="true"><i></i><i></i><i></i></span></div>
+              <div class="cs-window__body">
+                <h3>Problems</h3>
+                <p>Many people struggle to maintain mindfulness habits and emotional balance in their daily lives.</p>
+                <p>Existing apps often feel repetitive, lack motivation triggers, and hide quality content behind paywalls, making it difficult for users to stay consistent and engaged.</p>
+              </div>
+            </article>
+            <article class="window cs-window reveal" style="--d:.08s">
+              <div class="window__bar"><span>solutions.txt</span><span class="window__btns" aria-hidden="true"><i></i><i></i><i></i></span></div>
+              <div class="cs-window__body">
+                <h3>Solutions</h3>
+                <p>Myra solves this by combining AI-driven personalization with progress tracking and motivational design.</p>
+                <p>It adapts to each user’s mood and habits, offering tailored sessions, gentle reminders, and positive feedback. As users complete goals, they unlock new content and rewards, building lasting consistency, balance, and motivation.</p>
+              </div>
+            </article>
+          </div>
+          <figure class="cs-media cs-media--tall reveal" style="--d:.12s">
+            <img src="assets/img/projects/myra/05-research.png" alt="Onboarding screen “Track &amp; Grow” and a yoga teacher profile screen" width="973" height="1198" loading="lazy">
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ USER PERSONA (slide 6) ============ -->
+    <section class="cs-sec" id="persona">
+      <div class="container">
+        <header class="cs-sec__head">
+          <p class="eyebrow reveal"><span class="px-ico" data-px="diamond"></span>06 / Persona</p>
+          <h2 class="cs-h2 reveal" style="--d:.06s">User persona</h2>
+        </header>
+        <article class="window cs-persona reveal">
+          <div class="window__bar"><span>persona_01.usr</span><span class="window__btns" aria-hidden="true"><i></i><i></i><i></i></span></div>
+          <div class="cs-persona__body">
+            <div class="cs-persona__who">
+              <img class="cs-persona__photo" src="assets/img/projects/myra/06-persona.jpg" alt="Daniel Miller, smiling on a seaside promenade at sunset" width="900" height="623" loading="lazy">
+              <h3 class="cs-persona__name">Daniel Miller</h3>
+              <dl class="cs-meta cs-meta--tight">
+                <div><dt>Age</dt><dd>36</dd></div>
+                <div><dt>Occupation</dt><dd>Teacher</dd></div>
+                <div><dt>Marital status</dt><dd>Single</dd></div>
+              </dl>
+            </div>
+            <div class="cs-persona__info">
+              <div>
+                <h4>Main goal</h4>
+                <p>To create a short, consistent daily routine (5–10 minutes) that helps him unwind, reduce stress, and stay grounded amid a fast-paced work environment.</p>
+              </div>
+              <div>
+                <h4>Main pain point</h4>
+                <p>Daniel finds it hard to maintain healthy habits. He starts meditating or doing breathwork but usually stops after a few days because he loses motivation and forgets to keep going.</p>
+              </div>
+              <div>
+                <h4>What would help him</h4>
+                <ul class="cs-list">
+                  <li>Smart reminders in the morning or evening that gently nudge him to practice.</li>
+                  <li>Gamification: streaks, small achievements, and a light sense of progress.</li>
+                  <li>Progress tracking and insights that show his growth over time.</li>
+                  <li>An AI Coach offering quick, practical exercises for short breaks during the day.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ MAIN FEATURES (slides 6–7) ============ -->
+    <section class="cs-sec" id="features">
+      <div class="container">
+        <header class="cs-sec__head">
+          <p class="eyebrow reveal"><span class="px-ico" data-px="diamond"></span>07 / Features</p>
+          <h2 class="cs-h2 reveal" style="--d:.06s">Main features</h2>
+        </header>
+        <div class="cs-features">
+          <article class="reveal"><span class="cs-features__n">F1</span><h3>Positive Feedback</h3><p>Exclusive content, playlists, and challenges that open as users complete sessions and milestones.</p></article>
+          <article class="reveal" style="--d:.06s"><span class="cs-features__n">F2</span><h3>AI Personalization</h3><p>Analyzes user moods, habits, and goals to provide customized meditation sessions and daily recommendations.</p></article>
+          <article class="reveal" style="--d:.12s"><span class="cs-features__n">F3</span><h3>Progress Tracking</h3><p>Visual insights and statistics that help users monitor their growth, consistency, and emotional balance over time.</p></article>
+        </div>
+        <div class="cs-screens">
+          <figure class="cs-screen cs-screen--fade reveal"><img src="assets/img/projects/myra/07-complete.jpg" alt="Session complete: 32 minutes and a one-day streak" width="379" height="900" loading="lazy"></figure>
+          <figure class="cs-screen cs-screen--fade reveal" style="--d:.08s"><img src="assets/img/projects/myra/07-ai-chat.jpg" alt="AI chat: the coach answers a user who struggles to focus" width="415" height="900" loading="lazy"></figure>
+          <figure class="cs-screen cs-screen--fade reveal" style="--d:.16s"><img src="assets/img/projects/myra/07-sleep.jpg" alt="Sleep check-in: drag the moon and sun to set 8 hours of sleep" width="415" height="900" loading="lazy"></figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ INFORMATION ARCHITECTURE (slides 7–8) ============ -->
+    <section class="cs-sec" id="ia">
+      <div class="container">
+        <header class="cs-sec__head">
+          <p class="eyebrow reveal"><span class="px-ico" data-px="diamond"></span>08 / Structure</p>
+          <h2 class="cs-h2 reveal" style="--d:.06s">Information architecture</h2>
+        </header>
+
+        <div class="ia reveal" role="img" aria-label="Myra app map: Splash, Onboarding, Sign in or Sign up and Create an account, then Homepage, Profile and Settings. The homepage branches into Library, AI Coach, Classes and Profile.">
+          <div class="ia__flow" aria-hidden="true">
+            <span class="ia__node ia__node--key">Splash</span>
+            <span class="ia__v"></span>
+            <span class="ia__node ia__node--key">Onboarding</span>
+            <span class="ia__v"></span>
+            <div class="ia__row ia__row--merge">
+              <div class="ia__col"><span class="ia__node">Sign in</span><span class="ia__join"></span><span class="ia__base"></span></div>
+              <div class="ia__col"><span class="ia__node">Sign up</span><span class="ia__v"></span><span class="ia__node">Create an account</span><span class="ia__join"></span><span class="ia__base"></span></div>
+            </div>
+            <span class="ia__v ia__v--merge"></span>
+            <div class="ia__row">
+              <div class="ia__col"><span class="ia__node ia__node--key">Homepage</span></div>
+              <div class="ia__col"><span class="ia__node ia__node--key">Profile</span></div>
+              <div class="ia__col"><span class="ia__node ia__node--key">Settings</span></div>
+            </div>
+          </div>
+
+          <div class="ia__branch" aria-hidden="true">
+            <p class="ia__caption">Homepage <span>— main tabs</span></p>
+            <div class="ia__row ia__row--tabs">
+              <div class="ia__col">
+                <span class="ia__node ia__node--tab">Library</span>
+                <ul class="ia__tree">
+                  <li><span class="ia__node">Categories</span>
+                    <ul class="ia__tree">
+                      <li><span class="ia__node">Books</span></li>
+                      <li><span class="ia__node">Meditate</span></li>
+                      <li><span class="ia__node">Sleep</span></li>
+                      <li><span class="ia__node">Focus</span></li>
+                    </ul>
+                  </li>
+                  <li><span class="ia__node">Topics</span>
+                    <ul class="ia__tree">
+                      <li><span class="ia__node">Courses for you</span></li>
+                      <li><span class="ia__node">Browse by goal</span></li>
+                      <li><span class="ia__node">Browse by time</span></li>
+                      <li><span class="ia__node">Live classes</span></li>
+                      <li><span class="ia__node">Music &amp; Sounds</span></li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+              <div class="ia__col">
+                <span class="ia__node ia__node--tab">AI Coach</span>
+                <ul class="ia__tree">
+                  <li><span class="ia__node">Choose voice</span></li>
+                </ul>
+              </div>
+              <div class="ia__col">
+                <span class="ia__node ia__node--tab">Classes</span>
+                <ul class="ia__tree">
+                  <li><span class="ia__node">My Teachers</span></li>
+                  <li><span class="ia__node">Live Events</span></li>
+                  <li><span class="ia__node">Yoga Classes</span></li>
+                  <li><span class="ia__node">Health &amp; Wellness</span></li>
+                  <li><span class="ia__node">Teachers</span></li>
+                </ul>
+              </div>
+              <div class="ia__col">
+                <span class="ia__node ia__node--tab">Profile</span>
+                <ul class="ia__tree">
+                  <li><span class="ia__node">Dashboard</span></li>
+                  <li><span class="ia__node">Library</span></li>
+                  <li><span class="ia__node">Reflection</span>
+                    <ul class="ia__tree">
+                      <li><span class="ia__node ia__node--soft">Quick Journal</span></li>
+                      <li><span class="ia__node ia__node--soft">Gratitude Check-In</span></li>
+                      <li><span class="ia__node ia__node--soft">Mood Check-In</span></li>
+                      <li><span class="ia__node ia__node--soft">Sleep Check-In</span></li>
+                    </ul>
+                  </li>
+                  <li><span class="ia__node">History</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ WIREFRAMES (slide 9) ============ -->
+    <section class="cs-sec" id="wireframes">
+      <div class="container">
+        <header class="cs-sec__head">
+          <p class="eyebrow reveal"><span class="px-ico" data-px="diamond"></span>09 / Low-fi</p>
+          <h2 class="cs-h2 reveal" style="--d:.06s">App wireframes</h2>
+        </header>
+        <figure class="cs-media reveal">
+          <img src="assets/img/projects/myra/09-wireframes.png" alt="Six grey wireframes: a class page, goal commitment, library browse, onboarding “Track &amp; Grow”, goal set and a player" width="1972" height="1414" loading="lazy">
+        </figure>
+      </div>
+    </section>
+
+    <!-- ============ DESIGN SYSTEM (slides 10–11) ============ -->
+    <section class="cs-sec" id="design-system">
+      <div class="container">
+        <header class="cs-sec__head">
+          <p class="eyebrow reveal"><span class="px-ico" data-px="diamond"></span>10 / Design system</p>
+          <h2 class="cs-h2 reveal" style="--d:.06s">Design system</h2>
+        </header>
+
+        <h3 class="cs-h3 reveal">Responsive logo</h3>
+        <div class="cs-logo">
+          <div class="cs-logo__side reveal">
+            <img class="cs-logo__img" src="assets/img/projects/myra/logo.png" alt="Myra logo: a four-point star and the word myra" width="900" height="458" loading="lazy">
+            <div class="cs-logo__resp">
+              <p class="cs-pill">Responsive Logo</p>
+              <img class="cs-logo__spark" src="assets/img/projects/myra/10-sparkle.png" alt="The responsive logo: the Myra star on its own" width="400" height="400" loading="lazy">
+            </div>
+          </div>
+          <figure class="cs-media cs-media--soft reveal" style="--d:.08s">
+            <img src="assets/img/projects/myra/10-app-icon.png" alt="The Myra app icon on an iPhone home screen" width="1435" height="1334" loading="lazy">
+          </figure>
+        </div>
+
+        <h3 class="cs-h3 reveal">Typography</h3>
+        <div class="cs-type">
+          <div class="cs-type__row reveal" style="--ff: 'Righteous', sans-serif">
+            <p class="cs-type__name">Righteous</p>
+            <p class="cs-type__abc">ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>abcdefghijklmnopqrstuvwxyz<br>1234567890!@#$%^&amp;*()</p>
+            <div class="cs-type__meta">
+              <p class="cs-type__use">H1 · 28px</p>
+              <ul class="cs-type__weights"><li>Regular</li></ul>
+            </div>
+          </div>
+          <div class="cs-type__row reveal" style="--ff: 'DM Sans', sans-serif">
+            <p class="cs-type__name">DM Sans</p>
+            <p class="cs-type__abc">ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>abcdefghijklmnopqrstuvwxyz<br>1234567890!@#$%^&amp;*()</p>
+            <div class="cs-type__meta">
+              <p class="cs-type__use">H2 · Regular 22px &nbsp;/&nbsp; H3 · SemiBold 22px</p>
+              <ul class="cs-type__weights"><li style="font-weight:100">Thin</li><li>Regular</li><li style="font-weight:500">Medium</li><li style="font-weight:600">SemiBold</li><li style="font-weight:700">Bold</li></ul>
+            </div>
+          </div>
+          <div class="cs-type__row reveal" style="--ff: 'Inter', sans-serif">
+            <p class="cs-type__name">Inter</p>
+            <p class="cs-type__abc">ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>abcdefghijklmnopqrstuvwxyz<br>1234567890!@#$%^&amp;*()</p>
+            <div class="cs-type__meta">
+              <p class="cs-type__use">P · 16px &nbsp;/&nbsp; P2 · 14px</p>
+              <ul class="cs-type__weights"><li style="font-weight:100">Thin</li><li>Regular</li><li style="font-weight:500">Medium</li><li style="font-weight:600">SemiBold</li><li style="font-weight:700">Bold</li></ul>
+            </div>
+          </div>
+        </div>
+
+        <h3 class="cs-h3 reveal">Colors</h3>
+        <ul class="cs-colors">
+          <li class="reveal"><span class="cs-colors__chip" style="--c:#000000"></span><b>Black Night</b><code>#000000</code></li>
+          <li class="reveal" style="--d:.06s"><span class="cs-colors__chip" style="--c:#AB74EA"></span><b>Lavender Haze</b><code>#AB74EA</code></li>
+          <li class="reveal" style="--d:.12s"><span class="cs-colors__chip" style="--c:#FFFFFF"></span><b>White</b><code>#FFFFFF</code></li>
+        </ul>
+
+        <h3 class="cs-h3 reveal">Buttons &amp; components</h3>
+        <figure class="cs-media cs-media--wide reveal">
+          <div class="cs-scroll-x"><img src="assets/img/projects/myra/11-components.png" alt="Myra components: chips, tabs, player controls, checkboxes, toggles and Start Now / Subscribe buttons in their states" width="1833" height="518" loading="lazy"></div>
+          <figcaption class="cs-swipe" aria-hidden="true">swipe <span class="px-ico" data-px="arrow"></span></figcaption>
+        </figure>
+
+        <h3 class="cs-h3 reveal">UI kit</h3>
+        <figure class="cs-media cs-media--wide reveal">
+          <div class="cs-scroll-x"><img src="assets/img/projects/myra/11-ui-kit.png" alt="Myra UI kit: icon set, tab bar states, a weekly status chart, progress rings, a year picker, audio wave, sliders and the status bar" width="1935" height="942" loading="lazy"></div>
+          <figcaption class="cs-swipe" aria-hidden="true">swipe <span class="px-ico" data-px="arrow"></span></figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ============ APP UI + SOCIAL (slide 12) ============ -->
+    <section class="cs-sec" id="app-ui">
+      <div class="container">
+        <header class="cs-sec__head">
+          <p class="eyebrow reveal"><span class="px-ico" data-px="diamond"></span>11 / Hi-fi</p>
+          <h2 class="cs-h2 reveal" style="--d:.06s">App UI</h2>
+        </header>
+        <figure class="cs-media cs-media--tall reveal">
+          <img src="assets/img/projects/myra/12-app-ui.png" alt="Two floating phones: the Sleep: Connect To Gaia player and the Sign In screen" width="1293" height="1626" loading="lazy">
+        </figure>
+      </div>
+    </section>
+
+    <section class="cs-sec" id="social">
+      <div class="container">
+        <header class="cs-sec__head">
+          <p class="eyebrow reveal"><span class="px-ico" data-px="diamond"></span>12 / Launch</p>
+          <h2 class="cs-h2 reveal" style="--d:.06s">Social media graphics</h2>
+        </header>
+        <figure class="cs-media cs-media--md reveal">
+          <img src="assets/img/projects/myra/12-social.png" alt="Myra social posts: “Find your calm” on Instagram, “Available now” and a mindfulness coach post" width="1309" height="1102" loading="lazy">
+        </figure>
+      </div>
+    </section>
+
+    <!-- ============ ONE-PAGER (slide 13) ============ -->
+    <section class="cs-sec" id="one-pager">
+      <div class="container">
+        <header class="cs-sec__head">
+          <p class="eyebrow reveal"><span class="px-ico" data-px="diamond"></span>13 / Web</p>
+          <h2 class="cs-h2 reveal" style="--d:.06s">App one-pager</h2>
+          <a class="cs-jump reveal" style="--d:.1s" href="project.html?id=myra-one-pager">See the one pager<span class="px-ico" data-px="arrow"></span></a>
+        </header>
+        <figure class="cs-media cs-media--lg reveal">
+          <img src="assets/img/projects/myra/13-one-pager.png" alt="The Myra landing page on a laptop, with the hero and features sections floating above it" width="1238" height="972" loading="lazy">
+        </figure>
+      </div>
+    </section>
+
+    <!-- ============ PROTOTYPE ============ -->
+    <section class="cs-sec" id="prototype">
+      <div class="container">
+        <header class="cs-sec__head">
+          <p class="eyebrow reveal"><span class="px-ico" data-px="diamond"></span>14 / Play it</p>
+          <h2 class="cs-h2 reveal" style="--d:.06s">Prototype</h2>
+        </header>
+        <figure class="window project__embed reveal">
+          <div class="window__bar"><span>myra_prototype.fig</span><span class="window__btns" aria-hidden="true"><i></i><i></i><i></i></span></div>
+          <div class="project__frame" style="--ratio:16 / 10">
+            <iframe src="https://embed.figma.com/proto/jIhqgv9x4HYh3u84Kc8ra3/Myra-Mindfulness-App?node-id=421-4533&amp;viewport=-552%2C-2202%2C0.28&amp;scaling=scale-down&amp;content-scaling=fixed&amp;starting-point-node-id=1423%3A2271&amp;show-proto-sidebar=1&amp;page-id=4%3A3&amp;embed-host=share"
+              title="Myra — Figma prototype" loading="lazy" allowfullscreen
+              sandbox="allow-same-origin allow-scripts allow-pointer-lock allow-forms allow-popups allow-popups-to-escape-sandbox"></iframe>
+          </div>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ============ END ============ -->
+    <section class="cs-sec cs-end">
+      <div class="container">
+        <p class="cs-end__title glow reveal"><span class="px-ico" data-px="spark"></span><span data-scramble>Thank you for watching</span></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <span>© <span id="year">2026</span> Shiran Revivo</span>
+      <span class="footer__made">Designed with passion <span class="px-ico" data-px="heart"></span></span>
+      <a href="#top" onclick="scrollTo({top:0});return false">Back to top <span class="px-ico" data-px="up"></span></a>
+    </div>
+  </footer>
+
+  <script src="assets/js/data.js?v=62"></script>
+  <script src="assets/js/main.js?v=59"></script>
+</body>
+</html>
