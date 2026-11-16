@@ -17,7 +17,7 @@ portfolio/
 ├── double-shesh.html       Double Shesh Productions: **מיתוג + אתר בעמוד אחד** (2026-11-10). פרק 01 Brand (לוגו, צבעים, טיפוגרפיה, מוקאפים) ופרק 02 Web (מחקר, לפני/אחרי, מפת אתר, wireframes, מובייל, האתר החי בהטמעה)
 ├── case-white-rabbit.html  The White Rabbit — מיתוג למועדון רוק (עיצוב גרפי), לפי המצגת ב-myportfolio (13 שקפים), בשפת ה-case study. **לא UX/UI**: graphic בלבד
 ├── cv.html                 קורות חיים כעמוד (בלי loader), תוכן סטטי ב-HTML
-├── about.html              אודות כעמוד נפרד (portrait + טקסט, עותק של הסקשן מהבית) + סקשן "Through the lens": קולאז' צילום אנלוגי + סקשן "Fun facts about me": View-Master של עובדות
+├── about.html              אודות כעמוד נפרד (portrait + טקסט, עותק של הסקשן מהבית) + סקשן "Off the screen": קולאז' צילום אנלוגי + סקשן "Fun facts about me": View-Master של עובדות
 ├── contact.html            צרו קשר כעמוד נפרד (טופס + מייל + רשתות), עותק של הסקשן מהבית
 ├── assets/
 │   ├── css/style.css       כל העיצוב (~900 שורות)

@@ -124,7 +124,8 @@
         const now = performance.now();
         if (now - this.last < 60) return;   // label → input fires twice
         this.last = now;
-        if (target.closest(interactive)) this.select(); else this.tick();
+        if (target.closest(interactive)) this.select();
+        else if (!matchMedia('(pointer: coarse), (max-width: 720px)').matches) this.tick();   // phones: no sound on plain taps (scrolling), only buttons and links
       };
       document.addEventListener('pointerdown', e => {
         if (e.button !== 0) return;
@@ -1098,13 +1099,13 @@
      ====================================================================== */
   const FACTS = [
     // img: a real photo for the slide (pos = object-position, zoom = crop-in); without one, the sprite gets a pixel scene
-    { img: 'assets/img/facts/thilo.jpg', pos: '45% 55%', sprite: 'cat', title: 'I live with two cats', text: 'Thilo, a Scottish Fold, and Kleo, a British Shorthair.' },
-    { img: 'assets/img/facts/journal.jpg', pos: '50% 50%', sprite: 'pen', title: 'I make things by hand', text: 'I studied painting and majored in art in high school. I love working with acrylics and oils, mixed media and interactive books.' },
-    { img: 'assets/img/facts/wild-at-heart.jpg', pos: '30% 30%', sprite: 'clapper', title: 'Certified movie freak', text: 'Too many favourites to count, but David Lynch’s Wild at Heart is always near the top.' },
-    { img: 'assets/img/facts/short-film.jpg', pos: '55% 40%', sprite: 'clapper', title: 'I wrote and directed a short film', text: 'It was my graduation film for my bachelor’s degree in film.' },
-    { img: 'assets/img/facts/award.jpg', pos: '50% 40%', sprite: 'clapper', title: 'I won Best Art Direction', text: 'For the set design of the film Paradise Express, at the Cinema South Film Festival, 2022.' },
     { img: 'assets/img/facts/lambert.jpg', pos: '50% 35%', sprite: 'clapper', title: 'I worked with a Hollywood stunt legend', text: 'Steven Lambert, martial artist and stunt double, on a film set in Israel. It turned out to be the last production of his life.' },
-    { img: 'assets/img/facts/home.jpg', pos: '50% 60%', sprite: 'laptop', title: 'Home styling is my happy place', text: 'I love interior design and styling spaces. I’m all about atmosphere and that feeling of home.' }
+    { img: 'assets/img/facts/award.jpg', pos: '50% 40%', sprite: 'clapper', title: 'I won Best Art Direction', text: 'For the set design of the film Paradise Express, at the Cinema South Film Festival, 2022.', play: 'set-02', cta: 'Watch the film' },
+    { img: 'assets/img/facts/short-film.jpg', pos: '55% 40%', sprite: 'clapper', title: 'I wrote and directed a short film', text: 'It was my graduation film for my bachelor’s degree in film.' },
+    { img: 'assets/img/facts/wild-at-heart.jpg', pos: '30% 30%', sprite: 'clapper', title: 'Certified movie freak', text: 'Too many favourites to count, but David Lynch’s Wild at Heart is always near the top.' },
+    { img: 'assets/img/facts/journal.jpg', pos: '50% 50%', sprite: 'pen', title: 'I paint and make things', text: 'I studied painting and majored in art in high school. I love working with acrylics and oils, mixed media and interactive books.' },
+    { img: 'assets/img/facts/home.jpg', pos: '50% 60%', sprite: 'laptop', title: 'Home styling is my happy place', text: 'I love interior design and styling spaces. I’m all about atmosphere and that feeling of home.' },
+    { img: 'assets/img/facts/thilo.jpg', pos: '45% 55%', sprite: 'cat', title: 'I live with two cats', text: 'Thilo, a Scottish Fold, and Kleo, a British Shorthair.' }
   ];
   const FACT_SPRITES = {
     clapper: ['..bwwbbwwbbw.', '.bwwbbwwbbw..', 'b............', 'bwwbbwwbbwwbb', 'bbbbbbbbbbbbb',
@@ -1118,6 +1119,7 @@
     if (!vm) return;
     const disc = $('#vmDisc'), visor = $('#vmVisor'), lever = $('#vmLever'), hint = $('#vmHint');
     const lenses = $$('.vm__lens img', visor);
+    const factLink = $('#factLink'), factLinkText = $('#factLinkText');
     const file = $('#factFile'), num = $('#factNum'), title = $('#factTitle'), text = $('#factText'), pager = $('#factPager');
     const N = FACTS.length, LW = 36, LH = 27, HORIZON = 20;
     const sprites = FACTS.map(f => itemSprite(FACT_SPRITES[f.sprite] || ITEMS.find(it => it.id === f.sprite).rows));
@@ -1244,6 +1246,12 @@
     $$('.vm__lens', visor).forEach(b => b.addEventListener('click', e => { e.stopPropagation(); lookIn(); }));
 
     let idx = 0, turn = 0, swapT = 0, openT = 0, holdT = 0;
+    // a slide can point at a set-design video (opens the popup in place, like the CV's highlighted project)
+    function showLink(f) {
+      if (!factLink) return;
+      factLink.hidden = !f.play;
+      if (f.play) { factLink.dataset.play = f.play; factLinkText.textContent = f.cta; renderIcons(factLink); }
+    }
     function render() {
       lenses.forEach(img => show(img, idx));
       if (eye.open) renderEye();
@@ -1252,6 +1260,7 @@
       num.textContent = pad(idx + 1);
       title.textContent = f.title;
       text.textContent = f.text;
+      showLink(f);
       $$('.facts__pip', pager).forEach((p, i) => p.setAttribute('aria-current', String(i === idx)));
     }
     function go(step) {
@@ -1311,6 +1320,7 @@
       FACTS.forEach(f => {
         title.textContent = f.title;
         text.textContent = f.text;
+        showLink(f);
         tallest = Math.max(tallest, body.offsetHeight);
       });
       body.style.minHeight = `${tallest}px`;
@@ -1514,7 +1524,6 @@
       const go = () => {
         render();
         grid.classList.remove('is-switching');
-        if (scroll) $('.filters-bar').scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
       };
       if (reduceMotion) { go(); return; }
       grid.classList.add('is-switching');
@@ -1533,6 +1542,7 @@
       const b = e.target.closest('.pager__btn');
       if (!b || b.disabled || +b.dataset.page === page) return;
       page = +b.dataset.page;
+      scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });   // paging always starts from the top of the page
       swap(true);
     });
 

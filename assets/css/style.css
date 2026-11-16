@@ -876,6 +876,8 @@ mark {
   filter: saturate(.85) brightness(.85);
 }
 .card--video:hover .card__cover { transform: scale(1.04); filter: none; }
+/* Double Shesh's cover is mostly white, so the CRT scanlines read much heavier on it: tone it down to sit like the dark covers (Shiran, 2026-11-16) */
+.card[data-id="double-shesh"] .card__cover { filter: brightness(.74) contrast(.92); }
 .card--video:hover .card__go .px-ico { animation: none; }
 
 /* video popup */
@@ -1272,6 +1274,8 @@ body.nav-hidden .filters-bar { top: -240px; }
 .project-head__back:hover, .cs-jump:hover { color: var(--pink); }
 /* quiet link to a related page (case study <-> its own project page): the back-link style, arrow on the right */
 .cs-jump { margin: 16px 0 0; }
+.facts__link { margin-top: 18px; }
+.facts__link[hidden] { display: none; }   /* only the slides that point at a video (Best Art Direction) */
 .cs-jump .px-ico { font-size: 11px; color: var(--pink); transition: transform .15s steps(2); }
 .cs-jump:hover .px-ico { transform: translateX(3px); }
 .cs-jump[hidden] { display: none; }
