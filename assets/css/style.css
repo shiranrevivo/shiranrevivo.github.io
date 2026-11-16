@@ -99,6 +99,14 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
     radial-gradient(ellipse at center, transparent 55%, rgba(0, 0, 0, .55) 100%);
   animation: crt-flicker 9s infinite steps(1);
 }
+/* phones: the 1px lines are sharper per pixel, so the scanlines read coarser, most on light covers (Double Shesh): softer lines, lighter vignette (Shiran, 2026-11-16) */
+@media (max-width: 720px) {
+  .crt {
+    background:
+      repeating-linear-gradient(to bottom, transparent 0 2px, rgba(0, 0, 0, .08) 2px 3px),
+      radial-gradient(ellipse at center, transparent 60%, rgba(0, 0, 0, .4) 100%);
+  }
+}
 @keyframes crt-flicker {
   0%, 100% { opacity: 1; }
   31% { opacity: .9; }
@@ -877,7 +885,7 @@ mark {
 }
 .card--video:hover .card__cover { transform: scale(1.04); filter: none; }
 /* Double Shesh's cover is mostly white, so the CRT scanlines read much heavier on it: tone it down to sit like the dark covers (Shiran, 2026-11-16) */
-.card[data-id="double-shesh"] .card__cover { filter: brightness(.74) contrast(.92); }
+.card[data-id="double-shesh"] .card__cover { filter: brightness(.86) contrast(.88); }
 .card--video:hover .card__go .px-ico { animation: none; }
 
 /* video popup */
