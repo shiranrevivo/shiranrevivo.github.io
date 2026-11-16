@@ -129,3 +129,4 @@
 - **סדר העובדות (2026-11-16):** מקצועי קודם, ואז אישי: סטיבן לאמברט (עם מי עבדה) ← פרס Best Art Direction ← כתבה וביימה סרט קצר ← Certified movie freak ← I paint and make things ← Home styling ← שני החתולים. main.js v61
 - **סקשן הצילום, ליטוש (2026-11-16):** "shot it on film" ← "been shooting on film"; האייברו "Off screen / Analog" ← **Analog** (כדי לא לחזור על הכותרת Off the screen)
 - **עידון אפקט ה-CRT במובייל (2026-11-16):** עד 720px קווי ה-scanlines חצי מהעוצמה (.16 ← .08) והוויניטה בהירה יותר, כי על כריכה בהירה (Double Shesh) הם נראו גסים. כריכת Double Shesh: brightness .86 / contrast .88 (במקום .74, שהפך אותה לאפורה). style.css v94
+- **ריווח שורות בכותרות כרטיסים (2026-11-16):** `.card__title` ירש line-height 1.6 מהגוף, ולכן כותרת שנשברה לשתי שורות נראתה מרווחת מדי (בעיקר במובייל). עכשיו 1.3 (1.12 נראה צמוד מדי לשירן, "ממש מעט"). שאר כותרות ה-display כבר היו בין .78 ל-1. style.css v95
