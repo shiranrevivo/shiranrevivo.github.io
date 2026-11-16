@@ -38,3 +38,4 @@
 - [x] ה-PDF של קורות החיים הוחלף בגרסה החדשה (2026-11-10): "UX/UI and Visual Designer", תואם לעמוד cv.html
 - [ ] בדיקות מובייל ונגישות
 - [ ] אחסון (GitHub Pages / Netlify / Vercel)
+- [x] ספירת כניסות: GoatCounter בכל העמודים (2026-11-16, branch `feat/goatcounter`). יתחיל לספור אחרי push ל-GitHub Pages

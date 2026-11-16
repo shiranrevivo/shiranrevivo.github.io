@@ -125,3 +125,8 @@ window.PROJECTS = [{ id, title, categories: [...], featured }]
 - **תיקונים (2026-11-10, סבב 1):** `web/01-hero.png?v=2` = לפטופ אמיתי (מסגרת כהה #161615 + קו שקוף, כמו האייפון) עם דף הבית + אייפון עם **עמוד האודות** (לא אותו מסך), 2000×1080; תבנית: `design-system/tools/case-study/mockups/laptop-phone.html`. `cover-web.jpg?v=3` = **תמונת תיק הבד** (`cover.jpg`) עם הלפטופ משמאל והאייפון מימין על הרצפה, הלוגו על התיק נשאר גלוי; תבנית: `mockups/cover-tote.html`. `wireframes/wf-01-home.webp?v=2` = ה-wireframe החדש של דף הבית ששירן שלחה. כפתור Visit live site גם ליד הכותרת של Live site (`.cs-sec__head--action`)
 - **מיקום (2026-11-10):** `double-shesh` שני ב-`PROJECTS` (אחרי zenthor) עם `featured: true` → שני בבית; Atomic Blonde כבר לא בבית
 - **`initCarousel`** (main.js, 2026-11-10): `.cs-shots.cs-carousel` (+ `data-label`) עד 900px הופך לפס swipe (`scroll-snap`, שקופית 84%, `> div { display: contents }`), יוצר `.cs-dots` אחרי הפס (כפתור לכל שקופית, `aria-current`), וקובע את גובה הפס לפי השקופית שבמרכז. ה-figcaption עולה מעל התמונה (`order: -1`). בשימוש: Wireframes ב-double-shesh.html
+
+## ספירת כניסות: GoatCounter (2026-11-16)
+- שורה אחת לפני `</body>` בכל 18 העמודים: `<script data-goatcounter="https://shiranrevivo.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>`. **עמוד חדש צריך לקבל את אותה שורה.**
+- דשבורד (רק לשירן): https://shiranrevivo.goatcounter.com. בלי עוגיות, ולכן בלי באנר הסכמה. לא סופר `file://` ו-localhost, כך שעבודה מקומית לא נספרת.
+- כדי שהביקורים של שירן באתר החי לא ייספרו: לפתוח פעם אחת בכל דפדפן `https://shiranrevivo.github.io/#toggle-goatcounter` (נשמר ב-localStorage).
